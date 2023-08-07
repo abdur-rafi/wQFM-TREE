@@ -254,40 +254,6 @@ public class GeneTree {
         }
     }
 
-    private int satisfiedEqn(int a1, int a2, int b3){
-        return a1 * a2 * (b3 * (b3-1)) / 2;
-    }
-    private int violatedEqn(int a1, int b2, int a3, int b3){
-        return a1 * b2 * a3 * b3;
-    }
-
-    private int satisfiedEqn(int a1, int a2, int b3, int common12){
-        return (a1 * a2 - common12) * (b3 * (b3-1)) / 2;
-    }
-    private pair scoreFromCounts(int a1, int b1, int a2, int b2, int a3, int b3, int common12, int common23, int common31){
-        int sat = 0, vio = 0;
-        sat += satisfiedEqn(a1, a2, b3, common12);
-        sat += satisfiedEqn(a2, a3, b1, common23);
-        sat += satisfiedEqn(a3, a1, b2, common31);
-
-        vio += violatedEqn(a1, b2, a3, b3);
-        vio += violatedEqn(a2, b1, a3, b3);
-
-        vio += violatedEqn(a2, b3, a1, b1);
-        vio += violatedEqn(a3, b2, a1, b1);
-
-        vio += violatedEqn(a3, b1, a2, b2);
-        vio += violatedEqn(a1, b3, a2, b2);
-        return new pair(sat, vio);
-
-
-    }
-
-    private Set<Integer> getIntersection(Set<Integer> a, Set<Integer> b){
-        var x = copySet(a);
-        x.retainAll(b);
-        return x;
-    }
 
     class Branch{
         int pA, pB, pADummy, pBDummy;
@@ -346,14 +312,6 @@ public class GeneTree {
             int sat = satisfiedEqn(branches[i].a_t, branches[j].a_t, branches[k].b_t, commonSzA[i]);
             int vio = violatedEqn(branches[i].a_t, branches[j].b_t, branches[k].a_t, branches[k].b_t, commonSzA[k],commonSzB[j]);
             vio += violatedEqn(branches[j].a_t, branches[i].b_t, branches[k].a_t, branches[k].b_t, commonSzA[j],commonSzB[k]);
-            // var commonA = getIntersection(b1.dummyA, b2.dummyA);
-            // var commonA1A3 = getIntersection(b1.dummyA, b3.dummyA);
-            // var commonB2B3 = getIntersection(b2.dummyB, b3.dummyB);
-            // var commonA2A3 = getIntersection(b2.dummyA, b3.dummyA);
-            // var commonB1B3 = getIntersection(b1.dummyB, b3.dummyB);
-            // int sat = satisfiedEqn(b1.a_t, b2.a_t, b3.b_t, commonA.size());
-            // int vio = violatedEqn(b1.a_t, b2.b_t, b3.a_t, b3.b_t, commonA1A3.size(), commonB2B3.size());
-            // vio += violatedEqn(b2.a_t, b1.b_t, b3.a_t, b3.b_t, commonA2A3.size(), commonB1B3.size());
 
             return new pair(sat, vio);
         }
@@ -500,13 +458,7 @@ public class GeneTree {
             x.retainAll(b);
             return x;
         }
-        private int satisfiedEqn(int a1, int a2, int b3){
-            return a1 * a2 * (b3 * (b3-1)) / 2;
-        }
-        private int violatedEqn(int a1, int b2, int a3, int b3){
-            return a1 * b2 * a3 * b3;
-        }
-
+        
         private int satisfiedEqn(int a1, int a2, int b3, int common12){
             return (a1 * a2 - common12) * (b3 * (b3-1)) / 2;
         }
@@ -549,132 +501,6 @@ public class GeneTree {
 
     }
 
-    private pair scoreAtANode(TreeNode node){
-
-        if(node.childs == null) return new pair(0, 0);
-
-        var c1 = node.childs.get(0);
-        var c2 = node.childs.get(1);
-
-        int a1_d = c1.info.reachableDummyTaxaA.size();
-        int b1_d = c1.info.reachableDummyTaxaB.size();
-        
-
-        int a1 = c1.info.pACount ;
-        int b1 = c1.info.pBCount ;
-
-        int a1_t = a1 + a1_d;
-        int b1_t = b1 + b1_d;
-
-
-
-        int a2_d = c2.info.reachableDummyTaxaA.size();
-        int b2_d = c2.info.reachableDummyTaxaB.size();
-        
-
-        int a2 = c2.info.pACount ;
-        int b2 = c2.info.pBCount ;
-
-        int a2_t = a2 + a2_d;
-        int b2_t = b2 + b2_d;
-
-        int a3_d = node.info.reachableDummyTaxaFromAboveA.size();
-        int b3_d = node.info.reachableDummyTaxaFromAboveB.size();
-        
-
-        int a3 = node.info.abovepACount ;
-        int b3 = node.info.abovepBCount ;
-
-        int a3_t = a3 + a3_d;
-        int b3_t = b3 + b3_d;
-
-
-
-        var common12A = getIntersection(c1.info.reachableDummyTaxaA, c2.info.reachableDummyTaxaA);
-        var common12B = getIntersection(c1.info.reachableDummyTaxaB, c2.info.reachableDummyTaxaB);
-        
-        var common23A = getIntersection(c2.info.reachableDummyTaxaA, node.info.reachableDummyTaxaFromAboveA);
-        var common23B = getIntersection(c2.info.reachableDummyTaxaB, node.info.reachableDummyTaxaFromAboveB);
-        
-
-        var common13A = getIntersection(c1.info.reachableDummyTaxaA, node.info.reachableDummyTaxaFromAboveA);
-        var common13B = getIntersection(c1.info.reachableDummyTaxaB, node.info.reachableDummyTaxaFromAboveB);
-
-
-        int common12Sz = common12A.size();
-        int common23Sz = common23A.size();
-        int common13Sz = common13A.size();
-        
-        // for(int i = 0; i < this.dummyTaxaCount; ++i){
-        //     if(this.dummypA.contains(i)){
-        //         if(c1.info.reachableDummyTaxa[i]){
-        //             ++a1;
-        //         }
-        //         if(
-        //             c1.info.reachableDummyTaxa[i] && 
-        //             c2.info.reachableDummyTaxa[i]
-        //         ){
-        //             ++commonInc1c2A;
-        //         }
-        //     }
-        // }
-        pair originalScore = scoreFromCounts(a1_t, b1_t, a2_t, b2_t, a3_t, b3_t,common12Sz, common23Sz, common13Sz);
-        
-        pair scoreaTob = originalScore;
-        pair scorebToa = originalScore;
-        
-        if(a3 > 0){
-            scoreaTob = scoreFromCounts(a1, b1, a2, b2, a3 - 1, b3 + 1,common12Sz, common23Sz, common13Sz);
-        }
-        if(b3 > 0){
-            scorebToa = scoreFromCounts(a1, b1, a2, b2, a3 + 1, b3 - 1,common12Sz, common23Sz, common13Sz);
-        }
-
-        pair aboveaToB = scoreaTob.sub(originalScore);
-        pair abovebToA = scorebToa.sub(originalScore);
-
-        // System.out.println("aboves : " + aboveaToB + " " + aboveaToB);
-        
-        gainaTobAll = gainaTobAll.add(aboveaToB);
-        gainbToaAll =  gainbToaAll.add(abovebToA);
-        
-
-        pair scoreaTobNotCommon, scorebToaNotCommon;
-        pair scoreaTobCommon, scorebToaCommon;
-
-
-        scoreaTob = originalScore;
-
-        scoreaTobCommon = originalScore;
-        scoreaTobNotCommon = originalScore;
-        if(a1_t > 0){
-            scoreaTobNotCommon = scoreFromCounts(a1_t - 1, b1_t + 1, a2_t, b2_t, a3_t, b3_t,common12Sz, common23Sz, common13Sz);
-        }
-        scorebToa = originalScore;
-        if(b1 > 0){
-            scorebToa = scoreFromCounts(a1_t + 1, b1_t - 1, a2_t, b2_t, a3_t, b3_t,common12Sz, common23Sz, common13Sz);
-        }
-        node.childs.get(0).info.setGain(
-            scoreaTob.sub(originalScore).sub(aboveaToB).add(node.info.gainAtoB) , 
-            scorebToa.sub(originalScore).sub(abovebToA).add(node.info.gainBtoA)
-        );
-        
-        scoreaTob = originalScore;
-
-        if(a2 > 0){
-            scoreaTob = scoreFromCounts(a1, b1, a2 - 1, b2 + 1, a3, b3,common12Sz, common23Sz, common13Sz);
-        }
-        scorebToa = originalScore;
-        if(b2 > 0){
-            scorebToa = scoreFromCounts(a1, b1, a2 + 1, b2 - 1, a3, b3,common12Sz, common23Sz, common13Sz);
-        }
-        node.childs.get(1).info.setGain(
-            scoreaTob.sub(originalScore).sub(aboveaToB).add(node.info.gainAtoB) , 
-            scorebToa.sub(originalScore).sub(abovebToA).add(node.info.gainBtoA)
-        );
-        
-        return originalScore;
-    }
 
     Set<Integer> copySet(Set<Integer> st){
         Set<Integer> a = new HashSet<>();
@@ -709,17 +535,17 @@ public class GeneTree {
         calcReachableInSubtree(root);
         var c1 = root.childs.get(0);
         var c2 = root.childs.get(1);
+        
         c1.info.gainAtoB = new pair(0, 0);
         c1.info.gainBtoA = new pair(0, 0);
         c2.info.gainBtoA = new pair(0, 0);
         c2.info.gainAtoB = new pair(0, 0 );
-        // s1 = new HashSet<>();
-        // s2 = new HashSet<>();
-        // s1.addAll(c2.info.reachableDummyTaxa);
-        // s2.addAll(c1.info.reachableDummyTaxa);
+
         flowToSubTree(c1, c2.info.pACount, c2.info.pBCount, copySet(c2.info.reachableDummyTaxaA),copySet(c2.info.reachableDummyTaxaB));
         flowToSubTree(c2, c1.info.pACount, c1.info.pBCount, copySet(c1.info.reachableDummyTaxaA),copySet(c1.info.reachableDummyTaxaB));
+        
         System.out.println("globals : " + gainaTobAll + " " + gainbToaAll);
+        
         for(var x : nodes){
             if(x.isLeaf()){
                 if(pA.contains(x.index)){
