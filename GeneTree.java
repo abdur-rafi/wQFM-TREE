@@ -35,6 +35,12 @@ public class GeneTree {
     TreeNode root;
     int sat, vio;
     pair gainaTobAll, gainbToaAll;
+    Set<Integer> dummypA,dummypB;
+    ArrayList<IDummyTaxa> dummyTaxas;
+
+    private Set<Integer> pA, pB;
+    private Map<Integer, Integer> taxaToDummyTaxaMap;
+    int dummyTaxaCount;
 
     private TreeNode addNode(String label, ArrayList<TreeNode> ch, TreeNode pr){
         TreeNode nd = new TreeNode(nodes.size(), label, ch, pr);
@@ -172,39 +178,64 @@ public class GeneTree {
     }
     
 
-    private void calcReachableInSubtree(TreeNode node,Set<Integer> pA, Set<Integer> pB){
+    private void calcReachableInSubtree(TreeNode node){
         int pAScore, pBScore;
+        boolean[] reachableDummyTaxa = new boolean[this.dummyTaxaCount];
+
         if (node.childs == null){
             pAScore = pA.contains(node.index) ? 1 : 0;
             pBScore = pB.contains(node.index) ? 1 : 0;
+            if(this.taxaToDummyTaxaMap.containsKey(node.index)){
+                int dummyTaxaId = this.taxaToDummyTaxaMap.get(node.index);
+                reachableDummyTaxa[dummyTaxaId] = true;
+            }
+            // pADummyTaxa[this.taxaToDummyTaxaMap.get(node.index)] = true;
         }
         else{
             pAScore = 0;
             pBScore = 0;
 
             for(var x : node.childs){
-                calcReachableInSubtree(x, pA, pB);
+                calcReachableInSubtree(x);
+                for(int i = 0; i < this.dummyTaxaCount; ++i){
+                    reachableDummyTaxa[i] |= x.info.reachableDummyTaxa[i];
+                }
                 pAScore += x.info.pACount;
                 pBScore += x.info.pBCount;
             }
         }
         node.info = new Info(pAScore, pBScore);
+        node.info.setDummyTaxaFlags(reachableDummyTaxa);
     }
 
-    private void flowToSubTree(TreeNode node, int aScore, int bScore){
-        node.info.setAboveCount(aScore, bScore);
-
-        // aScore += node.info.pACount;
-        // bScore += node.info.pBCount;
+    private void flowToSubTree(
+        TreeNode node,
+        int aboveACount, 
+        int aboveBCount, 
+        boolean[] reachableFromAbove
+    ){
+        node.info.setAboveCount(aboveACount, aboveBCount);
+        node.info.setReachableDummyTaxaFromAbove(reachableFromAbove);
         
         if(node.childs != null){
             var z = scoreAtANode(node);
-            System.out.println("socre at node : " + node.index + " " + z);
+            // System.out.println("socre at node : " + node.index + " " + z);
             sat += z.f;
             vio += z.s;
-            for(var x : node.childs){
-                flowToSubTree(x, aScore + node.info.pACount - x.info.pACount,
-                 bScore + node.info.pBCount - x.info.pBCount);
+            int n = node.childs.size();
+            for(int l = 0; l < n ; ++l){
+                var x = node.childs.get(l);
+                boolean[] reachableDummyTaxaFromAboveOfX = reachableFromAbove.clone();
+                for(int j = 0; j < n; ++j){
+                    if(j == l){
+                        continue;
+                    }
+                    for(int i = 0; i < this.dummyTaxaCount; ++i){
+                        reachableDummyTaxaFromAboveOfX[i] |= x.info.reachableDummyTaxa[i];
+                    }
+                }
+                flowToSubTree(x, aboveACount + node.info.pACount - x.info.pACount,
+                 aboveBCount + node.info.pBCount - x.info.pBCount, reachableDummyTaxaFromAboveOfX);
             }
         }
     }
@@ -238,13 +269,17 @@ public class GeneTree {
     private pair scoreAtANode(TreeNode node){
 
         if(node.childs == null) return new pair(0, 0);
+
+        var c1 = node.childs.get(0);
+        var c2 = node.childs.get(1);
+
         
-        int a1 = node.childs.get(0).info.pACount;
-        int b1 = node.childs.get(0).info.pBCount;
+        int a1 = c1.info.pACount;
+        int b1 = c1.info.pBCount;
 
 
-        int a2 = node.childs.get(1).info.pACount;
-        int b2 = node.childs.get(1).info.pBCount;
+        int a2 = c2.info.pACount;
+        int b2 = c2.info.pBCount;
 
 
         int a3 = node.info.abovepACount;
@@ -300,21 +335,34 @@ public class GeneTree {
         return originalScore;
     }
 
-    
-    public int score(Set<Integer> pA, Set<Integer> pB){
+    // taxaToDummyTaxaMap : maps taxa's index to dummy taxa's index
+    public int score(
+        Set<Integer> pA, 
+        Set<Integer> pB, 
+        Map<Integer, Integer> taxaToDummyTaxaMap,
+        Set<Integer> dummypAIndices,
+        Set<Integer> dummypBIndices
+    ){
+        this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
+        this.pA = pA;
+        this.pB = pB;
+        this.dummypA = dummypAIndices;
+        this.dummypB = dummypBIndices;
+        this.dummyTaxaCount = taxaToDummyTaxaMap.size();
+
         sat = 0;
         vio = 0;
         gainaTobAll = new pair(0, 0);
         gainbToaAll = new pair(0, 0);
-        calcReachableInSubtree(root, pA, pB);
+        calcReachableInSubtree(root);
         var c1 = root.childs.get(0);
         var c2 = root.childs.get(1);
         c1.info.gainAtoB = new pair(0, 0);
         c1.info.gainBtoA = new pair(0, 0);
         c2.info.gainBtoA = new pair(0, 0);
         c2.info.gainAtoB = new pair(0, 0 );
-        flowToSubTree(c1, c2.info.pACount, c2.info.pBCount);
-        flowToSubTree(c2, c1.info.pACount, c1.info.pBCount);
+        flowToSubTree(c1, c2.info.pACount, c2.info.pBCount, c2.info.reachableDummyTaxa.clone());
+        flowToSubTree(c2, c1.info.pACount, c1.info.pBCount, c1.info.reachableDummyTaxa.clone());
         System.out.println("globals : " + gainaTobAll + " " + gainbToaAll);
         for(var x : nodes){
             if(x.isLeaf()){

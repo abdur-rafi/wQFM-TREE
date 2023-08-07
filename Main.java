@@ -2,14 +2,18 @@ package wqfm.dsGT;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
         
-        PerLevelDs ds = new PerLevelDs();
+        ArrayList<IDummyTaxa> dt = new ArrayList<>();
+        PerLevelDs ds = new PerLevelDs(dt);
 
 
         Scanner scanner = new Scanner(new File("/home/abdur-rafi/Academic/Thesis/wQFM-2020/WQFM/input_files/gtree_11tax_est_5genes_R1.tre"));
@@ -44,8 +48,14 @@ public class Main {
             System.out.println(stA);
             System.out.println(stB);
 
+            // ArrayList<IDummyTaxa> dummyTaxas = new ArrayList<>();
+            // ArrayList<IDummyTaxa> dummypA = new ArrayList<>();
+            // ArrayList<IDummyTaxa> dummypB = new ArrayList<>();
+            Map<Integer, Integer> mp = new HashMap<>();
+            Set<Integer> dummypAIndices = new HashSet<>();
+            Set<Integer> dummypBIndices = new HashSet<>();
 
-            System.out.println(tr.score(stA, stB));
+            System.out.println(tr.score(stA, stB, mp,dummypAIndices, dummypBIndices));
 
             System.out.println(tr.root.toString());
 

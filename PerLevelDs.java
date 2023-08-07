@@ -5,10 +5,11 @@ import java.util.ArrayList;
 public class PerLevelDs {
     
     ArrayList<GeneTree> geneTrees;
-
+    ArrayList<IDummyTaxa> dummyTaxas;
     
-    public PerLevelDs(){
+    public PerLevelDs(ArrayList<IDummyTaxa> dt){
         geneTrees = new ArrayList<>();
+        dummyTaxas = dt;
     } 
 
     public void addGeneTree(String s){
