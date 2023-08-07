@@ -9,11 +9,11 @@ public class Info {
     int pACount;
     int pBCount;
 
-    Set<Integer> reachableDummyTaxa;
+    Set<Integer> reachableDummyTaxaA, reachableDummyTaxaB;
 
     int abovepACount;
     int abovepBCount;
-    Set<Integer> reachableDummyTaxaFromAbove;
+    Set<Integer> reachableDummyTaxaFromAboveA,reachableDummyTaxaFromAboveB ;
 
 
     pair gainAtoB;
@@ -40,12 +40,14 @@ public class Info {
         gainBtoA = bToA;
     }
 
-    public void setDummyTaxaFlags(Set<Integer>  a){
-        reachableDummyTaxa = a;
+    public void setDummyTaxaFlags(Set<Integer>  a, Set<Integer> b){
+        this.reachableDummyTaxaA = a;
+        this.reachableDummyTaxaB = b;
     }
 
-    public void setReachableDummyTaxaFromAbove(Set<Integer>  a){
-        this.reachableDummyTaxaFromAbove = a;
+    public void setReachableDummyTaxaFromAbove(Set<Integer>  a, Set<Integer> b){
+        this.reachableDummyTaxaFromAboveA = a;
+        this.reachableDummyTaxaFromAboveB = b;
     }
 
     
