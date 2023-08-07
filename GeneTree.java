@@ -464,8 +464,8 @@ public class GeneTree {
                     }
                 }
 
-                branches[i].a_t++;
-                branches[i].b_t--;
+                branches[i].b_t++;
+                branches[i].a_t--;
             }
             
 
@@ -481,7 +481,7 @@ public class GeneTree {
             for(int i = 0; i < 3; ++i){
                 this.gainOf1Branch(i, currScore);
                 aToBGains[i] = aToBGain;
-                aToBGains[i] = bToAGain;
+                bToAGains[i] = bToAGain;
             }
 
             return currScore;
@@ -528,7 +528,24 @@ public class GeneTree {
 
         Branch[] barr = new Branch[3];
         barr[0] = b1;barr[1] =  b2; barr[2] = b3;
-        return new ScoreCalculator(barr,this.dummyTaxaGains).scoreAndGain();
+        var calc = new ScoreCalculator(barr, this.dummyTaxaGains);
+
+        var score = calc.scoreAndGain();
+        
+        var aboveaToBGain = calc.aToBGains[2];
+        var abovebToAGain = calc.bToAGains[2];
+
+        this.gainaTobAll = this.gainaTobAll.add(aboveaToBGain);
+        this.gainbToaAll = this.gainbToaAll.add(abovebToAGain);
+        for(int i = 0; i < 2; ++i){
+            node.childs.get(i).info.setGain(
+                calc.aToBGains[i].sub(aboveaToBGain).add(node.info.gainAtoB) , 
+                calc.bToAGains[i].sub(abovebToAGain).add(node.info.gainBtoA)
+            );
+        }
+
+        return score;
+        // return new ScoreCalculator(barr,this.dummyTaxaGains).scoreAndGain();
 
     }
 
@@ -702,18 +719,18 @@ public class GeneTree {
         // s2.addAll(c1.info.reachableDummyTaxa);
         flowToSubTree(c1, c2.info.pACount, c2.info.pBCount, copySet(c2.info.reachableDummyTaxaA),copySet(c2.info.reachableDummyTaxaB));
         flowToSubTree(c2, c1.info.pACount, c1.info.pBCount, copySet(c1.info.reachableDummyTaxaA),copySet(c1.info.reachableDummyTaxaB));
-        // System.out.println("globals : " + gainaTobAll + " " + gainbToaAll);
-        // for(var x : nodes){
-        //     if(x.isLeaf()){
-        //         if(pA.contains(x.index)){
-        //             x.info.gainAtoB =  x.info.gainAtoB.add(gainaTobAll);
-        //         }
-        //         else if(pB.contains(x.index)){
-        //             x.info.gainBtoA =  x.info.gainBtoA.add(gainbToaAll);
-        //         }
-        //         System.out.println( x.label + " --" + " From A to B -> " + x.info.gainAtoB + " " + " From B to A -> " + x.info.gainBtoA);
-        //     }
-        // }
+        System.out.println("globals : " + gainaTobAll + " " + gainbToaAll);
+        for(var x : nodes){
+            if(x.isLeaf()){
+                if(pA.contains(x.index)){
+                    x.info.gainAtoB =  x.info.gainAtoB.add(gainaTobAll);
+                }
+                else if(pB.contains(x.index)){
+                    x.info.gainBtoA =  x.info.gainBtoA.add(gainbToaAll);
+                }
+                System.out.println( x.label + " --" + " From A to B -> " + x.info.gainAtoB + " " + " From B to A -> " + x.info.gainBtoA);
+            }
+        }
 
         System.out.println("sat : " + sat + " vio : " + vio);
 
