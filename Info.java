@@ -1,5 +1,7 @@
 package wqfm.dsGT;
 
+import java.util.Set;
+
 import wqfm.dsGT.GeneTree.pair;
 
 public class Info {
@@ -7,11 +9,11 @@ public class Info {
     int pACount;
     int pBCount;
 
-    boolean[] reachableDummyTaxa;
+    Set<Integer> reachableDummyTaxa;
 
     int abovepACount;
     int abovepBCount;
-    boolean[] reachableDummyTaxaFromAbove;
+    Set<Integer> reachableDummyTaxaFromAbove;
 
 
     pair gainAtoB;
@@ -38,11 +40,11 @@ public class Info {
         gainBtoA = bToA;
     }
 
-    public void setDummyTaxaFlags(boolean[] a){
+    public void setDummyTaxaFlags(Set<Integer>  a){
         reachableDummyTaxa = a;
     }
 
-    public void setReachableDummyTaxaFromAbove(boolean[] a){
+    public void setReachableDummyTaxaFromAbove(Set<Integer>  a){
         this.reachableDummyTaxaFromAbove = a;
     }
 

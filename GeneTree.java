@@ -2,6 +2,7 @@ package wqfm.dsGT;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
@@ -180,14 +181,14 @@ public class GeneTree {
 
     private void calcReachableInSubtree(TreeNode node){
         int pAScore, pBScore;
-        boolean[] reachableDummyTaxa = new boolean[this.dummyTaxaCount];
+        Set<Integer> reachableDummyTaxa = new HashSet<>();
 
         if (node.childs == null){
             pAScore = pA.contains(node.index) ? 1 : 0;
             pBScore = pB.contains(node.index) ? 1 : 0;
             if(this.taxaToDummyTaxaMap.containsKey(node.index)){
                 int dummyTaxaId = this.taxaToDummyTaxaMap.get(node.index);
-                reachableDummyTaxa[dummyTaxaId] = true;
+                reachableDummyTaxa.add(dummyTaxaId);
             }
             // pADummyTaxa[this.taxaToDummyTaxaMap.get(node.index)] = true;
         }
@@ -197,9 +198,7 @@ public class GeneTree {
 
             for(var x : node.childs){
                 calcReachableInSubtree(x);
-                for(int i = 0; i < this.dummyTaxaCount; ++i){
-                    reachableDummyTaxa[i] |= x.info.reachableDummyTaxa[i];
-                }
+                reachableDummyTaxa.addAll(x.info.reachableDummyTaxa);
                 pAScore += x.info.pACount;
                 pBScore += x.info.pBCount;
             }
@@ -212,7 +211,7 @@ public class GeneTree {
         TreeNode node,
         int aboveACount, 
         int aboveBCount, 
-        boolean[] reachableFromAbove
+        Set<Integer> reachableFromAbove
     ){
         node.info.setAboveCount(aboveACount, aboveBCount);
         node.info.setReachableDummyTaxaFromAbove(reachableFromAbove);
@@ -225,14 +224,13 @@ public class GeneTree {
             int n = node.childs.size();
             for(int l = 0; l < n ; ++l){
                 var x = node.childs.get(l);
-                boolean[] reachableDummyTaxaFromAboveOfX = reachableFromAbove.clone();
+                Set<Integer> reachableDummyTaxaFromAboveOfX = new HashSet<>();
+                reachableDummyTaxaFromAboveOfX.addAll(reachableFromAbove);
                 for(int j = 0; j < n; ++j){
                     if(j == l){
                         continue;
                     }
-                    for(int i = 0; i < this.dummyTaxaCount; ++i){
-                        reachableDummyTaxaFromAboveOfX[i] |= x.info.reachableDummyTaxa[i];
-                    }
+                    reachableDummyTaxaFromAboveOfX.addAll(x.info.reachableDummyTaxa);
                 }
                 flowToSubTree(x, aboveACount + node.info.pACount - x.info.pACount,
                  aboveBCount + node.info.pBCount - x.info.pBCount, reachableDummyTaxaFromAboveOfX);
@@ -244,6 +242,13 @@ public class GeneTree {
         return a1 * a2 * (b3 * (b3-1)) / 2;
     }
     private int violatedEqn(int a1, int b2, int a3, int b3){
+        return a1 * b2 * a3 * b3;
+    }
+
+    private int satisfiedEqn(int a1, int a2, int b3, int common12){
+        return (a1 * a2 - common12) * (b3 * (b3-1)) / 2;
+    }
+    private int violatedEqn(int a1, int b2, int a3, int b3, int common12){
         return a1 * b2 * a3 * b3;
     }
 
@@ -265,6 +270,24 @@ public class GeneTree {
 
 
     }
+    private pair scoreFromCounts(int a1, int b1, int a2, int b2, int a3, int b3, int common12, int common23, int common31){
+        int sat = 0, vio = 0;
+        sat += satisfiedEqn(a1, a2, b3, common12);
+        sat += satisfiedEqn(a2, a3, b1, common23);
+        sat += satisfiedEqn(a3, a1, b2, common31);
+
+        vio += violatedEqn(a1, b2, a3, b3);
+        vio += violatedEqn(a2, b1, a3, b3);
+
+        vio += violatedEqn(a2, b3, a1, b1);
+        vio += violatedEqn(a3, b2, a1, b1);
+
+        vio += violatedEqn(a3, b1, a2, b2);
+        vio += violatedEqn(a1, b3, a2, b2);
+        return new pair(sat, vio);
+
+
+    }
 
     private pair scoreAtANode(TreeNode node){
 
@@ -272,7 +295,7 @@ public class GeneTree {
 
         var c1 = node.childs.get(0);
         var c2 = node.childs.get(1);
-
+        var p = node.parent;
         
         int a1 = c1.info.pACount;
         int b1 = c1.info.pBCount;
@@ -286,6 +309,23 @@ public class GeneTree {
         int b3 = node.info.abovepBCount;
 
 
+        int commonInc1c2A = 0;
+        int commonInc2pA = 0;
+        int commonInc1pA = 0;
+
+        // for(int i = 0; i < this.dummyTaxaCount; ++i){
+        //     if(this.dummypA.contains(i)){
+        //         if(c1.info.reachableDummyTaxa[i]){
+        //             ++a1;
+        //         }
+        //         if(
+        //             c1.info.reachableDummyTaxa[i] && 
+        //             c2.info.reachableDummyTaxa[i]
+        //         ){
+        //             ++commonInc1c2A;
+        //         }
+        //     }
+        // }
         pair originalScore = scoreFromCounts(a1, b1, a2, b2, a3, b3);
         
         pair scoreaTob = originalScore;
@@ -361,8 +401,13 @@ public class GeneTree {
         c1.info.gainBtoA = new pair(0, 0);
         c2.info.gainBtoA = new pair(0, 0);
         c2.info.gainAtoB = new pair(0, 0 );
-        flowToSubTree(c1, c2.info.pACount, c2.info.pBCount, c2.info.reachableDummyTaxa.clone());
-        flowToSubTree(c2, c1.info.pACount, c1.info.pBCount, c1.info.reachableDummyTaxa.clone());
+        Set<Integer> s1, s2;
+        s1 = new HashSet<>();
+        s2 = new HashSet<>();
+        s1.addAll(c2.info.reachableDummyTaxa);
+        s2.addAll(c1.info.reachableDummyTaxa);
+        flowToSubTree(c1, c2.info.pACount, c2.info.pBCount, s1);
+        flowToSubTree(c2, c1.info.pACount, c1.info.pBCount, s2);
         System.out.println("globals : " + gainaTobAll + " " + gainbToaAll);
         for(var x : nodes){
             if(x.isLeaf()){
