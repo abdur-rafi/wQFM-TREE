@@ -55,7 +55,8 @@ public class TreeNode implements TreePrinter.PrintableNode {
             if(parent == null)
                 buffer.append("root");
             else
-                buffer.append(" a : " + info.reachableDummyTaxaFromAboveA.size() + " b : " + info.reachableDummyTaxaFromAboveB.size());
+                buffer.append(index);
+                // buffer.append(" a : " + info.reachableDummyTaxaFromAboveA.size() + " b : " + info.reachableDummyTaxaFromAboveB.size());
         }
             // buffer.append(index);
             // buffer.append(" ");
