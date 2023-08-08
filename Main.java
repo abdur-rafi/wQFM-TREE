@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.TreeSet;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
         
@@ -22,27 +21,29 @@ public class Main {
             String line = scanner.nextLine();
             GeneTree tr = new GeneTree(line);
 
-            Set<Integer> stA = new TreeSet<>();
-            stA.add(tr.taxaMap.get("1"));
+            Set<Integer> stA = new HashSet<>();
+            // stA.add(tr.taxaMap.get("1"));
             // stA.add(tr.taxaMap.get("2"));
             stA.add(tr.taxaMap.get("3"));
             stA.add(tr.taxaMap.get("5"));
             // stA.add(tr.taxaMap.get("1"));
             // stA.add(tr.taxaMap.get("2"));
-            stA.add(tr.taxaMap.get("7"));
+            // stA.add(tr.taxaMap.get("7"));
 
 
-            Set<Integer> stB = new TreeSet<>();
+            Set<Integer> stB = new HashSet<>();
             stB.add(tr.taxaMap.get("4"));
             // stB.add(tr.taxaMap.get("5"));
             stB.add(tr.taxaMap.get("6"));
-            stB.add(tr.taxaMap.get("10"));
-            stB.add(tr.taxaMap.get("11"));
+            // stB.add(tr.taxaMap.get("10"));
+            // stB.add(tr.taxaMap.get("11"));
             // stB.add(tr.taxaMap.get("10"));
             // stB.add(tr.taxaMap.get("3"));
             stB.add(tr.taxaMap.get("8"));
             // stB.add(tr.taxaMap.get("6"));
             // stB.add(tr.taxaMap.get("4"));
+
+
 
 
             System.out.println(stA);
@@ -51,9 +52,27 @@ public class Main {
             // ArrayList<IDummyTaxa> dummyTaxas = new ArrayList<>();
             // ArrayList<IDummyTaxa> dummypA = new ArrayList<>();
             // ArrayList<IDummyTaxa> dummypB = new ArrayList<>();
+            
             Map<Integer, Integer> mp = new HashMap<>();
             Set<Integer> dummypAIndices = new HashSet<>();
             Set<Integer> dummypBIndices = new HashSet<>();
+            
+
+            mp.put(tr.taxaMap.get("1"), 0);
+            mp.put(tr.taxaMap.get("7"), 0);
+            mp.put(tr.taxaMap.get("11"), 0);
+
+
+            // mp.put(tr.taxaMap.get("2"), 1);
+            // mp.put(tr.taxaMap.get("9"), 1);
+
+            // mp.put(tr.taxaMap.get("10"), 2);
+            
+            
+
+            dummypAIndices.add(0);
+            // dummypAIndices.add(1);
+            // dummypBIndices.add(2);
 
             System.out.println(tr.score(stA, stB, mp,dummypAIndices, dummypBIndices));
 

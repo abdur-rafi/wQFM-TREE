@@ -234,22 +234,23 @@ public class GeneTree {
             int n = node.childs.size();
             for(int l = 0; l < n ; ++l){
                 var x = node.childs.get(l);
-                Set<Integer> reachableDummyTaxaFromAboveAOfx = new HashSet<>();
-                Set<Integer> reachableDummyTaxaFromAboveBOfx = new HashSet<>();
+                Set<Integer> reachableDummyFromAboveAx = new HashSet<>();
+                Set<Integer> reachableDummyFromAboveBx = new HashSet<>();
 
-                reachableDummyTaxaFromAboveAOfx.addAll(reachableFromAboveA);
-                reachableDummyTaxaFromAboveBOfx.addAll(reachableFromAboveB);
+                reachableDummyFromAboveAx.addAll(reachableFromAboveA);
+                reachableDummyFromAboveBx.addAll(reachableFromAboveB);
 
                 for(int j = 0; j < n; ++j){
+                    var y = node.childs.get(j);
                     if(j == l){
                         continue;
                     }
 
-                    reachableDummyTaxaFromAboveAOfx.addAll(x.info.reachableDummyTaxaA);
-                    reachableDummyTaxaFromAboveBOfx.addAll(x.info.reachableDummyTaxaB);                    
+                    reachableDummyFromAboveAx.addAll(y.info.reachableDummyTaxaA);
+                    reachableDummyFromAboveBx.addAll(y.info.reachableDummyTaxaB);                    
                 }
                 flowToSubTree(x, aboveACount + node.info.pACount - x.info.pACount,
-                 aboveBCount + node.info.pBCount - x.info.pBCount, reachableDummyTaxaFromAboveAOfx, reachableDummyTaxaFromAboveBOfx);
+                 aboveBCount + node.info.pBCount - x.info.pBCount, reachableDummyFromAboveAx, reachableDummyFromAboveBx);
             }
         }
     }
@@ -521,12 +522,15 @@ public class GeneTree {
         this.pB = pB;
         this.dummypA = dummypAIndices;
         this.dummypB = dummypBIndices;
-        this.dummyTaxaCount = taxaToDummyTaxaMap.size();
+        this.dummyTaxaCount = dummypAIndices.size() + dummypBIndices.size();
         this.dummyScore = new int[this.dummyTaxaCount];
         this.dummyTaxaGains = new pair[this.dummyTaxaCount];
         for(int i = 0; i < this.dummyTaxaCount; ++i){
             this.dummyTaxaGains[i] = new pair(0, 0);
         }
+        System.out.println(taxaToDummyTaxaMap);
+        System.out.println(dummypAIndices);
+        System.out.println(dummypBIndices);
 
         sat = 0;
         vio = 0;
@@ -550,12 +554,18 @@ public class GeneTree {
             if(x.isLeaf()){
                 if(pA.contains(x.index)){
                     x.info.gainAtoB =  x.info.gainAtoB.add(gainaTobAll);
+                    System.out.println( x.label + " --" + " From A to B -> " + x.info.gainAtoB + " " + " From B to A -> " + x.info.gainBtoA);
+
                 }
                 else if(pB.contains(x.index)){
                     x.info.gainBtoA =  x.info.gainBtoA.add(gainbToaAll);
+                    System.out.println( x.label + " --" + " From A to B -> " + x.info.gainAtoB + " " + " From B to A -> " + x.info.gainBtoA);
                 }
-                System.out.println( x.label + " --" + " From A to B -> " + x.info.gainAtoB + " " + " From B to A -> " + x.info.gainBtoA);
             }
+        }
+
+        for(int i = 0; i < this.dummyTaxaCount; ++i){
+            System.out.println(this.dummyTaxaGains[i]);
         }
 
         System.out.println("sat : " + sat + " vio : " + vio);

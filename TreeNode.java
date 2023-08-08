@@ -51,11 +51,19 @@ public class TreeNode implements TreePrinter.PrintableNode {
 
     private void print(StringBuilder buffer, String prefix, String childrenPrefix) {
         buffer.append(prefix);
-        if(label == null)
-            buffer.append(index);
+        if(label == null){
+            if(parent == null)
+                buffer.append("root");
+            else
+                buffer.append(" a : " + info.reachableDummyTaxaFromAboveA.size() + " b : " + info.reachableDummyTaxaFromAboveB.size());
+        }
+            // buffer.append(index);
             // buffer.append(" ");
         else
+                // buffer.append(" a : " + info.reachableDummyTaxaA.size() + " b : " + info.reachableDummyTaxaB.size());
+
             buffer.append(label);
+
         // if(label != null)
         //     buffer.append(label);
         // else
