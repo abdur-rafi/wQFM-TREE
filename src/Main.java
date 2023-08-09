@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import src.BiPartition.BiPartition;
 import src.GeneTree.GeneTree;
 import src.ScoreCalculator.ScoreCalculator;
 public class Main {
@@ -68,35 +69,28 @@ public class Main {
 
             mp.put(tr.taxaMap.get("10"), 2);
 
-            int[] dummyTaxaToPartitionMap = new int[3];
-            dummyTaxaToPartitionMap[0] = 0;
-            dummyTaxaToPartitionMap[1] = 0;
-            dummyTaxaToPartitionMap[2] = 1;
-
-            int[] dummyTaxaSize = new int[3];
-            dummyTaxaSize[0] = 3;
-            dummyTaxaSize[1] = 2;
-            dummyTaxaSize[2] = 1;
-
-            int[] dummyTaxaPartitionSize = new int[2];
-            dummyTaxaPartitionSize[0] = 5;
-            dummyTaxaPartitionSize[1] = 1;
+            Set<Integer> dtA = new HashSet<>();
+            Set<Integer> dtB = new HashSet<>();
+            dtA.add(0);
+            dtA.add(1);
+            dtB.add(2);
             
             ArrayList<Set<Integer>> partition = new ArrayList<>();
             partition.add(stA);
             partition.add(stB);
             
+            ArrayList<Set<Integer>> dPartition = new ArrayList<>();
+            dPartition.add(dtA);
+            dPartition.add(dtB);
 
             // dummypAIndices.add(1);
             // dummypBIndices.add(2);
 
+
+
             var calculator = new ScoreCalculator(
                 tr, 
-                partition, 
-                mp, 
-                dummyTaxaToPartitionMap, 
-                dummyTaxaSize,
-                dummyTaxaPartitionSize
+                new BiPartition(partition, mp, dPartition, 11)
             );
 
             var score = calculator.score();

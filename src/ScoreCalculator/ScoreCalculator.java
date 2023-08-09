@@ -1,73 +1,66 @@
 package src.ScoreCalculator;
 
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 import src.Utility;
+import src.BiPartition.BiPartition;
 import src.GeneTree.GeneTree;
 import src.GeneTree.Info;
 import src.GeneTree.TreeNode;
 
 public class ScoreCalculator {
     GeneTree tree;
-
-    ArrayList<Set<Integer>> realTaxaPartition;
-    Map<Integer, Integer> taxaToDummyTaxaMap;
-    int[] dummyTaxaToPartitionMap;
-    int[] dummyTaxaSizeIndividual;
-    Set<Integer> realTaxas;
-    int[] realTaxaPartitionSize;
-    int[] dummyTaxaPartitionSize;
+    BiPartition bp;
+    // ArrayList<Set<Integer>> realTaxaPartition;
+    // Map<Integer, Integer> taxaToDummyTaxaMap;
+    // int[] dummyTaxaToPartitionMap;
+    // int[] dummyTaxaSizeIndividual;
+    // Set<Integer> realTaxas;
+    // int[] realTaxaPartitionSize;
+    // int[] dummyTaxaPartitionSize;
     int[] score;
     int[] globalGains;
     int[] dummyTaxaGains;
 
     public ScoreCalculator(
         GeneTree tree,
-        ArrayList<Set<Integer>> partition,
-        Map<Integer, Integer> taxaToDummyTaxaMap,
-        int[] dummyTaxaToPartitionMap,
-        int[] dummyTaxaSize,
-        int[] dummyTaxaPartitionSize
+        BiPartition bp
+        // ArrayList<Set<Integer>> partition,
+        // Map<Integer, Integer> taxaToDummyTaxaMap,
+        // int[] dummyTaxaToPartitionMap,
+        // int[] dummyTaxaSize,
+        // int[] dummyTaxaPartitionSize
     ){
         this.tree = tree;
-        this.realTaxaPartition = partition;
-        this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
-        this.dummyTaxaToPartitionMap = dummyTaxaToPartitionMap;
-        this.dummyTaxaSizeIndividual = dummyTaxaSize;
-        this.realTaxas = new HashSet<>();
-        this.realTaxas.addAll(this.realTaxaPartition.get(0));
-        this.realTaxas.addAll(this.realTaxaPartition.get(1));
-        this.realTaxaPartitionSize = new int[2];
-        this.realTaxaPartitionSize[0] = partition.get(0).size();
-        this.realTaxaPartitionSize[1] = partition.get(1).size();
-        this.dummyTaxaPartitionSize = dummyTaxaPartitionSize;
+        this.bp = bp;
+        // this.realTaxaPartition = partition;
+        // this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
+        // this.dummyTaxaToPartitionMap = dummyTaxaToPartitionMap;
+        // this.dummyTaxaSizeIndividual = dummyTaxaSize;
+        // this.realTaxas = new HashSet<>();
+        // this.realTaxas.addAll(this.realTaxaPartition.get(0));
+        // this.realTaxas.addAll(this.realTaxaPartition.get(1));
+        // this.realTaxaPartitionSize = new int[2];
+        // this.realTaxaPartitionSize[0] = partition.get(0).size();
+        // this.realTaxaPartitionSize[1] = partition.get(1).size();
+        // this.dummyTaxaPartitionSize = dummyTaxaPartitionSize;
         this.score = new int[2];
         this.globalGains = new int[2];
-        this.dummyTaxaGains = new int[this.dummyTaxaSizeIndividual.length];
+        this.dummyTaxaGains = new int[this.bp.nDummyTaxa()];
     }
 
 
     private void calcReachableInSubtree(TreeNode node){
         int[] realTaxaCountsTotal = new int[2];
         int[] dummyTaxaCountTotal = new int[2];
-        int[] dummyTaxaCountIndi = new int[this.dummyTaxaSizeIndividual.length];
+        int[] dummyTaxaCountIndi = new int[this.bp.nDummyTaxa()];
 
         if (node.childs == null){
-            if(this.realTaxas.contains(node.index)){
-                for(int i = 0; i < 2; ++i){
-                    if(this.realTaxaPartition.get(i).contains(node.index)){
-                        realTaxaCountsTotal[i]++;
-                        break;
-                    }
-                }    
+            if(this.bp.isRealTaxa(node.index)){
+                realTaxaCountsTotal[this.bp.inWhichPartition(node.index, true)]++;
             }
-            else if(this.taxaToDummyTaxaMap.containsKey(node.index)){
-                int index = this.taxaToDummyTaxaMap.get(node.index);
-                int partition = this.dummyTaxaToPartitionMap[index];
+            else if(this.bp.isDummyTaxa(node.index)){
+
+                int index = this.bp.inWhichDummyTaxa(node.index);
+                int partition = this.bp.inWhichPartition(index, false);
                 dummyTaxaCountIndi[index]++;
                 dummyTaxaCountTotal[partition]++;
             }
@@ -86,26 +79,26 @@ public class ScoreCalculator {
             var c1 = node.childs.get(0);
             var c2 = node.childs.get(1);
             Branch[] b = new Branch[3];
-            b[0] = new Branch(c1.info.realTaxaCountTotal, c1.info.dummyTaxaCountIndividual, c1.info.dummyTaxaCountTotal, this.dummyTaxaToPartitionMap);
-            b[1] = new Branch(c2.info.realTaxaCountTotal, c2.info.dummyTaxaCountIndividual, c2.info.dummyTaxaCountTotal, this.dummyTaxaToPartitionMap);
+            b[0] = new Branch(c1.info.realTaxaCountTotal, c1.info.dummyTaxaCountIndividual, c1.info.dummyTaxaCountTotal, this.bp.getDummyTaxaPartitionMap());
+            b[1] = new Branch(c2.info.realTaxaCountTotal, c2.info.dummyTaxaCountIndividual, c2.info.dummyTaxaCountTotal, this.bp.getDummyTaxaPartitionMap());
             int[] realTaxaCountsTotalParent = new int[2];
             int[] dummyTaxaCountsTotalParent = new int[2];
-            int[] dummyTaxaCountIndividualParent = new int[this.dummyTaxaSizeIndividual.length];
+            int[] dummyTaxaCountIndividualParent = new int[this.bp.nDummyTaxa()];
             
             for(int i = 0; i < 2; ++i){
-                realTaxaCountsTotalParent[i] = this.realTaxaPartitionSize[i] - 
+                realTaxaCountsTotalParent[i] = this.bp.realPartitionSize(i) - 
                     (b[0].realTaxaCountsTotal[i] + b[1].realTaxaCountsTotal[i]);
-                dummyTaxaCountsTotalParent[i] = this.dummyTaxaPartitionSize[i] - (
+                dummyTaxaCountsTotalParent[i] = this.bp.dummyPartitionSize(i) - (
                     b[0].dummyTaxaCountsTotal[i] + b[1].dummyTaxaCountsTotal[i]);
             }
 
-            for(int i = 0; i < this.dummyTaxaSizeIndividual.length; ++i){
-                dummyTaxaCountIndividualParent[i] = this.dummyTaxaSizeIndividual[i] - (
+            for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
+                dummyTaxaCountIndividualParent[i] = this.bp.dummyTaxaSizeIndividual(i) - (
                     b[0].dummyTaxaCountsIndividual[i] + b[1].dummyTaxaCountsIndividual[i]
                 );
             }
-            b[2] = new Branch(realTaxaCountsTotalParent, dummyTaxaCountIndividualParent, dummyTaxaCountsTotalParent, this.dummyTaxaToPartitionMap);
-            node.info.calculator = new ScoreCalculatorNode(b, dummyTaxaToPartitionMap, this.dummyTaxaGains);
+            b[2] = new Branch(realTaxaCountsTotalParent, dummyTaxaCountIndividualParent, dummyTaxaCountsTotalParent, this.bp.getDummyTaxaPartitionMap());
+            node.info.calculator = new ScoreCalculatorNode(b, this.bp.getDummyTaxaPartitionMap(), this.dummyTaxaGains);
             var sc = node.info.calculator.score();
             this.score[0] += sc;
             var gains = node.info.calculator.gain(sc);
@@ -136,23 +129,23 @@ public class ScoreCalculator {
         tree.root.info.gains = new int[2];
         collectGains(tree.root);
         for(var x : tree.nodes){
-            if(x.isLeaf() && this.realTaxas.contains(x.index)){
+            if(x.isLeaf() && this.bp.isRealTaxa(x.index)){
                 Utility.addIntArrToFirst(x.info.gains, globalGains);
                 System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
             }
         }
         // calcReachableInSubtree(tree.root.childs.get(0));
         // calcReachableInSubtree(tree.root.childs.get(1));
-        for(int i = 0; i < this.dummyTaxaSizeIndividual.length; ++i){
+        for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
             System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
         }
         int[] p = new int[2];
         for(int i = 0; i < 2; ++i){
-            p[i] = Utility.nc2(this.realTaxaPartitionSize[i] + this.dummyTaxaPartitionSize[i]);
+            p[i] = Utility.nc2(this.bp.realPartitionSize(i) + this.bp.dummyPartitionSize(i));
         }
-        for(int i = 0; i < this.dummyTaxaSizeIndividual.length; ++i){
-            int inWhichPartition = this.dummyTaxaToPartitionMap[i];
-            p[inWhichPartition] -= Utility.nc2(this.dummyTaxaSizeIndividual[i]);
+        for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
+            int inWhichPartition = this.bp.inWhichPartition(i, false);
+            p[inWhichPartition] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
         }
         score[1] = (p[0] * p[1]) - score[0];
         return this.score;

@@ -86,6 +86,7 @@ public class GeneTree {
         root = nodes.lastElement();
 
         balanceRoot();
+        bringLeafsToFront();
     }
 
 
@@ -100,6 +101,23 @@ public class GeneTree {
         }
         subTreeNodeCount.set(node.index, res + 1);
         return res + 1;
+    }
+
+    private void bringLeafsToFront(){
+        int j = 0;
+        for(int i = 0; i < nodes.size(); ++i){
+            if(nodes.get(i).isLeaf()){
+                var tmp = nodes.get(j);
+                var curr = nodes.get(i);
+                nodes.set(j, curr);
+                nodes.set(i, tmp);
+                curr.index = j;
+                tmp.index = i;
+                taxaMap.put(curr.label, j);
+                ++j;
+
+            }
+        }
     }
     
 
