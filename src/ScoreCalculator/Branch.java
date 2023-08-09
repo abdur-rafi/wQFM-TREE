@@ -1,4 +1,5 @@
-package wqfm.dsGT;
+package src.ScoreCalculator;
+
 
 class Branch {
     int[] realTaxaCountsTotal;

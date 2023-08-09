@@ -1,9 +1,15 @@
-package wqfm.dsGT;
+package src.ScoreCalculator;
+
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import src.Utility;
+import src.GeneTree.GeneTree;
+import src.GeneTree.Info;
+import src.GeneTree.TreeNode;
 
 public class ScoreCalculator {
     GeneTree tree;
@@ -125,7 +131,7 @@ public class ScoreCalculator {
         }
     }
 
-    int[] score(){
+    public int[] score(){
         calcReachableInSubtree(tree.root);
         tree.root.info.gains = new int[2];
         collectGains(tree.root);

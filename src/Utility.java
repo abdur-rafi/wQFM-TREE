@@ -1,4 +1,4 @@
-package wqfm.dsGT;
+package src;
 
 public class Utility {
     public static void addIntArrToFirst(int[] a, int[] b) {

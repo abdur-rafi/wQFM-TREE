@@ -1,16 +1,16 @@
-package wqfm.dsGT;
+package src.GeneTree;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import wqfm.dsGT.TreePrinter.PrintableNode;
+import src.GeneTree.TreePrinter.PrintableNode;
 
 public class TreeNode implements TreePrinter.PrintableNode {
-    int index;
-    String label;
-    ArrayList<TreeNode> childs;
-    TreeNode parent;
-    Info info;
+    public int index;
+    public String label;
+    public ArrayList<TreeNode> childs;
+    public TreeNode parent;
+    public Info info;
 
     public TreeNode(int i, String lb, ArrayList<TreeNode> ch, TreeNode pr){
         index = i;

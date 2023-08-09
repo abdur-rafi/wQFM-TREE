@@ -1,16 +1,16 @@
-package wqfm.dsGT;
+package src;
 
 import java.util.ArrayList;
+
+import src.GeneTree.GeneTree;
 
 public class PerLevelDs {
     
     ArrayList<GeneTree> geneTrees;
-    ArrayList<IDummyTaxa> dummyTaxas;
-    
-    public PerLevelDs(ArrayList<IDummyTaxa> dt){
+
+    public PerLevelDs(){
         geneTrees = new ArrayList<>();
-        dummyTaxas = dt;
-    } 
+    }
 
     public void addGeneTree(String s){
         geneTrees.add(new GeneTree(s));

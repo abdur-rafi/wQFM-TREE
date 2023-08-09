@@ -1,15 +1,16 @@
-package wqfm.dsGT;
+package src.GeneTree;
 
+import src.ScoreCalculator.ScoreCalculatorNode;
 
 public class Info {
 
-    int[] realTaxaCountTotal;
+    public int[] realTaxaCountTotal;
 
-    int[] dummyTaxaCountIndividual;
+    public int[] dummyTaxaCountIndividual;
     
-    int[] dummyTaxaCountTotal;
+    public int[] dummyTaxaCountTotal;
 
-    int[] gains;
+    public int[] gains;
 
     public Info(int[] tcp, int[] dtci, int[] dtct, int[] gains){
         this.realTaxaCountTotal = tcp;
@@ -18,5 +19,5 @@ public class Info {
         this.gains = gains;
     }    
 
-    ScoreCalculatorNode calculator;
+    public ScoreCalculatorNode calculator;
 }

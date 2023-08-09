@@ -1,4 +1,4 @@
-package wqfm.dsGT;
+package src.GeneTree;
 
 
 // this is from stackoverflow

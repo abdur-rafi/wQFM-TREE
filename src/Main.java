@@ -1,4 +1,4 @@
-package wqfm.dsGT;
+package src;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,11 +8,13 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+
+import src.GeneTree.GeneTree;
+import src.ScoreCalculator.ScoreCalculator;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
         
-        ArrayList<IDummyTaxa> dt = new ArrayList<>();
-        PerLevelDs ds = new PerLevelDs(dt);
+        PerLevelDs ds = new PerLevelDs();
 
 
         Scanner scanner = new Scanner(new File("/home/abdur-rafi/Academic/Thesis/wQFM-2020/WQFM/input_files/gtree_11tax_est_5genes_R1.tre"));
