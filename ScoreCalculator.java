@@ -16,6 +16,8 @@ public class ScoreCalculator {
     int[] realTaxaPartitionSize;
     int[] dummyTaxaPartitionSize;
     int[] score;
+    int[] globalGains;
+    int[] dummyTaxaGains;
 
     public ScoreCalculator(
         GeneTree tree,
@@ -38,6 +40,8 @@ public class ScoreCalculator {
         this.realTaxaPartitionSize[1] = partition.get(1).size();
         this.dummyTaxaPartitionSize = dummyTaxaPartitionSize;
         this.score = new int[2];
+        this.globalGains = new int[2];
+        this.dummyTaxaGains = new int[this.dummyTaxaSizeIndividual.length];
     }
 
 
@@ -95,17 +99,56 @@ public class ScoreCalculator {
                 );
             }
             b[2] = new Branch(realTaxaCountsTotalParent, dummyTaxaCountIndividualParent, dummyTaxaCountsTotalParent, this.dummyTaxaToPartitionMap);
-            node.info.calculator = new ScoreCalculatorNode(b, dummyTaxaToPartitionMap);
+            node.info.calculator = new ScoreCalculatorNode(b, dummyTaxaToPartitionMap, this.dummyTaxaGains);
             var sc = node.info.calculator.score();
-            Utility.addIntArrToFirst(this.score,sc);
+            this.score[0] += sc;
+            var gains = node.info.calculator.gain(sc);
+            node.info.calculator.calcDummyTaxaGains(sc);
+            var childs = node.childs;
+            for(int i = 0; i < 2; ++i){
+                Utility.subIntArrToFirst(gains[i], gains[2]);
+                childs.get(i).info.gains = gains[i];
+            }
+            Utility.addIntArrToFirst(globalGains, gains[2]);
+            
+        }
+    }
+
+    void collectGains(TreeNode node){
+        if(node.childs != null){
+            for(int i = 0; i < 2; ++i){
+                Utility.addIntArrToFirst(node.childs.get(i).info.gains, node.info.gains);
+            }
+            for(var x : node.childs)
+                collectGains(x);
             
         }
     }
 
     int[] score(){
-        calcReachableInSubtree(tree.root.childs.get(0));
-        calcReachableInSubtree(tree.root.childs.get(1));
-
+        calcReachableInSubtree(tree.root);
+        tree.root.info.gains = new int[2];
+        collectGains(tree.root);
+        for(var x : tree.nodes){
+            if(x.isLeaf() && this.realTaxas.contains(x.index)){
+                Utility.addIntArrToFirst(x.info.gains, globalGains);
+                System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
+            }
+        }
+        // calcReachableInSubtree(tree.root.childs.get(0));
+        // calcReachableInSubtree(tree.root.childs.get(1));
+        for(int i = 0; i < this.dummyTaxaSizeIndividual.length; ++i){
+            System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
+        }
+        int[] p = new int[2];
+        for(int i = 0; i < 2; ++i){
+            p[i] = Utility.nc2(this.realTaxaPartitionSize[i] + this.dummyTaxaPartitionSize[i]);
+        }
+        for(int i = 0; i < this.dummyTaxaSizeIndividual.length; ++i){
+            int inWhichPartition = this.dummyTaxaToPartitionMap[i];
+            p[inWhichPartition] -= Utility.nc2(this.dummyTaxaSizeIndividual[i]);
+        }
+        score[1] = (p[0] * p[1]) - score[0];
         return this.score;
     }
 }

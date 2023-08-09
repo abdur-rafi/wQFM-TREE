@@ -9,9 +9,9 @@ public class Info {
     
     int[] dummyTaxaCountTotal;
 
-    pair[] gains;
+    int[] gains;
 
-    public Info(int[] tcp, int[] dtci, int[] dtct, pair[] gains){
+    public Info(int[] tcp, int[] dtci, int[] dtct, int[] gains){
         this.realTaxaCountTotal = tcp;
         this.dummyTaxaCountIndividual = dtci;
         this.dummyTaxaCountTotal = dtct;
