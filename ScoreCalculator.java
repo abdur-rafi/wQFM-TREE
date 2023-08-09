@@ -26,7 +26,6 @@ public class ScoreCalculator {
         int[] dummyTaxaPartitionSize
     ){
         this.tree = tree;
-        this.realTaxaPartitionSize = new int[2];
         this.realTaxaPartition = partition;
         this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
         this.dummyTaxaToPartitionMap = dummyTaxaToPartitionMap;
@@ -34,6 +33,7 @@ public class ScoreCalculator {
         this.realTaxas = new HashSet<>();
         this.realTaxas.addAll(this.realTaxaPartition.get(0));
         this.realTaxas.addAll(this.realTaxaPartition.get(1));
+        this.realTaxaPartitionSize = new int[2];
         this.realTaxaPartitionSize[0] = partition.get(0).size();
         this.realTaxaPartitionSize[1] = partition.get(1).size();
         this.dummyTaxaPartitionSize = dummyTaxaPartitionSize;
@@ -95,14 +95,17 @@ public class ScoreCalculator {
                 );
             }
             b[2] = new Branch(realTaxaCountsTotalParent, dummyTaxaCountIndividualParent, dummyTaxaCountsTotalParent, this.dummyTaxaToPartitionMap);
-
-            Utility.addIntArrToFirst(this.score, new ScoreCalculatorNode(b, dummyTaxaCountIndividualParent).score());
+            node.info.calculator = new ScoreCalculatorNode(b, dummyTaxaToPartitionMap);
+            var sc = node.info.calculator.score();
+            Utility.addIntArrToFirst(this.score,sc);
             
         }
     }
 
     int[] score(){
-        calcReachableInSubtree(tree.root);
+        calcReachableInSubtree(tree.root.childs.get(0));
+        calcReachableInSubtree(tree.root.childs.get(1));
+
         return this.score;
     }
 }

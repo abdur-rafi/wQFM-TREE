@@ -17,4 +17,6 @@ public class Info {
         this.dummyTaxaCountTotal = dtct;
         this.gains = gains;
     }    
+
+    ScoreCalculatorNode calculator;
 }

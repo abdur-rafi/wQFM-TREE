@@ -9,21 +9,23 @@ public class ScoreCalculatorNode {
     int[][] subs;
     int nDummyTaxa;
     int[] dummyTaxaToPartitionMap;
+    int[][] scores;
 
     ScoreCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
         this.dummyTaxaToPartitionMap = dummyTaxaToPartitionMap;
         this.branches = b;
-        subs = new int[3][];
+        subs = new int[3][3];
+        scores = new int[3][];
         this.nDummyTaxa = b[0].dummyTaxaCountsIndividual.length;
         for(int i = 0; i < 3; ++i){
-            subs[i] = new int[3];
             subs[i][0] = 0;
             subs[i][1] = 0;
             subs[i][2] = 0;
             for(int j = 0; j < this.nDummyTaxa; ++j){
                 int pIndex = this.dummyTaxaToPartitionMap[j];
                 subs[i][pIndex] += b[i].dummyTaxaCountsIndividual[j] * b[(i+1) % 3].dummyTaxaCountsIndividual[j];
-                subs[i][2] += (b[i].dummyTaxaCountsIndividual[j] * (b[i].dummyTaxaCountsIndividual[j] - 1) ) / 2; 
+                if(pIndex == 1)
+                    subs[i][2] += (b[i].dummyTaxaCountsIndividual[j] * (b[i].dummyTaxaCountsIndividual[j] - 1) ) / 2; 
             }
         }
 
@@ -40,22 +42,22 @@ public class ScoreCalculatorNode {
         for(int l = 0; l < 3; ++l){
             int cIndex = (i + l) % 3;
             for(int m = 0; m < 2; ++m){
-                s[cIndex][m] = branches[cIndex].realTaxaCountsTotal[m] + branches[cIndex].dummyTaxaCountsTotal[m];
+                s[l][m] = branches[cIndex].realTaxaCountsTotal[m] + branches[cIndex].dummyTaxaCountsTotal[m];
             }
         }
 
         int[] csubs = new int[2];
         csubs[0] = subs[i][0];
-        csubs[1] = subs[k][1];
+        csubs[1] = subs[k][2];
 
         int[] score = new int[2];
-        score[0] = satisfiedEqn(s[i][0], s[j][0], s[k][1], csubs);
+        score[0] = satisfiedEqn(s[0][0], s[1][0], s[2][1], csubs);
         csubs[0] = subs[k][0];
         csubs[1] = subs[j][1];
-        score[1] = violatedEqn(s[i][0], s[j][1], s[k][0], s[k][1], csubs);
+        score[1] = violatedEqn(s[0][0], s[1][1], s[2][0], s[2][1], csubs);
         csubs[0] = subs[j][0];
         csubs[1] = subs[k][1];
-        score[1] += violatedEqn(s[i][1], s[j][0], s[k][0], s[k][1], csubs);
+        score[1] += violatedEqn(s[0][1], s[1][0], s[2][0], s[2][1], csubs);
 
         return score;
 
@@ -66,7 +68,8 @@ public class ScoreCalculatorNode {
         int[] res = new int[2];
 
         for (int i = 0; i < 3; ++i) {
-            Utility.addIntArrToFirst(res, scoreOf2Branch(i));
+            scores[i] = scoreOf2Branch(i);
+            Utility.addIntArrToFirst(res, scores[i]);
         }
         return res;
     }

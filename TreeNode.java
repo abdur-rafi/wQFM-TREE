@@ -54,9 +54,16 @@ public class TreeNode implements TreePrinter.PrintableNode {
         if(label == null){
             if(parent == null)
                 buffer.append("root");
-            else
-                buffer.append(index);
-                // buffer.append(" a : " + info.reachableDummyTaxaFromAboveA.size() + " b : " + info.reachableDummyTaxaFromAboveB.size());
+            else{
+                // buffer.append(index);
+                var sc = info.calculator.score();
+                buffer.append(" sc[0] : " + sc[0] + " ");
+
+                // buffer.append(" da : " + info.realTaxaCountTotal[0] + " db : " + info.realTaxaCountTotal[1]);
+                // for(int i = 0; i < info.dummyTaxaCountIndividual.length; ++ i){
+                //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
+                // }
+            }
         }
             // buffer.append(index);
             // buffer.append(" ");

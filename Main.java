@@ -22,24 +22,24 @@ public class Main {
             GeneTree tr = new GeneTree(line);
 
             Set<Integer> stA = new HashSet<>();
-            stA.add(tr.taxaMap.get("1"));
-            stA.add(tr.taxaMap.get("2"));
-            stA.add(tr.taxaMap.get("3"));
-            // stA.add(tr.taxaMap.get("5"));
             // stA.add(tr.taxaMap.get("1"));
             // stA.add(tr.taxaMap.get("2"));
-            stA.add(tr.taxaMap.get("7"));
+            stA.add(tr.taxaMap.get("3"));
+            stA.add(tr.taxaMap.get("5"));
+            // stA.add(tr.taxaMap.get("1"));
+            // stA.add(tr.taxaMap.get("2"));
+            // stA.add(tr.taxaMap.get("7"));
 
 
             Set<Integer> stB = new HashSet<>();
             stB.add(tr.taxaMap.get("4"));
             // stB.add(tr.taxaMap.get("7"));
             stB.add(tr.taxaMap.get("6"));
-            stB.add(tr.taxaMap.get("10"));
+            // stB.add(tr.taxaMap.get("10"));
             // stB.add(tr.taxaMap.get("11"));
             // stB.add(tr.taxaMap.get("10"));
             // stB.add(tr.taxaMap.get("3"));
-            // stB.add(tr.taxaMap.get("8"));
+            stB.add(tr.taxaMap.get("8"));
             // stB.add(tr.taxaMap.get("6"));
             // stB.add(tr.taxaMap.get("4"));
 
@@ -56,15 +56,29 @@ public class Main {
             Map<Integer, Integer> mp = new HashMap<>();
             
 
-            // mp.put(tr.taxaMap.get("1"), 0);
-            // mp.put(tr.taxaMap.get("7"), 0);
-            // mp.put(tr.taxaMap.get("11"), 0);
+            mp.put(tr.taxaMap.get("1"), 0);
+            mp.put(tr.taxaMap.get("7"), 0);
+            mp.put(tr.taxaMap.get("11"), 0);
 
 
-            // mp.put(tr.taxaMap.get("2"), 1);
-            // mp.put(tr.taxaMap.get("9"), 1);
+            mp.put(tr.taxaMap.get("2"), 1);
+            mp.put(tr.taxaMap.get("9"), 1);
 
-            // mp.put(tr.taxaMap.get("10"), 2);
+            mp.put(tr.taxaMap.get("10"), 2);
+
+            int[] dummyTaxaToPartitionMap = new int[3];
+            dummyTaxaToPartitionMap[0] = 0;
+            dummyTaxaToPartitionMap[1] = 0;
+            dummyTaxaToPartitionMap[2] = 1;
+
+            int[] dummyTaxaSize = new int[3];
+            dummyTaxaSize[0] = 3;
+            dummyTaxaSize[1] = 2;
+            dummyTaxaSize[2] = 1;
+
+            int[] dummyTaxaPartitionSize = new int[2];
+            dummyTaxaPartitionSize[0] = 5;
+            dummyTaxaPartitionSize[1] = 1;
             
             ArrayList<Set<Integer>> partition = new ArrayList<>();
             partition.add(stA);
@@ -74,7 +88,14 @@ public class Main {
             // dummypAIndices.add(1);
             // dummypBIndices.add(2);
 
-            var calculator = new ScoreCalculator(tr, partition, mp, new int[1], new int[1], new int[2]);
+            var calculator = new ScoreCalculator(
+                tr, 
+                partition, 
+                mp, 
+                dummyTaxaToPartitionMap, 
+                dummyTaxaSize,
+                dummyTaxaPartitionSize
+            );
 
             var score = calculator.score();
             System.out.println(score[0] + " " + score[1]);
