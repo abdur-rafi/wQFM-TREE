@@ -94,7 +94,7 @@ public class Main {
             );
 
             var score = calculator.score();
-            System.out.println(score[0] + " " + score[1]);
+            System.out.println(score);
             // System.out.println(tr.score(stA, stB, mp,dummypAIndices, dummypBIndices));
 
             System.out.println(tr.root.toString());

@@ -101,4 +101,8 @@ public class BiPartition {
     public int[] getDummyTaxaPartitionMap(){
         return dummyTaxaPartitionMap;
     }
+
+    public int totalPartitionSize(int p){
+        return realPartitionSize(p) + dummyPartitionSize(p);
+    }
 }

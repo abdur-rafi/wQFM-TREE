@@ -51,28 +51,28 @@ public class TreeNode implements TreePrinter.PrintableNode {
 
     private void print(StringBuilder buffer, String prefix, String childrenPrefix) {
         buffer.append(prefix);
-        buffer.append(" i : " + index + " l : " + label);
+        // buffer.append(" i : " + index + " l : " + label);
 
-        // if(label == null){
-        //     if(parent == null)
-        //         buffer.append("root");
-        //     else{
-        //         buffer.append(" index : " + index + " label : " + label);
-        //         // var sc = info.calculator.score();
-        //         // buffer.append(" sc : " + sc + " ");
+        if(label == null){
+            if(parent == null)
+                buffer.append("root");
+            else{
+                // buffer.append(" index : " + index + " label : " + label);
+                var sc = info.calculator.score();
+                buffer.append(" sc : " + sc + " ");
 
-        //         // buffer.append(" da : " + info.realTaxaCountTotal[0] + " db : " + info.realTaxaCountTotal[1]);
-        //         // for(int i = 0; i < info.dummyTaxaCountIndividual.length; ++ i){
-        //         //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
-        //         // }
-        //     }
-        // }
-        //     // buffer.append(index);
-        //     // buffer.append(" ");
-        // else
-        //         // buffer.append(" a : " + info.reachableDummyTaxaA.size() + " b : " + info.reachableDummyTaxaB.size());
+                // buffer.append(" da : " + info.realTaxaCountTotal[0] + " db : " + info.realTaxaCountTotal[1]);
+                // for(int i = 0; i < info.dummyTaxaCountIndividual.length; ++ i){
+                //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
+                // }
+            }
+        }
+            // buffer.append(index);
+            // buffer.append(" ");
+        else
+                // buffer.append(" a : " + info.reachableDummyTaxaA.size() + " b : " + info.reachableDummyTaxaB.size());
 
-        //     buffer.append(label);
+            buffer.append(label);
 
         // if(label != null)
         //     buffer.append(label);
