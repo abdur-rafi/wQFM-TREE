@@ -157,7 +157,7 @@ public class ScoreCalculatorTree {
                 int part = this.bp.inWhichPartition(x.index, true);
                 x.info.gains[part] += this.score ;
                 x.info.gains[part] = 2 * x.info.gains[part] - totals[part];
-                System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
+                // System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
             }
         }
 
@@ -187,9 +187,17 @@ public class ScoreCalculatorTree {
         this.score = 2 * this.score - p[0] * p[1];
         for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
             this.dummyTaxaGains[i] -= this.score;
-            System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
+            // System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
 
         }
+
+        for(var x : tree.nodes){
+            if(x.isLeaf() && this.bp.isRealTaxa(x.index)){
+                int part = this.bp.inWhichPartition(x.index, true);
+                x.info.gains[part] -= this.score;
+            }
+        }
+
 
         return this.score;
     }

@@ -17,6 +17,7 @@ public class QFM {
     Set<String> taxaSet;
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
+    String line;
 
     public QFM(String filePath) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filePath));
@@ -28,13 +29,14 @@ public class QFM {
         while (scanner.hasNextLine()) {
             
             String line = scanner.nextLine();
+            this.line = line;
             GeneTree tr = new GeneTree(line);
             for(var x : tr.nodes){
                 if(x.isLeaf())
                     taxaSet.add(x.label);
             }
             geneTrees.add(tr);
-
+            break;
         }
         scanner.close();
 
@@ -45,38 +47,53 @@ public class QFM {
     }
 
     void oneStep(BiPartition partition){
-        ArrayList<BiPartitionTreeSpecific> biPartitions = new ArrayList<>();
 
-        for(var x : this.geneTrees){
-            biPartitions.add(
-                BiPartitionMapper.map(partition, x)
-            );
-        }
+        while(true){
 
-        System.out.println(partition);
-
-        for(int i = 0; i < geneTrees.size(); ++i){
-            var gt = geneTrees.get(i);
-            var bp = biPartitions.get(i);
-            ScoreCalculatorTree calc = new ScoreCalculatorTree(gt, bp);
-            int score = calc.score();
-            for(var x : gt.nodes){
-                if(x.isLeaf()){
-                    int p = bp.inWhichPartition(x.index, true);
-                    partition.addRealTaxaGain(x.label, x.info.gains[p]);
+            ArrayList<BiPartitionTreeSpecific> biPartitions = new ArrayList<>();
+    
+            for(var x : geneTrees){
+                biPartitions.add(
+                    BiPartitionMapper.map(partition, x)
+                );
+            }
+    
+            System.out.println(partition);
+    
+            for(int i = 0; i < geneTrees.size(); ++i){
+                var gt = geneTrees.get(i);
+                var bp = biPartitions.get(i);
+                ScoreCalculatorTree calc = new ScoreCalculatorTree(gt, bp);
+                int score = calc.score();
+                for(var x : gt.nodes){
+                    if(x.isLeaf()){
+                        int p = bp.inWhichPartition(x.index, true);
+                        partition.addRealTaxaGain(x.label, x.info.gains[p]);
+                    }
                 }
+                for(int j = 0; j < calc.dummyTaxaGains().length; ++j){
+                    partition.addDummyTaxaGain(bp.globalDummyTaxaIndex(j), calc.dummyTaxaGains()[j]);
+                }
+                
+                System.out.println( "score : " + score);
+                // System.out.println(geneTrees.get(i).root);
             }
-            for(int j = 0; j < calc.dummyTaxaGains().length; ++j){
-                partition.addDummyTaxaGain(bp.globalDummyTaxaIndex(j), calc.dummyTaxaGains()[j]);
+
+            if(!partition.swapMax()){
+                break;
+                // if(partition.isAllLocked()){
+                //     partition.resetAll();
+                // }
+                // else{
+                //     break;
+                // }
             }
-            
-            System.out.println(score);
-            System.out.println(geneTrees.get(i).root);
+            partition.resetGains();
+            // for(var x : taxaSet){
+            //     System.out.println(x + " : " + partition.getGainRealTaxa(x));
+            // }
         }
 
-        for(var x : taxaSet){
-            System.out.println(x + " : " + partition.getGainRealTaxa(x));
-        }
 
     }
 

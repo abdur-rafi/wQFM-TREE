@@ -2,6 +2,7 @@ package src.BiPartition;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
@@ -16,11 +17,17 @@ public class BiPartition {
     int score;
     Map<String,Integer> realTaxaGains;
     Map<Integer, Integer> dummyTaxaGains;
+    int cg = 0;
+    Set<String> realTaxaLocked;
+    Set<Integer> dummyTaxaLocked;
+
 
     public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<GeneTree> gts){
         
         realTaxaGains = new HashMap<>();
         dummyTaxaGains = new HashMap<>();
+        realTaxaLocked = new HashSet<>();
+        dummyTaxaLocked = new HashSet<>();
 
         realTaxaPartitionMap = new HashMap<>();
         realTaxaToDummyTaxaMap = new HashMap<>();
@@ -74,7 +81,74 @@ public class BiPartition {
         realTaxaGains.clear();
         dummyTaxaGains.clear();
     }
+
+    public void resetAll(){
+        realTaxaGains.clear();
+        dummyTaxaGains.clear();
+        realTaxaLocked.clear();
+        dummyTaxaLocked.clear();
+        cg = 0;
+    }
+
+    public boolean swapMax(){
+        int mxrGain = 0;
+        String taxa = "";
+        boolean notSet = true;
+
+        if(isAllLocked())
+            return false;
+
+        for(var x : realTaxaGains.entrySet()){
+            if(!realTaxaLocked.contains(x.getKey())){
+                if(notSet){
+                    mxrGain = x.getValue();
+                    taxa = x.getKey();
+                    notSet = false;
+                }
+                else if(mxrGain < x.getValue()){
+                    mxrGain = x.getValue();
+                    taxa = x.getKey();
+                }
+            }
+        }
+
+        int mxdGain = 0;
+        int mxdi = -1;
+
+        for(var x : dummyTaxaGains.entrySet()){
+            if(!dummyTaxaLocked.contains(x.getKey())){
+                if(mxdi == -1){
+                    mxdGain = x.getValue();
+                    mxdi = x.getKey();
+                }
+                else if(mxdGain < x.getValue()){
+                    mxdi = x.getKey();
+                    mxdGain = x.getValue();
+                }
+            }
+        }
+        // if(cg + Math.max(mxrGain, mxdGain) <= 0) return false;
+
+        if( mxdi != -1 && mxrGain < mxdGain){
+            int p = dummyTaxaPartitionMap.get(mxdi);
+            dummyTaxaPartitionMap.put(mxdi, (p + 1) % 2);
+            dummyTaxaLocked.add(p);
+            cg += mxdGain;
+        }
+        else{
+            int p = realTaxaPartitionMap.get(taxa);
+            realTaxaPartitionMap.put(taxa, (p + 1) % 2);
+            realTaxaLocked.add(taxa);
+            cg += mxrGain;
+        }
+        System.out.println("cg : " + cg + " taxa : " + taxa + "\n\n\n\n");
+        return true;
+    }
     
+    public boolean isAllLocked(){
+        return (realTaxaLocked.size() == realTaxaPartitionMap.size() && dummyTaxaLocked.size() == dummyTaxaPartitionMap.size());
+    }
+
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");
