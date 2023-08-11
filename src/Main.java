@@ -18,7 +18,7 @@ public class Main {
         PerLevelDs ds = new PerLevelDs();
 
 
-        Scanner scanner = new Scanner(new File("/home/abdur-rafi/Academic/Thesis/wQFM-2020/WQFM/input_files/gtree_11tax_est_5genes_R1.tre"));
+        Scanner scanner = new Scanner(new File("./input/gtree_11tax_est_5genes_R1.tre"));
         
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();

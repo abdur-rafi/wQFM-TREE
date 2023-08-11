@@ -176,7 +176,7 @@ public class ScoreCalculator {
             p[(inWhichPartition + 1) % 2] += Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
             p[inWhichPartition] -= Utility.nc2(this.bp.totalPartitionSize(inWhichPartition) - this.bp.dummyTaxaSizeIndividual(i));
             p[(inWhichPartition + 1) % 2] -= Utility.nc2(this.bp.totalPartitionSize((inWhichPartition + 1) % 2) + this.bp.dummyTaxaSizeIndividual(i));
-            System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
+            // System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
 
         }
 
@@ -184,6 +184,13 @@ public class ScoreCalculator {
         p[1] += Utility.nc2(this.bp.totalPartitionSize(1));
 
         // score[1] = (p[0] * p[1]) - score[0];
-        return 2 * this.score - p[0] * p[1];
+        this.score = 2 * this.score - p[0] * p[1];
+        for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
+            this.dummyTaxaGains[i] -= this.score;
+            System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
+
+        }
+
+        return this.score;
     }
 }
