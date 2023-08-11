@@ -1,14 +1,14 @@
 package src.ScoreCalculator;
 
 import src.Utility;
-import src.BiPartition.BiPartition;
+import src.BiPartition.BiPartitionTreeSpecific;
 import src.GeneTree.GeneTree;
 import src.GeneTree.Info;
 import src.GeneTree.TreeNode;
 
-public class ScoreCalculator {
+public class ScoreCalculatorTree {
     GeneTree tree;
-    BiPartition bp;
+    BiPartitionTreeSpecific bp;
     // ArrayList<Set<Integer>> realTaxaPartition;
     // Map<Integer, Integer> taxaToDummyTaxaMap;
     // int[] dummyTaxaToPartitionMap;
@@ -20,9 +20,9 @@ public class ScoreCalculator {
     int[] globalGains;
     int[] dummyTaxaGains;
 
-    public ScoreCalculator(
+    public ScoreCalculatorTree(
         GeneTree tree,
-        BiPartition bp
+        BiPartitionTreeSpecific bp
     ){
         this.tree = tree;
         this.bp = bp;

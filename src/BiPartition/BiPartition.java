@@ -1,108 +1,65 @@
 package src.BiPartition;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 
+import src.GeneTree.GeneTree;
+
 public class BiPartition {
-
-    final int REAL_TAXA = 1;
-    final int DUMMY_TAXA = 2; 
-
-    // public Partition[] partitions;
-    int[] realOrDummyMap;
-    Map<Integer, Integer> taxaToDummyTaxaMap;
-    // int[][] dummyTaxa; 
-    int[] inWhichDummyTaxa;
-    int[] dummyTaxaPartitionMap;
-    int[] dummyTaxaSizesIndi;
-    int[] realTaxaPartitionMap;
-    int[] realTaxaPartitionSize;
-    int[] dummyTaxaPartitionSize;
-    int nDummyTaxa;
-
-    public BiPartition(
-        ArrayList<Set<Integer>> rp,
-        Map<Integer, Integer> taxaToDummyTaxaMap,
-        ArrayList<Set<Integer>> dp,
-        int leafCount
-    ){
-        this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
-        this.realOrDummyMap = new int[leafCount];
-        this.inWhichDummyTaxa = new int[leafCount];
-        this.nDummyTaxa = dp.get(0).size() + dp.get(1).size();
-        this.dummyTaxaPartitionMap = new int[this.nDummyTaxa];
-        this.dummyTaxaSizesIndi = new int[this.nDummyTaxa];
-        this.realTaxaPartitionMap = new int[leafCount];
-        this.realTaxaPartitionSize = new int[2];
-        this.dummyTaxaPartitionSize = new int[2];
+    Map<String, Integer> realTaxaPartitionMap;
+    Map<String, Integer> realTaxaToDummyTaxaMap;
+    ArrayList<Set<String>> dummyTaxas;
+    Map<Integer, Integer> dummyTaxaPartitionMap;
 
 
-        for(int j = 0; j < leafCount; ++j){
-            if(rp.get(0).contains(j) || rp.get(1).contains(j))
-                realOrDummyMap[j] = REAL_TAXA;
-            else if(taxaToDummyTaxaMap.containsKey(j)){
-                realOrDummyMap[j] = DUMMY_TAXA;
-                inWhichDummyTaxa[j] = taxaToDummyTaxaMap.get(j);
-            }
-        }
-        for(var x : this.taxaToDummyTaxaMap.entrySet()){
-            this.dummyTaxaSizesIndi[x.getValue()]++;
-        }
-        for(int i = 0; i < 2; ++i){
-            for(var x : rp.get(i)){
-                this.realTaxaPartitionMap[x] = i;
-            }
-            for(var x : dp.get(i)){
-                this.dummyTaxaPartitionMap[x] = i;
-                this.dummyTaxaPartitionSize[i] += this.dummyTaxaSizeIndividual(x);
-            }
-            this.realTaxaPartitionSize[i] = rp.get(i).size();
-        }
-
+    public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<GeneTree> gts){
         
+        realTaxaPartitionMap = new HashMap<>();
+        realTaxaToDummyTaxaMap = new HashMap<>();
+        this.dummyTaxas = dummyTaxas;
+        dummyTaxaPartitionMap = new HashMap<>();
+
+        var random = new Random(0);
+        for(var x : realTaxas){
+            if(random.nextDouble() > .5){
+                realTaxaPartitionMap.put(x, 0);
+            }
+            else 
+                realTaxaPartitionMap.put(x, 1);
+        }
+
+        int i = 0;
+        for(var x : dummyTaxas){
+            for(var y : x){
+                realTaxaToDummyTaxaMap.put(y, i);
+            }
+            int p = 0;
+            if(random.nextDouble() > .5){
+                p = 1;
+            }
+            dummyTaxaPartitionMap.put(i, p);
+            ++i;
+        }
+    }
+
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder("");
+        for(int i = 0; i < 2; ++i){
+            sb.append("r[" + i + "]: ");
+            for(var x : realTaxaPartitionMap.entrySet()){
+                if(x.getValue() == i){
+                    sb.append(x.getKey() + " ");
+                }
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
 
     }
 
-    public int nDummyTaxa(){
-        return nDummyTaxa;
-    }
-
-    public boolean isRealTaxa(int i){
-        return realOrDummyMap[i] == REAL_TAXA;
-    }
-
-    public int inWhichPartition(int i, boolean real){
-        if (real)
-            return realTaxaPartitionMap[i];
-        return dummyTaxaPartitionMap[i];
-    }
-
-    public boolean isDummyTaxa(int i){
-        return realOrDummyMap[i] == DUMMY_TAXA;
-    }
-
-    public int inWhichDummyTaxa(int index){
-        return inWhichDummyTaxa[index];
-    }
-
-    public int realPartitionSize(int p){
-        return realTaxaPartitionSize[p];
-    }
-
-    public int dummyPartitionSize(int p){
-        return dummyTaxaPartitionSize[p];
-    }
-
-    public int dummyTaxaSizeIndividual(int i){
-        return dummyTaxaSizesIndi[i];
-    }
-
-    public int[] getDummyTaxaPartitionMap(){
-        return dummyTaxaPartitionMap;
-    }
-
-    public int totalPartitionSize(int p){
-        return realPartitionSize(p) + dummyPartitionSize(p);
-    }
+    
 }
