@@ -22,6 +22,8 @@ public class BiPartitionMapper {
         dp.add(new HashSet<>());
         dp.add(new HashSet<>());
 
+        Map<Integer, Integer> localToGlobalMap = new HashMap<>();
+
         int leafCount = 0;
 
 
@@ -39,8 +41,10 @@ public class BiPartitionMapper {
                     dt.add(tree.taxaMap.get(y));
                 }
             }
-            if(dt.size() > 0)
+            if(dt.size() > 0){
+                localToGlobalMap.put(arr.size(), i);
                 arr.add(dt);
+            }
             
             int p = partition.dummyTaxaPartitionMap.get(i);
             if(dt.size() > 0){
@@ -61,7 +65,7 @@ public class BiPartitionMapper {
             if(x.isLeaf()) ++leafCount;
         }
 
-        return new BiPartitionTreeSpecific(rp, taxaToDummyTaxaMap, dp, leafCount);
+        return new BiPartitionTreeSpecific(rp, taxaToDummyTaxaMap, dp, localToGlobalMap, leafCount);
 
     }
 }   

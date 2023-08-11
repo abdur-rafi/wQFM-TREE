@@ -19,12 +19,15 @@ public class BiPartitionTreeSpecific {
     int[] realTaxaPartitionMap;
     int[] realTaxaPartitionSize;
     int[] dummyTaxaPartitionSize;
+    Map<Integer, Integer> localDummyToGlobalDummyTaxaMap;
+
     int nDummyTaxa;
 
     public BiPartitionTreeSpecific(
         ArrayList<Set<Integer>> rp,
         Map<Integer, Integer> taxaToDummyTaxaMap,
         ArrayList<Set<Integer>> dp,
+        Map<Integer, Integer> localDummyToGlobalDummyTaxaMap,
         int leafCount
     ){
         this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
@@ -36,7 +39,7 @@ public class BiPartitionTreeSpecific {
         this.realTaxaPartitionMap = new int[leafCount];
         this.realTaxaPartitionSize = new int[2];
         this.dummyTaxaPartitionSize = new int[2];
-
+        this.localDummyToGlobalDummyTaxaMap = localDummyToGlobalDummyTaxaMap;
 
         for(int j = 0; j < leafCount; ++j){
             if(rp.get(0).contains(j) || rp.get(1).contains(j))
@@ -104,5 +107,9 @@ public class BiPartitionTreeSpecific {
 
     public int totalPartitionSize(int p){
         return realPartitionSize(p) + dummyPartitionSize(p);
+    }
+
+    public int globalDummyTaxaIndex(int dti){
+        return localDummyToGlobalDummyTaxaMap.get(dti);
     }
 }

@@ -13,10 +13,15 @@ public class BiPartition {
     Map<String, Integer> realTaxaToDummyTaxaMap;
     ArrayList<Set<String>> dummyTaxas;
     Map<Integer, Integer> dummyTaxaPartitionMap;
-
+    int score;
+    Map<String,Integer> realTaxaGains;
+    Map<Integer, Integer> dummyTaxaGains;
 
     public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<GeneTree> gts){
         
+        realTaxaGains = new HashMap<>();
+        dummyTaxaGains = new HashMap<>();
+
         realTaxaPartitionMap = new HashMap<>();
         realTaxaToDummyTaxaMap = new HashMap<>();
         this.dummyTaxas = dummyTaxas;
@@ -45,6 +50,31 @@ public class BiPartition {
         }
     }
 
+    public void addRealTaxaGain(String taxa, int gain){
+        int v = 0;
+        if(realTaxaGains.containsKey(taxa)){
+            v = realTaxaGains.get(taxa) ;
+        }
+        realTaxaGains.put(taxa, gain + v);
+    }
+
+    public void addDummyTaxaGain(int dtIndex, int gain){
+        int v = 0;
+        if(dummyTaxaGains.containsKey(dtIndex)){
+            v = dummyTaxaGains.get(dtIndex);
+        }
+        dummyTaxaGains.put(dtIndex, gain + v);
+    }
+
+    public int getGainRealTaxa(String taxa){
+        return realTaxaGains.get(taxa);
+    }
+
+    public void resetGains(){
+        realTaxaGains.clear();
+        dummyTaxaGains.clear();
+    }
+    
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder("");

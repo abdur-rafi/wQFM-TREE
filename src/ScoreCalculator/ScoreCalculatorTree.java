@@ -157,7 +157,7 @@ public class ScoreCalculatorTree {
                 int part = this.bp.inWhichPartition(x.index, true);
                 x.info.gains[part] += this.score ;
                 x.info.gains[part] = 2 * x.info.gains[part] - totals[part];
-                // System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
+                System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
             }
         }
 
@@ -192,5 +192,9 @@ public class ScoreCalculatorTree {
         }
 
         return this.score;
+    }
+
+    public int[] dummyTaxaGains(){
+        return this.dummyTaxaGains;
     }
 }

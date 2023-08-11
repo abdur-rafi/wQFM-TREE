@@ -39,6 +39,14 @@ public class QFM {
         scanner.close();
 
         BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), geneTrees);
+        
+        oneStep(partition);
+
+    }
+
+    void oneStep(BiPartition partition){
+        ArrayList<BiPartitionTreeSpecific> biPartitions = new ArrayList<>();
+
         for(var x : this.geneTrees){
             biPartitions.add(
                 BiPartitionMapper.map(partition, x)
@@ -48,13 +56,27 @@ public class QFM {
         System.out.println(partition);
 
         for(int i = 0; i < geneTrees.size(); ++i){
-            ScoreCalculatorTree calc = new ScoreCalculatorTree(geneTrees.get(i), biPartitions.get(i));
+            var gt = geneTrees.get(i);
+            var bp = biPartitions.get(i);
+            ScoreCalculatorTree calc = new ScoreCalculatorTree(gt, bp);
             int score = calc.score();
+            for(var x : gt.nodes){
+                if(x.isLeaf()){
+                    int p = bp.inWhichPartition(x.index, true);
+                    partition.addRealTaxaGain(x.label, x.info.gains[p]);
+                }
+            }
+            for(int j = 0; j < calc.dummyTaxaGains().length; ++j){
+                partition.addDummyTaxaGain(bp.globalDummyTaxaIndex(j), calc.dummyTaxaGains()[j]);
+            }
+            
             System.out.println(score);
             System.out.println(geneTrees.get(i).root);
         }
 
-
+        for(var x : taxaSet){
+            System.out.println(x + " : " + partition.getGainRealTaxa(x));
+        }
 
     }
 
