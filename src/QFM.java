@@ -9,10 +9,14 @@ import java.util.Set;
 import src.BiPartition.BiPartition;
 import src.BiPartition.BiPartitionMapper;
 import src.BiPartition.BiPartitionTreeSpecific;
+import src.BiPartition.Swap;
 import src.GeneTree.GeneTree;
 import src.ScoreCalculator.ScoreCalculatorTree;
 
 public class QFM {
+
+
+    private static int dummyIds = 0;
 
     Set<String> taxaSet;
     ArrayList<GeneTree> geneTrees;
@@ -40,13 +44,49 @@ public class QFM {
         }
         scanner.close();
 
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), geneTrees);
+        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>());
         
-        oneStep(partition);
+
+        recurse(partition);
+
+        // while(oneStep(partition));
+
+        // System.out.println("Old partition");
+        // System.out.println(partition);
+        // var b = partition.divide();
+        // System.out.println("New partition");
+
+        // System.out.println(b[0]);
+        // System.out.println(b[1]);
+
+        // while(oneStep(b[0]));
+        // while(oneStep(b[1]));
+
+        // System.out.println(b[0]);
+        // System.out.println(b[1]);
+
+        // System.out.println("Final Partition: " + partition);
 
     }
 
-    void oneStep(BiPartition partition){
+    void recurse(BiPartition partition){
+        System.out.println("Current Partition : \n" + partition );
+        while(oneStep(partition));
+        System.out.println("Refined Partition: \n" + partition);
+        var b = partition.divide();
+        for(var x : b){
+            if(x.isValid()){
+                recurse(x);
+            }
+        }
+
+    }
+
+    boolean oneStep(BiPartition partition){
+
+        ArrayList<Swap> swaps = new ArrayList<>();
+        int mxCg = 0;
+        int mxcgi = -1;
 
         while(true){
 
@@ -58,15 +98,15 @@ public class QFM {
                 );
             }
     
-            System.out.println(partition);
+            // System.out.println(partition);
     
             for(int i = 0; i < geneTrees.size(); ++i){
                 var gt = geneTrees.get(i);
                 var bp = biPartitions.get(i);
                 ScoreCalculatorTree calc = new ScoreCalculatorTree(gt, bp);
-                int score = calc.score();
+                calc.score();
                 for(var x : gt.nodes){
-                    if(x.isLeaf()){
+                    if(x.isLeaf() && partition.isInRealTaxa(x.label)){
                         int p = bp.inWhichPartition(x.index, true);
                         partition.addRealTaxaGain(x.label, x.info.gains[p]);
                     }
@@ -75,26 +115,47 @@ public class QFM {
                     partition.addDummyTaxaGain(bp.globalDummyTaxaIndex(j), calc.dummyTaxaGains()[j]);
                 }
                 
-                System.out.println( "score : " + score);
+                // System.out.println( "score : " + score);
                 // System.out.println(geneTrees.get(i).root);
             }
-
-            if(!partition.swapMax()){
+            var swap = partition.swapMax();
+            if(swap == null){
                 break;
-                // if(partition.isAllLocked()){
-                //     partition.resetAll();
-                // }
-                // else{
-                //     break;
-                // }
+            }
+            else{
+                swaps.add(swap);
+                if(mxcgi == -1){
+                    mxCg = partition.getCg();
+                    mxcgi = 0;
+                }
+                else if(mxCg < partition.getCg()){
+                    mxCg = partition.getCg();
+                    mxcgi = swaps.size() - 1;
+                }
             }
             partition.resetGains();
             // for(var x : taxaSet){
             //     System.out.println(x + " : " + partition.getGainRealTaxa(x));
             // }
+            // System.out.println("lOOPING");
+            // System.out.println(swap.rt + " " + swap.dti);
         }
+        if(mxCg > 0){
+            for(int i = mxcgi + 1; i < swaps.size(); ++i){
+                partition.swap(swaps.get(i));
+            }
+        }
+        partition.resetAll();
+        // System.out.println("mxcgi " + mxcgi + " mxcg : " + mxCg);
 
+        // System.out.println(partition);
 
+        return mxCg > 0;
+
+    }
+
+    public static int getDummyId(){
+        return dummyIds++;
     }
 
 }
