@@ -7,6 +7,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import src.QFM;
+import src.GeneTree.GeneTree;
+import src.GeneTree.TreeNode;
+
 
 public class BiPartition {
     Map<String, Integer> realTaxaPartitionMap;
@@ -21,8 +25,11 @@ public class BiPartition {
     Set<Integer> dummyTaxaLocked;
     int[] partitionSize;
     boolean valid;
+    ArrayList<Integer> dummyTaxaIds;
+    int dtIdCurrPartition;
+    Set<String> realTaxas;
 
-    public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas) {
+    public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<Integer> dummyTaxaIds) {
 
         realTaxaGains = new HashMap<>();
         dummyTaxaGains = new HashMap<>();
@@ -35,10 +42,13 @@ public class BiPartition {
         realTaxaToDummyTaxaMap = new HashMap<>();
         this.dummyTaxas = dummyTaxas;
         dummyTaxaPartitionMap = new HashMap<>();
-
+        this.dummyTaxaIds = dummyTaxaIds;
+        this.dtIdCurrPartition = -1;
+        this.realTaxas = realTaxas;
 
         if(realTaxas.size() + dummyTaxas.size() < 4){
             this.valid = false;
+
             return;
         }
         else
@@ -217,11 +227,13 @@ public class BiPartition {
 
     public void swap(Swap sp) {
         if (sp.dti == -1) {
-            int p = realTaxaPartitionMap.get(sp.rt);
-            realTaxaPartitionMap.put(sp.rt, (p + 1) % 2);
+            swapReal(sp.rt);
+            // int p = realTaxaPartitionMap.get(sp.rt);
+            // realTaxaPartitionMap.put(sp.rt, (p + 1) % 2);
         } else {
-            int p = dummyTaxaPartitionMap.get(sp.dti);
-            dummyTaxaPartitionMap.put(sp.dti, (p + 1) % 2);
+            swapDummy(sp.dti);
+            // int p = dummyTaxaPartitionMap.get(sp.dti);
+            // dummyTaxaPartitionMap.put(sp.dti, (p + 1) % 2);
         }
     }
 
@@ -240,6 +252,12 @@ public class BiPartition {
         newDtList.add(new HashSet<>());
         newDtList.add(new HashSet<>());
 
+        ArrayList<ArrayList<Integer>> dtIdsList = new ArrayList<>();
+        dtIdsList.add(new ArrayList<>());
+        dtIdsList.add(new ArrayList<>());
+
+
+
         for (var x : realTaxaPartitionMap.entrySet()) {
             rtList.get(x.getValue()).add(x.getKey());
             newDtList.get((x.getValue() + 1) % 2).add(x.getKey());
@@ -248,13 +266,22 @@ public class BiPartition {
         for (var x : dummyTaxaPartitionMap.entrySet()) {
             dtList.get(x.getValue()).add(dummyTaxas.get(x.getKey()));
             newDtList.get((x.getValue() + 1) % 2).addAll(dummyTaxas.get(x.getKey()));
+            dtIdsList.get(x.getValue()).add(dummyTaxaIds.get(x.getKey()));
         }
+
+        this.dtIdCurrPartition = QFM.getDummyId();
 
         for (int i = 0; i < 2; ++i) {
             dtList.get(i).add(newDtList.get(i));
+            dtIdsList.get(i).add(this.dtIdCurrPartition);
+            if(rtList.get(i).size() + dtList.get(i).size() < 3){
+                System.out.println("SINGLETON PARTITION");
+                // System.exit(-1);
+            }
             biPartitions[i] = new BiPartition(
                     rtList.get(i),
-                    dtList.get(i)
+                    dtList.get(i),
+                    dtIdsList.get(i)
                 );
         }
 
@@ -302,5 +329,75 @@ public class BiPartition {
 
     public boolean isValid(){
         return valid;
+    }
+
+
+    public GeneTree createStar(){
+        if(valid){
+            System.out.println("This should not be called for valid partitions");
+            System.exit(-1);
+        }
+        GeneTree tree = new GeneTree();
+        for(var x : realTaxas){
+            tree.addRealTaxa(x, tree.root);
+        }
+        int n = dummyTaxas.size();
+        for(int i = 0; i < n;  ++i){
+            tree.addDummyNode(dummyTaxaIds.get(i), tree.root);
+        }
+        return tree;
+    }
+
+    public GeneTree mergeTrees(GeneTree[] trs){
+        if(this.dtIdCurrPartition == -1){
+            System.out.println("dtId not set");
+            System.exit(-1);
+        }
+        TreeNode[] nodes = new TreeNode[2];
+        int sIndex = 0;
+        for(int i = 0; i < 2; ++i){
+            nodes[i] = null;
+            for(var x : trs[i].nodes){
+                if(x.dummyTaxaId == this.dtIdCurrPartition){
+                    nodes[i] = x;
+                    break;
+                }
+            }
+            if(nodes[i] == null){
+                System.out.println("DT not found");
+                System.exit(-1);
+            }
+        }
+        // System.out.println("---------------------------------------------");
+        // System.out.println(trs[0].root);
+        // System.out.println(trs[1].root);
+
+
+        if(trs[0].nodes.size() > trs[1].nodes.size()){
+            sIndex = 1;
+        }
+        trs[sIndex].reRootTree(nodes[sIndex]);
+        for(var x : nodes[sIndex].childs){
+            x.parent = nodes[1-sIndex].parent;
+        }
+        nodes[1 - sIndex].parent.childs.remove(nodes[1-sIndex]);
+        nodes[1-sIndex].parent.childs.addAll(nodes[sIndex].childs);
+        // nodes[1-sIndex].childs = nodes[sIndex].childs;
+        // nodes[sIndex].parent = nodes[(sIndex + 1) % 2].parent;
+        // nodes[(sIndex + 1) % 2].parent.childs.add(nodes[sIndex]);
+        // nodes[(sIndex + 1) % 2].parent.childs.remove(nodes[(sIndex + 1) % 2]);
+
+        int offset = trs[(sIndex + 1) % 2].nodes.size();
+        for(var x : trs[sIndex].nodes){
+            x.index += offset;
+        }
+        trs[(sIndex + 1) % 2].nodes.addAll(trs[sIndex].nodes);
+        
+        // System.out.println(trs[1-sIndex].root);
+
+        // System.out.println("---------------------------------------------");
+
+        return trs[(sIndex + 1) % 2];
+
     }
 }

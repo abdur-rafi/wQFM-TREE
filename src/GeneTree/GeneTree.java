@@ -13,23 +13,50 @@ public class GeneTree {
     public Map<String, Integer> taxaMap;
     public TreeNode root;
 
-    private TreeNode addNode(String label, ArrayList<TreeNode> ch, TreeNode pr){
+    public TreeNode addNode(String label, ArrayList<TreeNode> ch, TreeNode pr){
         TreeNode nd = new TreeNode(nodes.size(), label, ch, pr);
         nodes.add(nd);
         return nd;
     }
 
-    private TreeNode addInternalNode(ArrayList<TreeNode> arr){
+    public TreeNode addInternalNode(ArrayList<TreeNode> arr){
         var nd = addNode(null, arr, null);
         for (var x : arr)
             x.setParent(nd);
         return nd;
     }
 
-    private TreeNode addTaxa(String taxa){
+    public TreeNode addTaxa(String taxa){
         var x = addNode(taxa, null, null); 
         taxaMap.put(taxa, x.index);
         return x;
+    }
+
+    public TreeNode addRealTaxa(String taxa, TreeNode parent){
+        var x = addNode(taxa, null, parent);
+        if(parent.childs == null){
+            parent.childs = new ArrayList<>();
+        }
+        parent.childs.add(x);
+        return x;
+    }
+
+    public TreeNode addDummyNode(int dtId, TreeNode parent){
+        var x = addNode(null, null, parent);
+        if(parent.childs == null){
+            parent.childs = new ArrayList<>();
+        }
+        parent.childs.add(x);
+        x.dummyTaxaId = dtId;
+
+        return x;
+    }
+
+    public GeneTree(){
+        
+        taxaMap = new HashMap<>();
+        nodes = new ArrayList<>();
+        root = addNode(null, null, null);
     }
 
     public GeneTree(String line){
@@ -120,6 +147,28 @@ public class GeneTree {
         }
     }
     
+    public void reRootTree(TreeNode newRootNode){
+        TreeNode newRootP = newRootNode.parent;
+        if(newRootP == null) return;
+        newRootP.childs.remove(newRootNode);
+
+        TreeNode curr = newRootP;
+        TreeNode currP, temp;
+        currP = curr.parent;
+        while(curr != null && currP != null){
+            curr.childs.add(currP);
+            currP.childs.remove(curr);
+            temp = currP;
+            currP = currP.parent;
+            temp.parent = curr;
+            curr = temp;
+            // System.out.println(curr.index);
+        }
+        if(newRootNode.isLeaf())
+            newRootNode.childs = new ArrayList<>();
+        newRootNode.childs.add(newRootP);
+        this.root = newRootNode;
+    }
 
     private void balanceRoot(){
 
@@ -159,12 +208,14 @@ public class GeneTree {
         arr.add(closest);
         arr.add(closestP);
 
-        root = new TreeNode(nodes.size(),null, arr, null);
-        nodes.add(root);
+        root = addInternalNode(arr) ;
+        // root = new TreeNode(nodes.size(),null, arr, null);
+        // nodes.add(root);
 
         // System.out.println(root.toString());
 
     }
+    
     
 
 

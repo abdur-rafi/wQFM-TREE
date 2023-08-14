@@ -40,15 +40,27 @@ public class QFM {
                     taxaSet.add(x.label);
             }
             geneTrees.add(tr);
-            break;
+            
+            // System.out.println(tr.root);
+            // var newRoot = tr.nodes.get(7);
+            // tr.reRootTree(newRoot);
+            // System.out.println("DONE\n");
+            // System.out.println(tr.root);
+
+            // break;
         }
         scanner.close();
 
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>());
+        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>());
         
 
-        recurse(partition);
+        var x = recurse(partition);
 
+        // System.out.println(x.nodes.size());
+        System.out.println(x.root);
+        // x.reRootTree(x.nodes.get(12));
+        // System.out.println(x.root);
+        // System.out.println(x.root);
         // while(oneStep(partition));
 
         // System.out.println("Old partition");
@@ -69,16 +81,23 @@ public class QFM {
 
     }
 
-    void recurse(BiPartition partition){
+    GeneTree recurse(BiPartition partition){
         System.out.println("Current Partition : \n" + partition );
         while(oneStep(partition));
         System.out.println("Refined Partition: \n" + partition);
         var b = partition.divide();
+        System.out.println(partition.getCg());
+        GeneTree[] trs = new GeneTree[2];
+        int i = 0;
         for(var x : b){
             if(x.isValid()){
-                recurse(x);
+                trs[i++] = recurse(x);
+            }
+            else{
+                trs[i++] = x.createStar();
             }
         }
+        return partition.mergeTrees(trs);
 
     }
 
@@ -124,13 +143,16 @@ public class QFM {
             }
             else{
                 swaps.add(swap);
-                if(mxcgi == -1){
-                    mxCg = partition.getCg();
-                    mxcgi = 0;
-                }
-                else if(mxCg < partition.getCg()){
-                    mxCg = partition.getCg();
-                    mxcgi = swaps.size() - 1;
+                var pSize = partition.partitionSize();
+                if( pSize[0] > 1 && pSize[1] > 1){
+                    if(mxcgi == -1 ){
+                        mxCg = partition.getCg();
+                        mxcgi = swaps.size() - 1;
+                    }
+                    else if(mxCg < partition.getCg()){
+                        mxCg = partition.getCg();
+                        mxcgi = swaps.size() - 1;
+                    }
                 }
             }
             partition.resetGains();

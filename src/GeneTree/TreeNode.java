@@ -11,6 +11,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
     public ArrayList<TreeNode> childs;
     public TreeNode parent;
     public Info info;
+    public int dummyTaxaId;
 
     public TreeNode(int i, String lb, ArrayList<TreeNode> ch, TreeNode pr){
         index = i;
@@ -18,6 +19,11 @@ public class TreeNode implements TreePrinter.PrintableNode {
         childs = ch;
         parent = pr;
         info = null;
+        this.dummyTaxaId = -1;
+    }
+    public TreeNode(int i, String lb, ArrayList<TreeNode> ch, TreeNode pr, int dtId){
+        this(i, lb, ch, pr);
+        this.dummyTaxaId = dtId;
     }
 
     public void setParent(TreeNode pr){
@@ -54,25 +60,28 @@ public class TreeNode implements TreePrinter.PrintableNode {
         // buffer.append(" i : " + index + " l : " + label);
 
         if(label == null){
-            if(parent == null)
-                buffer.append("root");
-            else{
-                // buffer.append(" index : " + index + " label : " + label);
-                var sc = info.calculator.score();
-                buffer.append(" sc : " + sc + " ");
+            // if(parent == null)
+            //     buffer.append(index);
+            // else{
+            //     buffer.append( index);
 
-                // buffer.append(" da : " + info.realTaxaCountTotal[0] + " db : " + info.realTaxaCountTotal[1]);
-                // for(int i = 0; i < info.dummyTaxaCountIndividual.length; ++ i){
-                //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
-                // }
-            }
+            //     // buffer.append(" index : " + index + " label : " + label);
+            //     // var sc = info.calculator.score();
+            //     // buffer.append(" sc : " + sc + " ");
+
+            //     // buffer.append(" da : " + info.realTaxaCountTotal[0] + " db : " + info.realTaxaCountTotal[1]);
+            //     // for(int i = 0; i < info.dummyTaxaCountIndividual.length; ++ i){
+            //     //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
+            //     // }
+            // }
+            buffer.append(index);
         }
             // buffer.append(index);
             // buffer.append(" ");
         else
                 // buffer.append(" a : " + info.reachableDummyTaxaA.size() + " b : " + info.reachableDummyTaxaB.size());
 
-            buffer.append(label);
+            buffer.append("l : " + label);
 
         // if(label != null)
         //     buffer.append(label);
