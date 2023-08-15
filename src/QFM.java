@@ -34,6 +34,7 @@ public class QFM {
             
             String line = scanner.nextLine();
             this.line = line;
+            System.out.println(line);
             GeneTree tr = new GeneTree(line);
             for(var x : tr.nodes){
                 if(x.isLeaf())

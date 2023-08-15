@@ -111,8 +111,8 @@ public class GeneTree {
         }
 
         root = nodes.lastElement();
-
-        balanceRoot();
+        if(root.childs.size() > 2)
+            balanceRoot();
         bringLeafsToFront();
     }
 
