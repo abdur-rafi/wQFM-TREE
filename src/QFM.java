@@ -22,19 +22,20 @@ public class QFM {
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     String line;
-
+    int level;
     public QFM(String filePath) throws FileNotFoundException {
         Scanner scanner = new Scanner(new File(filePath));
 
         taxaSet = new HashSet<>();
         geneTrees = new ArrayList<>();
         biPartitions = new ArrayList<>();
+        level = 0;
 
         while (scanner.hasNextLine()) {
             
             String line = scanner.nextLine();
             this.line = line;
-            System.out.println(line);
+            // System.out.println(line);
             GeneTree tr = new GeneTree(line);
             for(var x : tr.nodes){
                 if(x.isLeaf())
@@ -52,6 +53,7 @@ public class QFM {
         }
         scanner.close();
 
+        System.out.println("taxa count : " + taxaSet.size());
         BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>());
         
 
@@ -83,11 +85,15 @@ public class QFM {
     }
 
     GeneTree recurse(BiPartition partition){
-        System.out.println("Current Partition : \n" + partition );
-        while(oneStep(partition));
-        System.out.println("Refined Partition: \n" + partition);
+        System.out.println("level : " + level++);
+        // System.out.println("Current Partition : \n" + partition );
+        int step = 0;
+        while(oneStep(partition)){
+            System.out.println("step : " + step++);
+        }
+        // System.out.println("Refined Partition: \n" + partition);
         var b = partition.divide();
-        System.out.println(partition.getCg());
+        // System.out.println(partition.getCg());
         GeneTree[] trs = new GeneTree[2];
         int i = 0;
         for(var x : b){
@@ -144,6 +150,8 @@ public class QFM {
             }
             else{
                 swaps.add(swap);
+                System.out.println("swaps size : " + swaps.size());
+
                 var pSize = partition.partitionSize();
                 if( pSize[0] > 1 && pSize[1] > 1){
                     if(mxcgi == -1 ){

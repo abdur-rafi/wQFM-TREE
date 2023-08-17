@@ -5,7 +5,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException{
 
         // String filePath = "./input/gtree_11tax_est_5genes_R1.tre";
-        String filePath = "./input/15_tax_cleaned.txt";
+        String filePath = "./input/large/c101.txt";
 
         new QFM(filePath);
 
