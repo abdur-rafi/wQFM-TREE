@@ -53,7 +53,7 @@ public class BiPartition {
         }
         else
             this.valid = true;
-        var random = new Random(0);
+        var random = new Random();
         for (var x : realTaxas) {
             if (random.nextDouble() > .5) {
                 realTaxaPartitionMap.put(x, 0);

@@ -67,6 +67,7 @@ public class GeneTree {
         line.replaceAll("\\s", "");
 
         int n =  line.length();
+        
 
         int i = 0, j = 0;
 
@@ -109,11 +110,17 @@ public class GeneTree {
             }
             ++i;
         }
+        // System.out.println(this.nodes);
+        System.out.println(this.nodes.size());
 
-        root = nodes.lastElement();
+        // root = nodes.lastElement();
+        this.root = this.nodes.get(this.nodes.size() - 1);
 
-        balanceRoot();
+        System.out.println(this.root);
+        if(this.root.childs.size() > 2)
+            balanceRoot();
         bringLeafsToFront();
+        System.out.println(this.root);
     }
 
 
