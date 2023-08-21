@@ -1,8 +1,5 @@
 package src.ConsensusTree;
 
-import src.GeneTree.GeneTree;
-import src.GeneTree.TreePrinter;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,10 +30,8 @@ public class ConsensusTree {
         }
 
 
-        GeneTree g=new GeneTree(consensustree);
-        TreePrinter.print(g.root);
-
-
+        NewickTree newickTree = NewickTree.readNewickFormat(consensustree);
+        System.out.println(newickTree.toString());
     }
 
 
