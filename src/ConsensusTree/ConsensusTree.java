@@ -31,6 +31,7 @@ public class ConsensusTree {
 
 
         NewickTree newickTree = NewickTree.readNewickFormat(consensustree);
+        System.out.println(newickTree.root.children.size());
         System.out.println(newickTree.toString());
     }
 

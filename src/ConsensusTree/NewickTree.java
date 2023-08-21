@@ -6,7 +6,7 @@ public class NewickTree {
 
     private static int node_uuid = 0;
     ArrayList<Node> nodeList = new ArrayList<>();
-    private Node root;
+    public Node root;
 
     static NewickTree readNewickFormat(String newick) {
         return new NewickTree().innerReadNewickFormat(newick);
