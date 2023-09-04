@@ -15,6 +15,7 @@ public class GeneTree {
 
     public TreeNode addNode(String label, ArrayList<TreeNode> ch, TreeNode pr){
         TreeNode nd = new TreeNode(nodes.size(), label, ch, pr);
+//        System.out.println(label);
         nodes.add(nd);
         return nd;
     }

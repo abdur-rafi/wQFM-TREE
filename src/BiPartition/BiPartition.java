@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+import src.ConsensusTree.ConsensusTree;
 import src.QFM;
 import src.GeneTree.GeneTree;
 import src.GeneTree.TreeNode;
@@ -31,6 +32,23 @@ public class BiPartition {
 
     public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<Integer> dummyTaxaIds) {
 
+        System.out.println("New Call");
+        System.out.println("Real taxas: ");
+        for(var x: realTaxas)
+        {
+            System.out.println(x);
+        }
+        System.out.println("Artificial:");
+        for(int i=0;i<dummyTaxas.size();i++)
+        {
+            System.out.println("dummy");
+            for(var x: dummyTaxas.get(i))
+            {
+                System.out.println(x);
+            }
+        }
+
+
         realTaxaGains = new HashMap<>();
         dummyTaxaGains = new HashMap<>();
         realTaxaLocked = new HashSet<>();
@@ -53,30 +71,35 @@ public class BiPartition {
         }
         else
             this.valid = true;
-        var random = new Random(0);
-        for (var x : realTaxas) {
-            if (random.nextDouble() > .5) {
-                realTaxaPartitionMap.put(x, 0);
-                partitionSize[0]++;
-            } else {
-                partitionSize[1]++;
-                realTaxaPartitionMap.put(x, 1);
-            }
-        }
 
-        int i = 0;
-        for (var x : dummyTaxas) {
-            for (var y : x) {
-                realTaxaToDummyTaxaMap.put(y, i);
-            }
-            int p = 0;
-            if (random.nextDouble() > .5) {
-                p = 1;
-            }
-            dummyTaxaPartitionMap.put(i, p);
-            partitionSize[p]++;
-            ++i;
-        }
+        ConsensusTree c=new ConsensusTree();
+        c.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,realTaxaToDummyTaxaMap,dummyTaxaPartitionMap,partitionSize);
+
+//        var random = new Random(0);
+//        for (var x : realTaxas) {
+//            if (random.nextDouble() > .5) {
+//                realTaxaPartitionMap.put(x, 0);
+//                partitionSize[0]++;
+//            } else {
+//                partitionSize[1]++;
+//                realTaxaPartitionMap.put(x, 1);
+//            }
+//        }
+//
+//        int i = 0;
+//        for (var x : dummyTaxas) {
+//            for (var y : x) {
+//                realTaxaToDummyTaxaMap.put(y, i);
+//            }
+//            int p = 0;
+//            if (random.nextDouble() > .5) {
+//                p = 1;
+//            }
+//            dummyTaxaPartitionMap.put(i, p);
+//            partitionSize[p]++;
+//            ++i;
+//        }
+
         if(partitionSize[0] > 1 && partitionSize[1] > 1){
 
         }
