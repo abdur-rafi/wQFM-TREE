@@ -55,7 +55,7 @@ public class BiPartition {
         dummyTaxaLocked = new HashSet<>();
         partitionSize = new int[2];
 
-        
+
         realTaxaPartitionMap = new HashMap<>();
         realTaxaToDummyTaxaMap = new HashMap<>();
         this.dummyTaxas = dummyTaxas;
@@ -171,7 +171,7 @@ public class BiPartition {
         partitionSize[p]--;
         partitionSize[(p + 1) % 2]++;
     }
-    
+
     private void swapDummy(int i){
         int p = dummyTaxaPartitionMap.get(i);
         dummyTaxaPartitionMap.put(i, (p + 1) % 2);
@@ -221,7 +221,7 @@ public class BiPartition {
 
         Swap ret;
         if (mxdi != -1 && (mxrGain < mxdGain || notSet)) {
-            swapDummy(mxdi);    
+            swapDummy(mxdi);
             dummyTaxaLocked.add(mxdi);
             cg += mxdGain;
             ret = new Swap(null, mxdi);
@@ -305,7 +305,7 @@ public class BiPartition {
                     rtList.get(i),
                     dtList.get(i),
                     dtIdsList.get(i)
-                );
+            );
         }
 
         return biPartitions;
@@ -415,7 +415,7 @@ public class BiPartition {
             x.index += offset;
         }
         trs[(sIndex + 1) % 2].nodes.addAll(trs[sIndex].nodes);
-        
+
         // System.out.println(trs[1-sIndex].root);
 
         // System.out.println("---------------------------------------------");
