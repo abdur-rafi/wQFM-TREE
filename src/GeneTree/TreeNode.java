@@ -13,6 +13,8 @@ public class TreeNode implements TreePrinter.PrintableNode {
     public Info info;
     public int dummyTaxaId;
 
+    public double weight;
+
     public TreeNode(int i, String lb, ArrayList<TreeNode> ch, TreeNode pr){
         index = i;
         label = lb;
@@ -20,6 +22,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
         parent = pr;
         info = null;
         this.dummyTaxaId = -1;
+        weight=0;
     }
     public TreeNode(int i, String lb, ArrayList<TreeNode> ch, TreeNode pr, int dtId){
         this(i, lb, ch, pr);
