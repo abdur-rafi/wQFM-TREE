@@ -53,7 +53,7 @@ public class BiPartition {
         }
         else
             this.valid = true;
-        var random = new Random(0);
+        var random = new Random();
         for (var x : realTaxas) {
             if (random.nextDouble() > .5) {
                 realTaxaPartitionMap.put(x, 0);
@@ -209,7 +209,7 @@ public class BiPartition {
             ret = new Swap(taxa, -1);
         }
         else{
-            System.out.println("=========================================");
+            // System.out.println("=========================================");
             return null;
         }
         // System.out.println("cg : " + cg + " taxa : " + taxa + "\n\n\n\n");

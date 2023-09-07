@@ -4,10 +4,10 @@ import java.io.FileNotFoundException;
 public class Main {
     public static void main(String[] args) throws FileNotFoundException{
 
-        // String filePath = "./input/gtree_11tax_est_5genes_R1.tre";
-        String filePath = "./input/large/c101.txt";
+        String filePath = "./input/gtree_11tax_est_5genes_R1.tre";
+        // String filePath = "./input/large/c101.txt";
 
-        new QFM(filePath);
+        new QFM(filePath, "./output/gtree_11tax_est_5genes_R1.tre");
 
         
         // PerLevelDs ds = new PerLevelDs();

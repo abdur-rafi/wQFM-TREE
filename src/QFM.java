@@ -1,4 +1,5 @@
 package src;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -23,8 +24,8 @@ public class QFM {
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     String line;
     int level;
-    public QFM(String filePath) throws FileNotFoundException {
-        Scanner scanner = new Scanner(new File(filePath));
+    public QFM(String inputFilePath, String outputFilePath) throws FileNotFoundException {
+        Scanner scanner = new Scanner(System.in);
 
         taxaSet = new HashSet<>();
         geneTrees = new ArrayList<>();
@@ -53,14 +54,24 @@ public class QFM {
         }
         scanner.close();
 
-        System.out.println("taxa count : " + taxaSet.size());
+        // System.out.println("taxa count : " + taxaSet.size());
         BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>());
         
 
         var x = recurse(partition);
 
         // System.out.println(x.nodes.size());
-        System.out.println(x.root);
+        // System.out.println(x.root);
+        System.out.println(x.getNewickFormat());
+        // output the tree to file
+        // try {
+        //     BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(outputFilePath));
+        //     writer.write(x.getNewickFormat());
+        //     writer.close();
+        // } catch (Exception e) {
+        //     System.out.println("Err");
+        // }
+
         // x.reRootTree(x.nodes.get(12));
         // System.out.println(x.root);
         // System.out.println(x.root);
@@ -85,11 +96,11 @@ public class QFM {
     }
 
     GeneTree recurse(BiPartition partition){
-        System.out.println("level : " + level++);
+        // System.out.println("level : " + level++);
         // System.out.println("Current Partition : \n" + partition );
         int step = 0;
         while(oneStep(partition)){
-            System.out.println("step : " + step++);
+            // System.out.println("step : " + step++);
         }
         // System.out.println("Refined Partition: \n" + partition);
         var b = partition.divide();
@@ -150,7 +161,7 @@ public class QFM {
             }
             else{
                 swaps.add(swap);
-                System.out.println("swaps size : " + swaps.size());
+                // System.out.println("swaps size : " + swaps.size());
 
                 var pSize = partition.partitionSize();
                 if( pSize[0] > 1 && pSize[1] > 1){

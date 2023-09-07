@@ -217,6 +217,26 @@ public class GeneTree {
     }
     
     
+    private String newickFormatUitl(TreeNode node){
+        if(node.isLeaf()){
+            return node.label;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("(");
+        for(int i = 0; i < node.childs.size(); ++i){
+            sb.append(newickFormatUitl(node.childs.get(i)));
+            if(i != node.childs.size() - 1)
+                sb.append(",");
+        }
+        sb.append(")");
+        return sb.toString();
+    }
+
+
+    public String getNewickFormat(){
+        return newickFormatUitl(root) + ";";
+    }
+    
 
 
 }
