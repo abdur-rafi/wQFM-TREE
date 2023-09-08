@@ -29,24 +29,29 @@ public class BiPartition {
     ArrayList<Integer> dummyTaxaIds;
     int dtIdCurrPartition;
     Set<String> realTaxas;
+    ConsensusTree cTree;
 
-    public BiPartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas, ArrayList<Integer> dummyTaxaIds) {
+    public BiPartition(Set<String> realTaxas, 
+    ArrayList<Set<String>> dummyTaxas, 
+    ArrayList<Integer> dummyTaxaIds,
+    ConsensusTree tr
+    ) {
 
-        System.out.println("New Call");
-        System.out.println("Real taxas: ");
-        for(var x: realTaxas)
-        {
-            System.out.println(x);
-        }
-        System.out.println("Artificial:");
-        for(int i=0;i<dummyTaxas.size();i++)
-        {
-            System.out.println("dummy");
-            for(var x: dummyTaxas.get(i))
-            {
-                System.out.println(x);
-            }
-        }
+        // System.out.println("New Call");
+        // System.out.println("Real taxas: ");
+        // for(var x: realTaxas)
+        // {
+        //     System.out.println(x);
+        // }
+        // System.out.println("Artificial:");
+        // for(int i=0;i<dummyTaxas.size();i++)
+        // {
+        //     System.out.println("dummy");
+        //     for(var x: dummyTaxas.get(i))
+        //     {
+        //         System.out.println(x);
+        //     }
+        // }
 
 
         realTaxaGains = new HashMap<>();
@@ -54,7 +59,7 @@ public class BiPartition {
         realTaxaLocked = new HashSet<>();
         dummyTaxaLocked = new HashSet<>();
         partitionSize = new int[2];
-
+        this.cTree = tr;
 
         realTaxaPartitionMap = new HashMap<>();
         realTaxaToDummyTaxaMap = new HashMap<>();
@@ -72,8 +77,9 @@ public class BiPartition {
         else
             this.valid = true;
 
-        ConsensusTree c=new ConsensusTree();
-        c.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,realTaxaToDummyTaxaMap,dummyTaxaPartitionMap,partitionSize);
+        // ConsensusTree ctr =  new ConsensusTree();
+        // ctr.getBiparitionfromConsensus(realTaxas, dummyTaxas, realTaxaPartitionMap, realTaxaToDummyTaxaMap, dummyTaxaPartitionMap, partitionSize);
+        cTree.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,realTaxaToDummyTaxaMap,dummyTaxaPartitionMap,partitionSize);
 
 //        var random = new Random(0);
 //        for (var x : realTaxas) {
@@ -299,12 +305,13 @@ public class BiPartition {
             dtIdsList.get(i).add(this.dtIdCurrPartition);
             if(rtList.get(i).size() + dtList.get(i).size() < 3){
                 System.out.println("SINGLETON PARTITION");
-                // System.exit(-1);
+                System.exit(-1);
             }
             biPartitions[i] = new BiPartition(
                     rtList.get(i),
                     dtList.get(i),
-                    dtIdsList.get(i)
+                    dtIdsList.get(i),
+                    this.cTree
             );
         }
 

@@ -1,6 +1,4 @@
 package src;
-import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -11,6 +9,7 @@ import src.BiPartition.BiPartition;
 import src.BiPartition.BiPartitionMapper;
 import src.BiPartition.BiPartitionTreeSpecific;
 import src.BiPartition.Swap;
+import src.ConsensusTree.ConsensusTree;
 import src.GeneTree.GeneTree;
 import src.ScoreCalculator.ScoreCalculatorTree;
 
@@ -22,9 +21,10 @@ public class QFM {
     Set<String> taxaSet;
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
-    String line;
     int level;
+    ConsensusTree cTree;
     public QFM(String inputFilePath, String outputFilePath) throws FileNotFoundException {
+        
         Scanner scanner = new Scanner(System.in);
 
         taxaSet = new HashSet<>();
@@ -32,17 +32,24 @@ public class QFM {
         biPartitions = new ArrayList<>();
         level = 0;
 
+        ArrayList<String> lines = new ArrayList<>();
+
         while (scanner.hasNextLine()) {
             
             String line = scanner.nextLine();
-            this.line = line;
-            // System.out.println(line);
-            GeneTree tr = new GeneTree(line);
-            for(var x : tr.nodes){
-                if(x.isLeaf())
-                    taxaSet.add(x.label);
-            }
-            geneTrees.add(tr);
+            if(line.trim().length() == 0) continue;
+            lines.add(line);
+            // if(!scanner.hasNextLine()){
+            //     cTree = new ConsensusTree(line);
+            // }
+            // else{
+            //     GeneTree tr = new GeneTree(line);
+            //     for(var x : tr.nodes){
+            //         if(x.isLeaf())
+            //             taxaSet.add(x.label);
+            //     }
+            //     geneTrees.add(tr);
+            // }
             
             // System.out.println(tr.root);
             // var newRoot = tr.nodes.get(7);
@@ -54,8 +61,16 @@ public class QFM {
         }
         scanner.close();
 
+        for(int i = 0; i < lines.size() - 1; ++i ){
+            var x = new GeneTree(lines.get(i));
+            // System.out.println(x.root);
+            geneTrees.add(x);
+        }
+        cTree = new ConsensusTree(lines.get(lines.size() - 1));
+        
+        // System.out.println(cTree.g.root);
         // System.out.println("taxa count : " + taxaSet.size());
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>());
+        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), cTree);
         
 
         var x = recurse(partition);
