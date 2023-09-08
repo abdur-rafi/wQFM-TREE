@@ -1,13 +1,20 @@
 package src;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException{
+    public static void main(String[] args) throws IOException{
 
-        String filePath = "./input/gtree_11tax_est_5genes_R1.tre";
-        // String filePath = "./input/large/c101.txt";
+        if(args.length < 3){
+            System.out.println("Specify all file paths");
+            System.exit(-1);
+        }
+        String inputFilePath = args[0];
+        String consensusFilePath = args[1];
+        String outputFilePath = args[2];
 
-        new QFM(filePath, "./output/gtree_11tax_est_5genes_R1.tre");
+
+        new QFM(inputFilePath,consensusFilePath,outputFilePath);
 
         
         // PerLevelDs ds = new PerLevelDs();

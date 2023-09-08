@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 
 import src.ConsensusTree.ConsensusTree;
@@ -76,11 +75,12 @@ public class BiPartition {
         }
         else
             this.valid = true;
+        // System.out.println(partitionSize);
 
         // ConsensusTree ctr =  new ConsensusTree();
         // ctr.getBiparitionfromConsensus(realTaxas, dummyTaxas, realTaxaPartitionMap, realTaxaToDummyTaxaMap, dummyTaxaPartitionMap, partitionSize);
         cTree.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,realTaxaToDummyTaxaMap,dummyTaxaPartitionMap,partitionSize);
-
+        cTree.reset();
 //        var random = new Random(0);
 //        for (var x : realTaxas) {
 //            if (random.nextDouble() > .5) {
@@ -106,30 +106,30 @@ public class BiPartition {
 //            ++i;
 //        }
 
-        if(partitionSize[0] > 1 && partitionSize[1] > 1){
+        // if(partitionSize[0] > 1 && partitionSize[1] > 1){
 
-        }
-        else{
-            // System.out.println("==================================================");
-            for(int j = 0; j < 2; ++j){
-                while(partitionSize[j] <= 1){
-                    for(var x : realTaxaPartitionMap.entrySet()){
-                        if(x.getValue() != j){
-                            swapReal(x.getKey());
-                            break;
-                        }
-                    }
-                    if(partitionSize[j] > 1)
-                        break;
-                    for(var x : dummyTaxaPartitionMap.entrySet()){
-                        if(x.getValue() != j){
-                            swapDummy(x.getKey());
-                            break;
-                        }
-                    }
-                }
-            }
-        }
+        // }
+        // else{
+        //     // System.out.println("==================================================");
+        //     for(int j = 0; j < 2; ++j){
+        //         while(partitionSize[j] <= 1){
+        //             for(var x : realTaxaPartitionMap.entrySet()){
+        //                 if(x.getValue() != j){
+        //                     swapReal(x.getKey());
+        //                     break;
+        //                 }
+        //             }
+        //             if(partitionSize[j] > 1)
+        //                 break;
+        //             for(var x : dummyTaxaPartitionMap.entrySet()){
+        //                 if(x.getValue() != j){
+        //                     swapDummy(x.getKey());
+        //                     break;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         // break;
 
         // System.out.println("Again");

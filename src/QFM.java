@@ -1,5 +1,8 @@
 package src;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Scanner;
@@ -23,53 +26,37 @@ public class QFM {
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     int level;
     ConsensusTree cTree;
-    public QFM(String inputFilePath, String outputFilePath) throws FileNotFoundException {
+    public QFM(String inputFilePath, String consensusFilePath, String outputFilePath) throws IOException {
         
-        Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(new File(inputFilePath));
 
         taxaSet = new HashSet<>();
         geneTrees = new ArrayList<>();
         biPartitions = new ArrayList<>();
         level = 0;
 
-        ArrayList<String> lines = new ArrayList<>();
+        // System.out.println(consensusFilePath);
 
         while (scanner.hasNextLine()) {
             
             String line = scanner.nextLine();
             if(line.trim().length() == 0) continue;
-            lines.add(line);
-            // if(!scanner.hasNextLine()){
-            //     cTree = new ConsensusTree(line);
-            // }
-            // else{
-            //     GeneTree tr = new GeneTree(line);
-            //     for(var x : tr.nodes){
-            //         if(x.isLeaf())
-            //             taxaSet.add(x.label);
-            //     }
-            //     geneTrees.add(tr);
-            // }
-            
-            // System.out.println(tr.root);
-            // var newRoot = tr.nodes.get(7);
-            // tr.reRootTree(newRoot);
-            // System.out.println("DONE\n");
-            // System.out.println(tr.root);
+            // System.out.println("line : " + line);
+            GeneTree tr = new GeneTree(line);
+            for(var x : tr.nodes){
+                if(x.isLeaf())
+                    taxaSet.add(x.label);
+            }
+            geneTrees.add(tr);
 
-            // break;
         }
         scanner.close();
 
-        for(int i = 0; i < lines.size() - 1; ++i ){
-            var x = new GeneTree(lines.get(i));
-            // System.out.println(x.root);
-            geneTrees.add(x);
-        }
-        cTree = new ConsensusTree(lines.get(lines.size() - 1));
-        
-        // System.out.println(cTree.g.root);
-        // System.out.println("taxa count : " + taxaSet.size());
+        scanner = new Scanner(new File(consensusFilePath));
+        String line = scanner.nextLine();
+        cTree = new ConsensusTree(line);
+        scanner.close();
+
         BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), cTree);
         
 
@@ -77,7 +64,14 @@ public class QFM {
 
         // System.out.println(x.nodes.size());
         // System.out.println(x.root);
-        System.out.println(x.getNewickFormat());
+
+        FileWriter writer = new FileWriter(outputFilePath);
+        
+        writer.write(x.getNewickFormat());
+
+        writer.close();
+
+        // System.out.println(x.getNewickFormat());
         // output the tree to file
         // try {
         //     BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(outputFilePath));

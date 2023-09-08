@@ -248,6 +248,15 @@ public class ConsensusTree {
         selectedsubtreeMapper = new HashMap<>();
     }
 
+
+    public void reset(){
+
+        selectednode = null;
+        min_diff = 10000000;
+        weightara.clear();
+        selectedsubtreeMapper.clear();
+    }
+
     // public static void main(String[] args) {
 
     //     String consensustree;
