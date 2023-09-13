@@ -20,4 +20,11 @@ public class Info {
     }    
 
     public ScoreCalculatorNode calculator;
+
+    public Info(){
+        consensusScore = 0;
+    }
+
+    public double consensusScore;
+
 }

@@ -8,6 +8,6 @@ while(True):
     line = sys.stdin.readline()
     if not line:
         break
-    print(re.sub(reg, ")", line))
+    print(re.sub(reg, ")", line), end="")
     
     

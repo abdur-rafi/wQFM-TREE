@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import src.ConsensusTree.ConsensusTree;
+import src.ConsensusTree.IMakeParition;
 import src.QFM;
 import src.GeneTree.GeneTree;
 import src.GeneTree.TreeNode;
@@ -28,12 +29,13 @@ public class BiPartition {
     ArrayList<Integer> dummyTaxaIds;
     int dtIdCurrPartition;
     Set<String> realTaxas;
-    ConsensusTree cTree;
+    // ConsensusTree cTree;
+    IMakeParition makeParition;
 
     public BiPartition(Set<String> realTaxas, 
     ArrayList<Set<String>> dummyTaxas, 
     ArrayList<Integer> dummyTaxaIds,
-    ConsensusTree tr
+    IMakeParition makeParition
     ) {
 
         // System.out.println("New Call");
@@ -58,7 +60,7 @@ public class BiPartition {
         realTaxaLocked = new HashSet<>();
         dummyTaxaLocked = new HashSet<>();
         partitionSize = new int[2];
-        this.cTree = tr;
+        this.makeParition = makeParition;
 
         realTaxaPartitionMap = new HashMap<>();
         realTaxaToDummyTaxaMap = new HashMap<>();
@@ -79,8 +81,9 @@ public class BiPartition {
 
         // ConsensusTree ctr =  new ConsensusTree();
         // ctr.getBiparitionfromConsensus(realTaxas, dummyTaxas, realTaxaPartitionMap, realTaxaToDummyTaxaMap, dummyTaxaPartitionMap, partitionSize);
-        cTree.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,realTaxaToDummyTaxaMap,dummyTaxaPartitionMap,partitionSize);
-        cTree.reset();
+        // cTree.getBiparitionfromConsensus(realTaxas,dummyTaxas,realTaxaPartitionMap,dummyTaxaPartitionMap,partitionSize);
+        // cTree.reset();
+        makeParition.makePartition(realTaxas, dummyTaxas, realTaxaPartitionMap, dummyTaxaPartitionMap, partitionSize);
 //        var random = new Random(0);
 //        for (var x : realTaxas) {
 //            if (random.nextDouble() > .5) {
@@ -311,7 +314,7 @@ public class BiPartition {
                     rtList.get(i),
                     dtList.get(i),
                     dtIdsList.get(i),
-                    this.cTree
+                    this.makeParition
             );
         }
 

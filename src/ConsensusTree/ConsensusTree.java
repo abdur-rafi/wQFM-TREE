@@ -8,7 +8,7 @@ import java.util.Set;
 
 import static java.lang.Math.abs;
 
-public class ConsensusTree {
+public class ConsensusTree implements IMakeParition {
 
     static String filepath = "./input/ConsensusTrees/tree1.txt.raxml.consensustreemre";
     public GeneTree g;
@@ -57,8 +57,8 @@ public class ConsensusTree {
         }
     }
 
-    public void getBiparitionfromConsensus(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas,
-            Map<String, Integer> realTaxaPartitionMap, Map<String, Integer> realTaxaToDummyTaxaMap,
+    public void makePartition(Set<String> realTaxas, ArrayList<Set<String>> dummyTaxas,
+            Map<String, Integer> realTaxaPartitionMap,
             Map<Integer, Integer> dummyTaxaPartitionMap, int[] partitionSize) {
         createweightTree(realTaxas, dummyTaxas);
 
@@ -89,7 +89,6 @@ public class ConsensusTree {
 
             double weight = 0;
             for (var y : x) {
-                realTaxaToDummyTaxaMap.put(y, i);
                 if (selectedsubtreeMapper.get(y) == null) {
                     weight -= weightara.get(y);
                 } else {

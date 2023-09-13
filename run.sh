@@ -21,11 +21,12 @@ do
                 ./raxml-ng --redo --consense MRE --tree $1/$file/$file2/all_gt.tre --prefix $1/$file/$file2/cons >> ./raxml-ng.log
                 consOut=$1/$file/$file2/cons.raxml.consensusTreeMRE
                 python consensusCleaner.py < $consOut > $1/$file/$file2/cons.tre
-                /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $1/$file/$file2/all_gt.tre $1/$file/$file2/cons.tre $1/$file/$file2/ewqfm-out-cons.txt
-                python ./output/getFpFn.py -t $1/true_tree_trimmed -e $1/$file/$file2/ewqfm-out-cons.txt > $1/$file/$file2/ewqfm-cons-score.txt
+                python treeCleaner.py < $1/$file/$file2/all_gt.tre > $1/$file/$file2/all_gt_cleaned.tre
+                /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $1/$file/$file2/all_gt_cleaned.tre $1/$file/$file2/cons.tre $1/$file/$file2/ewqfm-out-cons-flat.txt
+                python ./output/getFpFn.py -t $1/true_tree_trimmed -e $1/$file/$file2/ewqfm-out-cons-flat.txt > $1/$file/$file2/ewqfm-cons-flat-score.txt
             fi
         done
-        break
+        # break
     fi
 done
 

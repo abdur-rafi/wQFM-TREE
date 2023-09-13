@@ -13,6 +13,8 @@ import src.BiPartition.BiPartitionMapper;
 import src.BiPartition.BiPartitionTreeSpecific;
 import src.BiPartition.Swap;
 import src.ConsensusTree.ConsensusTree;
+import src.ConsensusTree.ConsensusTreeFlat;
+import src.ConsensusTree.IMakeParition;
 import src.GeneTree.GeneTree;
 import src.ScoreCalculator.ScoreCalculatorTree;
 
@@ -25,7 +27,10 @@ public class QFM {
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     int level;
-    ConsensusTree cTree;
+    
+    // ConsensusTree cTree;
+    IMakeParition makeParition;
+
     public QFM(String inputFilePath, String consensusFilePath, String outputFilePath) throws IOException {
         
         Scanner scanner = new Scanner(new File(inputFilePath));
@@ -54,10 +59,11 @@ public class QFM {
 
         scanner = new Scanner(new File(consensusFilePath));
         String line = scanner.nextLine();
-        cTree = new ConsensusTree(line);
+
+        makeParition = new ConsensusTreeFlat(line);
         scanner.close();
 
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), cTree);
+        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), makeParition);
         
 
         var x = recurse(partition);
