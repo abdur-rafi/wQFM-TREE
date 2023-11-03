@@ -20,6 +20,9 @@ public class BiPartitionTreeSpecific {
     int[] realTaxaPartitionSize;
     int[] dummyTaxaPartitionSize;
     Map<Integer, Integer> localDummyToGlobalDummyTaxaMap;
+    Map<Integer, Double> divCoeffs;
+
+    int[] nDummyTaxaInPartition;
 
     int nDummyTaxa;
 
@@ -28,6 +31,7 @@ public class BiPartitionTreeSpecific {
         Map<Integer, Integer> taxaToDummyTaxaMap,
         ArrayList<Set<Integer>> dp,
         Map<Integer, Integer> localDummyToGlobalDummyTaxaMap,
+        Map<Integer, Double> divCoeffs,
         int leafCount
     ){
         this.taxaToDummyTaxaMap = taxaToDummyTaxaMap;
@@ -40,7 +44,12 @@ public class BiPartitionTreeSpecific {
         this.realTaxaPartitionSize = new int[2];
         this.dummyTaxaPartitionSize = new int[2];
         this.localDummyToGlobalDummyTaxaMap = localDummyToGlobalDummyTaxaMap;
+        this.divCoeffs = divCoeffs;
+        this.nDummyTaxaInPartition = new int[2];
+        this.nDummyTaxaInPartition[0] = dp.get(0).size();
+        this.nDummyTaxaInPartition[1] = dp.get(1).size();
 
+        
         for(int j = 0; j < leafCount; ++j){
             if(rp.get(0).contains(j) || rp.get(1).contains(j))
                 realOrDummyMap[j] = REAL_TAXA;
@@ -111,5 +120,13 @@ public class BiPartitionTreeSpecific {
 
     public int globalDummyTaxaIndex(int dti){
         return localDummyToGlobalDummyTaxaMap.get(dti);
+    }
+
+    public double getDivCoeff(int index){
+        return this.divCoeffs.get(index);
+    }
+
+    public int dummyTaxaCountInPartition(int i){
+        return this.nDummyTaxaInPartition[i];
     }
 }

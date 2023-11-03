@@ -10,6 +10,7 @@ import src.GeneTree.GeneTree;
 
 public class BiPartitionMapper {
 
+    // 3. Add division coeffs to TreeSpecific partitions, for now they will be the same
 
     public static BiPartitionTreeSpecific map(BiPartition partition, GeneTree tree){
 
@@ -65,7 +66,14 @@ public class BiPartitionMapper {
             if(x.isLeaf()) ++leafCount;
         }
 
-        return new BiPartitionTreeSpecific(rp, taxaToDummyTaxaMap, dp, localToGlobalMap, leafCount);
+
+        Map<Integer, Double> divCoeffs = new HashMap<>();
+        for(var x : partition.divCoeffs.entrySet()){
+            divCoeffs.put(tree.taxaMap.get(x.getKey()), x.getValue());
+        }
+
+
+        return new BiPartitionTreeSpecific(rp, taxaToDummyTaxaMap, dp, localToGlobalMap, divCoeffs, leafCount);
 
     }
 }   

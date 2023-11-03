@@ -16,9 +16,9 @@ public class ScoreCalculatorTree {
     // Set<Integer> realTaxas;
     // int[] realTaxaPartitionSize;
     // int[] dummyTaxaPartitionSize;
-    int score;
-    int[] globalGains;
-    int[] dummyTaxaGains;
+    double score;
+    double[] globalGains;
+    double[] dummyTaxaGains;
 
     public ScoreCalculatorTree(
         GeneTree tree,
@@ -27,15 +27,19 @@ public class ScoreCalculatorTree {
         this.tree = tree;
         this.bp = bp;
         this.score = 0;
-        this.globalGains = new int[2];
-        this.dummyTaxaGains = new int[this.bp.nDummyTaxa()];
+        this.globalGains = new double[2];
+        this.dummyTaxaGains = new double[this.bp.nDummyTaxa()];
     }
 
 
+    
+    
     private void calcReachableInSubtree(TreeNode node){
+    // 4. Double data type for dummyTaxaCountTotal, indi
+    
         int[] realTaxaCountsTotal = new int[2];
-        int[] dummyTaxaCountTotal = new int[2];
-        int[] dummyTaxaCountIndi = new int[this.bp.nDummyTaxa()];
+        double[] dummyTaxaCountTotal = new double[2];
+        double[] dummyTaxaCountIndi = new double[this.bp.nDummyTaxa()];
 
         if (node.childs == null){
             if(this.bp.isRealTaxa(node.index)){
@@ -45,54 +49,67 @@ public class ScoreCalculatorTree {
 
                 int index = this.bp.inWhichDummyTaxa(node.index);
                 int partition = this.bp.inWhichPartition(index, false);
-                dummyTaxaCountIndi[index]++;
-                dummyTaxaCountTotal[partition]++;
+
+                // 5. for both lines, instead of ++, it should be 1 / div coeff of the node 
+                double r = (double) 1. / this.bp.getDivCoeff(node.index);
+                dummyTaxaCountIndi[index] += r;
+                dummyTaxaCountTotal[partition] += r ;
             }
         }
         else{
             for(var x : node.childs){
                 calcReachableInSubtree(x);
                 Utility.addIntArrToFirst(realTaxaCountsTotal, x.info.realTaxaCountTotal);
-                Utility.addIntArrToFirst(dummyTaxaCountTotal, x.info.dummyTaxaCountTotal);
-                Utility.addIntArrToFirst(dummyTaxaCountIndi, x.info.dummyTaxaCountIndividual);
-
+                Utility.addArrayToFirst(dummyTaxaCountTotal, x.info.dummyTaxaCountTotal);
+                Utility.addArrayToFirst(dummyTaxaCountIndi, x.info.dummyTaxaCountIndividual);
             }
         }
         node.info = new Info(realTaxaCountsTotal, dummyTaxaCountIndi, dummyTaxaCountTotal, null );
         if(node.childs != null){
+
             var c1 = node.childs.get(0);
             var c2 = node.childs.get(1);
             Branch[] b = new Branch[3];
+
             b[0] = new Branch(c1.info.realTaxaCountTotal, c1.info.dummyTaxaCountIndividual, c1.info.dummyTaxaCountTotal, this.bp.getDummyTaxaPartitionMap());
             b[1] = new Branch(c2.info.realTaxaCountTotal, c2.info.dummyTaxaCountIndividual, c2.info.dummyTaxaCountTotal, this.bp.getDummyTaxaPartitionMap());
+            
             int[] realTaxaCountsTotalParent = new int[2];
-            int[] dummyTaxaCountsTotalParent = new int[2];
-            int[] dummyTaxaCountIndividualParent = new int[this.bp.nDummyTaxa()];
+            double[] dummyTaxaCountsTotalParent = new double[2];
+            double[] dummyTaxaCountIndividualParent = new double[this.bp.nDummyTaxa()];
             
             for(int i = 0; i < 2; ++i){
                 realTaxaCountsTotalParent[i] = this.bp.realPartitionSize(i) - 
                     (b[0].realTaxaCountsTotal[i] + b[1].realTaxaCountsTotal[i]);
-                dummyTaxaCountsTotalParent[i] = this.bp.dummyPartitionSize(i) - (
+
+                    // 6. instead of dummyPartitionSize, it should be number of dummy taxas in the partition
+                dummyTaxaCountsTotalParent[i] = this.bp.dummyTaxaCountInPartition(i) - (
                     b[0].dummyTaxaCountsTotal[i] + b[1].dummyTaxaCountsTotal[i]);
             }
 
+            // 7. instead of dummyTaxaSizeIndividual, it should be 1
             for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
-                dummyTaxaCountIndividualParent[i] = this.bp.dummyTaxaSizeIndividual(i) - (
+                dummyTaxaCountIndividualParent[i] = 1 - (
                     b[0].dummyTaxaCountsIndividual[i] + b[1].dummyTaxaCountsIndividual[i]
                 );
             }
+
             b[2] = new Branch(realTaxaCountsTotalParent, dummyTaxaCountIndividualParent, dummyTaxaCountsTotalParent, this.bp.getDummyTaxaPartitionMap());
             node.info.calculator = new ScoreCalculatorNode(b, this.bp.getDummyTaxaPartitionMap(), this.dummyTaxaGains);
             var sc = node.info.calculator.score();
             this.score += sc;
+
+
+
+            
             var gains = node.info.calculator.gain(sc);
             node.info.calculator.calcDummyTaxaGains(sc);
             var childs = node.childs;
             for(int i = 0; i < 2; ++i){
-                Utility.subIntArrToFirst(gains[i], gains[2]);
+                Utility.subArrayToFirst(gains[i], gains[2]);
                 childs.get(i).info.gains = gains[i];
             }
-            Utility.addIntArrToFirst(globalGains, gains[2]);
+            Utility.addArrayToFirst(globalGains, gains[2]);
             
         }
     }
@@ -100,7 +117,7 @@ public class ScoreCalculatorTree {
     void collectGains(TreeNode node){
         if(node.childs != null){
             for(int i = 0; i < 2; ++i){
-                Utility.addIntArrToFirst(node.childs.get(i).info.gains, node.info.gains);
+                Utility.addArrayToFirst(node.childs.get(i).info.gains, node.info.gains);
             }
             for(var x : node.childs)
                 collectGains(x);
@@ -121,70 +138,105 @@ public class ScoreCalculatorTree {
     //     return p;
     // }
 
-    public int score(){
+    boolean rt = true;
+
+    public double score(){
+
         calcReachableInSubtree(tree.root);
-        tree.root.info.gains = new int[2];
+
+        // long p0s = bp.realPartitionSize(0) + bp.dummyTaxaCountInPartition(0);
+        // long p1s = bp.realPartitionSize(1) + bp.dummyTaxaCountInPartition(1);
+
+        // System.out.println(this.score);
+
+        // if(this.rt)
+        //     // return 2 * this.score -  ((p0s * (p0s - 1)) / 2) * ((p1s * (p1s - 1)) / 2) ;
+        //     return this.score;
+        
+
+        // 11. calcualte score and return for now
+
+
+
+
+        tree.root.info.gains = new double[2];
         collectGains(tree.root);
 
-        int[] p = new int[2];
-        for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
-            int inWhichPartition = this.bp.inWhichPartition(i, false);
-            p[inWhichPartition] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+        long[] p = new long[2];
+
+        // for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
+        //     int inWhichPartition = this.bp.inWhichPartition(i, false);
+        //     p[inWhichPartition] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+        // }
+
+        // // B to A Real Taxa
+        // p[0] += Utility.nc2(this.bp.totalPartitionSize(0) + 1);
+        // p[1] += Utility.nc2(this.bp.totalPartitionSize(1) - 1);
+
+
+        for(int i = 0; i < 2; ++i){
+            p[i] = this.bp.realPartitionSize(i) + this.bp.dummyTaxaCountInPartition(i);
         }
 
-        // B to A Real Taxa
-        p[0] += Utility.nc2(this.bp.totalPartitionSize(0) + 1);
-        p[1] += Utility.nc2(this.bp.totalPartitionSize(1) - 1);
+        long[] totals = new long[2];
+        totals[1] =  Utility.nc2(p[0] + 1) * Utility.nc2(p[1] - 1) ;
 
+        // p[0] -= Utility.nc2(this.bp.totalPartitionSize(0) + 1);
+        // p[1] -= Utility.nc2(this.bp.totalPartitionSize(1) - 1);
 
-        int[] totals = new int[2];
-        totals[1] = p[0] * p[1];
+        // // A to B Real Taxa
+        // p[0] += Utility.nc2(this.bp.totalPartitionSize(0) - 1);
+        // p[1] += Utility.nc2(this.bp.totalPartitionSize(1) + 1);
 
-        p[0] -= Utility.nc2(this.bp.totalPartitionSize(0) + 1);
-        p[1] -= Utility.nc2(this.bp.totalPartitionSize(1) - 1);
+        totals[0] =  Utility.nc2(p[0] - 1) * Utility.nc2(p[1] + 1) ;
 
-        // A to B Real Taxa
-        p[0] += Utility.nc2(this.bp.totalPartitionSize(0) - 1);
-        p[1] += Utility.nc2(this.bp.totalPartitionSize(1) + 1);
-
-        totals[0] = p[0] * p[1];
+        // totals[0] = p[0] * p[1];
 
 
 
         for(var x : tree.nodes){
             if(x.isLeaf() && this.bp.isRealTaxa(x.index)){
-                Utility.addIntArrToFirst(x.info.gains, globalGains);
+
+                Utility.addArrayToFirst(x.info.gains, globalGains);
                 int part = this.bp.inWhichPartition(x.index, true);
+                
                 x.info.gains[part] += this.score ;
                 x.info.gains[part] = 2 * x.info.gains[part] - totals[part];
                 // System.out.println(x.label + " : A-> B: " + x.info.gains[0] + " B->A: " + x.info.gains[1] + "\n");
             }
         }
 
-        p[0] -= Utility.nc2(this.bp.totalPartitionSize(0) - 1);
-        p[1] -= Utility.nc2(this.bp.totalPartitionSize(1) + 1);
+        // p[0] -= Utility.nc2(this.bp.totalPartitionSize(0) - 1);
+        // p[1] -= Utility.nc2(this.bp.totalPartitionSize(1) + 1);
 
 
         for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
             int inWhichPartition = this.bp.inWhichPartition(i, false);
-            p[inWhichPartition] += Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
-            p[(inWhichPartition + 1) % 2] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
-            p[inWhichPartition] += Utility.nc2(this.bp.totalPartitionSize(inWhichPartition) - this.bp.dummyTaxaSizeIndividual(i));
-            p[(inWhichPartition + 1) % 2] += Utility.nc2(this.bp.totalPartitionSize((inWhichPartition + 1) % 2) + this.bp.dummyTaxaSizeIndividual(i));
-            this.dummyTaxaGains[i] = 2 * (this.dummyTaxaGains[i] + this.score) - p[0] * p[1];
-            p[inWhichPartition] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
-            p[(inWhichPartition + 1) % 2] += Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
-            p[inWhichPartition] -= Utility.nc2(this.bp.totalPartitionSize(inWhichPartition) - this.bp.dummyTaxaSizeIndividual(i));
-            p[(inWhichPartition + 1) % 2] -= Utility.nc2(this.bp.totalPartitionSize((inWhichPartition + 1) % 2) + this.bp.dummyTaxaSizeIndividual(i));
+            // p[inWhichPartition] += Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+            // p[(inWhichPartition + 1) % 2] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+            // p[inWhichPartition] += Utility.nc2(this.bp.totalPartitionSize(inWhichPartition) - this.bp.dummyTaxaSizeIndividual(i));
+            // p[(inWhichPartition + 1) % 2] += Utility.nc2(this.bp.totalPartitionSize((inWhichPartition + 1) % 2) + this.bp.dummyTaxaSizeIndividual(i));
+            
+            // the following line commented out for now to remove double and int problem
+            // this.dummyTaxaGains[i] = 2 * (this.dummyTaxaGains[i] + this.score) - p[0] * p[1];
+
+
+
+            this.dummyTaxaGains[i] = 2 * (this.dummyTaxaGains[i] + this.score) - totals[inWhichPartition];
+
+            // p[inWhichPartition] -= Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+            // p[(inWhichPartition + 1) % 2] += Utility.nc2(this.bp.dummyTaxaSizeIndividual(i));
+            // p[inWhichPartition] -= Utility.nc2(this.bp.totalPartitionSize(inWhichPartition) - this.bp.dummyTaxaSizeIndividual(i));
+            // p[(inWhichPartition + 1) % 2] -= Utility.nc2(this.bp.totalPartitionSize((inWhichPartition + 1) % 2) + this.bp.dummyTaxaSizeIndividual(i));
             // System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
 
         }
 
-        p[0] += Utility.nc2(this.bp.totalPartitionSize(0));
-        p[1] += Utility.nc2(this.bp.totalPartitionSize(1));
+        // p[0] += Utility.nc2(this.bp.totalPartitionSize(0));
+        // p[1] += Utility.nc2(this.bp.totalPartitionSize(1));
 
         // score[1] = (p[0] * p[1]) - score[0];
-        this.score = 2 * this.score - p[0] * p[1];
+        this.score = 2 * this.score - Utility.nc2(p[0]) * Utility.nc2(p[1]);
         for(int i = 0; i < this.bp.nDummyTaxa(); ++i){
             this.dummyTaxaGains[i] -= this.score;
             // System.out.println("Dummy Taxa: " + i + ": " + this.dummyTaxaGains[i]);
@@ -202,7 +254,7 @@ public class ScoreCalculatorTree {
         return this.score;
     }
 
-    public int[] dummyTaxaGains(){
+    public double[] dummyTaxaGains(){
         return this.dummyTaxaGains;
     }
 }

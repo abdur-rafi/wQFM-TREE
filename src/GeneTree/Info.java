@@ -6,13 +6,13 @@ public class Info {
 
     public int[] realTaxaCountTotal;
 
-    public int[] dummyTaxaCountIndividual;
+    public double[] dummyTaxaCountIndividual;
     
-    public int[] dummyTaxaCountTotal;
+    public double[] dummyTaxaCountTotal;
 
-    public int[] gains;
+    public double[] gains;
 
-    public Info(int[] tcp, int[] dtci, int[] dtct, int[] gains){
+    public Info(int[] tcp, double[] dtci, double[] dtct, double[] gains){
         this.realTaxaCountTotal = tcp;
         this.dummyTaxaCountIndividual = dtci;
         this.dummyTaxaCountTotal = dtct;
