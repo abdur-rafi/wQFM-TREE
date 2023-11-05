@@ -14,7 +14,7 @@ public class main {
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-        tc3(trees);
+        tc2(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
@@ -56,6 +56,54 @@ public class main {
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
         System.out.println(bookKeepingPerLevel.calculateScoreAndGains());
+    }
+
+
+    public static void tc2(GeneTrees trees){
+        RealTaxon[] rt = new RealTaxon[4];
+        rt[0] = trees.taxaMap.get("1");
+        rt[1] = trees.taxaMap.get("2");
+        rt[2] = trees.taxaMap.get("3");
+        rt[3] = trees.taxaMap.get("4");
+        
+        // 11, {5, 6, 7, 8, 9, 10}
+        RealTaxon[] dt0r = new RealTaxon[6];
+        dt0r[0] = trees.taxaMap.get("5");
+        dt0r[1] = trees.taxaMap.get("6");
+        dt0r[2] = trees.taxaMap.get("7");
+        dt0r[3] = trees.taxaMap.get("8");
+        dt0r[4] = trees.taxaMap.get("9");
+        dt0r[5] = trees.taxaMap.get("10");
+
+        DummyTaxon internalDT = new DummyTaxon(dt0r, new DummyTaxon[0]);
+
+        dt0r = new RealTaxon[1];
+        dt0r[0] = trees.taxaMap.get("11");
+
+        DummyTaxon[] a = new DummyTaxon[1];
+        a[0] = internalDT;
+
+        DummyTaxon dt0 = new DummyTaxon(dt0r,a);
+
+        a = new DummyTaxon[1];
+        a[0] = dt0;
+
+
+        short[] realTaxaPartition = new short[4];
+        realTaxaPartition[0] = 0;
+        realTaxaPartition[1] = 0;
+        realTaxaPartition[2] = 1;
+        realTaxaPartition[3] = 1;
+
+        short[] dummyTaxaPartition = new short[1];
+        dummyTaxaPartition[0] = 1;
+
+
+        TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, a, realTaxaPartition, dummyTaxaPartition, 11);
+
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+
+        bookKeepingPerLevel.calculateScoreAndGains();
     }
 
 
@@ -106,7 +154,7 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        System.out.println(bookKeepingPerLevel.calculateScoreAndGains());
+        bookKeepingPerLevel.calculateScoreAndGains();
     }
     
 }

@@ -18,5 +18,10 @@ public class RealTaxon {
         label = lb;
     }
 
+    @Override
+    public String toString(){
+        return label;
+    }
+
     
 }

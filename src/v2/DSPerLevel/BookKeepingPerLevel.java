@@ -145,7 +145,7 @@ public class BookKeepingPerLevel {
         }
 
         for(int i = 0; i < taxas.dummyTaxonCount; ++i){
-            this.dummyTaxaGains[i] = 2 * (this.dummyTaxaGains[i] + totalScore) - totals[taxas.inWhichPartitionRealTaxonByIndex(i)];
+            this.dummyTaxaGains[i] = 2 * (this.dummyTaxaGains[i] + totalScore) - totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
         }
 
         totalScore = 2 * totalScore - geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]);
@@ -160,7 +160,19 @@ public class BookKeepingPerLevel {
         this.score = totalScore;
 
         System.out.println("Score : " + totalScore);
+
+        for (int i = 0; i < realTaxaGains.length; i++) {
+            var rt = taxas.realTaxa[i];
+            System.out.println(rt.label + ": " + (realTaxaGains[i][taxas.inWhichPartitionRealTaxonByIndex(i)] + totalScore));
+        }
         
+        for (int i = 0; i < dummyTaxaGains.length; i++) {
+            var dt = taxas.dummyTaxa[i];
+            for(var  x : dt.flattenedRealTaxa){
+                System.out.printf(x.label + " ,");
+            }
+            System.out.println(": " + (dummyTaxaGains[i] + totalScore));
+        }
 
         return totalScore;
 
