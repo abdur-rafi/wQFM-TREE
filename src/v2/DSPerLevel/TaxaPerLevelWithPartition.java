@@ -131,7 +131,17 @@ public class TaxaPerLevelWithPartition {
         return this.dummyTaxonCountsInPartitions[partition];
     }
 
-    
+    public void swapPartitionRealTaxon(int index){
+        short currPartition = this.realTaxonPartition[index];
+        short switchedPartition = (short) (1 - currPartition);
+
+        this.realTaxonPartition[index] = switchedPartition;
+        this.inWhichPartition[this.realTaxa[index].id] = switchedPartition;
+        this.taxonCountsInPartitions[currPartition]--;
+        this.taxonCountsInPartitions[switchedPartition]++;
+        this.realTaxonCountsInPartitions[currPartition]--;
+        this.realTaxonCountsInPartitions[switchedPartition]++;
+    }
     
 
 }

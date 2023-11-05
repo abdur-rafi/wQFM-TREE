@@ -19,6 +19,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
     public Info info;
     
     public double weight;
+    
 
     public ScoreCalculatorNode scoreCalculator;
 

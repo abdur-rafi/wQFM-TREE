@@ -17,6 +17,7 @@ public class Tree {
 
     public TreeNode root;
     public Map<String, RealTaxon> taxaMap;
+    // in order of id
     public TreeNode[] leaves;
     public int leavesCount;
     

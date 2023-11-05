@@ -16,4 +16,12 @@ public class Branch {
             this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
         }
     }
+
+    public void swapRealTaxa(int currPartition){
+        int switchedPartition = 1 - currPartition;
+        this.totalTaxaCounts[currPartition]--;
+        this.totalTaxaCounts[switchedPartition]++;
+        this.realTaxaCounts[currPartition]--;
+        this.realTaxaCounts[switchedPartition]++;
+    }
 }

@@ -77,7 +77,7 @@ public class ScoreCalculatorNode {
 
     // g2. shoulde be double
 
-    public double[][] gain(double originalScore, double multiplier){
+    public double[][] gainRealTaxa(double originalScore, double multiplier){
         for(int i = 0; i < 3; ++i){
             gainOf1BranchRealTaxa(i, originalScore, multiplier);
         }
@@ -88,6 +88,20 @@ public class ScoreCalculatorNode {
         // 10. should be b3 squarred, data types should be double
         return (a1 * a2 - subs[0]) * ((( b3 * b3 ) - subs[1] ) / 2);
     }
+
+    public void swapRealTaxa(int branchIndex, int currPartition){
+
+        branches[branchIndex].swapRealTaxa(currPartition);
+
+        if(currPartition == 0){
+            this.subs[branchIndex][1] += 1;
+        }
+        else{
+            this.subs[branchIndex][1] -= 1;
+        }
+
+    }
+
 
     private void gainOf1BranchRealTaxa(int i, double originalScore, double multiplier){
 
@@ -121,7 +135,7 @@ public class ScoreCalculatorNode {
         }
     }
 
-    public void calcDummyTaxaGains(double originalScore, double multiplier){
+    public void gainDummyTaxa(double originalScore, double multiplier){
 
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];

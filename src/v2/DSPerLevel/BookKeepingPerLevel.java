@@ -1,5 +1,7 @@
 package src.v2.DSPerLevel;
 
+import java.util.ArrayList;
+
 import src.Utility;
 import src.v2.PreProcessing.GeneTrees;
 import src.v2.ScoreCalculator.ScoreCalculatorNode;
@@ -20,6 +22,8 @@ public class BookKeepingPerLevel {
 
     double[] gainsToAll;
 
+    public ArrayList<TreeNode> nodesForScore;
+
     public BookKeepingPerLevel(GeneTrees geneTrees, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
 
         this.taxas = taxaPerLevelWithPartition;
@@ -29,11 +33,16 @@ public class BookKeepingPerLevel {
         this.dummyTaxaGains = new double[taxas.dummyTaxonCount];
 
         this.gainsToAll = new double[2];
-
+        this.nodesForScore = new ArrayList<>();
+        initialBookKeeping();
     }
 
-    private void bookKeepingAtANode(TreeNode node){
+    private boolean bookKeepingAtANode(TreeNode node){
         Branch[] branches = new Branch[3];
+        boolean skip = false;
+        int[] nonZeroDummyCount = new int[2];
+        int[] nonZeroDummyIndex = new int[2];
+
         for(int i = 0; i < 3; ++i){
             branches[i] = new Branch(new int[2], new double[taxas.dummyTaxonCount], new double[2]);
         }
@@ -52,6 +61,9 @@ public class BookKeepingPerLevel {
                     branches[i].dummyTaxaWeightSums[partition] += weight;
                     branches[i].dummyTaxaWeightsIndividual[taxas.inWhichDummyTaxa(taxonId)] += weight;
                     branches[i].totalTaxaCounts[partition] += weight;
+
+                    nonZeroDummyCount[i]++;
+                    nonZeroDummyIndex[i] = taxas.inWhichDummyTaxa(taxonId);
                 }
             }
             else{
@@ -62,8 +74,13 @@ public class BookKeepingPerLevel {
                 }
                 for(int j = 0; j < taxas.dummyTaxonCount; ++j){
                     branches[i].dummyTaxaWeightsIndividual[j] += 1. - child.info.branches[2].dummyTaxaWeightsIndividual[j];
+                    if(branches[i].dummyTaxaWeightsIndividual[j] != 1){
+                        nonZeroDummyCount[i]++;
+                        nonZeroDummyIndex[i] = j;
+                    }
                 }
             }
+
         }
         for(int j = 0; j < taxas.dummyTaxonCount; ++j){
             branches[2].dummyTaxaWeightsIndividual[j] = 1. - branches[0].dummyTaxaWeightsIndividual[j] - branches[1].dummyTaxaWeightsIndividual[j];
@@ -73,12 +90,27 @@ public class BookKeepingPerLevel {
             branches[2].dummyTaxaWeightSums[p] = taxas.getDummyTaxonCountInPartition(p) - branches[0].dummyTaxaWeightSums[p] - branches[1].dummyTaxaWeightSums[p];
             branches[2].totalTaxaCounts[p] = branches[2].realTaxaCounts[p] + branches[2].dummyTaxaWeightSums[p];
         }
+        if(node.frequency == 0){
+            skip = true;
+        }
+        else{
+            if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
+                if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
+                    if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
+                    branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
+                        skip = true;
+                    }
+                }
+            }
+        }
 
         node.info = new Info(branches);
+        node.scoreCalculator = null;
+
+        return skip;
     }
 
-    public double calculateScoreAndGains(){
-        double totalScore = 0;
+    private void initialBookKeeping(){
         for(var gt : geneTrees.geneTrees){
             for(var node : gt.topSortedNodes){
                 if(node.isLeaf()){
@@ -88,45 +120,76 @@ public class BookKeepingPerLevel {
                 else if(node.isRoot()){
                     continue;
                 }
-                bookKeepingAtANode(node);
-                if(node.frequency == 0){
-                    continue;
-                }   
-                node.scoreCalculator = new ScoreCalculatorNode(node.info.branches, taxas.dummyTaxonPartition, this.dummyTaxaGains);
-                double score = node.scoreCalculator.score();
-                var branchGains = node.scoreCalculator.gain(score, node.frequency);
-                node.scoreCalculator.calcDummyTaxaGains(score, node.frequency);
-                
-                score *= node.frequency;
-                // System.out.println(score);
-                totalScore += score;
-
-
-                var childs = node.childs;
-                for(int i = 0; i < 2; ++i){
-                    Utility.subArrayToFirst(branchGains[i], branchGains[2]);
-                    childs.get(i).info.gainsForSubTree = branchGains[i];
+                if(!bookKeepingAtANode(node)){
+                    this.nodesForScore.add(node);
                 }
-                Utility.addArrayToFirst(this.gainsToAll, branchGains[2]);
             }
-            for (int i = gt.topSortedNodes.size() - 1; i > -1; i--) {
-                var node = gt.topSortedNodes.get(i);
-                if(node.isLeaf() && taxas.isInRealTaxa(node.taxon.id)){
+        }
+    }
 
+    public double calculateScoreAndGains(){
+        double totalScore = 0;
+        this.gainsToAll = new double[2];
+        
+        this.realTaxaGains = new double[taxas.realTaxonCount][2];
+        this.dummyTaxaGains = new double[taxas.dummyTaxonCount];
+
+
+        for(var node : this.nodesForScore){
+
+            node.scoreCalculator = new ScoreCalculatorNode(node.info.branches, taxas.dummyTaxonPartition, this.dummyTaxaGains);
+            double score = node.scoreCalculator.score();
+            var branchGains = node.scoreCalculator.gainRealTaxa(score, node.frequency);
+            node.scoreCalculator.gainDummyTaxa(score, node.frequency);
+            
+            score *= node.frequency;
+            // System.out.println(score);
+            totalScore += score;
+
+
+            var childs = node.childs;
+            for(int i = 0; i < 2; ++i){
+                Utility.subArrayToFirst(branchGains[i], branchGains[2]);
+                childs.get(i).info.gainsForSubTree = branchGains[i];
+            }
+            Utility.addArrayToFirst(this.gainsToAll, branchGains[2]);
+        }
+        for(int i = this.nodesForScore.size() - 1; i > -1; --i){
+            var node = this.nodesForScore.get(i);
+            for (int j = 0; j < 2; j++) {
+                Utility.addArrayToFirst(node.childs.get(j).info.gainsForSubTree, node.info.gainsForSubTree);
+            }
+        }
+
+        for(var x : this.geneTrees.geneTrees){
+            for(var node : x.leaves){
+                if(taxas.isInRealTaxa(node.taxon.id)){
                     Utility.addArrayToFirst(
                         this.realTaxaGains[taxas.getRealTaxonIndex(node.taxon.id)], 
                         node.info.gainsForSubTree
                     );
-                    continue;
                 }
-                else if(!node.isLeaf() && !node.isRoot()){
 
-                    for (int j = 0; j < 2; j++) {
-                        Utility.addArrayToFirst(node.childs.get(j).info.gainsForSubTree, node.info.gainsForSubTree);
-                    }
-                }
             }
         }
+
+        // for (int i = gt.topSortedNodes.size() - 1; i > -1; i--) {
+        //     var node = gt.topSortedNodes.get(i);
+        //     if(node.isLeaf() && taxas.isInRealTaxa(node.taxon.id)){
+
+        //         Utility.addArrayToFirst(
+        //             this.realTaxaGains[taxas.getRealTaxonIndex(node.taxon.id)], 
+        //             node.info.gainsForSubTree
+        //         );
+        //         continue;
+        //     }
+        //     else if(!node.isLeaf() && !node.isRoot()){
+
+        //         for (int j = 0; j < 2; j++) {
+        //             Utility.addArrayToFirst(node.childs.get(j).info.gainsForSubTree, node.info.gainsForSubTree);
+        //         }
+        //     }
+        // }
 
         long[] p = new long[2];
         for(int i = 0; i < 2; ++i){
@@ -176,7 +239,71 @@ public class BookKeepingPerLevel {
 
         return totalScore;
 
-    }    
+    }
+
+    private void updateTopBranchOnRealTaxonSwap(TreeNode node, int currPartition){
+        if(!node.isLeaf()){
+            if(node.scoreCalculator != null){
+                node.scoreCalculator.swapRealTaxa(2, currPartition);
+            }
+            else{
+                node.info.branches[2].swapRealTaxa(currPartition);
+            }
+            for(var x : node.childs){
+                updateTopBranchOnRealTaxonSwap(x, currPartition);
+            }
+        }
+    }
+        
+
+    public void swapRealTaxon(int index){
+        int partition = taxas.inWhichPartitionRealTaxonByIndex(index);
+        if(taxas.getTaxonCountInPartition(partition) < 3){
+            System.out.println("Should not be swapped");
+            System.exit(-1);
+        }
+
+        taxas.swapPartitionRealTaxon(index);
+
+        var rt = taxas.realTaxa[index];
+        int rtId = rt.id;
+        // System.out.println(rt.label);
+        for(var tree : this.geneTrees.geneTrees){
+            var node = tree.leaves[rtId];
+            System.out.println(node.taxon.label);
+            var parent = node.parent;
+
+            while(!parent.isRoot()){
+                for (int i = 0; i < 2; i++) {
+                    var currChild = parent.childs.get(i);
+                    if(currChild == node){
+                        if(parent.scoreCalculator == null){
+                            parent.info.branches[i].swapRealTaxa(partition);
+                        }
+                        else{
+                            parent.scoreCalculator.swapRealTaxa(i, partition);
+                        }
+                    }
+                    else{
+                        if(!currChild.isLeaf()){
+                            updateTopBranchOnRealTaxonSwap(currChild, partition);
+                        }
+                    }
+                }
+                node = parent;
+                parent = node.parent;
+            }
+            for(int i = 0; i < 2; ++i){
+                if(parent.childs.get(i) != node){
+                    updateTopBranchOnRealTaxonSwap(parent.childs.get(i), partition);
+                    break;
+                }
+            }
+
+        }
+
+        
+    }
 
 
 }
