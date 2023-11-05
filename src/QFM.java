@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -27,7 +28,7 @@ public class QFM {
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     int level;
-    
+    int mxItrCount = 20;
     // ConsensusTree cTree;
     IMakeParition makeParition;
 
@@ -63,7 +64,7 @@ public class QFM {
         makeParition = new ConsensusTreeFlat(line);
         scanner.close();
 
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), makeParition);
+        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), new HashMap<>(), makeParition);
         
 
         var x = recurse(partition);
@@ -111,10 +112,16 @@ public class QFM {
     }
 
     GeneTree recurse(BiPartition partition){
-        // System.out.println("level : " + level++);
+        System.out.println("level : " + level++);
         // System.out.println("Current Partition : \n" + partition );
         int step = 0;
+        int itr = 0;
         while(oneStep(partition)){
+            ++itr;
+            if(itr > mxItrCount){
+                System.out.println("Max Iteration Count Reached");
+                break;
+            }
             // System.out.println("step : " + step++);
         }
         // System.out.println("Refined Partition: \n" + partition);
@@ -137,7 +144,7 @@ public class QFM {
     boolean oneStep(BiPartition partition){
 
         ArrayList<Swap> swaps = new ArrayList<>();
-        int mxCg = 0;
+        double mxCg = 0;
         int mxcgi = -1;
 
         while(true){

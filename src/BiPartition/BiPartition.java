@@ -1,84 +1,48 @@
 package src.BiPartition;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import src.ConsensusTree.ConsensusTree;
 import src.ConsensusTree.IMakeParition;
+import src.QFM;
 import src.GeneTree.GeneTree;
 import src.GeneTree.TreeNode;
 
 
-
 public class BiPartition {
+    
     Map<String, Integer> realTaxaPartitionMap;
     Map<String, Integer> realTaxaToDummyTaxaMap;
-    public ArrayList<Set<String>> dummyTaxas;
+    ArrayList<Set<String>> dummyTaxas;
     Map<Integer, Integer> dummyTaxaPartitionMap;
-    int score;
+
+    double score;
     Map<String, Double> realTaxaGains;
     Map<Integer, Double> dummyTaxaGains;
-    int cg = 0;
+    double cg = 0;
     Set<String> realTaxaLocked;
     Set<Integer> dummyTaxaLocked;
     int[] partitionSize;
     boolean valid;
     ArrayList<Integer> dummyTaxaIds;
     int dtIdCurrPartition;
-    public Set<String> realTaxas;
+    Set<String> realTaxas;
     // ConsensusTree cTree;
     IMakeParition makeParition;
-
     Map<String,Double> divCoeffs;
 
-    
-    // 1. Add Map of taxa string to its division coefficient
-
-    public BiPartition(
-        Set<String> realTaxas, 
-        ArrayList<Set<String>> dummyTaxas, 
-        Map<String, Integer> realTaxaPartitionMap,
-        Map<Integer, Integer> dummyTaxaPartitionMap,
-        Map<String, Double> divCoeffs,
-        int[] partitionSize
-    ) {
-
-
-
-        realTaxaGains = new HashMap<>();
-        dummyTaxaGains = new HashMap<>();
-        realTaxaLocked = new HashSet<>();
-        dummyTaxaLocked = new HashSet<>();
-
-        this.partitionSize = partitionSize;
-        this.divCoeffs = divCoeffs;
-
-        this.dummyTaxas = dummyTaxas;
-        this.dtIdCurrPartition = -1;
-        this.realTaxas = realTaxas;
-
-        this.realTaxaPartitionMap = realTaxaPartitionMap;
-        this.dummyTaxaPartitionMap = dummyTaxaPartitionMap;
-
-
-        if(realTaxas.size() + dummyTaxas.size() < 4){
-            this.valid = false;
-
-            return;
-        }
-        else
-            this.valid = true;
-
-    }
-
+    final boolean normFlat = false;
 
 
     public BiPartition(
         Set<String> realTaxas, 
         ArrayList<Set<String>> dummyTaxas, 
+        ArrayList<Integer> dummyTaxaIds,
+        Map<String,Double> divCoeffs,
         IMakeParition makeParition
     ) {
 
@@ -110,8 +74,10 @@ public class BiPartition {
         realTaxaToDummyTaxaMap = new HashMap<>();
         this.dummyTaxas = dummyTaxas;
         dummyTaxaPartitionMap = new HashMap<>();
+        this.dummyTaxaIds = dummyTaxaIds;
         this.dtIdCurrPartition = -1;
         this.realTaxas = realTaxas;
+        this.divCoeffs = divCoeffs;
 
         if(realTaxas.size() + dummyTaxas.size() < 4){
             this.valid = false;
@@ -199,10 +165,6 @@ public class BiPartition {
 
     public double getGainRealTaxa(String taxa) {
         return realTaxaGains.get(taxa);
-    }
-
-    public double getGainDummyTaxa(int index){
-        return dummyTaxaGains.get(index);
     }
 
     public void resetGains() {
@@ -300,7 +262,7 @@ public class BiPartition {
                 && dummyTaxaLocked.size() == dummyTaxaPartitionMap.size());
     }
 
-    public int getCg() {
+    public double getCg() {
         return this.cg;
     }
 
@@ -315,8 +277,6 @@ public class BiPartition {
             // dummyTaxaPartitionMap.put(sp.dti, (p + 1) % 2);
         }
     }
-
-    // 2. Calculate division coeffs for left and right partitions
 
     public BiPartition[] divide() {
         BiPartition[] biPartitions = new BiPartition[2];
@@ -333,9 +293,15 @@ public class BiPartition {
         newDtList.add(new HashSet<>());
         newDtList.add(new HashSet<>());
 
-        ArrayList<Map<String, Double>> divCoeffs = new ArrayList<>();
-        divCoeffs.add(new HashMap<String, Double>());
-        divCoeffs.add(new HashMap<String, Double>());
+        ArrayList<ArrayList<Integer>> dtIdsList = new ArrayList<>();
+        dtIdsList.add(new ArrayList<>());
+        dtIdsList.add(new ArrayList<>());
+
+        ArrayList<Map<String,Double>> divCoeffsList = new ArrayList<>();
+        divCoeffsList.add(new HashMap<>());
+        divCoeffsList.add(new HashMap<>());
+
+        
 
 
 
@@ -347,11 +313,52 @@ public class BiPartition {
         for (var x : dummyTaxaPartitionMap.entrySet()) {
             dtList.get(x.getValue()).add(dummyTaxas.get(x.getKey()));
             newDtList.get((x.getValue() + 1) % 2).addAll(dummyTaxas.get(x.getKey()));
+            dtIdsList.get(x.getValue()).add(dummyTaxaIds.get(x.getKey()));
+
+
+            for(var y : dummyTaxas.get(x.getKey())){
+                divCoeffsList.get(x.getValue()).put(y, divCoeffs.get(y));
+            }
         }
 
+        this.dtIdCurrPartition = QFM.getDummyId();
+
+        int[] sz = new int[2];
+        if(!normFlat){
+
+            sz[0] = rtList.get(0).size() + dtList.get(0).size();
+            sz[1] = rtList.get(1).size() + dtList.get(1).size();
+        }
+        else{
+            for(int i = 0; i < 2; ++i){
+                sz[i] = rtList.get(i).size();
+                for(var x : dtList.get(i)){
+                    sz[i] += x.size();
+                } 
+            }
+        }
+
+        for(int i = 0; i < 2; ++i){
+            for(var x : rtList.get(i)){
+                divCoeffsList.get(1 - i).put(x, (double) sz[i]);
+            }
+            for(var x : dtList.get(i)){
+                for(var y : x){
+                    if(!normFlat)
+                        divCoeffsList.get(1 - i).put(y, (double) sz[i] * divCoeffs.get(y));
+                    else
+                        divCoeffsList.get(1 - i).put(y, (double) sz[i]);
+
+                }
+            }
+        }
+        
 
         for (int i = 0; i < 2; ++i) {
             dtList.get(i).add(newDtList.get(i));
+            dtIdsList.get(i).add(this.dtIdCurrPartition);
+            
+            
             if(rtList.get(i).size() + dtList.get(i).size() < 3){
                 System.out.println("SINGLETON PARTITION");
                 System.exit(-1);
@@ -359,6 +366,8 @@ public class BiPartition {
             biPartitions[i] = new BiPartition(
                     rtList.get(i),
                     dtList.get(i),
+                    dtIdsList.get(i),
+                    divCoeffsList.get(i),
                     this.makeParition
             );
         }

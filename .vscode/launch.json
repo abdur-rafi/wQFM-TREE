@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "main",
+            "request": "launch",
+            "mainClass": "src.v2.main",
+            "projectName": "E-WQFM_731a4073"
+        },
+        {
+            "type": "java",
             "name": "DebugMain",
             "request": "launch",
             "mainClass": "src.DebugMain",

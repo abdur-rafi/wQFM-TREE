@@ -529,3 +529,256 @@ Analysis started: 19-Sep-2023 12:41:33 / finished: 19-Sep-2023 12:41:33
 
 Elapsed time: 0.022 seconds
 
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 03-Nov-2023 17:55:03 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/gtree_11tax_est_5genes_R1.tre --prefix ./input/5genes
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699012503
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/gtree_11tax_est_5genes_R1.tre
+Loaded 5 trees with 11 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.log
+
+Analysis started: 03-Nov-2023 17:55:03 / finished: 03-Nov-2023 17:55:03
+
+Elapsed time: 0.037 seconds
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:03:37 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/gtree_11tax_est_5genes_R1.tre --prefix ./input/5genes
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699077817
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/gtree_11tax_est_5genes_R1.tre
+Loaded 5 trees with 11 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.log
+
+Analysis started: 04-Nov-2023 12:03:37 / finished: 04-Nov-2023 12:03:37
+
+Elapsed time: 0.059 seconds
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:07:05 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699078025
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+
+ERROR: ERROR reading tree file (LIBPLL-111): syntax error, unexpected COMMA, expecting SEMICOLON. (line 1 column 5-6)
+
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:09:11 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699078151
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 1 trees with 4 taxa.
+
+
+ERROR: Cannot consensus tree since tree file contains fewer than 2 trees!
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:09:36 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699078176
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 2 trees with 4 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.log
+
+Analysis started: 04-Nov-2023 12:09:36 / finished: 04-Nov-2023 12:09:37
+
+Elapsed time: 0.021 seconds
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:10:42 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699078242
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 2 trees with 4 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.log
+
+Analysis started: 04-Nov-2023 12:10:42 / finished: 04-Nov-2023 12:10:42
+
+Elapsed time: 0.022 seconds
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 12:11:27 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699078287
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 2 trees with 4 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.log
+
+Analysis started: 04-Nov-2023 12:11:27 / finished: 04-Nov-2023 12:11:27
+
+Elapsed time: 0.023 seconds
+
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 18:38:41 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699101521
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 2 trees with 4 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.log
+
+Analysis started: 04-Nov-2023 18:38:41 / finished: 04-Nov-2023 18:38:41
+
+Elapsed time: 0.050 seconds
+

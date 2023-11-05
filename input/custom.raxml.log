@@ -1,0 +1,33 @@
+
+RAxML-NG v. 1.2.0 released on 09.05.2023 by The Exelixis Lab.
+Developed by: Alexey M. Kozlov and Alexandros Stamatakis.
+Contributors: Diego Darriba, Tomas Flouri, Benoit Morel, Sarah Lutteropp, Ben Bettisworth, Julia Haag, Anastasis Togkousidis.
+Latest version: https://github.com/amkozlov/raxml-ng
+Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!forum/raxml
+
+System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
+
+RAxML-NG was called at 04-Nov-2023 18:38:41 as follows:
+
+./raxml-ng --redo --consense MRE --tree ./input/custom.tre --prefix ./input/custom
+
+Analysis options:
+  run mode: Build consensus tree (MRE)
+  start tree(s): user
+  random seed: 1699101521
+  SIMD kernels: AVX2
+  parallelization: coarse-grained (auto), PTHREADS (auto)
+
+WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
+
+Reading input trees from file: ./input/custom.tre
+Loaded 2 trees with 4 taxa.
+
+MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.consensusTreeMRE
+
+Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/custom.raxml.log
+
+Analysis started: 04-Nov-2023 18:38:41 / finished: 04-Nov-2023 18:38:41
+
+Elapsed time: 0.050 seconds
+

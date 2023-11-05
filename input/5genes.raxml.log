@@ -7,27 +7,27 @@ Questions/problems/suggestions? Please visit: https://groups.google.com/forum/#!
 
 System: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz, 4 cores, 7 GB RAM
 
-RAxML-NG was called at 19-Sep-2023 12:41:33 as follows:
+RAxML-NG was called at 04-Nov-2023 12:03:37 as follows:
 
 ./raxml-ng --redo --consense MRE --tree ./input/gtree_11tax_est_5genes_R1.tre --prefix ./input/5genes
 
 Analysis options:
   run mode: Build consensus tree (MRE)
   start tree(s): user
-  random seed: 1695105693
+  random seed: 1699077817
   SIMD kernels: AVX2
   parallelization: coarse-grained (auto), PTHREADS (auto)
 
 WARNING: Running in REDO mode: existing checkpoints are ignored, and all result files will be overwritten!
 
 Reading input trees from file: ./input/gtree_11tax_est_5genes_R1.tre
-Loaded 2 trees with 11 taxa.
+Loaded 5 trees with 11 taxa.
 
 MRE consensus tree saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.consensusTreeMRE
 
 Execution log saved to: /home/abdur-rafi/Academic/Thesis/E-WQFM/input/5genes.raxml.log
 
-Analysis started: 19-Sep-2023 12:41:33 / finished: 19-Sep-2023 12:41:33
+Analysis started: 04-Nov-2023 12:03:37 / finished: 04-Nov-2023 12:03:37
 
-Elapsed time: 0.022 seconds
+Elapsed time: 0.059 seconds
 

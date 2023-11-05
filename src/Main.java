@@ -12,6 +12,7 @@ public class Main {
         String consensusFilePath = args[1];
         String outputFilePath = args[2];
 
+        System.out.println("RUNNING");
 
         new QFM(inputFilePath,consensusFilePath,outputFilePath);
 

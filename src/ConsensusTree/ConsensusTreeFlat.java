@@ -84,7 +84,7 @@ public class ConsensusTreeFlat implements IMakeParition {
 
         for(var x : consensusTree.nodes){
             x.info = new Info();
-            x.info.dummyTaxaCountIndividual = new int[dummyTaxas.size()];
+            x.info.dummyTaxaCountIndividual = new double[dummyTaxas.size()];
             x.info.realTaxaCountTotal = new int[1];
         }
 
