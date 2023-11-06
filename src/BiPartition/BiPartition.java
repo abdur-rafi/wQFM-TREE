@@ -35,7 +35,7 @@ public class BiPartition {
     IMakeParition makeParition;
     Map<String,Double> divCoeffs;
 
-    final boolean normFlat = false;
+    final boolean normFlat = true;
 
 
     public BiPartition(

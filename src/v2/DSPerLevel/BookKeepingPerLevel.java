@@ -23,6 +23,8 @@ public class BookKeepingPerLevel {
     double[] gainsToAll;
 
     public ArrayList<TreeNode> nodesForScore;
+    public ArrayList<TreeNode> nodesForGains;
+
 
     public BookKeepingPerLevel(GeneTrees geneTrees, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
 
@@ -34,6 +36,7 @@ public class BookKeepingPerLevel {
 
         this.gainsToAll = new double[2];
         this.nodesForScore = new ArrayList<>();
+        this.nodesForGains = new ArrayList<>();
         initialBookKeeping();
     }
 
@@ -123,6 +126,7 @@ public class BookKeepingPerLevel {
                 if(!bookKeepingAtANode(node)){
                     this.nodesForScore.add(node);
                 }
+                this.nodesForGains.add(node);
             }
         }
     }
@@ -154,8 +158,8 @@ public class BookKeepingPerLevel {
             }
             Utility.addArrayToFirst(this.gainsToAll, branchGains[2]);
         }
-        for(int i = this.nodesForScore.size() - 1; i > -1; --i){
-            var node = this.nodesForScore.get(i);
+        for(int i = this.nodesForGains.size() - 1; i > -1; --i){
+            var node = this.nodesForGains.get(i);
             for (int j = 0; j < 2; j++) {
                 Utility.addArrayToFirst(node.childs.get(j).info.gainsForSubTree, node.info.gainsForSubTree);
             }

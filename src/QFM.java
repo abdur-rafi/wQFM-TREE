@@ -28,7 +28,7 @@ public class QFM {
     ArrayList<GeneTree> geneTrees;
     ArrayList<BiPartitionTreeSpecific> biPartitions;
     int level;
-    int mxItrCount = 20;
+    int mxItrCount = 50;
     // ConsensusTree cTree;
     IMakeParition makeParition;
 
