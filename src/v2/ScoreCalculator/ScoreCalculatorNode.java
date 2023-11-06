@@ -12,9 +12,8 @@ public class ScoreCalculatorNode {
     double[] scoresOfBranches;
     // g1. should be double
     double[][] gainsOfBranches;
-    double[] dummyTaxaGains;
 
-    public ScoreCalculatorNode(Branch[] b, short[] dummyTaxaToPartitionMap, double[] dummyTaxaGains) {
+    public ScoreCalculatorNode(Branch[] b, short[] dummyTaxaToPartitionMap) {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
@@ -39,7 +38,6 @@ public class ScoreCalculatorNode {
             // 9. subs[i][1] += realTaxaCount in 2nd partition in ith branch
         }
         gainsOfBranches = new double[3][2];
-        this.dummyTaxaGains = dummyTaxaGains;
 
     }
 
@@ -89,7 +87,7 @@ public class ScoreCalculatorNode {
         return (a1 * a2 - subs[0]) * ((( b3 * b3 ) - subs[1] ) / 2);
     }
 
-    public void swapRealTaxa(int branchIndex, int currPartition){
+    public void swapRealTaxon(int branchIndex, int currPartition){
 
         branches[branchIndex].swapRealTaxa(currPartition);
 
@@ -100,6 +98,31 @@ public class ScoreCalculatorNode {
             this.subs[branchIndex][1] -= 1;
         }
 
+    }
+
+    public void swapDummyTaxon(int dummyIndex, int currPartition){
+            
+        int switchedPartition = 1 - currPartition;
+        double currDummyCountCurrBranch, currDummyCountNextBranch;
+
+        for(int i = 0; i < 3; ++i){
+
+            branches[i].swapDummyTaxon(dummyIndex, currPartition);
+            currDummyCountCurrBranch = branches[i].dummyTaxaWeightsIndividual[dummyIndex];
+            currDummyCountNextBranch = branches[(i + 1) % 3].dummyTaxaWeightsIndividual[dummyIndex];
+
+            if(switchedPartition == 1){                 
+                this.subs[i][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
+                // 
+                this.subs[i][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
+            }
+            else{
+                this.subs[i][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
+                this.subs[i][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
+            }
+
+        }
+            
     }
 
 
@@ -135,7 +158,7 @@ public class ScoreCalculatorNode {
         }
     }
 
-    public void gainDummyTaxa(double originalScore, double multiplier){
+    public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains){
 
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
@@ -163,7 +186,7 @@ public class ScoreCalculatorNode {
                 
             }
             double newScore = score();
-            this.dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
+            dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
 
             for(int j = 0; j < 3; ++j){
                 currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];

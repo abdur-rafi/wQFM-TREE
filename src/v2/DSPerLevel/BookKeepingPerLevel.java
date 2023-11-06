@@ -3,8 +3,11 @@ package src.v2.DSPerLevel;
 import java.util.ArrayList;
 
 import src.Utility;
+import src.v2.InitialPartition.MakePartition;
 import src.v2.PreProcessing.GeneTrees;
 import src.v2.ScoreCalculator.ScoreCalculatorNode;
+import src.v2.Taxon.DummyTaxon;
+import src.v2.Taxon.RealTaxon;
 import src.v2.Tree.Branch;
 import src.v2.Tree.Info;
 import src.v2.Tree.TreeNode;
@@ -47,7 +50,9 @@ public class BookKeepingPerLevel {
         int[] nonZeroDummyIndex = new int[2];
 
         for(int i = 0; i < 3; ++i){
-            branches[i] = new Branch(new int[2], new double[taxas.dummyTaxonCount], new double[2]);
+            // branches[i] = new Branch(new int[2], new double[taxas.dummyTaxonCount], new double[2]);
+            branches[i] = new Branch(taxas.dummyTaxonCount);
+
         }
         for(int i = 0; i < 2; ++i){
             var child = node.childs.get(i);
@@ -61,7 +66,7 @@ public class BookKeepingPerLevel {
                     double weight = taxas.getWeight(taxonId);
                     // System.out.println("weight : " + weight);
                     int partition = taxas.inWhichPartition(taxonId);
-                    branches[i].dummyTaxaWeightSums[partition] += weight;
+                    // branches[i].dummyTaxaWeightSums[partition] += weight;
                     branches[i].dummyTaxaWeightsIndividual[taxas.inWhichDummyTaxa(taxonId)] += weight;
                     branches[i].totalTaxaCounts[partition] += weight;
 
@@ -72,8 +77,10 @@ public class BookKeepingPerLevel {
             else{
                 for(int p = 0; p < 2; ++p){
                     branches[i].realTaxaCounts[p] += taxas.getRealTaxonCountInPartition(p) - child.info.branches[2].realTaxaCounts[p];
-                    branches[i].dummyTaxaWeightSums[p] += taxas.getDummyTaxonCountInPartition(p) - child.info.branches[2].dummyTaxaWeightSums[p];
-                    branches[i].totalTaxaCounts[p] += branches[i].realTaxaCounts[p] + branches[i].dummyTaxaWeightSums[p];
+                    // branches[i].dummyTaxaWeightSums[p] += taxas.getDummyTaxonCountInPartition(p) - child.info.branches[2].dummyTaxaWeightSums[p];
+                    // branches[i].totalTaxaCounts[p] += branches[i].realTaxaCounts[p] + branches[i].dummyTaxaWeightSums[p];
+                    branches[i].totalTaxaCounts[p] = taxas.getTaxonCountInPartition(p) -  child.info.branches[2].totalTaxaCounts[p];
+
                 }
                 for(int j = 0; j < taxas.dummyTaxonCount; ++j){
                     branches[i].dummyTaxaWeightsIndividual[j] += 1. - child.info.branches[2].dummyTaxaWeightsIndividual[j];
@@ -90,8 +97,10 @@ public class BookKeepingPerLevel {
         }
         for(int p = 0; p < 2; ++p){
             branches[2].realTaxaCounts[p] = taxas.getRealTaxonCountInPartition(p) - branches[0].realTaxaCounts[p] - branches[1].realTaxaCounts[p];
-            branches[2].dummyTaxaWeightSums[p] = taxas.getDummyTaxonCountInPartition(p) - branches[0].dummyTaxaWeightSums[p] - branches[1].dummyTaxaWeightSums[p];
-            branches[2].totalTaxaCounts[p] = branches[2].realTaxaCounts[p] + branches[2].dummyTaxaWeightSums[p];
+            // branches[2].dummyTaxaWeightSums[p] = taxas.getDummyTaxonCountInPartition(p) - branches[0].dummyTaxaWeightSums[p] - branches[1].dummyTaxaWeightSums[p];
+            // branches[2].totalTaxaCounts[p] = branches[2].realTaxaCounts[p] + branches[2].dummyTaxaWeightSums[p];
+            branches[2].totalTaxaCounts[p] = taxas.getTaxonCountInPartition(p) - branches[0].totalTaxaCounts[p] - branches[1].totalTaxaCounts[p];
+
         }
         if(node.frequency == 0){
             skip = true;
@@ -108,7 +117,7 @@ public class BookKeepingPerLevel {
         }
 
         node.info = new Info(branches);
-        node.scoreCalculator = null;
+        // node.scoreCalculator = null;
 
         return skip;
     }
@@ -116,6 +125,7 @@ public class BookKeepingPerLevel {
     private void initialBookKeeping(){
         for(var gt : geneTrees.geneTrees){
             for(var node : gt.topSortedNodes){
+
                 if(node.isLeaf()){
                     node.info = new Info(null);
                     continue;
@@ -141,10 +151,10 @@ public class BookKeepingPerLevel {
 
         for(var node : this.nodesForScore){
 
-            node.scoreCalculator = new ScoreCalculatorNode(node.info.branches, taxas.dummyTaxonPartition, this.dummyTaxaGains);
-            double score = node.scoreCalculator.score();
-            var branchGains = node.scoreCalculator.gainRealTaxa(score, node.frequency);
-            node.scoreCalculator.gainDummyTaxa(score, node.frequency);
+            node.info.scoreCalculator = new ScoreCalculatorNode(node.info.branches, taxas.dummyTaxonPartition);
+            double score = node.info.scoreCalculator.score();
+            var branchGains = node.info.scoreCalculator.gainRealTaxa(score, node.frequency);
+            node.info.scoreCalculator.gainDummyTaxa(score, node.frequency, this.dummyTaxaGains);
             
             score *= node.frequency;
             // System.out.println(score);
@@ -161,8 +171,12 @@ public class BookKeepingPerLevel {
         for(int i = this.nodesForGains.size() - 1; i > -1; --i){
             var node = this.nodesForGains.get(i);
             for (int j = 0; j < 2; j++) {
-                Utility.addArrayToFirst(node.childs.get(j).info.gainsForSubTree, node.info.gainsForSubTree);
+                var child = node.childs.get(j);
+                Utility.addArrayToFirst(child.info.gainsForSubTree, node.info.gainsForSubTree);
             }
+            node.info.gainsForSubTree[0] = 0;
+            node.info.gainsForSubTree[1] = 0;
+
         }
 
         for(var x : this.geneTrees.geneTrees){
@@ -173,6 +187,8 @@ public class BookKeepingPerLevel {
                         node.info.gainsForSubTree
                     );
                 }
+                node.info.gainsForSubTree[0] = 0;
+                node.info.gainsForSubTree[1] = 0;
 
             }
         }
@@ -247,8 +263,8 @@ public class BookKeepingPerLevel {
 
     private void updateTopBranchOnRealTaxonSwap(TreeNode node, int currPartition){
         if(!node.isLeaf()){
-            if(node.scoreCalculator != null){
-                node.scoreCalculator.swapRealTaxa(2, currPartition);
+            if(node.info.scoreCalculator != null){
+                node.info.scoreCalculator.swapRealTaxon(2, currPartition);
             }
             else{
                 node.info.branches[2].swapRealTaxa(currPartition);
@@ -274,18 +290,16 @@ public class BookKeepingPerLevel {
         // System.out.println(rt.label);
         for(var tree : this.geneTrees.geneTrees){
             var node = tree.leaves[rtId];
-            System.out.println(node.taxon.label);
             var parent = node.parent;
-
             while(!parent.isRoot()){
                 for (int i = 0; i < 2; i++) {
                     var currChild = parent.childs.get(i);
                     if(currChild == node){
-                        if(parent.scoreCalculator == null){
+                        if(parent.info.scoreCalculator == null){
                             parent.info.branches[i].swapRealTaxa(partition);
                         }
                         else{
-                            parent.scoreCalculator.swapRealTaxa(i, partition);
+                            parent.info.scoreCalculator.swapRealTaxon(i, partition);
                         }
                     }
                     else{
@@ -307,6 +321,66 @@ public class BookKeepingPerLevel {
         }
 
         
+    }
+
+    public void swapDummyTaxon(int index){
+        int partition = taxas.inWhichPartitionDummyTaxonByIndex(index);
+        if(taxas.getTaxonCountInPartition(partition) < 3){
+            System.out.println("Should not be swapped");
+            System.exit(-1);
+        }
+        taxas.swapPartitionDummyTaxon(index);
+        for(var x : this.nodesForScore){
+            x.info.scoreCalculator.swapDummyTaxon(index, partition);
+        }
+
+    }
+
+    public BookKeepingPerLevel[] divide(MakePartition makePartition){
+        RealTaxon[][] rts = new RealTaxon[2][];
+        DummyTaxon[][] dts = new DummyTaxon[2][];
+
+        short[][] rtsPart = new short[2][];
+        short[][] dtsPart = new short[2][];
+
+
+        for(int i = 0; i < 2; ++i){
+            rts[i] = new RealTaxon[taxas.getRealTaxonCountInPartition(i)];
+            dts[i] = new DummyTaxon[taxas.getDummyTaxonCountInPartition(i) + 1];
+            var x = makePartition.makePartition(rts[i], dts[i]);
+            rtsPart[i] = x.realTaxonPartition;
+            dtsPart[i] = x.dummyTaxonPartition;
+        }
+
+        int[] index = new int[2];
+
+        for(var x : taxas.realTaxa){
+            int part = taxas.inWhichPartition(x.id);
+            rts[part][index[part]++] = x;
+        }
+        index[0] = 0;
+        index[1] = 0;
+        int i = 0;
+        for(var x : taxas.dummyTaxa){
+            int part = taxas.inWhichPartitionDummyTaxonByIndex(i++);
+            dts[part][index[part]++] = x;
+        }
+
+
+        // ith dummy taxon for ith partition
+        DummyTaxon[] newDt = new DummyTaxon[2];
+        
+        
+
+        BookKeepingPerLevel[] bookKeepingPerLevels = new BookKeepingPerLevel[2];
+        for( i = 0; i < 2; ++i){
+            newDt[i] = new DummyTaxon(rts[1 - i], dts[1 - i]);
+            dts[i][dts.length - 1] = newDt[i];
+            var x = new TaxaPerLevelWithPartition(rts[i], dts[i], rtsPart[i], dtsPart[i], this.geneTrees.realTaxaCount);
+            bookKeepingPerLevels[i] = new BookKeepingPerLevel(this.geneTrees,x);
+        }
+
+        return bookKeepingPerLevels;
     }
 
 

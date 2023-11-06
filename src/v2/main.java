@@ -14,7 +14,7 @@ public class main {
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-        tc1(trees);
+        tc5(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
@@ -183,19 +183,29 @@ public class main {
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
-        realTaxaPartition[3] = 0;
+        realTaxaPartition[3] = 1;
         realTaxaPartition[4] = 1;
 
         short[] dummyTaxaPartition = new short[1];
-        dummyTaxaPartition[0] = 1;
+        dummyTaxaPartition[0] = 0;
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, dt, realTaxaPartition, dummyTaxaPartition, 11);
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        System.out.println(bookKeepingPerLevel.calculateScoreAndGains());
+        bookKeepingPerLevel.calculateScoreAndGains();
 
-        bookKeepingPerLevel.swapRealTaxon(3);
+        // bookKeepingPerLevel.swapRealTaxon(3);
+        // bookKeepingPerLevel.calculateScoreAndGains();
+        // bookKeepingPerLevel.swapRealTaxon(3);   
+        // bookKeepingPerLevel.calculateScoreAndGains();
+
+        // bookKeepingPerLevel.swapRealTaxon(3);
+        // bookKeepingPerLevel.calculateScoreAndGains();
+        
+        bookKeepingPerLevel.swapDummyTaxon(0);  
+        bookKeepingPerLevel.calculateScoreAndGains();
+        bookKeepingPerLevel.swapDummyTaxon(0);  
         bookKeepingPerLevel.calculateScoreAndGains();
     }
 

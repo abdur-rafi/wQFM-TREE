@@ -39,6 +39,8 @@ public class TaxaPerLevelWithPartition {
     private int[] realTaxonCountsInPartitions;
     private int[] dummyTaxonCountsInPartitions;
 
+    public boolean smallestUnit;
+
     public TaxaPerLevelWithPartition( RealTaxon[] rts, DummyTaxon[] dts, short[] rtp, short[] dtp, int rtc){
         this.realTaxa = rts;
         this.dummyTaxa = dts;
@@ -47,6 +49,13 @@ public class TaxaPerLevelWithPartition {
         this.realTaxonCount = rts.length;
         this.dummyTaxonCount = dts.length;
         this.allRealTaxaCount = rtc;
+
+        if(rts.length + dts.length < 4){
+            this.smallestUnit = true;
+            return;
+        }
+        this.smallestUnit = false;
+        
         isInRealTaxa = new boolean[this.allRealTaxaCount];
         this.coeffs = new double[this.allRealTaxaCount];
         this.realTaxonIndex = new int[this.allRealTaxaCount];
@@ -143,5 +152,21 @@ public class TaxaPerLevelWithPartition {
         this.realTaxonCountsInPartitions[switchedPartition]++;
     }
     
+
+    public void swapPartitionDummyTaxon(int index){
+        short currPartition = this.dummyTaxonPartition[index];
+        short switchedPartition = (short) (1 - currPartition);
+
+        this.dummyTaxonPartition[index] = switchedPartition;
+        
+        for(var x : this.dummyTaxa[index].flattenedRealTaxa){
+            this.inWhichPartition[x.id] = switchedPartition;
+        }
+        
+        this.taxonCountsInPartitions[currPartition]--;
+        this.taxonCountsInPartitions[switchedPartition]++;
+        this.dummyTaxonCountsInPartitions[currPartition]--;
+        this.dummyTaxonCountsInPartitions[switchedPartition]++;
+    }
 
 }

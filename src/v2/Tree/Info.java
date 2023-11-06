@@ -1,5 +1,6 @@
 package src.v2.Tree;
 
+import src.v2.ScoreCalculator.ScoreCalculatorNode;
 
 public class Info {
 
@@ -11,9 +12,13 @@ public class Info {
 
     public Branch[] branches;
 
+    public ScoreCalculatorNode scoreCalculator;
+
+
     public Info(Branch[] b){
         this.branches = b;
         this.gainsForSubTree = new double[2];
+        this.scoreCalculator = null;
     }    
 
 
