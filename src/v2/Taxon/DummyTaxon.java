@@ -6,6 +6,8 @@ import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
 
 public class DummyTaxon {
 
+    private static int idCounter = 0;
+
     public RealTaxon[] realTaxa;
 
     public DummyTaxon[] dummyTaxa;
@@ -17,6 +19,8 @@ public class DummyTaxon {
     public int realTaxonCount;
 
     public int flattenedTaxonCount;
+
+    public int id;
 
 
     public DummyTaxon(RealTaxon[] rts, DummyTaxon[] dts){
@@ -42,6 +46,8 @@ public class DummyTaxon {
                 i++;
             }
         }
+
+        this.id = idCounter++;
 
     }
 

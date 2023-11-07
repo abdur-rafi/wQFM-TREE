@@ -152,6 +152,10 @@ public class Tree {
         parseFromNewick(newickLine);
     }
 
+    public Tree(){
+        taxaMap = null;
+        nodes = new ArrayList<>();
+    }
 
 
     public int dfs(TreeNode node, ArrayList<Integer> subTreeNodeCount){

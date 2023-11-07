@@ -4,17 +4,22 @@ import java.io.FileNotFoundException;
 
 import src.v2.DSPerLevel.BookKeepingPerLevel;
 import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
+import src.v2.InitialPartition.RandPartition;
 import src.v2.PreProcessing.GeneTrees;
 import src.v2.Taxon.DummyTaxon;
 import src.v2.Taxon.RealTaxon;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-        tc5(trees);
+        
+        var qfm = new QFM(trees, trees.taxa, new RandPartition());
+        
+        System.out.println(qfm.runWQFM().root);
+        // tc5(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
@@ -55,7 +60,10 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        System.out.println(bookKeepingPerLevel.calculateScoreAndGains());
+        double[][] rtGains = new double[5][2];
+        double[] dtGains = new double[1];
+
+        System.out.println(bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
     }
 
 
@@ -103,7 +111,12 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        bookKeepingPerLevel.calculateScoreAndGains();
+
+        double[][] rtGains = new double[4][2];
+        double[] dtGains = new double[1];
+
+
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
     }
 
 
@@ -154,7 +167,12 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        bookKeepingPerLevel.calculateScoreAndGains();
+
+        double[][] rtGains = new double[2][2];
+        double[] dtGains = new double[2];
+
+
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
     }
 
 
@@ -193,7 +211,12 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        bookKeepingPerLevel.calculateScoreAndGains();
+
+        double[][] rtGains = new double[5][2];
+        double[] dtGains = new double[1];
+
+
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
 
         // bookKeepingPerLevel.swapRealTaxon(3);
         // bookKeepingPerLevel.calculateScoreAndGains();
@@ -202,11 +225,19 @@ public class main {
 
         // bookKeepingPerLevel.swapRealTaxon(3);
         // bookKeepingPerLevel.calculateScoreAndGains();
-        
-        bookKeepingPerLevel.swapDummyTaxon(0);  
-        bookKeepingPerLevel.calculateScoreAndGains();
-        bookKeepingPerLevel.swapDummyTaxon(0);  
-        bookKeepingPerLevel.calculateScoreAndGains();
+
+        rtGains = new double[5][2];
+        dtGains = new double[1];
+
+        bookKeepingPerLevel.swapTaxon(0, true);  
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
+
+        rtGains = new double[5][2];
+        dtGains = new double[1];
+
+
+        bookKeepingPerLevel.swapTaxon(0, true);  
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
     }
 
 
@@ -254,9 +285,17 @@ public class main {
 
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
 
-        bookKeepingPerLevel.calculateScoreAndGains();
-        bookKeepingPerLevel.swapRealTaxon(0);
-        bookKeepingPerLevel.calculateScoreAndGains();
+        double[][] rtGains = new double[4][2];
+        double[] dtGains = new double[1];
+        
+
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
+        
+        rtGains = new double[2][2];
+        dtGains = new double[2];
+        
+        bookKeepingPerLevel.swapTaxon(0, false);
+        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
     }
 
     

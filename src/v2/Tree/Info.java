@@ -24,10 +24,19 @@ public class Info {
 
 
 
+    // for consensus tree
     public Info(){
         consensusScore = 0;
     }
 
     public double consensusScore;
+
+
+    // for constructing species tree
+    public int dummyTaxonId;
+
+    public Info(int dummyTaxonId){
+        this.dummyTaxonId = dummyTaxonId;
+    }
 
 }

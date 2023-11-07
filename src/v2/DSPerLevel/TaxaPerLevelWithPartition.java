@@ -1,7 +1,12 @@
 package src.v2.DSPerLevel;
 
+import java.util.ArrayList;
+
 import src.v2.Taxon.DummyTaxon;
 import src.v2.Taxon.RealTaxon;
+import src.v2.Tree.Info;
+import src.v2.Tree.Tree;
+import src.v2.Tree.TreeNode;
 
 public class TaxaPerLevelWithPartition {
 
@@ -56,7 +61,7 @@ public class TaxaPerLevelWithPartition {
         }
         this.smallestUnit = false;
         
-        isInRealTaxa = new boolean[this.allRealTaxaCount];
+        this.isInRealTaxa = new boolean[this.allRealTaxaCount];
         this.coeffs = new double[this.allRealTaxaCount];
         this.realTaxonIndex = new int[this.allRealTaxaCount];
         this.taxonCountsInPartitions = new int[2];
@@ -167,6 +172,28 @@ public class TaxaPerLevelWithPartition {
         this.taxonCountsInPartitions[switchedPartition]++;
         this.dummyTaxonCountsInPartitions[currPartition]--;
         this.dummyTaxonCountsInPartitions[switchedPartition]++;
+    }
+
+
+    public Tree createStar(){
+        if(!smallestUnit){
+            System.out.println("Create Star should be called only on smallest unit\n");
+            System.exit(-1);
+        }
+
+        Tree t = new Tree();
+        ArrayList<TreeNode> childs = new ArrayList<>();
+        for(var x : this.realTaxa){
+            childs.add(t.addLeaf(x));
+        }
+
+        for(var x : this.dummyTaxa){
+            childs.add(t.addLeaf(null).setInfo(new Info(x.id)));
+        }
+
+        t.root = t.addInternalNode(childs);
+
+        return t;
     }
 
 }
