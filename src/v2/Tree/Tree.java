@@ -343,14 +343,14 @@ public class Tree {
 
     private void topSortUtil(TreeNode node, ArrayList<TreeNode> topSort){
         if(node.isLeaf()){
-            topSort.add(node);
         }
         else{
             for(var x : node.childs){
                 topSortUtil(x, topSort);
             }
-            topSort.add(node);
         }
+        topSort.add(node);
+
     }
 
     public void topSort(){

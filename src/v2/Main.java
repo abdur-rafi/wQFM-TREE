@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 
 import src.v2.DSPerLevel.BookKeepingPerLevel;
 import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
+import src.v2.InitialPartition.ConsensusTreePartition;
 import src.v2.InitialPartition.RandPartition;
 import src.v2.PreProcessing.GeneTrees;
 import src.v2.Taxon.DummyTaxon;
@@ -15,10 +16,16 @@ public class Main {
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+
         
-        var qfm = new QFM(trees, trees.taxa, new RandPartition());
+        var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
+        // var qfm = new QFM(trees, trees.taxa, new RandPartition());
+
         
-        System.out.println(qfm.runWQFM().root);
+        var spTree = qfm.runWQFM();
+
+        System.out.println(spTree.getNewickFormat());
         // tc5(trees);
 
 

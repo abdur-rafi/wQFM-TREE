@@ -17,7 +17,7 @@ public class TaxaPerLevelWithPartition {
     public static final int FLAT_NORMALIZATION = 1;
     public static final int NESTED_NORMALIZATION = 2;
 
-    public final int normalizationType = NESTED_NORMALIZATION;
+    public final int normalizationType = FLAT_NORMALIZATION;
     public final int allRealTaxaCount;
     public final int divCoeffsType = 0;
     
@@ -184,14 +184,14 @@ public class TaxaPerLevelWithPartition {
         Tree t = new Tree();
         ArrayList<TreeNode> childs = new ArrayList<>();
         for(var x : this.realTaxa){
-            childs.add(t.addLeaf(x));
+            childs.add(t.addLeaf(x).setInfo(new Info(-1)));
         }
 
         for(var x : this.dummyTaxa){
             childs.add(t.addLeaf(null).setInfo(new Info(x.id)));
         }
 
-        t.root = t.addInternalNode(childs);
+        t.root = t.addInternalNode(childs).setInfo(new Info(-1));
 
         return t;
     }

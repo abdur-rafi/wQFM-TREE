@@ -39,6 +39,7 @@ public class QFM {
         
         while(oneInteration(book)){
             itrCount++;
+            System.out.println(itrCount);
         }
 
         Tree[] trees = new Tree[2];
@@ -47,7 +48,8 @@ public class QFM {
         int i = 0;
         int[] dummyIds = new int[2];
         
-        for(var childBooks : x){
+        for(var taxaWPart : x){
+            var childBooks = new BookKeepingPerLevel(geneTrees, taxaWPart);
             if(childBooks.taxas.smallestUnit){
                 trees[i] = childBooks.taxas.createStar();
             }
@@ -91,10 +93,12 @@ public class QFM {
     class Swap{
         public int index;
         public boolean isDummy;
+        public double gain;
 
-        public Swap(int i, boolean id){
+        public Swap(int i, boolean id, double g){
             this.index = i;
             this.isDummy = id;
+            this.gain = g;
         }
     }
     
@@ -138,7 +142,7 @@ public class QFM {
             }
         }
 
-        if(maxGainIndex != -1) return null;
+        if(maxGainIndex == -1) return null;
 
         book.swapTaxon(maxGainIndex, dummyChosen);
         if(dummyChosen){
@@ -149,7 +153,7 @@ public class QFM {
         }
 
         
-        return new Swap(maxGainIndex, dummyChosen);
+        return new Swap(maxGainIndex, dummyChosen, maxGain);
 
 
     }
@@ -178,7 +182,10 @@ public class QFM {
             if(x != null){
                 swaps.add(x);
                 
-                double gain = x.isDummy ? dtGains[x.index] : rtGains[x.index][book.taxas.inWhichPartitionRealTaxonByIndex(x.index)];
+                double gain = x.gain;
+
+                // if(gain < 0) break;
+
                 cg += gain;
                 
                 if(cg > maxCg){
@@ -193,12 +200,13 @@ public class QFM {
         }
 
         if(maxCgIndex == -1){
-            for(var x : swaps){
+            for(int i = swaps.size() - 1; i >= 0; --i){
+                var x = swaps.get(i);
                 book.swapTaxon(x.index, x.isDummy);
             }
             return false;
         }
-        for(int i = maxCgIndex + 1; i < swaps.size(); ++i){
+        for(int i = swaps.size() - 1; i > maxCgIndex; --i){
             var x = swaps.get(i);
             book.swapTaxon(x.index, x.isDummy);
         }

@@ -246,20 +246,20 @@ public class BookKeepingPerLevel {
 
         this.score = totalScore;
 
-        System.out.println("Score : " + totalScore);
+        // System.out.println("Score : " + totalScore);
 
-        for (int i = 0; i < realTaxaGains.length; i++) {
-            var rt = taxas.realTaxa[i];
-            System.out.println(rt.label + ": " + (realTaxaGains[i][taxas.inWhichPartitionRealTaxonByIndex(i)] + totalScore));
-        }
+        // for (int i = 0; i < realTaxaGains.length; i++) {
+        //     var rt = taxas.realTaxa[i];
+        //     System.out.println(rt.label + ": " + (realTaxaGains[i][taxas.inWhichPartitionRealTaxonByIndex(i)] + totalScore));
+        // }
         
-        for (int i = 0; i < dummyTaxaGains.length; i++) {
-            var dt = taxas.dummyTaxa[i];
-            for(var  x : dt.flattenedRealTaxa){
-                System.out.printf(x.label + " ,");
-            }
-            System.out.println(": " + (dummyTaxaGains[i] + totalScore));
-        }
+        // for (int i = 0; i < dummyTaxaGains.length; i++) {
+        //     var dt = taxas.dummyTaxa[i];
+        //     for(var  x : dt.flattenedRealTaxa){
+        //         System.out.printf(x.label + " ,");
+        //     }
+        //     System.out.println(": " + (dummyTaxaGains[i] + totalScore));
+        // }
 
         return totalScore;
 
@@ -345,7 +345,7 @@ public class BookKeepingPerLevel {
 
     }
 
-    public BookKeepingPerLevel[] divide(IMakePartition makePartition){
+    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition){
         RealTaxon[][] rts = new RealTaxon[2][];
         DummyTaxon[][] dts = new DummyTaxon[2][];
 
@@ -381,7 +381,8 @@ public class BookKeepingPerLevel {
         
         
 
-        BookKeepingPerLevel[] bookKeepingPerLevels = new BookKeepingPerLevel[2];
+        // BookKeepingPerLevel[] bookKeepingPerLevels = new BookKeepingPerLevel[2];
+        TaxaPerLevelWithPartition[] taxaPerLevelWithPartitions = new TaxaPerLevelWithPartition[2];
         for( i = 0; i < 2; ++i){
             newDt[i] = new DummyTaxon(rts[1 - i], dts[1 - i]);
             
@@ -391,18 +392,28 @@ public class BookKeepingPerLevel {
             }
             dtsWithNewDt[dtsWithNewDt.length - 1] = newDt[i];
 
-            var y = makePartition.makePartition(rts[i], dtsWithNewDt);
+            if(rts[i].length + dtsWithNewDt.length > 3){
+
+                var y = makePartition.makePartition(rts[i], dtsWithNewDt);
+                taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
+                    rts[i], dtsWithNewDt, 
+                    y.realTaxonPartition, 
+                    y.dummyTaxonPartition, 
+                    this.geneTrees.realTaxaCount
+                );
+            }
+            else{
+                taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
+                    rts[i], dtsWithNewDt, 
+                    null, null,
+                    this.geneTrees.realTaxaCount
+                );
+            }
             
-            var x = new TaxaPerLevelWithPartition(
-                rts[i], dtsWithNewDt, 
-                y.realTaxonPartition, 
-                y.dummyTaxonPartition, 
-                this.geneTrees.realTaxaCount
-            );
-            bookKeepingPerLevels[i] = new BookKeepingPerLevel(this.geneTrees,x);
+            // bookKeepingPerLevels[i] = new BookKeepingPerLevel(this.geneTrees,x);
         }
 
-        return bookKeepingPerLevels;
+        return taxaPerLevelWithPartitions;
     }
 
 
