@@ -2,6 +2,7 @@ package src.v2.DSPerLevel;
 
 import java.util.ArrayList;
 
+import src.v2.Config;
 import src.v2.Taxon.DummyTaxon;
 import src.v2.Taxon.RealTaxon;
 import src.v2.Tree.Info;
@@ -13,11 +14,7 @@ public class TaxaPerLevelWithPartition {
     public final boolean LEFT = false;
     public final boolean RIGHT = true;
     
-    public static final int NO_NORMALIZATION = 0;
-    public static final int FLAT_NORMALIZATION = 1;
-    public static final int NESTED_NORMALIZATION = 2;
 
-    public final int normalizationType = FLAT_NORMALIZATION;
     public final int allRealTaxaCount;
     public final int divCoeffsType = 0;
     
@@ -88,7 +85,7 @@ public class TaxaPerLevelWithPartition {
                 isInDummyTaxa[y.id] = true;
                 inWhichDummyTaxa[y.id] = i;
             }
-            x.calcDivCoeffs(normalizationType, coeffs, 1.);
+            x.calcDivCoeffs(Config.SCORE_NORMALIZATION_TYPE, coeffs, 1.);
             taxonCountsInPartitions[dummyTaxonPartition[i]]++;
             this.dummyTaxonCountsInPartitions[dummyTaxonPartition[i]]++;
             ++i;

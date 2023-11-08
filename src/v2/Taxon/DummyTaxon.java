@@ -1,7 +1,6 @@
 package src.v2.Taxon;
 
-import java.util.ArrayList;
-
+import src.v2.Config;
 import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
 
 public class DummyTaxon {
@@ -51,13 +50,13 @@ public class DummyTaxon {
 
     }
 
-    public void calcDivCoeffs(int normalizationType, double[] coeffs, double multiplier){
+    public void calcDivCoeffs(Config.ScoreNormalizationType normalizationType, double[] coeffs, double multiplier){
         
-        if(normalizationType == TaxaPerLevelWithPartition.FLAT_NORMALIZATION){
+        if(normalizationType == Config.ScoreNormalizationType.FLAT_NORMALIZATION){
             for(var x : this.flattenedRealTaxa)
                 coeffs[x.id] = this.flattenedTaxonCount;
         }
-        else if(normalizationType == TaxaPerLevelWithPartition.NESTED_NORMALIZATION){
+        else if(normalizationType == Config.ScoreNormalizationType.NESTED_NORMALIZATION){
             double sz = this.realTaxonCount + this.dummyTaxa.length;
             for(var x : this.realTaxa)
                 coeffs[x.id] = sz * multiplier;

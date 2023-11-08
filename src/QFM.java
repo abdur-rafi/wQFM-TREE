@@ -21,7 +21,7 @@ import src.ScoreCalculator.ScoreCalculatorTree;
 
 public class QFM {
 
-
+    private double eps = 1e-5;
     private static int dummyIds = 0;
 
     Set<String> taxaSet;
@@ -191,7 +191,7 @@ public class QFM {
                         mxCg = partition.getCg();
                         mxcgi = swaps.size() - 1;
                     }
-                    else if(mxCg < partition.getCg()){
+                    else if(mxCg < partition.getCg() && Math.abs(mxCg - partition.getCg()) > eps){
                         mxCg = partition.getCg();
                         mxcgi = swaps.size() - 1;
                     }
@@ -204,7 +204,7 @@ public class QFM {
             // System.out.println("lOOPING");
             // System.out.println(swap.rt + " " + swap.dti);
         }
-        if(mxCg > 0){
+        if(mxCg > eps){
             for(int i = mxcgi + 1; i < swaps.size(); ++i){
                 partition.swap(swaps.get(i));
             }
@@ -214,7 +214,7 @@ public class QFM {
 
         // System.out.println(partition);
 
-        return mxCg > 0;
+        return mxCg > eps;
 
     }
 

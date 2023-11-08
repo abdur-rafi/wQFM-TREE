@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import src.v2.Tree.TreePrinter.PrintableNode;
-import src.v2.ScoreCalculator.ScoreCalculatorNode;
 import src.v2.Taxon.RealTaxon;
 
 

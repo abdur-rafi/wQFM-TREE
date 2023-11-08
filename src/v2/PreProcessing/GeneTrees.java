@@ -38,12 +38,12 @@ public class GeneTrees {
         tree.calculateFrequencies(triPartitions);
         internalNodesCount += tree.nodes.size() - tree.leavesCount;
 
-        System.out.println(tree.root);
+        // System.out.println(tree.root);
 
-        for(var x : tree.nodes){
-            System.out.printf(x.index + ", ");
-        }
-        System.out.println();
+        // for(var x : tree.nodes){
+        //     System.out.printf(x.index + ", ");
+        // }
+        // System.out.println();
 
         // System.out.println(tree.taxaMap);
 

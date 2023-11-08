@@ -17,6 +17,8 @@ public class QFM {
     public IMakePartition initPartition;
     public GeneTrees geneTrees;
 
+    double EPS = 1e-5;
+
     public QFM(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition){
         this.realTaxa = realTaxa;
         this.initPartition = initPartition;
@@ -37,9 +39,12 @@ public class QFM {
     ){
         int itrCount = 0;
         
-        while(oneInteration(book)){
+        while(oneInteration(book) ){
             itrCount++;
             System.out.println(itrCount);
+            if(itrCount > 20){
+
+            }
         }
 
         Tree[] trees = new Tree[2];
@@ -188,7 +193,7 @@ public class QFM {
 
                 cg += gain;
                 
-                if(cg > maxCg){
+                if(cg > maxCg && Math.abs(maxCg - cg) > EPS ){
                     maxCg = cg;
                     maxCgIndex = swaps.size() - 1;
                 }
@@ -198,6 +203,8 @@ public class QFM {
             }
             
         }
+
+        // System.out.println("CG Index : " + maxCgIndex + " cg : " + maxCg);
 
         if(maxCgIndex == -1){
             for(int i = swaps.size() - 1; i >= 0; --i){

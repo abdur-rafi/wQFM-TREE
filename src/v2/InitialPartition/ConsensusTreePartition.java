@@ -1,10 +1,13 @@
 package src.v2.InitialPartition;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+import java.util.Scanner;
 
+import src.v2.Config;
+import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
 import src.v2.Taxon.DummyTaxon;
 import src.v2.Taxon.RealTaxon;
 import src.v2.Tree.Branch;
@@ -16,9 +19,16 @@ public class ConsensusTreePartition implements IMakePartition {
 
     Tree consTree;
 
-    public ConsensusTreePartition(String line, Map<String, RealTaxon> taxaMap){
+    RandPartition randPartition;
+
+    public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap) throws FileNotFoundException{
+        Scanner scanner = new Scanner(new File(filePath));
+        String line = scanner.nextLine();
         this.consTree = new Tree(line, taxaMap);
 
+        scanner.close();
+
+        randPartition = new RandPartition();
     }
 
     // private void dfs(TreeNode currNode, RealTaxon[] rts, DummyTaxon[] dts){
@@ -59,14 +69,25 @@ public class ConsensusTreePartition implements IMakePartition {
         //     System.out.println(x);
 
         int i = 0;
+
         for(var x : dts){
-            double sz = x.flattenedTaxonCount;
-            for(var y : x.flattenedRealTaxa){
-                weight[y.id] = 1./sz;
-                inWhichDummyTaxa[y.id] = i;
+            if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
+                x.calcDivCoeffs(Config.ScoreNormalizationType.NESTED_NORMALIZATION, weight, 1);
             }
-            ++i;
+            else{
+                double sz = x.flattenedTaxonCount;
+                for(var y : x.flattenedRealTaxa){
+                    weight[y.id] = 1./sz;
+                    inWhichDummyTaxa[y.id] = i;
+                }
+                ++i;
+            }
         }
+        if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
+            for(i = 0; i < dts.length; ++i){
+                if(weight[i] > 1) weight[i] = 1. / weight[i];
+            }
+        }        
 
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
@@ -122,9 +143,10 @@ public class ConsensusTreePartition implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            System.exit(-1);
+            return randPartition.makePartition(rts, dts);
+            // System.exit(-1);
         }
-        System.out.println("partition");
+        // System.out.println("partition");
         short[] rtsP = new short[rts.length];
         short[] dtsp = new short[dts.length];
 
@@ -145,6 +167,5 @@ public class ConsensusTreePartition implements IMakePartition {
         return new MakePartitionReturnType(rtsP, dtsp);
 
     }
-    
     
 }

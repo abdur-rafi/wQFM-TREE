@@ -1,6 +1,5 @@
 package src.v2.ScoreCalculator;
 
-import src.Utility;
 import src.v2.Tree.Branch;
 
 public class ScoreCalculatorNode {
