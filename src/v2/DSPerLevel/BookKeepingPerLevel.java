@@ -87,7 +87,7 @@ public class BookKeepingPerLevel {
                 }
                 for(int j = 0; j < taxas.dummyTaxonCount; ++j){
                     branches[i].dummyTaxaWeightsIndividual[j] += 1. - child.info.branches[2].dummyTaxaWeightsIndividual[j];
-                    if(branches[i].dummyTaxaWeightsIndividual[j] != 1){
+                    if(branches[i].dummyTaxaWeightsIndividual[j] != 0){
                         nonZeroDummyCount[i]++;
                         nonZeroDummyIndex[i] = j;
                     }
