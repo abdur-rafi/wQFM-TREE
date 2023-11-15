@@ -19,6 +19,7 @@ public class BookKeepingPerLevel {
 
 
     public TaxaPerLevelWithPartition taxas;
+    public boolean allowSingleton;
 
     // public double[][] realTaxaGains;
     // public double[] dummyTaxaGains;
@@ -46,6 +47,14 @@ public class BookKeepingPerLevel {
 
         this.taxas = taxaPerLevelWithPartition;
         this.geneTrees = geneTrees;
+        this.allowSingleton = true;
+
+        for(var x : taxaPerLevelWithPartition.dummyTaxa){
+            if(x.nestedLevel >= taxaPerLevelWithPartition.allRealTaxaCount){
+                allowSingleton = false;
+                break;
+            }
+        }
 
         // this.realTaxaGains = new double[taxas.realTaxonCount][2];
         // this.dummyTaxaGains = new double[taxas.dummyTaxonCount];

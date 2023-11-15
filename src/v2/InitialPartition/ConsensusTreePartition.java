@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Scanner;
 
 import src.v2.Config;
-import src.v2.DSPerLevel.TaxaPerLevelWithPartition;
 import src.v2.Taxon.DummyTaxon;
 import src.v2.Taxon.RealTaxon;
 import src.v2.Tree.Branch;
@@ -62,11 +61,11 @@ public class ConsensusTreePartition implements IMakePartition {
         TreeNode minNode = null;
         double minDiff = 0;
 
+        boolean allowSingleton = true;
+
         for(var x : rts){
             weight[x.id] = 1;
         }
-        // for(var x : weight)
-        //     System.out.println(x);
 
         int i = 0;
 
@@ -82,7 +81,12 @@ public class ConsensusTreePartition implements IMakePartition {
                 }
                 ++i;
             }
+
+            if(x.nestedLevel >= consTree.leavesCount){
+                allowSingleton = false;
+            }
         }
+
         if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
             for(i = 0; i < dts.length; ++i){
                 if(weight[i] > 1) weight[i] = 1. / weight[i];
@@ -126,7 +130,7 @@ public class ConsensusTreePartition implements IMakePartition {
                     branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
                     branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
 
-                    if(partASize > 1 && partBSize > 1){
+                    if(partASize > 1 && partBSize > 1 || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
                         double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
                         if(minNode == null || diff < minDiff){
                             minNode = child;

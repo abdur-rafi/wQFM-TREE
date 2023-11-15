@@ -21,14 +21,20 @@ public class DummyTaxon {
 
     public int id;
 
+    public int nestedLevel;
+
 
     public DummyTaxon(RealTaxon[] rts, DummyTaxon[] dts){
         this.realTaxonCount = rts.length;
         this.taxonCount = rts.length + dts.length;
         this.realTaxa = rts;
         this.dummyTaxa = dts;
+
+        this.nestedLevel = 0;
+
         for(var x : dts){
             this.flattenedTaxonCount += x.flattenedTaxonCount;
+            this.nestedLevel = Math.max(this.nestedLevel, x.nestedLevel);
         }
         
         int i = 0;
@@ -47,6 +53,7 @@ public class DummyTaxon {
         }
 
         this.id = idCounter++;
+        this.nestedLevel += 1;
 
     }
 

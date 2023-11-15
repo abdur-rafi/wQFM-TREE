@@ -116,7 +116,7 @@ public class QFM {
         for(int i = 0; i < book.taxas.realTaxonCount; ++i){
             if(rtLocked[i]) continue;
             int partition = book.taxas.inWhichPartitionRealTaxonByIndex(i);
-            if(book.taxas.getTaxonCountInPartition(partition) > 2){
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1) ){
                 if(maxGainIndex == -1){
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
@@ -133,7 +133,7 @@ public class QFM {
         for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
             if(dtLocked[i]) continue;
             int partition = book.taxas.inWhichPartitionDummyTaxonByIndex(i);
-            if(book.taxas.getTaxonCountInPartition(partition) > 2){
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1)){
                 if(maxGainIndex == -1){
                     maxGain = dtGains[i];
                     maxGainIndex = i;
