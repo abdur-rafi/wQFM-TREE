@@ -33,7 +33,7 @@ public class DebugMain {
         
         var spTree = qfm.runWQFM();
 
-        FileWriter writer = new FileWriter("outv2.tre");
+        FileWriter writer = new FileWriter("outsrc.v2.tre");
 
         writer.write(spTree.getNewickFormat());
 
@@ -68,14 +68,14 @@ public class DebugMain {
         DummyTaxon[] dt = new DummyTaxon[1];
         dt[0] = new DummyTaxon(dt0r, new DummyTaxon[0]);
 
-        short[] realTaxaPartition = new short[5];
+        int[] realTaxaPartition = new int[5];
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
         realTaxaPartition[3] = 0;
         realTaxaPartition[4] = 1;
 
-        short[] dummyTaxaPartition = new short[1];
+        int[] dummyTaxaPartition = new int[1];
         dummyTaxaPartition[0] = 1;
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, dt, realTaxaPartition, dummyTaxaPartition, 11);
@@ -119,13 +119,13 @@ public class DebugMain {
         a[0] = dt0;
 
 
-        short[] realTaxaPartition = new short[4];
+        int[] realTaxaPartition = new int[4];
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 1;
         realTaxaPartition[3] = 1;
 
-        short[] dummyTaxaPartition = new short[1];
+        int[] dummyTaxaPartition = new int[1];
         dummyTaxaPartition[0] = 1;
 
 
@@ -176,11 +176,11 @@ public class DebugMain {
         a[0] = dt0;
         a[1] = dt1;
 
-        short[] realTaxaPartition = new short[2];
+        int[] realTaxaPartition = new int[2];
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
 
-        short[] dummyTaxaPartition = new short[2];
+        int[] dummyTaxaPartition = new int[2];
         dummyTaxaPartition[0] = 1;
         dummyTaxaPartition[1] = 1;
 
@@ -219,14 +219,14 @@ public class DebugMain {
         DummyTaxon[] dt = new DummyTaxon[1];
         dt[0] = new DummyTaxon(dt0r, new DummyTaxon[0]);
 
-        short[] realTaxaPartition = new short[5];
+        int[] realTaxaPartition = new int[5];
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
         realTaxaPartition[3] = 1;
         realTaxaPartition[4] = 1;
 
-        short[] dummyTaxaPartition = new short[1];
+        int[] dummyTaxaPartition = new int[1];
         dummyTaxaPartition[0] = 0;
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, dt, realTaxaPartition, dummyTaxaPartition, 11);
@@ -293,13 +293,13 @@ public class DebugMain {
         a[0] = dt0;
 
 
-        short[] realTaxaPartition = new short[4];
+        int[] realTaxaPartition = new int[4];
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
         realTaxaPartition[3] = 1;
 
-        short[] dummyTaxaPartition = new short[1];
+        int[] dummyTaxaPartition = new int[1];
         dummyTaxaPartition[0] = 1;
 
 

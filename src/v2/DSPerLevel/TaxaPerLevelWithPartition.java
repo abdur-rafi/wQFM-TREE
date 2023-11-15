@@ -22,9 +22,9 @@ public class TaxaPerLevelWithPartition {
     public DummyTaxon[] dummyTaxa;
     
     // ith elem of realTaxa in which partition
-    public short[] realTaxonPartition;
+    public int[] realTaxonPartition;
     // ith elem of dummyTaxa in which partition
-    public short[] dummyTaxonPartition;
+    public int[] dummyTaxonPartition;
 
     public int realTaxonCount;
     public int dummyTaxonCount;
@@ -33,17 +33,18 @@ public class TaxaPerLevelWithPartition {
     private boolean[] isInDummyTaxa;
     private double[] coeffs;
     
-    private short[] inWhichPartition;
+    private int[] inWhichPartition;
     private int[] inWhichDummyTaxa;
     private int[] realTaxonIndex;
 
     private int[] taxonCountsInPartitions;
     private int[] realTaxonCountsInPartitions;
     private int[] dummyTaxonCountsInPartitions;
+    private int[] dummyTaxonCountsFlattenedInPartitions;
 
     public boolean smallestUnit;
 
-    public TaxaPerLevelWithPartition( RealTaxon[] rts, DummyTaxon[] dts, short[] rtp, short[] dtp, int rtc){
+    public TaxaPerLevelWithPartition( RealTaxon[] rts, DummyTaxon[] dts, int[] rtp, int[] dtp, int rtc){
         this.realTaxa = rts;
         this.dummyTaxa = dts;
         this.realTaxonPartition = rtp;
@@ -67,6 +68,8 @@ public class TaxaPerLevelWithPartition {
         this.realTaxonCountsInPartitions = new int[2];
         this.dummyTaxonCountsInPartitions = new int[2];
 
+        this.dummyTaxonCountsFlattenedInPartitions = new int[2];
+
         int i = 0;
 
         for(var x : realTaxa){
@@ -88,10 +91,12 @@ public class TaxaPerLevelWithPartition {
             x.calcDivCoeffs(Config.SCORE_NORMALIZATION_TYPE, coeffs, 1.);
             taxonCountsInPartitions[dummyTaxonPartition[i]]++;
             this.dummyTaxonCountsInPartitions[dummyTaxonPartition[i]]++;
+            this.dummyTaxonCountsFlattenedInPartitions[dummyTaxonPartition[i]] += x.flattenedTaxonCount;
+            
             ++i;
         }
         i = 0;
-        this.inWhichPartition = new short[this.allRealTaxaCount];
+        this.inWhichPartition = new int[this.allRealTaxaCount];
         for(var x : realTaxa){
             this.inWhichPartition[x.id] = realTaxonPartition[i++];
         }
@@ -129,10 +134,10 @@ public class TaxaPerLevelWithPartition {
         return this.taxonCountsInPartitions[partition];
     }
 
-    public short inWhichPartitionRealTaxonByIndex(int index){
+    public int inWhichPartitionRealTaxonByIndex(int index){
         return this.realTaxonPartition[index];
     }
-    public short inWhichPartitionDummyTaxonByIndex(int index){
+    public int inWhichPartitionDummyTaxonByIndex(int index){
         return this.dummyTaxonPartition[index];
     }
     public int getRealTaxonCountInPartition(int partition){
@@ -142,9 +147,20 @@ public class TaxaPerLevelWithPartition {
         return this.dummyTaxonCountsInPartitions[partition];
     }
 
+    public int getDummyTaxonCountFlattenedInPartition(int partition){
+        return this.dummyTaxonCountsFlattenedInPartitions[partition];
+    }
+    public int getTaxonCountFlattenedInPartition(int partition){
+        return (this.realTaxonCountsInPartitions[partition] + this.dummyTaxonCountsFlattenedInPartitions[partition]);
+    }
+
+    public int getFlattenedCount(int index){
+        return this.dummyTaxa[index].flattenedTaxonCount;
+    }
+
     public void swapPartitionRealTaxon(int index){
-        short currPartition = this.realTaxonPartition[index];
-        short switchedPartition = (short) (1 - currPartition);
+        int currPartition = this.realTaxonPartition[index];
+        int switchedPartition = (int) (1 - currPartition);
 
         this.realTaxonPartition[index] = switchedPartition;
         this.inWhichPartition[this.realTaxa[index].id] = switchedPartition;
@@ -156,8 +172,8 @@ public class TaxaPerLevelWithPartition {
     
 
     public void swapPartitionDummyTaxon(int index){
-        short currPartition = this.dummyTaxonPartition[index];
-        short switchedPartition = (short) (1 - currPartition);
+        int currPartition = this.dummyTaxonPartition[index];
+        int switchedPartition = (1 - currPartition);
 
         this.dummyTaxonPartition[index] = switchedPartition;
         
@@ -169,6 +185,10 @@ public class TaxaPerLevelWithPartition {
         this.taxonCountsInPartitions[switchedPartition]++;
         this.dummyTaxonCountsInPartitions[currPartition]--;
         this.dummyTaxonCountsInPartitions[switchedPartition]++;
+
+        this.dummyTaxonCountsFlattenedInPartitions[currPartition] -= this.dummyTaxa[index].flattenedTaxonCount;
+        this.dummyTaxonCountsFlattenedInPartitions[switchedPartition] += this.dummyTaxa[index].flattenedTaxonCount;
+
     }
 
 

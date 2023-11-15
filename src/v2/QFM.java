@@ -17,7 +17,7 @@ public class QFM {
     public IMakePartition initPartition;
     public GeneTrees geneTrees;
 
-    double EPS = 1e-5;
+    static double EPS = 1e-5;
 
     public QFM(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition){
         this.realTaxa = realTaxa;
@@ -95,7 +95,7 @@ public class QFM {
         return trees[1];
     }
 
-    class Swap{
+    static class Swap{
         public int index;
         public boolean isDummy;
         public double gain;
@@ -108,7 +108,7 @@ public class QFM {
     }
     
 
-    public Swap swapMax(BookKeepingPerLevel book, double[][] rtGains, double[] dtGains, boolean[] rtLocked, boolean[] dtLocked){
+    public static Swap swapMax(BookKeepingPerLevel book, double[][] rtGains, double[] dtGains, boolean[] rtLocked, boolean[] dtLocked){
 
         int maxGainIndex = -1;
         double maxGain = 0;
@@ -163,7 +163,7 @@ public class QFM {
 
     }
 
-    public boolean oneInteration(BookKeepingPerLevel book){
+    public static boolean oneInteration(BookKeepingPerLevel book){
         
         double cg = 0;
         int maxCgIndex = -1;

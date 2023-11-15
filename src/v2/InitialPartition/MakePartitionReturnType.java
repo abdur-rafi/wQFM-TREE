@@ -2,10 +2,10 @@ package src.v2.InitialPartition;
 
 public class MakePartitionReturnType {
 
-    public short[] realTaxonPartition;
-    public short[] dummyTaxonPartition;
+    public int[] realTaxonPartition;
+    public int[] dummyTaxonPartition;
 
-    public MakePartitionReturnType(short[] rtp, short[] dtp){
+    public MakePartitionReturnType(int[] rtp, int[] dtp){
         this.realTaxonPartition = rtp;
         this.dummyTaxonPartition = dtp;
     }

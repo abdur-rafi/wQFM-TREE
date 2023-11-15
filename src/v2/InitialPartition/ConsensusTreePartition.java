@@ -40,7 +40,7 @@ public class ConsensusTreePartition implements IMakePartition {
     // }
 
 
-    private void assignSubTreeToPartition(TreeNode node, short[] rtsp, Map<Integer, Integer> idToIndex){
+    private void assignSubTreeToPartition(TreeNode node, int[] rtsp, Map<Integer, Integer> idToIndex){
         if(node.isLeaf()){
             if(idToIndex.containsKey(node.taxon.id)){
                 rtsp[idToIndex.get(node.taxon.id)] = 1;
@@ -147,8 +147,8 @@ public class ConsensusTreePartition implements IMakePartition {
             // System.exit(-1);
         }
         // System.out.println("partition");
-        short[] rtsP = new short[rts.length];
-        short[] dtsp = new short[dts.length];
+        int[] rtsP = new int[rts.length];
+        int[] dtsp = new int[dts.length];
 
         Map<Integer, Integer> idToIndex = new HashMap<>();
         i = 0;

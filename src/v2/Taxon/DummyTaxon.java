@@ -51,8 +51,11 @@ public class DummyTaxon {
     }
 
     public void calcDivCoeffs(Config.ScoreNormalizationType normalizationType, double[] coeffs, double multiplier){
-        
-        if(normalizationType == Config.ScoreNormalizationType.FLAT_NORMALIZATION){
+        if(normalizationType == Config.ScoreNormalizationType.NO_NORMALIZATION){
+            for(var x : this.flattenedRealTaxa)
+                coeffs[x.id] = 1;
+        }
+        else if(normalizationType == Config.ScoreNormalizationType.FLAT_NORMALIZATION){
             for(var x : this.flattenedRealTaxa)
                 coeffs[x.id] = this.flattenedTaxonCount;
         }

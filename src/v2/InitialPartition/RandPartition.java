@@ -8,7 +8,7 @@ public class RandPartition implements IMakePartition {
     public MakePartitionReturnType makePartition( RealTaxon[] rts, DummyTaxon[] dts ){
         int pa = (rts.length + dts.length) / 2;
 
-        short[] rtPart = new short[rts.length];
+        int[] rtPart = new int[rts.length];
         for(int i = 0; i < rtPart.length; ++i){
             if(pa > 0){
                 rtPart[i] = 0;
@@ -18,7 +18,7 @@ public class RandPartition implements IMakePartition {
                 rtPart[i] = 1;
             }
         }
-        short[] dtPart = new short[dts.length];
+        int[] dtPart = new int[dts.length];
         for(int i = 0; i < dtPart.length; ++i){
             if(pa > 0){
                 dtPart[i] = 0;

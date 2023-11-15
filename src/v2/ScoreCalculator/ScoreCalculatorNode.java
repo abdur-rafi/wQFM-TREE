@@ -7,12 +7,12 @@ public class ScoreCalculatorNode {
     Branch[] branches;
     double[][] subs;
     int nDummyTaxa;
-    short[] dummyTaxaPartition;
+    int[] dummyTaxaPartition;
     double[] scoresOfBranches;
     // g1. should be double
     double[][] gainsOfBranches;
 
-    public ScoreCalculatorNode(Branch[] b, short[] dummyTaxaToPartitionMap) {
+    public ScoreCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
