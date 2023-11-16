@@ -2,7 +2,7 @@
 # cd $1
 # list current dir and run a for loop
 
-filePrefix="ewqfm-c-f-n-f-v2"
+filePrefix="ewqfm-c-f-v2"
 for file in $(ls $1)
 # for file in "1X-500-500"
 do

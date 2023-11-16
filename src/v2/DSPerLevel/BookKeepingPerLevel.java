@@ -47,12 +47,14 @@ public class BookKeepingPerLevel {
 
         this.taxas = taxaPerLevelWithPartition;
         this.geneTrees = geneTrees;
-        this.allowSingleton = true;
+        this.allowSingleton = Config.ALLOW_SINGLETON;
 
-        for(var x : taxaPerLevelWithPartition.dummyTaxa){
-            if(x.nestedLevel >= taxaPerLevelWithPartition.allRealTaxaCount){
-                allowSingleton = false;
-                break;
+        if(Config.ALLOW_SINGLETON){
+            for(var x : taxaPerLevelWithPartition.dummyTaxa){
+                if(x.nestedLevel >= taxaPerLevelWithPartition.allRealTaxaCount * Config.SINGLETON_THRESHOLD){
+                    allowSingleton = false;
+                    break;
+                }
             }
         }
 
@@ -386,10 +388,10 @@ public class BookKeepingPerLevel {
 
     private void swapRealTaxon(int index){
         int partition = taxas.inWhichPartitionRealTaxonByIndex(index);
-        if(taxas.getTaxonCountInPartition(partition) < 3){
-            System.out.println("Should not be swapped");
-            System.exit(-1);
-        }
+        // if(taxas.getTaxonCountInPartition(partition) < 3){
+        //     System.out.println("Should not be swapped");
+        //     System.exit(-1);
+        // }
 
         taxas.swapPartitionRealTaxon(index);
 
@@ -438,10 +440,10 @@ public class BookKeepingPerLevel {
 
     private void swapDummyTaxon(int index){
         int partition = taxas.inWhichPartitionDummyTaxonByIndex(index);
-        if(taxas.getTaxonCountInPartition(partition) < 3){
-            System.out.println("Should not be swapped");
-            System.exit(-1);
-        }
+        // if(taxas.getTaxonCountInPartition(partition) < 3){
+        //     System.out.println("Should not be swapped");
+        //     System.exit(-1);
+        // }
         taxas.swapPartitionDummyTaxon(index);
         for(var x : this.nodesForScore){
             x.info.scoreCalculator.swapDummyTaxon(index, partition);

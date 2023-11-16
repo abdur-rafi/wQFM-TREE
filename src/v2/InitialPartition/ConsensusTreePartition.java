@@ -20,11 +20,13 @@ public class ConsensusTreePartition implements IMakePartition {
 
     RandPartition randPartition;
 
+    int taxonCount;
+
     public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filePath));
         String line = scanner.nextLine();
         this.consTree = new Tree(line, taxaMap);
-
+        this.taxonCount = taxaMap.size();
         scanner.close();
 
         randPartition = new RandPartition();
@@ -61,7 +63,7 @@ public class ConsensusTreePartition implements IMakePartition {
         TreeNode minNode = null;
         double minDiff = 0;
 
-        boolean allowSingleton = true;
+        boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         for(var x : rts){
             weight[x.id] = 1;
@@ -81,9 +83,10 @@ public class ConsensusTreePartition implements IMakePartition {
                 }
                 ++i;
             }
-
-            if(x.nestedLevel >= consTree.leavesCount){
-                allowSingleton = false;
+            if(Config.ALLOW_SINGLETON){
+                if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
+                    allowSingleton = false;
+                }
             }
         }
 
