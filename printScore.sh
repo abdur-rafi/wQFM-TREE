@@ -1,7 +1,11 @@
 
 
 file1="avg-ewqfm-sp.5-c-f-n-f-v2-score.txt"
-file1="avg-ewqfm-%sat-c-f-n-f-v2-score.txt"
+# file1="avg-ewqfm-%sat-c-f-n-f-v2-score.txt"
+file1="avg-ewqfm-%sat-c-f-n-n-v2-score.txt"
+file1="avg-ewqfm-%sat-c-n-n-n-v2-score.txt"
+
+
 file2="avg-ewqfm-c-f-v2-score.txt"
 file2="wqfm-v1.2-scores-avg.txt"
 file2="avg-ewqfm-c-f-n-f-v2-score.txt"

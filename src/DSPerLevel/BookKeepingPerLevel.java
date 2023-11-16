@@ -195,7 +195,7 @@ public class BookKeepingPerLevel {
             int partition = taxas.inWhichPartitionRealTaxonByIndex(i);
             Utility.addArrayToFirst(realTaxaGains[i], this.gainsToAll);
             realTaxaGains[i][partition] += totalScore;
-            realTaxaGains[i][partition] = 2 * realTaxaGains[i][partition] - totals[partition];
+            realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
         
         }
         // for(var x : tree.nodes){
@@ -224,7 +224,7 @@ public class BookKeepingPerLevel {
                 totalFlattenedCount[(inWhichPartition + 1) % 2] +
                 this.taxas.getFlattenedCount(i));
             
-            dummyTaxaGains[i] = 2 * (dummyTaxaGains[i] + totalScore) - geneTrees.geneTrees.size() * p[0] * p[1];
+            dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / (geneTrees.geneTrees.size() * p[0] * p[1]);
 
             p[inWhichPartition] -= Utility.nc2(this.taxas.getFlattenedCount(i));
             p[(inWhichPartition + 1) % 2] += Utility.nc2(this.taxas.getFlattenedCount(i));
@@ -238,7 +238,7 @@ public class BookKeepingPerLevel {
         p[0] += Utility.nc2(totalFlattenedCount[0]);
         p[1] += Utility.nc2(totalFlattenedCount[1]);
 
-        totalScore = 2 * totalScore - geneTrees.geneTrees.size() * p[0] * p[1];
+        totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
         
         for(int i = 0; i < this.taxas.dummyTaxonCount; ++i){
             dummyTaxaGains[i] -= totalScore;
