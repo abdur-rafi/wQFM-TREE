@@ -1,8 +1,15 @@
 package src;
 
+import java.io.FileWriter;
 import java.io.IOException;
+
+import src.InitialPartition.ConsensusTreePartition;
+import src.InitialPartition.IMakePartition;
+import src.PreProcessing.GeneTrees;
+
 public class Main {
-    public static void main(String[] args) throws IOException{
+
+    public static void main(String[] args) throws IOException {
 
         if(args.length < 3){
             System.out.println("Specify all file paths");
@@ -12,102 +19,38 @@ public class Main {
         String consensusFilePath = args[1];
         String outputFilePath = args[2];
 
-        System.out.println("RUNNING");
 
-        new QFM(inputFilePath,consensusFilePath,outputFilePath);
+        // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
+        // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+
+        GeneTrees trees = new GeneTrees(inputFilePath);
+
+        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap);
+
+
 
         
-        // PerLevelDs ds = new PerLevelDs();
+        // var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
+        // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
-
-        // Scanner scanner = new Scanner(new File("./input/gtree_11tax_est_5genes_R1.tre"));
+        var qfm = new QFM(trees, trees.taxa, partitionMaker);
         
-        // while(scanner.hasNextLine()){
-        //     String line = scanner.nextLine();
-        //     GeneTree tr = new GeneTree(line);
+        var spTree = qfm.runWQFM();
 
-        //     Set<Integer> stA = new HashSet<>();
-        //     // stA.add(tr.taxaMap.get("1"));
-        //     // stA.add(tr.taxaMap.get("2"));
-        //     stA.add(tr.taxaMap.get("3"));
-        //     stA.add(tr.taxaMap.get("5"));
-        //     // stA.add(tr.taxaMap.get("1"));
-        //     // stA.add(tr.taxaMap.get("2"));
-        //     // stA.add(tr.taxaMap.get("7"));
+        FileWriter writer = new FileWriter(outputFilePath);
+
+        writer.write(spTree.getNewickFormat());
+
+        writer.close();
+
+        // System.out.println(spTree.getNewickFormat());
+        // tc5(trees);
 
 
-        //     Set<Integer> stB = new HashSet<>();
-        //     stB.add(tr.taxaMap.get("4"));
-        //     // stB.add(tr.taxaMap.get("7"));
-        //     stB.add(tr.taxaMap.get("6"));
-        //     // stB.add(tr.taxaMap.get("10"));
-        //     // stB.add(tr.taxaMap.get("11"));
-        //     // stB.add(tr.taxaMap.get("10"));
-        //     // stB.add(tr.taxaMap.get("3"));
-        //     stB.add(tr.taxaMap.get("8"));
-        //     // stB.add(tr.taxaMap.get("6"));
-        //     // stB.add(tr.taxaMap.get("4"));
-
-
-
-
-        //     System.out.println(stA);
-        //     System.out.println(stB);
-
-        //     // ArrayList<IDummyTaxa> dummyTaxas = new ArrayList<>();
-        //     // ArrayList<IDummyTaxa> dummypA = new ArrayList<>();
-        //     // ArrayList<IDummyTaxa> dummypB = new ArrayList<>();
-            
-        //     Map<Integer, Integer> mp = new HashMap<>();
-            
-
-        //     mp.put(tr.taxaMap.get("1"), 0);
-        //     mp.put(tr.taxaMap.get("7"), 0);
-        //     mp.put(tr.taxaMap.get("11"), 0);
-
-
-        //     mp.put(tr.taxaMap.get("2"), 1);
-        //     mp.put(tr.taxaMap.get("9"), 1);
-
-        //     mp.put(tr.taxaMap.get("10"), 2);
-
-        //     Set<Integer> dtA = new HashSet<>();
-        //     Set<Integer> dtB = new HashSet<>();
-        //     dtB.add(0);
-        //     dtA.add(1);
-        //     dtB.add(2);
-            
-        //     ArrayList<Set<Integer>> partition = new ArrayList<>();
-        //     partition.add(stA);
-        //     partition.add(stB);
-            
-        //     ArrayList<Set<Integer>> dPartition = new ArrayList<>();
-        //     dPartition.add(dtA);
-        //     dPartition.add(dtB);
-
-        //     // dummypAIndices.add(1);
-        //     // dummypBIndices.add(2);
-
-
-
-        //     var calculator = new ScoreCalculatorTree(
-        //         tr, 
-        //         new BiPartitionTreeSpecific(partition, mp, dPartition, 11)
-        //     );
-
-        //     var score = calculator.score();
-        //     System.out.println(score);
-        //     // System.out.println(tr.score(stA, stB, mp,dummypAIndices, dummypBIndices));
-
-        //     System.out.println(tr.root.toString());
-
-        //     ds.addGeneTree(tr);
-
-        //     // break;
-            
-        // }
-
-        // scanner.close();
-
+        // System.out.println(trees.taxonIdToLabel);
     }
+
+    
 }

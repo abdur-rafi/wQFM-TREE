@@ -1,225 +1,224 @@
 package src;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Scanner;
-import java.util.Set;
 
-import src.BiPartition.BiPartition;
-import src.BiPartition.BiPartitionMapper;
-import src.BiPartition.BiPartitionTreeSpecific;
-import src.BiPartition.Swap;
-import src.ConsensusTree.ConsensusTree;
-import src.ConsensusTree.ConsensusTreeFlat;
-import src.ConsensusTree.IMakeParition;
-import src.GeneTree.GeneTree;
-import src.ScoreCalculator.ScoreCalculatorTree;
+import java.util.ArrayList;
+
+import src.DSPerLevel.BookKeepingPerLevel;
+import src.DSPerLevel.TaxaPerLevelWithPartition;
+import src.InitialPartition.IMakePartition;
+import src.PreProcessing.GeneTrees;
+import src.Taxon.DummyTaxon;
+import src.Taxon.RealTaxon;
+import src.Tree.Tree;
+import src.Tree.TreeNode;
 
 public class QFM {
+    
+    public RealTaxon[] realTaxa;
+    public IMakePartition initPartition;
+    public GeneTrees geneTrees;
 
-    private double eps = 1e-5;
-    private static int dummyIds = 0;
+    static double EPS = 1e-5;
 
-    Set<String> taxaSet;
-    ArrayList<GeneTree> geneTrees;
-    ArrayList<BiPartitionTreeSpecific> biPartitions;
-    int level;
-    int mxItrCount = 50;
-    // ConsensusTree cTree;
-    IMakeParition makeParition;
+    public QFM(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition){
+        this.realTaxa = realTaxa;
+        this.initPartition = initPartition;
+        this.geneTrees = trees;
+    }
 
-    public QFM(String inputFilePath, String consensusFilePath, String outputFilePath) throws IOException {
-        
-        Scanner scanner = new Scanner(new File(inputFilePath));
+    public Tree runWQFM(){
+        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0]);
+        var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
+        BookKeepingPerLevel initialBook = new BookKeepingPerLevel(geneTrees, x);
 
-        taxaSet = new HashSet<>();
-        geneTrees = new ArrayList<>();
-        biPartitions = new ArrayList<>();
-        level = 0;
-
-        // System.out.println(consensusFilePath);
-
-        while (scanner.hasNextLine()) {
-            
-            String line = scanner.nextLine();
-            if(line.trim().length() == 0) continue;
-            // System.out.println("line : " + line);
-            GeneTree tr = new GeneTree(line);
-            for(var x : tr.nodes){
-                if(x.isLeaf())
-                    taxaSet.add(x.label);
-            }
-            geneTrees.add(tr);
-
-        }
-        scanner.close();
-
-        scanner = new Scanner(new File(consensusFilePath));
-        String line = scanner.nextLine();
-
-        makeParition = new ConsensusTreeFlat(line);
-        scanner.close();
-
-        BiPartition partition = new BiPartition(taxaSet, new ArrayList<>(), new ArrayList<>(), new HashMap<>(), makeParition);
-        
-
-        var x = recurse(partition);
-
-        // System.out.println(x.nodes.size());
-        // System.out.println(x.root);
-
-        FileWriter writer = new FileWriter(outputFilePath);
-        
-        writer.write(x.getNewickFormat());
-
-        writer.close();
-
-        // System.out.println(x.getNewickFormat());
-        // output the tree to file
-        // try {
-        //     BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(outputFilePath));
-        //     writer.write(x.getNewickFormat());
-        //     writer.close();
-        // } catch (Exception e) {
-        //     System.out.println("Err");
-        // }
-
-        // x.reRootTree(x.nodes.get(12));
-        // System.out.println(x.root);
-        // System.out.println(x.root);
-        // while(oneStep(partition));
-
-        // System.out.println("Old partition");
-        // System.out.println(partition);
-        // var b = partition.divide();
-        // System.out.println("New partition");
-
-        // System.out.println(b[0]);
-        // System.out.println(b[1]);
-
-        // while(oneStep(b[0]));
-        // while(oneStep(b[1]));
-
-        // System.out.println(b[0]);
-        // System.out.println(b[1]);
-
-        // System.out.println("Final Partition: " + partition);
+        return recurse(initialBook);
 
     }
 
-    GeneTree recurse(BiPartition partition){
-        System.out.println("level : " + level++);
-        // System.out.println("Current Partition : \n" + partition );
-        int step = 0;
-        int itr = 0;
-        while(oneStep(partition)){
-            ++itr;
-            if(itr > mxItrCount){
-                System.out.println("Max Iteration Count Reached");
-                break;
+    private Tree recurse(
+        BookKeepingPerLevel book
+    ){
+        int itrCount = 0;
+        
+        while(oneInteration(book) ){
+            itrCount++;
+            System.out.println(itrCount);
+            if(itrCount > 20){
+
             }
-            // System.out.println("step : " + step++);
         }
-        // System.out.println("Refined Partition: \n" + partition);
-        var b = partition.divide();
-        // System.out.println(partition.getCg());
-        GeneTree[] trs = new GeneTree[2];
+
+        Tree[] trees = new Tree[2];
+
+        var x = book.divide(initPartition);
         int i = 0;
-        for(var x : b){
-            if(x.isValid()){
-                trs[i++] = recurse(x);
+        int[] dummyIds = new int[2];
+        
+        for(var taxaWPart : x){
+            var childBooks = new BookKeepingPerLevel(geneTrees, taxaWPart);
+            if(childBooks.taxas.smallestUnit){
+                trees[i] = childBooks.taxas.createStar();
             }
             else{
-                trs[i++] = x.createStar();
+                trees[i] = recurse(childBooks);
+            }
+            dummyIds[i++] = childBooks.taxas.dummyTaxa[childBooks.taxas.dummyTaxonCount - 1].id;
+        }
+
+        TreeNode[] dtNodes = new TreeNode[2];
+
+        for(i = 0; i < 2; ++i){
+            for(var node : trees[i].nodes){
+                if(node.info.dummyTaxonId == dummyIds[i]){
+                    dtNodes[i] = node;
+                }
+            }
+            if(dtNodes[i] == null){
+                System.out.println("Error: Dummy node not found");
+                System.exit(-1);
+            }
+            if(dtNodes[i].childs != null){
+                System.out.println("Error: Dummy node should be leaf");
+                System.exit(-1);
             }
         }
-        return partition.mergeTrees(trs);
+        
+        trees[0].reRootTree(dtNodes[0]);
+        if(dtNodes[0].childs.size() > 1){
+            System.out.println("Error: Dummy node should have only one child after reroot");
+            System.exit(-1);
+        }
+        dtNodes[0].childs.get(0).setParent(dtNodes[1].parent);
+        dtNodes[1].parent.childs.remove(dtNodes[1]);
+        dtNodes[1].parent.childs.add(dtNodes[0].childs.get(0));
+        trees[1].nodes.addAll(trees[0].nodes);
+
+        return trees[1];
+    }
+
+    static class Swap{
+        public int index;
+        public boolean isDummy;
+        public double gain;
+
+        public Swap(int i, boolean id, double g){
+            this.index = i;
+            this.isDummy = id;
+            this.gain = g;
+        }
+    }
+    
+
+    public static Swap swapMax(BookKeepingPerLevel book, double[][] rtGains, double[] dtGains, boolean[] rtLocked, boolean[] dtLocked){
+
+        int maxGainIndex = -1;
+        double maxGain = 0;
+
+        for(int i = 0; i < book.taxas.realTaxonCount; ++i){
+            if(rtLocked[i]) continue;
+            int partition = book.taxas.inWhichPartitionRealTaxonByIndex(i);
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1) ){
+                if(maxGainIndex == -1){
+                    maxGain = rtGains[i][partition];
+                    maxGainIndex = i;
+                }
+                else if(maxGain < rtGains[i][partition]){
+                    maxGain = rtGains[i][partition];
+                    maxGainIndex = i;
+                }
+            }
+        }
+
+        boolean dummyChosen = false;
+
+        for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
+            if(dtLocked[i]) continue;
+            int partition = book.taxas.inWhichPartitionDummyTaxonByIndex(i);
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1)){
+                if(maxGainIndex == -1){
+                    maxGain = dtGains[i];
+                    maxGainIndex = i;
+                    dummyChosen = true;
+                }
+                else if(maxGain < dtGains[i]){
+                    maxGain = dtGains[i];
+                    maxGainIndex = i;
+                    dummyChosen = true;
+                }
+            }
+        }
+
+        if(maxGainIndex == -1) return null;
+
+        book.swapTaxon(maxGainIndex, dummyChosen);
+        if(dummyChosen){
+            dtLocked[maxGainIndex] = true;
+        }
+        else{
+            rtLocked[maxGainIndex] = true;
+        }
+
+        
+        return new Swap(maxGainIndex, dummyChosen, maxGain);
+
 
     }
 
-    boolean oneStep(BiPartition partition){
+    public static boolean oneInteration(BookKeepingPerLevel book){
+        
+        double cg = 0;
+        int maxCgIndex = -1;
+        double maxCg = 0;
 
-        ArrayList<Swap> swaps = new ArrayList<>();
-        double mxCg = 0;
-        int mxcgi = -1;
+        boolean[] rtLocked = new boolean[book.taxas.realTaxonCount];
+        boolean[] dtLocked = new boolean[book.taxas.dummyTaxonCount];
+        double[][] rtGains;
+        double[] dtGains;
+
+        ArrayList<Swap> swaps = new ArrayList<Swap>();
 
         while(true){
+            rtGains = new double[book.taxas.realTaxonCount][2];
+            dtGains = new double[book.taxas.dummyTaxonCount];
+            
+            book.calculateScoreAndGains(rtGains, dtGains);
 
-            ArrayList<BiPartitionTreeSpecific> biPartitions = new ArrayList<>();
-    
-            for(var x : geneTrees){
-                biPartitions.add(
-                    BiPartitionMapper.map(partition, x)
-                );
-            }
-    
-            // System.out.println(partition);
-    
-            for(int i = 0; i < geneTrees.size(); ++i){
-                var gt = geneTrees.get(i);
-                var bp = biPartitions.get(i);
-                ScoreCalculatorTree calc = new ScoreCalculatorTree(gt, bp);
-                calc.score();
-                for(var x : gt.nodes){
-                    if(x.isLeaf() && partition.isInRealTaxa(x.label)){
-                        int p = bp.inWhichPartition(x.index, true);
-                        partition.addRealTaxaGain(x.label, x.info.gains[p]);
-                    }
-                }
-                for(int j = 0; j < calc.dummyTaxaGains().length; ++j){
-                    partition.addDummyTaxaGain(bp.globalDummyTaxaIndex(j), calc.dummyTaxaGains()[j]);
-                }
+            var x = swapMax(book, rtGains, dtGains, rtLocked,dtLocked);
+            
+            if(x != null){
+                swaps.add(x);
                 
-                // System.out.println( "score : " + score);
-                // System.out.println(geneTrees.get(i).root);
-            }
-            var swap = partition.swapMax();
-            if(swap == null){
-                break;
+                double gain = x.gain;
+
+                // if(gain < 0) break;
+
+                cg += gain;
+                
+                if(cg > maxCg && Math.abs(maxCg - cg) > EPS ){
+                    maxCg = cg;
+                    maxCgIndex = swaps.size() - 1;
+                }
             }
             else{
-                swaps.add(swap);
-                // System.out.println("swaps size : " + swaps.size());
-
-                var pSize = partition.partitionSize();
-                if( pSize[0] > 1 && pSize[1] > 1){
-                    if(mxcgi == -1 ){
-                        mxCg = partition.getCg();
-                        mxcgi = swaps.size() - 1;
-                    }
-                    else if(mxCg < partition.getCg() && Math.abs(mxCg - partition.getCg()) > eps){
-                        mxCg = partition.getCg();
-                        mxcgi = swaps.size() - 1;
-                    }
-                }
+                break;
             }
-            partition.resetGains();
-            // for(var x : taxaSet){
-            //     System.out.println(x + " : " + partition.getGainRealTaxa(x));
-            // }
-            // System.out.println("lOOPING");
-            // System.out.println(swap.rt + " " + swap.dti);
+            
         }
-        if(mxCg > eps){
-            for(int i = mxcgi + 1; i < swaps.size(); ++i){
-                partition.swap(swaps.get(i));
+
+        // System.out.println("CG Index : " + maxCgIndex + " cg : " + maxCg);
+
+        if(maxCgIndex == -1){
+            for(int i = swaps.size() - 1; i >= 0; --i){
+                var x = swaps.get(i);
+                book.swapTaxon(x.index, x.isDummy);
             }
+            return false;
         }
-        partition.resetAll();
-        // System.out.println("mxcgi " + mxcgi + " mxcg : " + mxCg);
+        for(int i = swaps.size() - 1; i > maxCgIndex; --i){
+            var x = swaps.get(i);
+            book.swapTaxon(x.index, x.isDummy);
+        }
 
-        // System.out.println(partition);
-
-        return mxCg > eps;
+        return true;
 
     }
-
-    public static int getDummyId(){
-        return dummyIds++;
-    }
-
 }

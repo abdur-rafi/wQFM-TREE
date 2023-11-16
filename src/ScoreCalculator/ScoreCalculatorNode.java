@@ -1,45 +1,42 @@
 package src.ScoreCalculator;
 
-
-import src.Utility;
+import src.Tree.Branch;
 
 public class ScoreCalculatorNode {
 
     Branch[] branches;
     double[][] subs;
     int nDummyTaxa;
-    int[] dummyTaxaToPartitionMap;
+    int[] dummyTaxaPartition;
     double[] scoresOfBranches;
     // g1. should be double
     double[][] gainsOfBranches;
-    double[] dummyTaxaGains;
 
-    public ScoreCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap, double[] dummyTaxaGains) {
-        this.dummyTaxaToPartitionMap = dummyTaxaToPartitionMap;
+    public ScoreCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
+        this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
         scoresOfBranches = new double[3];
-        this.nDummyTaxa = b[0].dummyTaxaCountsIndividual.length;
+        this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
         for(int i = 0; i < 3; ++i){
             subs[i][0] = 0;
             subs[i][1] = 0;
             for(int j = 0; j < this.nDummyTaxa; ++j){
-                int pIndex = this.dummyTaxaToPartitionMap[j];
+                int pIndex = this.dummyTaxaPartition[j];
                 if(pIndex == 0)
-                    subs[i][0] += b[i].dummyTaxaCountsIndividual[j] * b[(i+1) % 3].dummyTaxaCountsIndividual[j];
+                    subs[i][0] += b[i].dummyTaxaWeightsIndividual[j] * b[(i+1) % 3].dummyTaxaWeightsIndividual[j];
                 else if(pIndex == 1){
                     // 8. should be inidividual squarred
-                    subs[i][1] += (b[i].dummyTaxaCountsIndividual[j] * (b[i].dummyTaxaCountsIndividual[j]) ); 
+                    subs[i][1] += (b[i].dummyTaxaWeightsIndividual[j] * (b[i].dummyTaxaWeightsIndividual[j]) ); 
                 }
                 else{
                     System.out.println("error");
                 }
             }
-            subs[i][1] += b[i].realTaxaCountsTotal[1];
+            subs[i][1] += b[i].realTaxaCounts[1];
             // 9. subs[i][1] += realTaxaCount in 2nd partition in ith branch
         }
         gainsOfBranches = new double[3][2];
-        this.dummyTaxaGains = dummyTaxaGains;
 
     }
 
@@ -77,9 +74,9 @@ public class ScoreCalculatorNode {
 
     // g2. shoulde be double
 
-    public double[][] gain(double originalScore){
+    public double[][] gainRealTaxa(double originalScore, double multiplier){
         for(int i = 0; i < 3; ++i){
-            gainOf1BranchRealTaxa(i, originalScore);
+            gainOf1BranchRealTaxa(i, originalScore, multiplier);
         }
         return this.gainsOfBranches;
     }
@@ -89,11 +86,50 @@ public class ScoreCalculatorNode {
         return (a1 * a2 - subs[0]) * ((( b3 * b3 ) - subs[1] ) / 2);
     }
 
-    private void gainOf1BranchRealTaxa(int i, double originalScore){
+    public void swapRealTaxon(int branchIndex, int currPartition){
+
+        branches[branchIndex].swapRealTaxa(currPartition);
+
+        if(currPartition == 0){
+            this.subs[branchIndex][1] += 1;
+        }
+        else{
+            this.subs[branchIndex][1] -= 1;
+        }
+
+    }
+
+    public void swapDummyTaxon(int dummyIndex, int currPartition){
+            
+        int switchedPartition = 1 - currPartition;
+        double currDummyCountCurrBranch, currDummyCountNextBranch;
+
+        for(int i = 0; i < 3; ++i){
+
+            branches[i].swapDummyTaxon(dummyIndex, currPartition);
+            currDummyCountCurrBranch = branches[i].dummyTaxaWeightsIndividual[dummyIndex];
+            currDummyCountNextBranch = branches[(i + 1) % 3].dummyTaxaWeightsIndividual[dummyIndex];
+
+            if(switchedPartition == 1){                 
+                this.subs[i][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
+                // 
+                this.subs[i][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
+            }
+            else{
+                this.subs[i][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
+                this.subs[i][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
+            }
+
+        }
+            
+    }
+
+
+    private void gainOf1BranchRealTaxa(int i, double originalScore, double multiplier){
 
         Branch curr = branches[i];
         for(int p = 0; p < 2; ++p){
-            if(curr.realTaxaCountsTotal[p] > 0){
+            if(curr.realTaxaCounts[p] > 0){
                 // g3. adjust sub
                 curr.totalTaxaCounts[p]--;
                 curr.totalTaxaCounts[ ( p + 1) % 2]++;
@@ -105,7 +141,7 @@ public class ScoreCalculatorNode {
                     this.subs[i][1] -= 1;
                 }
 
-                gainsOfBranches[i][p] = score() - originalScore;
+                gainsOfBranches[i][p] = multiplier * (score() - originalScore);
 
 
                 curr.totalTaxaCounts[p]++;
@@ -121,17 +157,17 @@ public class ScoreCalculatorNode {
         }
     }
 
-    public void calcDummyTaxaGains(double originalScore){
+    public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains){
 
         for(int i = 0; i < this.nDummyTaxa; ++i){
-            int currPartition = this.dummyTaxaToPartitionMap[i];
+            int currPartition = this.dummyTaxaPartition[i];
             int switchedPartition = (currPartition + 1) % 2;
             double currDummyCountCurrBranch, currDummyCountNextBranch;
 
             for(int j = 0; j < 3; ++j){
 
-                currDummyCountCurrBranch = branches[j].dummyTaxaCountsIndividual[i];
-                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaCountsIndividual[i];
+                currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
+                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
 
                 branches[j].totalTaxaCounts[currPartition] -= currDummyCountCurrBranch;
                 branches[j].totalTaxaCounts[switchedPartition] += currDummyCountCurrBranch;
@@ -149,11 +185,11 @@ public class ScoreCalculatorNode {
                 
             }
             double newScore = score();
-            this.dummyTaxaGains[i] += newScore - originalScore;
+            dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
 
             for(int j = 0; j < 3; ++j){
-                currDummyCountCurrBranch = branches[j].dummyTaxaCountsIndividual[i];
-                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaCountsIndividual[i];
+                currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
+                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
 
                 branches[j].totalTaxaCounts[currPartition] += currDummyCountCurrBranch;
                 branches[j].totalTaxaCounts[switchedPartition] -= currDummyCountCurrBranch;

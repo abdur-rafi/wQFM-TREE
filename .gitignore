@@ -3,3 +3,5 @@
 /.idea
 raxml-ng.log
 test
+out
+.vscode
