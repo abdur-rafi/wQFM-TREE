@@ -9,7 +9,7 @@ public class Config {
         NO_NORMALIZATION
     }
     
-    public static ScoreNormalizationType SCORE_NORMALIZATION_TYPE = ScoreNormalizationType.NO_NORMALIZATION;
+    public static ScoreNormalizationType SCORE_NORMALIZATION_TYPE = ScoreNormalizationType.FLAT_NORMALIZATION;
 
     public enum ConsensusWeightType{
         FLAT,
