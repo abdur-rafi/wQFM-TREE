@@ -277,14 +277,31 @@ public class BookKeepingPerLevel {
             int partition = taxas.inWhichPartitionRealTaxonByIndex(i);
             Utility.addArrayToFirst(realTaxaGains[i], this.gainsToAll);
             realTaxaGains[i][partition] += totalScore;
-            realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
+            if(totals[partition] == 0){
+                realTaxaGains[i][partition] = 0;
+            }
+            else{
+                realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
+            }
+            // realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
         }
 
         for(int i = 0; i < taxas.dummyTaxonCount; ++i){
-            dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
+            if(totals[taxas.inWhichPartitionDummyTaxonByIndex(i)] == 0){
+                dummyTaxaGains[i] = 0;
+            }
+            else{
+                dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
+            }
+            // dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
         }
-
-        totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
+        if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
+            totalScore = 0;
+        }
+        else{
+            totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
+        }
+        // totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
         
         for (int i = 0; i < realTaxaGains.length; i++) {
             realTaxaGains[i][taxas.inWhichPartitionRealTaxonByIndex(i)] -= totalScore;
