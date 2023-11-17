@@ -41,11 +41,12 @@ public class QFM {
         
         while(oneInteration(book) ){
             itrCount++;
-            System.out.println(itrCount);
-            if(itrCount > 20){
-
+            if(itrCount > 10){
+                System.out.println("Max Iteration Reached\n");
+                break;
             }
         }
+        System.out.println(itrCount);
 
         Tree[] trees = new Tree[2];
 
