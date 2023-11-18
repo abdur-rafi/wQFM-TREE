@@ -18,7 +18,7 @@ public class Config {
 
     public static ConsensusWeightType CONSENSUS_WEIGHT_TYPE = ConsensusWeightType.FLAT;
 
-    public static double SINGLETON_THRESHOLD = .5; 
+    public static double SINGLETON_THRESHOLD = .75; 
     public static boolean ALLOW_SINGLETON = true;
 
 }
