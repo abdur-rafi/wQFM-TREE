@@ -1,7 +1,7 @@
 
 import unittest
 import lexer
-import parser
+import parser2
 from tree import *
 from tree import _TreeBuilder
 
@@ -13,7 +13,7 @@ class BuilderTest(unittest.TestCase):
         parsed. '''
         l = lexer.Lexer("(('foo' : 0.1, 'bar' : 1.0) : 2, baz)")
         handler = _TreeBuilder()
-        p = parser._Parser(l,handler)
+        p = parser2._Parser(l,handler)
         p.parse()
         t = handler.get_result()
 

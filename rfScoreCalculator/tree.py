@@ -7,7 +7,7 @@ This module contains the representation of trees and a parser for
 creating trees from a Newick string or file. '''
 
 import lexer
-import parser
+import parser2
 
 
 class Tree(object):
@@ -175,7 +175,7 @@ class TreeVisitor(object):
         pass
 
 
-class _TreeBuilder(parser.AbstractHandler):
+class _TreeBuilder(parser2.AbstractHandler):
     def __init__(self):
         self.stack = []
         self.root = None
@@ -202,7 +202,7 @@ class _TreeBuilder(parser.AbstractHandler):
 def parse_tree(input):
     '''Parse input as a Newick description of a tree and return the
     tree in a tree data structure.'''
-    return parser.parse(input,_TreeBuilder())
+    return parser2.parse(input,_TreeBuilder())
 
     
 def add_parent_links(tree):
