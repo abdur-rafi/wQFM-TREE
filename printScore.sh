@@ -1,12 +1,14 @@
 
 
 file1="avg-ewqfm-svr-singleton-c-f-n-f-v2-score.txt"
+file1="avg-ewqfm-svr-pseudocount-a-f-score.txt"
+
 file2="avg-ewqfm-c-f-v2-score.txt"
 file2="wqfm-v1.2-scores-avg.txt"
 # file2="avg-ewqfm-c-f-n-f-v2-score.txt"
 
-echo "file1 : $file1"
-echo "file2 : $file2"
+echo "$file1"
+echo "$file2"
 
 for file in $(ls $1)
 # for file in "1X-500-500"

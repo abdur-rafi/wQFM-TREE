@@ -2,7 +2,7 @@
 # cd $1
 # list current dir and run a for loop
 
-filePrefix="ewqfm-svr-singleton-c-f-n-f-v2"
+filePrefix="ewqfm-svr-pseudocount-a-f"
 for file in $(ls $1)
 # for file in "scale2u.200g.500b"
 do

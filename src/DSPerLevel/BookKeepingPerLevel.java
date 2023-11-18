@@ -278,17 +278,17 @@ public class BookKeepingPerLevel {
             Utility.addArrayToFirst(realTaxaGains[i], this.gainsToAll);
             realTaxaGains[i][partition] += totalScore;
             double vio = totals[partition] - realTaxaGains[i][partition];
-            realTaxaGains[i][partition] /= (vio + 1e-5);
+            realTaxaGains[i][partition] = (realTaxaGains[i][partition] + 1) / (vio + 1);
         }
 
         for(int i = 0; i < taxas.dummyTaxonCount; ++i){
             double vio = totals[taxas.inWhichPartitionDummyTaxonByIndex(i)] -( dummyTaxaGains[i] + totalScore);
-            dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / (vio + 1e-5);
+            dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore + 1) / (vio + 1);
         }
         
         double vio = geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]) - totalScore;
 
-        totalScore = totalScore / (vio + 1e-5);
+        totalScore = (totalScore + 1) / (vio + 1);
         
         for (int i = 0; i < realTaxaGains.length; i++) {
             realTaxaGains[i][taxas.inWhichPartitionRealTaxonByIndex(i)] -= totalScore;
