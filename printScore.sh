@@ -1,8 +1,10 @@
 
 
-file1="avg-ewqfm-sp.5-c-f-n-f-v2-score.txt"
-file2="avg-ewqfm-c-f-v2-score.txt"
+file1="avg-ewqfm-%sat-singleton-c-f-n-f-v2-score.txt"
+# file2="avg-ewqfm-c-f-v2-score.txt"
 # file2="wqfm-v1.2-scores-avg.txt"
+file2="avg-wqfm-v1.2-all-scores.txt"
+
 # file2="avg-ewqfm-c-f-n-f-v2-score.txt"
 
 echo "file1 : $file1"
