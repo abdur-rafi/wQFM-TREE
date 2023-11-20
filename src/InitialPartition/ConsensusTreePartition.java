@@ -102,7 +102,7 @@ public class ConsensusTreePartition implements IMakePartition {
     //     }
     // }
 
-    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts){
+    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton){
 
         int[] rtsP = new int[rts.length];
         int[] dtsp = new int[dts.length];
@@ -122,7 +122,7 @@ public class ConsensusTreePartition implements IMakePartition {
         }
         TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
 
-        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxas);
+        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
         double[][] rtGains = new double[rts.length][2];
         double[] dtGains = new double[dts.length];
 
@@ -132,7 +132,7 @@ public class ConsensusTreePartition implements IMakePartition {
     }
 
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts) {
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton) {
         
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
@@ -141,7 +141,7 @@ public class ConsensusTreePartition implements IMakePartition {
         double minDiff = 0;
         double maxScore = 0;
 
-        boolean allowSingleton = Config.ALLOW_SINGLETON;
+        // boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         for(var x : rts){
             weight[x.id] = 1;
@@ -161,11 +161,11 @@ public class ConsensusTreePartition implements IMakePartition {
                 }
                 ++i;
             }
-            if(Config.ALLOW_SINGLETON){
-                if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
-                    allowSingleton = false;
-                }
-            }
+            // if(Config.ALLOW_SINGLETON){
+            //     if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
+            //         allowSingleton = false;
+            //     }
+            // }
         }
 
         if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
@@ -213,7 +213,7 @@ public class ConsensusTreePartition implements IMakePartition {
 
                     if(partASize > 1 && partBSize > 1 || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
                         if(Config.USE_SCORING_IN_CONSENSUS){
-                            double score = scoreForPartitionByNode(child, rts, dts);
+                            double score = scoreForPartitionByNode(child, rts, dts, allowSingleton);
                             if( minNode == null || score > maxScore){
                                 maxScore = score;
                                 minNode = child;
@@ -242,7 +242,7 @@ public class ConsensusTreePartition implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts);
+            return randPartition.makePartition(rts, dts, allowSingleton);
             // System.exit(-1);
         }
         // System.out.println("partition");

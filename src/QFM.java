@@ -16,6 +16,7 @@ public class QFM {
     public RealTaxon[] realTaxa;
     public IMakePartition initPartition;
     public GeneTrees geneTrees;
+    private int level;
 
     static double EPS = 1e-5;
 
@@ -26,9 +27,11 @@ public class QFM {
     }
 
     public Tree runWQFM(){
-        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0]);
+        this.level = 0;
+
+        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], Config.ALLOW_SINGLETON);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
-        BookKeepingPerLevel initialBook = new BookKeepingPerLevel(geneTrees, x);
+        BookKeepingPerLevel initialBook = new BookKeepingPerLevel(geneTrees, x, Config.ALLOW_SINGLETON);
 
         return recurse(initialBook);
 
@@ -37,24 +40,48 @@ public class QFM {
     private Tree recurse(
         BookKeepingPerLevel book
     ){
+
+        this.level++;
         int itrCount = 0;
+
+        boolean allowSingleton = Config.ALLOW_SINGLETON;
+
+        System.out.println("level : " + level);
+
+        if(allowSingleton){
+            if(Config.USE_LEVEL_BASED_SINGLETON_THRESHOLD){
+                if(this.level > Config.MAX_LEVEL_MULTIPLIER * this.realTaxa.length){
+                    allowSingleton = false;
+                }
+            }
+            else{
+                int maxDepth = 0;
+                for(var x : book.taxas.dummyTaxa){
+                    maxDepth = Math.max(maxDepth, x.nestedLevel);
+                }
+                if(maxDepth > Config.SINGLETON_THRESHOLD * this.realTaxa.length){
+                    allowSingleton = false;
+                }
+            }
+        }
         
         while(oneInteration(book) ){
             itrCount++;
-            System.out.println(itrCount);
-            if(itrCount > 20){
-
-            }
+            // if(itrCount > 20){
+                
+                // }
         }
+
+        System.out.println( "#iterations: " + itrCount);
 
         Tree[] trees = new Tree[2];
 
-        var x = book.divide(initPartition);
+        var x = book.divide(initPartition, allowSingleton);
         int i = 0;
         int[] dummyIds = new int[2];
         
         for(var taxaWPart : x){
-            var childBooks = new BookKeepingPerLevel(geneTrees, taxaWPart);
+            var childBooks = new BookKeepingPerLevel(geneTrees, taxaWPart, allowSingleton);
             if(childBooks.taxas.smallestUnit){
                 trees[i] = childBooks.taxas.createStar();
             }
@@ -63,6 +90,8 @@ public class QFM {
             }
             dummyIds[i++] = childBooks.taxas.dummyTaxa[childBooks.taxas.dummyTaxonCount - 1].id;
         }
+
+        this.level--;
 
         TreeNode[] dtNodes = new TreeNode[2];
 

@@ -7,5 +7,5 @@ public interface IMakePartition {
     
 
 
-    public MakePartitionReturnType makePartition( RealTaxon[] rts, DummyTaxon[] dts );
+    public MakePartitionReturnType makePartition( RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton);
 }

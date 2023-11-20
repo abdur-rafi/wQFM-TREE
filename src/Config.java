@@ -18,12 +18,13 @@ public class Config {
 
     public static ConsensusWeightType CONSENSUS_WEIGHT_TYPE = ConsensusWeightType.NESTED;
 
-    public static double SINGLETON_THRESHOLD = .5; 
     public static boolean ALLOW_SINGLETON = true;
+    public static boolean USE_LEVEL_BASED_SINGLETON_THRESHOLD = true;
+    public static boolean USE_SCORING_IN_CONSENSUS = true;
 
-    public static boolean USE_SCORING_IN_CONSENSUS = false;
 
-    // public static double MAX_DEPTH_MULTIPLIER = 2;
+    public static double SINGLETON_THRESHOLD = .5; 
+    public static double MAX_LEVEL_MULTIPLIER = 1;
 
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 

@@ -43,20 +43,22 @@ public class BookKeepingPerLevel {
         return 1;
     }
 
-    public BookKeepingPerLevel(GeneTrees geneTrees, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
+    public BookKeepingPerLevel(GeneTrees geneTrees, TaxaPerLevelWithPartition taxaPerLevelWithPartition, boolean allowSingleton){
 
         this.taxas = taxaPerLevelWithPartition;
         this.geneTrees = geneTrees;
-        this.allowSingleton = Config.ALLOW_SINGLETON;
 
-        if(Config.ALLOW_SINGLETON){
-            for(var x : taxaPerLevelWithPartition.dummyTaxa){
-                if(x.nestedLevel >= taxaPerLevelWithPartition.allRealTaxaCount * Config.SINGLETON_THRESHOLD){
-                    allowSingleton = false;
-                    break;
-                }
-            }
-        }
+
+        this.allowSingleton = allowSingleton;
+
+        // if(Config.ALLOW_SINGLETON){
+        //     for(var x : taxaPerLevelWithPartition.dummyTaxa){
+        //         if(x.nestedLevel >= taxaPerLevelWithPartition.allRealTaxaCount * Config.SINGLETON_THRESHOLD){
+        //             allowSingleton = false;
+        //             break;
+        //         }
+        //     }
+        // }
 
         // this.realTaxaGains = new double[taxas.realTaxonCount][2];
         // this.dummyTaxaGains = new double[taxas.dummyTaxonCount];
@@ -312,6 +314,7 @@ public class BookKeepingPerLevel {
 
         return totalScore;
     }
+    
 
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
         double totalScore = 0;
@@ -468,7 +471,7 @@ public class BookKeepingPerLevel {
 
     }
 
-    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition){
+    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition, boolean allowSingleton){
         RealTaxon[][] rts = new RealTaxon[2][];
         DummyTaxon[][] dts = new DummyTaxon[2][];
 
@@ -517,7 +520,7 @@ public class BookKeepingPerLevel {
 
             if(rts[i].length + dtsWithNewDt.length > 3){
 
-                var y = makePartition.makePartition(rts[i], dtsWithNewDt);
+                var y = makePartition.makePartition(rts[i], dtsWithNewDt, allowSingleton);
                 taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
                     rts[i], dtsWithNewDt, 
                     y.realTaxonPartition, 
