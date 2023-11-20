@@ -25,6 +25,8 @@ public class ConsensusTreePartition implements IMakePartition {
 
     int taxonCount;
     GeneTrees trees;
+    BookKeepingPerLevel book;
+    
 
     public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap, GeneTrees trees) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filePath));
@@ -38,13 +40,6 @@ public class ConsensusTreePartition implements IMakePartition {
 
     }
 
-    // private void dfs(TreeNode currNode, RealTaxon[] rts, DummyTaxon[] dts){
-    //     currNode.info = new Info();
-    //     currNode.info.branches = new Branch[1];
-    //     currNode.info.branches[0] = new Branch(dts.length);
-
-    //     for(var x :)
-    // }
 
 
     private void assignSubTreeToPartition(TreeNode node, int[] rtsp, Map<Integer, Integer> idToIndex){
@@ -60,47 +55,6 @@ public class ConsensusTreePartition implements IMakePartition {
         }
     }
 
-    // private void partitionUsingMaxScore(RealTaxon[] rts, DummyTaxon[] dts){
-
-    //     double[] weight = new double[consTree.leavesCount];
-    //     int[] inWhichDummyTaxa = new int[consTree.leavesCount];
-
-    //     TreeNode minNode = null;
-    //     double minDiff = 0;
-
-    //     boolean allowSingleton = Config.ALLOW_SINGLETON;
-
-    //     for(var x : rts){
-    //         weight[x.id] = 1;
-    //     }
-
-    //     int i = 0;
-
-    //     for(var x : dts){
-    //         if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
-    //             x.calcDivCoeffs(Config.ScoreNormalizationType.NESTED_NORMALIZATION, weight, 1);
-    //         }
-    //         else{
-    //             double sz = x.flattenedTaxonCount;
-    //             for(var y : x.flattenedRealTaxa){
-    //                 weight[y.id] = 1./sz;
-    //                 inWhichDummyTaxa[y.id] = i;
-    //             }
-    //             ++i;
-    //         }
-    //         if(Config.ALLOW_SINGLETON){
-    //             if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
-    //                 allowSingleton = false;
-    //             }
-    //         }
-    //     }
-
-    //     if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
-    //         for(i = 0; i < dts.length; ++i){
-    //             if(weight[i] > 1) weight[i] = 1. / weight[i];
-    //         }
-    //     }
-    // }
 
     double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton){
 
@@ -120,20 +74,34 @@ public class ConsensusTreePartition implements IMakePartition {
                 dtsp[i] = 1;
             }
         }
-        TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
 
-        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
-        double[][] rtGains = new double[rts.length][2];
-        double[] dtGains = new double[dts.length];
+        if(this.book == null){
+            TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
+            this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+        }
+        else{
+            for(i = 0; i < rts.length; ++i){
+                if(rtsP[i] != this.book.taxas.inWhichPartitionRealTaxonByIndex(i)){
+                    book.swapTaxon(i, false);
+                }
+            }
 
-        return book.calculateScoreAndGains(rtGains, dtGains);
+            for(i = 0; i < dts.length; ++i){
+                if(dtsp[i] != this.book.taxas.inWhichPartitionDummyTaxonByIndex(i)){
+                    book.swapTaxon(i, true);
+                }
+            }
+        }
 
-        // return new MakePartitionReturnType(rtsP, dtsp);
+        return this.book.calculateScore();
+
     }
 
     @Override
     public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton) {
         
+        this.book = null;
+
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
 

@@ -24,7 +24,7 @@ public class Config {
 
 
     public static double SINGLETON_THRESHOLD = .5; 
-    public static double MAX_LEVEL_MULTIPLIER = 1;
+    public static double MAX_LEVEL_MULTIPLIER = 3;
 
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 

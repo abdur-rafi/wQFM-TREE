@@ -314,6 +314,55 @@ public class BookKeepingPerLevel {
 
         return totalScore;
     }
+
+    
+    public double calculateScore(){
+        double totalScore = 0;
+        for(var node : this.nodesForScore){
+            totalScore += node.info.scoreCalculator.score() * node.frequency;
+        }
+
+        if(Config.SCORE_NORMALIZATION_TYPE == Config.ScoreNormalizationType.NO_NORMALIZATION){
+            long[] p = new long[2];
+            long[] totalFlattenedCount = new long[2];
+
+            totalFlattenedCount[0] = this.taxas.getTaxonCountFlattenedInPartition(0);
+            totalFlattenedCount[1] = this.taxas.getTaxonCountFlattenedInPartition(1);
+
+            for(int i = 0; i < this.taxas.dummyTaxonCount; ++i){
+                int inWhichPartition = this.taxas.inWhichPartitionDummyTaxonByIndex(i);
+                p[inWhichPartition] -= Utility.nc2(this.taxas.getFlattenedCount(i));
+            }
+
+
+            p[0] += Utility.nc2(totalFlattenedCount[0]);
+            p[1] += Utility.nc2(totalFlattenedCount[1]);
+
+            if(p[0] ==0 || p[1] == 0){
+                totalScore = 0;
+            }
+            else{
+                totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
+            }
+        }
+        else{
+
+            long[] p = new long[2];
+            for(int i = 0; i < 2; ++i){
+                p[i] = taxas.getTaxonCountInPartition(i);
+            }
+
+            if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
+                totalScore = 0;
+            }
+            else{
+                totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
+            }
+            
+        }
+
+        return totalScore;
+    }
     
 
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
