@@ -109,10 +109,13 @@ public class ConsensusTreePartition implements IMakePartition {
         double minDiff = 0;
         double maxScore = 0;
 
+        boolean[] isRealTaxon = new boolean[consTree.leavesCount];
+
         // boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         for(var x : rts){
             weight[x.id] = 1;
+            isRealTaxon[x.id] = true;
         }
 
         int i = 0;
@@ -152,7 +155,7 @@ public class ConsensusTreePartition implements IMakePartition {
 
             if(node.isLeaf()){
                 double w = weight[node.taxon.id];
-                if(w == 1){
+                if(isRealTaxon[node.taxon.id]){
                     branch.realTaxaCounts[0] = 1;
                     branch.totalTaxaCounts[0] = 1;
                 }

@@ -27,10 +27,10 @@ public class Config {
 
 
     public static double SINGLETON_THRESHOLD = .5; 
-    public static double MAX_LEVEL_MULTIPLIER = 1;
+    public static double MAX_LEVEL_MULTIPLIER = .5;
 
 
-    public static ScoreEqn SCORE_EQN = new FractionSat();
+    public static ScoreEqn SCORE_EQN = new SatSubVio();
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 
 }
