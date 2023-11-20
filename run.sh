@@ -4,7 +4,8 @@
 
 # filePrefix="ewqfm-%sat-lvs-c-n-n-n-v2"
 # filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
-filePrefix="ewqfm-test-after-eqn-interface"
+filePrefix="ewqfm-all-n-%sat-singleton-new-init-after-fix"
+# filePrefix="ewqfm-all-n-mxscore-init-singleton"
 
 
 for file in $(ls $1)

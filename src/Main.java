@@ -19,6 +19,10 @@ public class Main {
         String consensusFilePath = args[1];
         String outputFilePath = args[2];
 
+        // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
+        // String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
+        // String outputFilePath = "./output/output.tre";
+
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");

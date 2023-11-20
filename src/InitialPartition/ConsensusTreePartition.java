@@ -120,27 +120,28 @@ public class ConsensusTreePartition implements IMakePartition {
         for(var x : dts){
             if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
                 x.calcDivCoeffs(Config.ScoreNormalizationType.NESTED_NORMALIZATION, weight, 1);
+                for(var y : x.flattenedRealTaxa){
+                    weight[y.id] = 1 / weight[y.id];
+                }
             }
             else{
                 double sz = x.flattenedTaxonCount;
                 for(var y : x.flattenedRealTaxa){
-                    weight[y.id] = 1./sz;
-                    inWhichDummyTaxa[y.id] = i;
+                    weight[y.id] += 1. / sz;
                 }
-                ++i;
             }
-            // if(Config.ALLOW_SINGLETON){
-            //     if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
-            //         allowSingleton = false;
-            //     }
-            // }
+            
+            for(var y : x.flattenedRealTaxa){
+                inWhichDummyTaxa[y.id] = i;
+            }
+            ++i;
         }
 
-        if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
-            for(i = 0; i < dts.length; ++i){
-                if(weight[i] > 1) weight[i] = 1. / weight[i];
-            }
-        }        
+        // if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
+        //     // for(i = 0; i < dts.length; ++i){
+        //     //     if(weight[i] > 1) weight[i] = 1. / weight[i];
+        //     // }
+        // }        
 
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
@@ -179,7 +180,7 @@ public class ConsensusTreePartition implements IMakePartition {
                     branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
                     branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
 
-                    if(partASize > 1 && partBSize > 1 || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
+                    if((partASize > 1 && partBSize > 1) || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
                         if(Config.USE_SCORING_IN_CONSENSUS){
                             double score = scoreForPartitionByNode(child, rts, dts, allowSingleton);
                             if( minNode == null || score > maxScore){

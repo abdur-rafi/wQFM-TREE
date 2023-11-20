@@ -51,6 +51,9 @@ public class QFM {
         if(allowSingleton){
             if(Config.USE_LEVEL_BASED_SINGLETON_THRESHOLD){
                 if(this.level > Config.MAX_LEVEL_MULTIPLIER * this.realTaxa.length){
+                    System.out.println("Made false");
+                    System.out.println("rts : " + book.taxas.realTaxonCount + " dts : " + book.taxas.dummyTaxonCount);
+                    System.out.println("part[0]: " + book.taxas.getTaxonCountInPartition(0) + " part[1]: " + book.taxas.getTaxonCountInPartition(1));
                     allowSingleton = false;
                 }
             }
