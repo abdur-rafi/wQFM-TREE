@@ -21,7 +21,7 @@ public class DebugMain {
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
 
 
-        IMakePartition  partitionMaker = new ConsensusTreePartition("", trees.taxaMap);
+        IMakePartition  partitionMaker = new ConsensusTreePartition("", trees.taxaMap, trees);
 
 
 

@@ -1,6 +1,8 @@
 
 
-file1="avg-ewqfm-%sat-singleton-c-f-n-f-v2-score.txt"
+# file1="avg-ewqfm-%sat-singleton-c-fws-n-f-score.txt"
+file1="avg-ewqfm-singleton-c-nws-n-n-score.txt"
+
 # file1="avg-ewqfm-%sat-c-f-n-f-v2-score.txt"
 # file1="avg-ewqfm-%sat-c-f-n-n-v2-score.txt"
 # file1="avg-ewqfm-%sat-c-n-n-n-v2-score.txt"

@@ -27,7 +27,7 @@ public class Main {
 
         GeneTrees trees = new GeneTrees(inputFilePath);
 
-        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap);
+        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap, trees);
 
 
 
