@@ -3,7 +3,9 @@
 # list current dir and run a for loop
 
 # filePrefix="ewqfm-%sat-lvs-c-n-n-n-v2"
-filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
+# filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
+filePrefix="ewqfm-test-after-eqn-interface"
+
 
 for file in $(ls $1)
 # for file in "1X-500-500"

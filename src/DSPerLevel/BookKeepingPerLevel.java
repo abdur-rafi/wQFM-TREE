@@ -6,7 +6,7 @@ import src.Config;
 import src.Utility;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
-import src.ScoreCalculator.ScoreCalculatorNode;
+import src.ScoreCalculator.NoSatCalculatorNode;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.Branch;
@@ -155,12 +155,13 @@ public class BookKeepingPerLevel {
                 }
                 if(!bookKeepingAtANode(node)){
                     this.nodesForScore.add(node);
-                    node.info.scoreCalculator = new ScoreCalculatorNode(node.info.branches,taxas.dummyTaxonPartition);
+                    node.info.scoreCalculator = new NoSatCalculatorNode(node.info.branches,taxas.dummyTaxonPartition);
                 }
                 this.nodesForGains.add(node);
             }
         }
     }
+
 
     private double gainCalcFromSatNoNorm(double[][] realTaxaGains, double[] dummyTaxaGains, double totalScore){
         long[] p = new long[2];
@@ -197,7 +198,8 @@ public class BookKeepingPerLevel {
             int partition = taxas.inWhichPartitionRealTaxonByIndex(i);
             Utility.addArrayToFirst(realTaxaGains[i], this.gainsToAll);
             realTaxaGains[i][partition] += totalScore;
-            realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
+            // realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
+            realTaxaGains[i][partition] = Config.SCORE_EQN.scoreFromSatAndTotal(totals[partition], realTaxaGains[i][partition]);
         
         }
         // for(var x : tree.nodes){
@@ -226,7 +228,12 @@ public class BookKeepingPerLevel {
                 totalFlattenedCount[(inWhichPartition + 1) % 2] +
                 this.taxas.getFlattenedCount(i));
             
-            dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / (geneTrees.geneTrees.size() * p[0] * p[1]);
+            // dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / (geneTrees.geneTrees.size() * p[0] * p[1]);
+
+            dummyTaxaGains[i] = Config.SCORE_EQN.scoreFromSatAndTotal(
+                geneTrees.geneTrees.size() * p[0] * p[1], 
+                dummyTaxaGains[i] + totalScore
+            );
 
             p[inWhichPartition] -= Utility.nc2(this.taxas.getFlattenedCount(i));
             p[(inWhichPartition + 1) % 2] += Utility.nc2(this.taxas.getFlattenedCount(i));
@@ -240,7 +247,11 @@ public class BookKeepingPerLevel {
         p[0] += Utility.nc2(totalFlattenedCount[0]);
         p[1] += Utility.nc2(totalFlattenedCount[1]);
 
-        totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
+        // totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
+        totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(
+            geneTrees.geneTrees.size() * p[0] * p[1], 
+            totalScore
+        );
         
         for(int i = 0; i < this.taxas.dummyTaxonCount; ++i){
             dummyTaxaGains[i] -= totalScore;
@@ -279,30 +290,42 @@ public class BookKeepingPerLevel {
             int partition = taxas.inWhichPartitionRealTaxonByIndex(i);
             Utility.addArrayToFirst(realTaxaGains[i], this.gainsToAll);
             realTaxaGains[i][partition] += totalScore;
-            if(totals[partition] == 0){
-                realTaxaGains[i][partition] = 0;
-            }
-            else{
-                realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
-            }
+            realTaxaGains[i][partition] = Config.SCORE_EQN.scoreFromSatAndTotal(totals[partition], realTaxaGains[i][partition]);
+            // if(totals[partition] == 0){
+            //     realTaxaGains[i][partition] = 0;
+            // }
+            // else{
+            //     realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
+            // }
             // realTaxaGains[i][partition] = realTaxaGains[i][partition] / totals[partition];
         }
 
         for(int i = 0; i < taxas.dummyTaxonCount; ++i){
-            if(totals[taxas.inWhichPartitionDummyTaxonByIndex(i)] == 0){
-                dummyTaxaGains[i] = 0;
-            }
-            else{
-                dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
-            }
+            
+            dummyTaxaGains[i] = Config.SCORE_EQN.scoreFromSatAndTotal(
+                totals[taxas.inWhichPartitionDummyTaxonByIndex(i)],
+                dummyTaxaGains[i] + totalScore
+            );
+
+            // if(totals[taxas.inWhichPartitionDummyTaxonByIndex(i)] == 0){
+            //     dummyTaxaGains[i] = 0;
+            // }
+            // else{
+            //     dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
+            // }
             // dummyTaxaGains[i] = (dummyTaxaGains[i] + totalScore) / totals[taxas.inWhichPartitionDummyTaxonByIndex(i)];
         }
-        if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
-            totalScore = 0;
-        }
-        else{
-            totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
-        }
+        totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(
+            geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]),
+            totalScore
+        );
+        
+        // if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
+        //     totalScore = 0;
+        // }
+        // else{
+        //     totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
+        // }
         // totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
         
         for (int i = 0; i < realTaxaGains.length; i++) {
@@ -338,12 +361,17 @@ public class BookKeepingPerLevel {
             p[0] += Utility.nc2(totalFlattenedCount[0]);
             p[1] += Utility.nc2(totalFlattenedCount[1]);
 
-            if(p[0] ==0 || p[1] == 0){
-                totalScore = 0;
-            }
-            else{
-                totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
-            }
+            totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(
+                geneTrees.geneTrees.size() * p[0] * p[1],
+                totalScore
+            );
+
+            // if(p[0] ==0 || p[1] == 0){
+            //     totalScore = 0;
+            // }
+            // else{
+            //     totalScore = totalScore /  (geneTrees.geneTrees.size() * p[0] * p[1]);
+            // }
         }
         else{
 
@@ -351,13 +379,16 @@ public class BookKeepingPerLevel {
             for(int i = 0; i < 2; ++i){
                 p[i] = taxas.getTaxonCountInPartition(i);
             }
-
-            if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
-                totalScore = 0;
-            }
-            else{
-                totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
-            }
+            totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(
+                geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]),
+                totalScore
+            );
+            // if((geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1])) == 0){
+            //     totalScore = 0;
+            // }
+            // else{
+            //     totalScore =  totalScore / (geneTrees.geneTrees.size() * Utility.nc2(p[0]) * Utility.nc2(p[1]));
+            // }
             
         }
 

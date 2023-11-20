@@ -1,6 +1,6 @@
 package src.Tree;
 
-import src.ScoreCalculator.ScoreCalculatorNode;
+import src.ScoreCalculator.NoSatCalculatorNode;
 
 public class Info {
 
@@ -13,7 +13,7 @@ public class Info {
 
     public Branch[] branches;
 
-    public ScoreCalculatorNode scoreCalculator;
+    public NoSatCalculatorNode scoreCalculator;
 
 
     public Info(Branch[] b){

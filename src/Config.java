@@ -1,5 +1,7 @@
 package src;
 
+import src.ScoreCalculator.FractionSat;
+import src.ScoreCalculator.ScoreEqn;
 
 public class Config {
     
@@ -26,6 +28,8 @@ public class Config {
     public static double SINGLETON_THRESHOLD = .5; 
     public static double MAX_LEVEL_MULTIPLIER = 1;
 
+
+    public static ScoreEqn SCORE_EQN = new FractionSat();
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 
 }
