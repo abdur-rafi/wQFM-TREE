@@ -1,5 +1,5 @@
 
-filePrefix="ewqfm-singleton-c-nws-n-n"
+filePrefix="ewqfm-singleton-c-n-n-n"
 for file in $(ls $1)
 do
     # echo $file
