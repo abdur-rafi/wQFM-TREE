@@ -201,6 +201,8 @@ public class QFM {
         int maxCgIndex = -1;
         double maxCg = 0;
 
+        boolean singletonPartition = book.taxas.getTaxonCountInPartition(0) == 1  || book.taxas.getTaxonCountInPartition(1) == 1;
+
         boolean[] rtLocked = new boolean[book.taxas.realTaxonCount];
         boolean[] dtLocked = new boolean[book.taxas.dummyTaxonCount];
         double[][] rtGains;
@@ -224,6 +226,13 @@ public class QFM {
                 // if(gain < 0) break;
 
                 cg += gain;
+
+                if(singletonPartition){
+                    if(maxCgIndex == -1){
+                        maxCg = cg;
+                        maxCgIndex = swaps.size() - 1;
+                    }
+                }
                 
                 if(cg > maxCg && Math.abs(maxCg - cg) > EPS ){
                     maxCg = cg;

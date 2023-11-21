@@ -19,9 +19,9 @@ public class Config {
         NESTED
     }
 
-    public static ConsensusWeightType CONSENSUS_WEIGHT_TYPE = ConsensusWeightType.NESTED;
+    public static ConsensusWeightType CONSENSUS_WEIGHT_TYPE = ConsensusWeightType.FLAT;
 
-    public static boolean ALLOW_SINGLETON = true;
+    public static boolean ALLOW_SINGLETON = false;
     public static boolean USE_LEVEL_BASED_SINGLETON_THRESHOLD = true;
     public static boolean USE_SCORING_IN_CONSENSUS = true;
 

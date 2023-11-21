@@ -600,7 +600,7 @@ public class BookKeepingPerLevel {
 
             if(rts[i].length + dtsWithNewDt.length > 3){
 
-                var y = makePartition.makePartition(rts[i], dtsWithNewDt, allowSingleton);
+                var y = makePartition.makePartition(rts[i], dtsWithNewDt, true);
                 taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
                     rts[i], dtsWithNewDt, 
                     y.realTaxonPartition, 
