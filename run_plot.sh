@@ -1,5 +1,5 @@
-# bash run.sh ../run/15-taxon
-# bash plotScore.sh ../run/15-taxon LvSingletonAllNestedMxScorePart/15_taxon
+bash run.sh ../run/15-taxon
+bash plotScore.sh ../run/15-taxon LvSingletonAllNestedMxScorePart/15_taxon
 
 # bash run.sh ../run/37-taxon
 # bash plotScore.sh ../run/37-taxon LvSingletonAllNestedMxScorePart/37_taxon

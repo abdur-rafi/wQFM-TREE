@@ -11,24 +11,24 @@ gtFolderPath=$path/gene-trees-true
 
 gtFolderCleanedPath=$gtFolderPath-cleaned
 
-# mkdir $gtFolderCleanedPath
+mkdir $gtFolderCleanedPath
 
-# for file in $(ls $gtFolderPath)
-# do
-#     python treeCleaner.py < $gtFolderPath/$file > $gtFolderCleanedPath/${file:0:2}
+for file in $(ls $gtFolderPath)
+do
+    python3 treeCleaner.py < $gtFolderPath/$file > $gtFolderCleanedPath/${file:0:2}
 
-# done
+done
 
 consFolderPath=$path/consensus-trees
-# mkdir $consFolderPath
+mkdir $consFolderPath
 
 
-# for file in $(ls $gtFolderCleanedPath)
-# do
-#     ./raxml-ng --redo --consense MRE --tree $gtFolderCleanedPath/$file --prefix $consFolderPath/$file >> ./raxml-ng.log
-#     consOut=$consFolderPath/$file.raxml.consensusTreeMRE
-#     python consensusCleaner.py < $consOut > $consFolderPath/${file:0:2}
-# done
+for file in $(ls $gtFolderCleanedPath)
+do
+    ./raxml-ng --redo --consense MRE --tree $gtFolderCleanedPath/$file --prefix $consFolderPath/$file >> ./raxml-ng.log
+    consOut=$consFolderPath/$file.raxml.consensusTreeMRE
+    python3 consensusCleaner.py < $consOut > $consFolderPath/${file:0:2}
+done
 
 
 
@@ -37,13 +37,13 @@ spFolderPath=$path/species-trees
 
 spFolderCleanedPath=$spFolderPath-cleaned
 
-# mkdir $spFolderCleanedPath
+mkdir $spFolderCleanedPath
 
-# for file in $(ls $spFolderPath)
-# do
-#     python treeCleaner.py < $spFolderPath/$file > $spFolderCleanedPath/${file:0:2}
+for file in $(ls $spFolderPath)
+do
+    python3 treeCleaner.py < $spFolderPath/$file > $spFolderCleanedPath/${file:0:2}
 
-# done
+done
 
 outputFolderPath=$path/output
 mkdir $outputFolderPath
@@ -58,11 +58,11 @@ do
     output=$outputFolderPath/$file
     # echo ${file:0:2}
     /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $geneTrees $consTree $output
-    python ./rfScoreCalculator/getFpFn.py -t $speciesTree -e $output >> $path/$filePrefix-score.txt
+    python3 ./rfScoreCalculator/getFpFn.py -t $speciesTree -e $output >> $path/$filePrefix-score.txt
 
 done
 
-python ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
+python3 ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
 
 
 
