@@ -11,17 +11,21 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length < 3){
-            System.out.println("Specify all file paths");
-            System.exit(-1);
-        }
-        String inputFilePath = args[0];
-        String consensusFilePath = args[1];
-        String outputFilePath = args[2];
+        // if(args.length < 3){
+        //     System.out.println("Specify all file paths");
+        //     System.exit(-1);
+        // }
+        // String inputFilePath = args[0];
+        // String consensusFilePath = args[1];
+        // String outputFilePath = args[2];
 
-        // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
-        // String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
-        // String outputFilePath = "./output/output.tre";
+        String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
+        String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
+        String outputFilePath = "./output/output.tre";
+
+        inputFilePath = "../run/07.trueGT.cleaned";
+        consensusFilePath = "../run/100.raxml.consensusTreeMRE";
+        outputFilePath = "./output.tre";
 
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
