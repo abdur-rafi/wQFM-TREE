@@ -31,6 +31,8 @@ public class Config {
 
 
     public static ScoreEqn SCORE_EQN = new SatSubVio();
+
+    public static int MAX_ITERATION = 5;
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 
 }

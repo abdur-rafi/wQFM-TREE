@@ -70,9 +70,11 @@ public class QFM {
         
         while(oneInteration(book) ){
             itrCount++;
-            // if(itrCount > 20){
-                
-                // }
+            if(itrCount > Config.MAX_ITERATION){
+                System.out.println("Max iteration reached");
+                break;
+            }
+            
         }
 
         System.out.println( "#iterations: " + itrCount);
