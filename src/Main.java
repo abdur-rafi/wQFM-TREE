@@ -6,7 +6,7 @@ import java.io.IOException;
 import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
-
+// 5:18
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -27,6 +27,9 @@ public class Main {
         // consensusFilePath = "../run/100.raxml.consensusTreeMRE";
         // outputFilePath = "./output.tre";
 
+        // inputFilePath = "./input/1001.tre";
+        // consensusFilePath = "./input/1001cons.tre";
+        // outputFilePath = "./output.tre";
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
