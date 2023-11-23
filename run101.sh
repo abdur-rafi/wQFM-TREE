@@ -57,7 +57,7 @@ do
     consTree=$consFolderPath/$file
     output=$outputFolderPath/$file
     # echo ${file:0:2}
-    /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $geneTrees $consTree $output
+    /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/rumi/.vscode-server/data/User/workspaceStorage/35a68d4449bc6a8fcddb29edcf76836a/redhat.java/jdt_ws/EWQFM_3ae3de11/bin src.Main $geneTrees $consTree $output
     python3 ./rfScoreCalculator/getFpFn.py -t $speciesTree -e $output >> $path/$filePrefix-score.txt
 
 done

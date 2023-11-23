@@ -19,8 +19,8 @@ for file in $(ls $wqfmFolderPath)
 do
     speciesTree=$spFolderCleanedPath/${file:0:2}
     wqfmTree=$wqfmFolderPath/$file
-    python ./rfScoreCalculator/getFpFn.py -t $speciesTree -e $wqfmTree >> $path/$filePrefix-score.txt
+    python3 ./rfScoreCalculator/getFpFn.py -t $speciesTree -e $wqfmTree >> $path/$filePrefix-score.txt
 
 done
 
-python ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
+python3 ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
