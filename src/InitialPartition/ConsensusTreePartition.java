@@ -26,6 +26,7 @@ public class ConsensusTreePartition implements IMakePartition {
     int taxonCount;
     GeneTrees trees;
     BookKeepingPerLevel book;
+    double score;
     
 
     public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap, GeneTrees trees) throws FileNotFoundException{
@@ -80,21 +81,28 @@ public class ConsensusTreePartition implements IMakePartition {
             this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
         }
         else{
+            boolean changed = false;
             for(i = 0; i < rts.length; ++i){
                 if(rtsP[i] != this.book.taxas.inWhichPartitionRealTaxonByIndex(i)){
+                    changed = true;
                     book.swapTaxon(i, false);
                 }
             }
 
             for(i = 0; i < dts.length; ++i){
                 if(dtsp[i] != this.book.taxas.inWhichPartitionDummyTaxonByIndex(i)){
+                    changed = true;
                     book.swapTaxon(i, true);
                 }
             }
+            if(!changed){
+                // System.out.println("Not changed");
+                return this.score;
+            }
         }
+        this.score = this.book.calculateScore();
 
-        return this.book.calculateScore();
-
+        return this.score;
     }
 
     @Override
