@@ -8,7 +8,6 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.Stack;
 
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
@@ -104,9 +103,15 @@ public class GeneTrees {
 
             tree.calculateFrequencies(triPartitions);
             geneTrees.add(tree);
+            // for(var x : tree.nodes){
+            //     x.frequency = 1;
+            // }
             // System.out.println(tree.leavesCount);
             internalNodesCount += tree.nodes.size() - tree.leavesCount;
             // System.out.println(tree.root);
+            if(tree.checkIfNonBinary()){
+                System.out.println("non binary tree");
+            }
 
         }
         

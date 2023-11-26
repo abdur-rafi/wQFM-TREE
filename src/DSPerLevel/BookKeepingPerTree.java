@@ -145,19 +145,19 @@ public class BookKeepingPerTree {
             branches[2].realTaxaCounts[p] = this.realTaxaCountsInPartitions[p] - branches[0].realTaxaCounts[p] - branches[1].realTaxaCounts[p];
             branches[2].totalTaxaCounts[p] = this.getTotalTaxon(p) - branches[0].totalTaxaCounts[p] - branches[1].totalTaxaCounts[p];
         }
-        if(node.frequency == 0){
-            skip = true;
-        }
-        else{
-            if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
-                if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
-                    if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
-                    branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
-                        skip = true;
-                    }
-                }
-            }
-        }
+        // if(node.frequency == 0){
+        //     skip = true;
+        // }
+        // else{
+        //     if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
+        //         if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
+        //             if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
+        //             branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
+        //                 skip = true;
+        //             }
+        //         }
+        //     }
+        // }
 
         node.info = new Info(branches);
         return skip;
@@ -256,7 +256,11 @@ public class BookKeepingPerTree {
         return this.pairsFromPart[0] * this.pairsFromPart[1];
     }
 
-    public double totalQuartetsAfterSwap(int toPartition){
+    public double totalQuartetsAfterSwap(int rtId, int toPartition){
+        if(!this.geneTree.isTaxonPresent(rtId)){
+            // return 0;
+            return this.totalQuartets();
+        }
         return (this.pairsFromPart[1 - toPartition] - (this.getTotalTaxon(1 - toPartition) - 1)) * 
         (this.pairsFromPart[toPartition] + (this.getTotalTaxon(toPartition)));
     }

@@ -2,7 +2,6 @@ package src.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -323,9 +322,9 @@ public class Tree {
             if(!mark[i] && isTaxonPresent(i)){
                 arr3.add(i);
             }
-            else if(!isTaxonPresent(i)){
-                System.out.println("No. " + i + " is not present in tree");
-            }
+            // else if(!isTaxonPresent(i)){
+            //     System.out.println("No. " + i + " is not present in tree");
+            // }
         }
 
         String[] triPartition = new String[3];
@@ -351,7 +350,7 @@ public class Tree {
         
         Arrays.sort(triPartition);
 
-        var key = triPartition[0] + '|' + triPartition[1] ;
+        var key = triPartition[0] + '|' + triPartition[1] + '|' + triPartition[2];
 
         if(triPartitionsMap.containsKey(key)){
             triPartitionsMap.get(key).frequency++;
@@ -387,6 +386,14 @@ public class Tree {
         ArrayList<TreeNode> topSort = new ArrayList<>();
         topSortUtil(root, topSort);
         this.topSortedNodes = topSort;
+    }
+
+    public boolean checkIfNonBinary(){
+        for(var x : nodes){
+            if( x.childs != null && x.childs.size() > 2)
+                return true;
+        }
+        return false;
     }
 
 }

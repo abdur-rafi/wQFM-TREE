@@ -1,12 +1,9 @@
 package src;
 
-import java.io.FileWriter;
 import java.io.IOException;
 
 import src.DSPerLevel.BookKeepingPerLevel;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
-import src.InitialPartition.ConsensusTreePartition;
-import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
@@ -36,7 +33,7 @@ public class DebugMain {
         
         // var spTree = qfm.runWQFM();
 
-        // FileWriter writer = new FileWriter("outsrc.v2.tre");
+        // FileWriter writer = new FileWriter("outsrc.src.tre");
 
         // writer.write(spTree.getNewickFormat());
 
