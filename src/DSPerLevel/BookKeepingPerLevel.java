@@ -329,6 +329,8 @@ public class BookKeepingPerLevel {
             }
         }
 
+        System.out.println(totalScore);
+
 
         for(var x : this.geneTrees.geneTrees){
             for(var node : x.leaves){

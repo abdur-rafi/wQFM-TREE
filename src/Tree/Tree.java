@@ -330,6 +330,11 @@ public class Tree {
 
         String[] triPartition = new String[3];
 
+        arr1.sort((a, b) -> a - b);
+        arr2.sort((a, b) -> a - b);
+        arr3.sort((a, b) -> a - b);
+        
+
         var sb = new StringBuilder();
         arr1.forEach(s -> sb.append(s + '-') );
 
@@ -346,7 +351,7 @@ public class Tree {
         
         Arrays.sort(triPartition);
 
-        var key = triPartition[0] + '|' + triPartition[1] + '|' + triPartition[2];
+        var key = triPartition[0] + '|' + triPartition[1] ;
 
         if(triPartitionsMap.containsKey(key)){
             triPartitionsMap.get(key).frequency++;

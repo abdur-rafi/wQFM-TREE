@@ -15,6 +15,9 @@ public class DebugMain {
     
     public static void main(String[] args) throws IOException {
         // new GeneTrees("../run/07.trueGT.cleaned");
+        // new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // new GeneTrees("./input/custom.tre");
+
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
