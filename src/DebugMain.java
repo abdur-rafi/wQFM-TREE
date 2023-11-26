@@ -43,7 +43,7 @@ public class DebugMain {
         // writer.close();
 
         // System.out.println(spTree.getNewickFormat());
-        tc1(trees);
+        tc3(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
@@ -75,7 +75,7 @@ public class DebugMain {
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
-        realTaxaPartition[3] = 1;
+        realTaxaPartition[3] = 0;
         realTaxaPartition[4] = 1;
 
         int[] dummyTaxaPartition = new int[1];
@@ -197,7 +197,7 @@ public class DebugMain {
         double[] dtGains = new double[2];
 
 
-        bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains);
+        System.out.println(bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
     }
 
 

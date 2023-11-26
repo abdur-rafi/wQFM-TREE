@@ -49,19 +49,21 @@ public class BookKeepingPerTree {
         }
 
         initialBookKeeping(taxas);
-        this.pairsFromPart[0] = this.realTaxaCountsInPartitions[0];
-        this.pairsFromPart[1] = this.realTaxaCountsInPartitions[1];
+        this.pairsFromPart[0] = this.getTotalTaxon(0) * this.getTotalTaxon(0);
+        this.pairsFromPart[1] = this.getTotalTaxon(1) * this.getTotalTaxon(1);
 
         for(i = 0; i < taxas.dummyTaxonCount; ++i){
             int partition = taxas.inWhichPartitionDummyTaxonByIndex(i);
-            this.pairsFromPart[partition] += this.pairsFromPart[partition] * this.dummyTaxonWeightsIndividual[i] ;
+            this.pairsFromPart[partition] -= this.dummyTaxonWeightsIndividual[i] * this.dummyTaxonWeightsIndividual[i]; ;
         }
 
-        // this.pairsFromPart[0] -= this.realTaxaCountsInPartitions[0];
-        // this.pairsFromPart[1] -= this.realTaxaCountsInPartitions[1];
 
-        // this.pairsFromPart[0] /= 2;
-        // this.pairsFromPart[1] /= 2;
+
+        this.pairsFromPart[0] -= this.realTaxaCountsInPartitions[0];
+        this.pairsFromPart[1] -= this.realTaxaCountsInPartitions[1];
+
+        this.pairsFromPart[0] /= 2;
+        this.pairsFromPart[1] /= 2;
 
     }
 
