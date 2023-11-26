@@ -29,7 +29,7 @@ public class QFM {
     public Tree runWQFM(){
         this.level = 0;
 
-        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], Config.ALLOW_SINGLETON);
+        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
         BookKeepingPerLevel initialBook = new BookKeepingPerLevel(geneTrees, x, Config.ALLOW_SINGLETON);
 

@@ -69,3 +69,13 @@ if len(sys.argv) > 2:
 else:
     plt.show()
 
+
+
+    # fig, axs = plt.subplots(3, 4, figsize=(12, 10))
+    # axs = axs.flatten()
+
+    # for i in range(12):
+    #     axs[i].imshow(imgs[i], cmap='gray')
+    #     axs[i].set_title(f'num components = {ks[i]}', fontsize=8)
+    
+    # plt.show()

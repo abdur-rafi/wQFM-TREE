@@ -2,7 +2,7 @@ package src.ScoreCalculator;
 
 import src.Tree.Branch;
 
-public class NoSatCalculatorNode {
+public class NumSatCalculatorNode {
 
     Branch[] branches;
     double[][] subs;
@@ -12,7 +12,7 @@ public class NoSatCalculatorNode {
     // g1. should be double
     double[][] gainsOfBranches;
 
-    public NoSatCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
+    public NumSatCalculatorNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];

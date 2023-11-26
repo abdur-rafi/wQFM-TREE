@@ -14,14 +14,14 @@ import src.Taxon.RealTaxon;
 public class DebugMain {
     
     public static void main(String[] args) throws IOException {
-
+        // new GeneTrees("../run/07.trueGT.cleaned");
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
 
 
-        IMakePartition  partitionMaker = new ConsensusTreePartition("", trees.taxaMap, trees);
+        // IMakePartition  partitionMaker = new ConsensusTreePartition("./input/5genes.raxml.consensusTreeMRE.cleaned", trees.taxaMap, trees);
 
 
 
@@ -29,18 +29,18 @@ public class DebugMain {
         // var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
-        var qfm = new QFM(trees, trees.taxa, partitionMaker);
+        // var qfm = new QFM(trees, trees.taxa, partitionMaker);
         
-        var spTree = qfm.runWQFM();
+        // var spTree = qfm.runWQFM();
 
-        FileWriter writer = new FileWriter("outsrc.v2.tre");
+        // FileWriter writer = new FileWriter("outsrc.v2.tre");
 
-        writer.write(spTree.getNewickFormat());
+        // writer.write(spTree.getNewickFormat());
 
-        writer.close();
+        // writer.close();
 
         // System.out.println(spTree.getNewickFormat());
-        // tc5(trees);
+        tc1(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
@@ -72,7 +72,7 @@ public class DebugMain {
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
-        realTaxaPartition[3] = 0;
+        realTaxaPartition[3] = 1;
         realTaxaPartition[4] = 1;
 
         int[] dummyTaxaPartition = new int[1];
@@ -80,12 +80,12 @@ public class DebugMain {
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, dt, realTaxaPartition, dummyTaxaPartition, 11);
 
-        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
         double[][] rtGains = new double[5][2];
         double[] dtGains = new double[1];
 
-        System.out.println(bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
     }
 
 
@@ -131,7 +131,7 @@ public class DebugMain {
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, a, realTaxaPartition, dummyTaxaPartition, 11);
 
-        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
 
         double[][] rtGains = new double[4][2];
@@ -187,7 +187,7 @@ public class DebugMain {
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, a, realTaxaPartition, dummyTaxaPartition, 11);
 
-        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
 
         double[][] rtGains = new double[2][2];
@@ -231,7 +231,7 @@ public class DebugMain {
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, dt, realTaxaPartition, dummyTaxaPartition, 11);
 
-        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
 
         double[][] rtGains = new double[5][2];
@@ -305,7 +305,7 @@ public class DebugMain {
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, a, realTaxaPartition, dummyTaxaPartition, 11);
 
-        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
         double[][] rtGains = new double[4][2];
         double[] dtGains = new double[1];

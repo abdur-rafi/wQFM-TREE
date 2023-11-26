@@ -19,6 +19,7 @@ public class Tree {
     public Map<String, RealTaxon> taxaMap;
     // in order of id
     public TreeNode[] leaves;
+    // leavesCount and size of leaves array may be different
     public int leavesCount;
     
 
@@ -45,7 +46,8 @@ public class Tree {
 
     private void parseFromNewick(String newickLine){
 
-        Map<String, RealTaxon> taxaMap = new HashMap<>();
+        // Map<String, RealTaxon> taxaMap = new HashMap<>();
+        int leavesCount = 0;
 
         nodes = new ArrayList<>();
     
@@ -82,28 +84,31 @@ public class Tree {
                     char curr_j = newickLine.charAt(j);
                     if(curr_j == ')' || curr_j == ','){
                         RealTaxon taxon;
-                        if(this.taxaMap != null){
+                        // if(this.taxaMap != null){
                             taxon = this.taxaMap.get(taxa.toString());
-                        }
-                        else{
-                            taxon = new RealTaxon(taxa.toString());
-                            taxaMap.put(taxon.label, taxon);
-                        }   
+                        // }
+                        // else{
+                        //     taxon = new RealTaxon(taxa.toString());
+                        //     taxaMap.put(taxon.label, taxon);
+                        // }   
                         newNode = addLeaf(taxon);
+                        leavesCount++;
+
                         break;
                     }
                     taxa.append(curr_j);
                     ++j;
                 }
                 if(j == n){
+                    leavesCount++;
                     RealTaxon taxon;
-                    if(this.taxaMap != null){
+                    // if(this.taxaMap != null){
                         taxon = this.taxaMap.get(taxa.toString());
-                    }
-                    else{
-                        taxon = new RealTaxon(taxa.toString());
-                        taxaMap.put(taxon.label, taxon);
-                    }   
+                    // }
+                    // else{
+                    //     taxon = new RealTaxon(taxa.toString());
+                    //     taxaMap.put(taxon.label, taxon);
+                    // }   
                     newNode = addLeaf(taxon);
                 }
                 i = j - 1;
@@ -112,10 +117,11 @@ public class Tree {
             ++i;
         }
 
-        if(this.taxaMap == null)
-            this.taxaMap = taxaMap;
+        // if(this.taxaMap == null)
+        //     this.taxaMap = taxaMap;
 
-        this.leavesCount = this.taxaMap.size();
+        // this.leavesCount = this.taxaMap.size();
+        this.leavesCount = leavesCount;
     
         root = nodes.lastElement();
     
@@ -125,6 +131,18 @@ public class Tree {
         
         filterLeaves();
         topSort();
+
+        // System.out.println(this.leavesCount);
+        // for( i = 0; i < this.leaves.length; ++i){
+        //     if(this.leaves[i] == null){
+        //         System.out.println("Error: Taxon " + i + " is not present in tree");
+        //         System.exit(-1);
+        //     }
+        //     if(this.leaves[i].taxon.id != i){
+        //         System.out.println("Error: Taxon " + i + " not matching");
+        //         System.exit(-1);
+        //     }
+        // }
         // bringLeafsToFront();
 
 
@@ -142,10 +160,10 @@ public class Tree {
 
     
     
-    public Tree(String newickLine){
-        taxaMap = null;
-        parseFromNewick(newickLine);
-    }
+    // public Tree(String newickLine){
+    //     taxaMap = null;
+    //     parseFromNewick(newickLine);
+    // }
 
     public Tree(String newickLine, Map<String, RealTaxon> taxaMap){
         this.taxaMap = taxaMap;
@@ -275,6 +293,10 @@ public class Tree {
     public String getNewickFormat(){
         return newickFormatUitl(root) + ";";
     }
+
+    public boolean isTaxonPresent(int id){
+        return this.leaves[id] != null;
+    }
     
 
     private ArrayList<Integer> getChildrens(TreeNode node, Map<String, TreeNode> triPartitionsMap){
@@ -289,7 +311,7 @@ public class Tree {
         var arr2 = getChildrens(c2, triPartitionsMap);
 
         // flag all elems in left and right partition to find elems of third partition
-        boolean[] mark = new boolean[this.leavesCount];
+        boolean[] mark = new boolean[this.taxaMap.size()];
         for(var x : arr1){
             mark[x] = true;
         }
@@ -297,9 +319,12 @@ public class Tree {
             mark[x] = true;
         }
         ArrayList<Integer> arr3 = new ArrayList<>();
-        for(int i = 0; i < this.leavesCount; ++i){
-            if(!mark[i]){
+        for(int i = 0; i < this.taxaMap.size(); ++i){
+            if(!mark[i] && isTaxonPresent(i)){
                 arr3.add(i);
+            }
+            else if(!isTaxonPresent(i)){
+                System.out.println("No. " + i + " is not present in tree");
             }
         }
 
@@ -321,7 +346,7 @@ public class Tree {
         
         Arrays.sort(triPartition);
 
-        var key = triPartition[0] + '|' + triPartition[1];
+        var key = triPartition[0] + '|' + triPartition[1] + '|' + triPartition[2];
 
         if(triPartitionsMap.containsKey(key)){
             triPartitionsMap.get(key).frequency++;
