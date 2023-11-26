@@ -262,7 +262,9 @@ public class BookKeepingPerTree {
     }
 
     public double totalQuartetsAfterDummySwap(int dIndex, int toPartition){
-        double a = this.pairsFromPart[1 - toPartition] - this.dummyTaxonWeightsIndividual[dIndex] * (this.getTotalTaxon(1-toPartition) - 1);
+        double a = this.pairsFromPart[1 - toPartition] - this.dummyTaxonWeightsIndividual[dIndex] * (
+            this.getTotalTaxon(1-toPartition) - 
+            this.getDummyTaxonIndiWeight(dIndex));
         double b = this.pairsFromPart[toPartition] + this.dummyTaxonWeightsIndividual[dIndex] * (this.getTotalTaxon(toPartition));
         return a * b;
     }

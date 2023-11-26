@@ -5,6 +5,8 @@
 # filePrefix="ewqfm-%sat-lvs-c-n-n-n-v2"
 # filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
 filePrefix="ewqfm-%sat-init-with-singleton-all-flat"
+filePrefix="ewqfm-imp-test"
+
 # filePrefix="ewqfm-all-n-mxscore-init-singleton"
 
 

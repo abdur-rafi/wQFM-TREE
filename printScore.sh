@@ -4,6 +4,7 @@
 file1="avg-wqfm-new-scoring-n-f-score.txt"
 file1="avg-ewqfm-%sat-lvs-mxpart-c-n-n-n-v2-score.txt"
 file1="avg-ewqfm-%sat-init-with-singleton-all-flat-score.txt"
+file1="avg-ewqfm-init-with-singleton-score.txt"
 
 
 # file1="avg-ewqfm-%sat-c-f-n-f-v2-score.txt"
@@ -13,7 +14,7 @@ file1="avg-ewqfm-%sat-init-with-singleton-all-flat-score.txt"
 
 file2="avg-ewqfm-c-f-v2-score.txt"
 file2="avg-wqfm-v1.2-all-scores.txt"
-# file2="avg-ewqfm-c-f-n-f-v2-score.txt"
+file2="avg-ewqfm-imp-test-score.txt"
 
 echo "$file1"
 echo "$file2"
