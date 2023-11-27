@@ -2,12 +2,14 @@ package src.DSPerLevel;
 
 import java.util.ArrayList;
 
-import src.ScoreCalculator.NumSatCalculatorNode;
 import src.Taxon.RealTaxon;
 import src.Tree.Branch;
 import src.Tree.Info;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
+import src.ScoreCalculator.NumSatCalculatorBinaryNode;
+import src.ScoreCalculator.NumSatCalculatorNode;
+import src.ScoreCalculator.NumSatCalculatorPolytomyNode;
 
 public class BookKeepingPerTree {
     
@@ -80,7 +82,20 @@ public class BookKeepingPerTree {
             }
             if(!bookKeepingAtANode(node, taxas)){
                 this.nodesForScore.add(node);
-                node.info.scoreCalculator = new NumSatCalculatorNode(node.info.branches,taxas.dummyTaxonPartition);
+                NumSatCalculatorNode sCalculatorNode = null;
+                if(node.childs.size() == 2){
+                    sCalculatorNode = new NumSatCalculatorBinaryNode(node.info.branches, taxas.dummyTaxonPartition);
+                }
+                else if(node.childs.size() > 2){
+                    // System.out.println("klajsdf");
+                    sCalculatorNode = new NumSatCalculatorPolytomyNode(node.info.branches, taxas.dummyTaxonPartition);
+                }
+                else{
+                    System.out.println("error, branch length is less than 3");
+                    System.exit(-1);
+                }
+                node.info.scoreCalculator = sCalculatorNode;
+                
             }
             this.nodesForGains.add(node);
         }
@@ -92,22 +107,29 @@ public class BookKeepingPerTree {
         ,TaxaPerLevelWithPartition taxas
         ){
 
-        Branch[] branches = new Branch[3];
+        int childCount = node.childs.size();
+        Branch[] branches = new Branch[childCount + 1];
         boolean skip = false;
-        int[] nonZeroDummyCount = new int[2];
-        int[] nonZeroDummyIndex = new int[2];
+        int[] nonZeroDummyCount = new int[childCount];
+        int[] nonZeroDummyIndex = new int[childCount];
 
-        for(int i = 0; i < 3; ++i){
+        for(int i = 0; i <= childCount; ++i){
             branches[i] = new Branch(taxas.dummyTaxonCount);
 
         }
-        for(int i = 0; i < 2; ++i){
+        for(int i = 0; i < childCount; ++i){
+
             var child = node.childs.get(i);
+
             if(child.isLeaf()){
                 int taxonId = child.taxon.id;
                 if(taxas.isInRealTaxa(taxonId)){
                     branches[i].realTaxaCounts[taxas.inWhichPartition(taxonId)]++;
                     branches[i].totalTaxaCounts[taxas.inWhichPartition(taxonId)]++;
+
+                    branches[childCount].realTaxaCounts[taxas.inWhichPartition(taxonId)]++;
+                    branches[childCount].totalTaxaCounts[taxas.inWhichPartition(taxonId)]++;
+
                 }
                 else if(taxas.isInDummyTaxa(taxonId)){
                     double weight = taxas.getWeight(taxonId);
@@ -115,49 +137,78 @@ public class BookKeepingPerTree {
                     branches[i].dummyTaxaWeightsIndividual[taxas.inWhichDummyTaxa(taxonId)] += weight;
                     branches[i].totalTaxaCounts[partition] += weight;
 
+                    branches[childCount].dummyTaxaWeightsIndividual[taxas.inWhichDummyTaxa(taxonId)] += weight;
+                    branches[childCount].totalTaxaCounts[partition] += weight;
+
                     nonZeroDummyCount[i]++;
                     nonZeroDummyIndex[i] = taxas.inWhichDummyTaxa(taxonId);
                 }
             }
             else{
+                int branchChildCount = child.childs.size();
                 for(int p = 0; p < 2; ++p){
                     // branches[i].realTaxaCounts[p] += taxas.getRealTaxonCountInPartition(p) - child.info.branches[2].realTaxaCounts[p];
-                    branches[i].realTaxaCounts[p] += this.realTaxaCountsInPartitions[p] - child.info.branches[2].realTaxaCounts[p];
+                    branches[i].realTaxaCounts[p] += this.realTaxaCountsInPartitions[p] - child.info.branches[branchChildCount].realTaxaCounts[p];
 
-                    branches[i].totalTaxaCounts[p] = this.getTotalTaxon(p) - child.info.branches[2].totalTaxaCounts[p];
+                    branches[i].totalTaxaCounts[p] = this.getTotalTaxon(p) - child.info.branches[branchChildCount].totalTaxaCounts[p];
+
+                    branches[childCount].realTaxaCounts[p] += branches[i].realTaxaCounts[p];
+                    branches[childCount].totalTaxaCounts[p] += branches[i].totalTaxaCounts[p];
 
                 }
                 for(int j = 0; j < taxas.dummyTaxonCount; ++j){
 
-                    branches[i].dummyTaxaWeightsIndividual[j] += this.getDummyTaxonIndiWeight(j) - child.info.branches[2].dummyTaxaWeightsIndividual[j];
+                    branches[i].dummyTaxaWeightsIndividual[j] += this.getDummyTaxonIndiWeight(j) - child.info.branches[branchChildCount].dummyTaxaWeightsIndividual[j];
+                    branches[childCount].dummyTaxaWeightsIndividual[j] += branches[i].dummyTaxaWeightsIndividual[j];
+                    
                     if(branches[i].dummyTaxaWeightsIndividual[j] != 0){
                         nonZeroDummyCount[i]++;
                         nonZeroDummyIndex[i] = j;
                     }
                 }
             }
+            // Utility.addArrayToFirst(branches[childCount].totalTaxaCounts, branches[i].totalTaxaCounts);
+            // Utility.addArrayToFirst(branches[childCount].realTaxaCounts, branches[i].realTaxaCounts);
+            // Utility.addArrayToFirst(branches[childCount].dummyTaxaWeightsIndividual, branches[i].dummyTaxaWeightsIndividual);
+            
 
         }
         for(int j = 0; j < taxas.dummyTaxonCount; ++j){
-            branches[2].dummyTaxaWeightsIndividual[j] = this.getDummyTaxonIndiWeight(j) - branches[0].dummyTaxaWeightsIndividual[j] - branches[1].dummyTaxaWeightsIndividual[j];
+            branches[childCount].dummyTaxaWeightsIndividual[j] = this.getDummyTaxonIndiWeight(j) - branches[childCount].dummyTaxaWeightsIndividual[j];
+            // branches[2].dummyTaxaWeightsIndividual[j] = this.getDummyTaxonIndiWeight(j) - branches[0].dummyTaxaWeightsIndividual[j] - branches[1].dummyTaxaWeightsIndividual[j];
         }
         for(int p = 0; p < 2; ++p){
-            branches[2].realTaxaCounts[p] = this.realTaxaCountsInPartitions[p] - branches[0].realTaxaCounts[p] - branches[1].realTaxaCounts[p];
-            branches[2].totalTaxaCounts[p] = this.getTotalTaxon(p) - branches[0].totalTaxaCounts[p] - branches[1].totalTaxaCounts[p];
+            branches[childCount].realTaxaCounts[p] = this.realTaxaCountsInPartitions[p] - branches[childCount].realTaxaCounts[p];
+            branches[childCount].totalTaxaCounts[p] = this.getTotalTaxon(p) - branches[childCount].totalTaxaCounts[p];
         }
         
         if(node.frequency == 0){
             skip = true;
         }
-        else{
-            if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
-                if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
-                    if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
-                    branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
-                        skip = true;
-                    }
+        else if(nonZeroDummyCount[0] == 1) {
+
+            boolean breaked = false;
+            int rtCount = branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1];
+            for(int i = 1; i < childCount; ++i){
+                
+                if(nonZeroDummyCount[i] != 1){
+                    breaked = true;
+                    break;
                 }
+                rtCount += branches[i].realTaxaCounts[0] + branches[i].realTaxaCounts[1];
             }
+            if(!breaked && rtCount == 0){
+                skip = true;
+            }
+
+            // if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
+            //     if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
+            //         if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
+            //         branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
+            //             skip = true;
+            //         }
+            //     }
+            // }
         }
 
         node.info = new Info(branches);
@@ -201,7 +252,7 @@ public class BookKeepingPerTree {
         var node = this.geneTree.leaves[rtId];
         var parent = node.parent;
         while(!parent.isRoot()){
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < parent.childs.size(); i++) {
                 var currChild = parent.childs.get(i);
                 if(currChild == node){
                     if(parent.info.scoreCalculator == null){
@@ -220,7 +271,7 @@ public class BookKeepingPerTree {
             node = parent;
             parent = node.parent;
         }
-        for(int i = 0; i < 2; ++i){
+        for(int i = 0; i < parent.childs.size(); ++i){
             if(parent.childs.get(i) != node){
                 updateTopBranchOnRealTaxonSwap(parent.childs.get(i), partition);
                 break;

@@ -304,53 +304,53 @@ public class Tree {
             arr.add(node.taxon.id);
             return arr;
         }
-        var c1 = node.childs.get(0);
-        var c2 = node.childs.get(1);
-        var arr1 = getChildrens(c1, triPartitionsMap);
-        var arr2 = getChildrens(c2, triPartitionsMap);
+        ArrayList<ArrayList<Integer>> reachableFromChilds = new ArrayList<>();
+        for(var child : node.childs){
+            reachableFromChilds.add(getChildrens(child, triPartitionsMap));
+        }
 
         // flag all elems in left and right partition to find elems of third partition
         boolean[] mark = new boolean[this.taxaMap.size()];
-        for(var x : arr1){
-            mark[x] = true;
+
+        for(var childTaxa : reachableFromChilds){
+            for(var x : childTaxa){
+                mark[x] = true;
+            }
         }
-        for(var x : arr2){
-            mark[x] = true;
-        }
-        ArrayList<Integer> arr3 = new ArrayList<>();
+        
+        ArrayList<Integer> arr = new ArrayList<>();
         for(int i = 0; i < this.taxaMap.size(); ++i){
             if(!mark[i] && isTaxonPresent(i)){
-                arr3.add(i);
+                arr.add(i);
             }
             // else if(!isTaxonPresent(i)){
             //     System.out.println("No. " + i + " is not present in tree");
             // }
         }
 
-        String[] triPartition = new String[3];
+        reachableFromChilds.add(arr);
 
-        arr1.sort((a, b) -> a - b);
-        arr2.sort((a, b) -> a - b);
-        arr3.sort((a, b) -> a - b);
+        String[] partitionStrings = new String[reachableFromChilds.size()];
+
+        for(var x : reachableFromChilds){
+            x.sort((a, b) -> a - b);
+        }
+
+
+        for(int i = 0; i < reachableFromChilds.size(); ++i){
+            var sb = new StringBuilder();
+            reachableFromChilds.get(i).forEach(s -> sb.append(s + '-') );
+            partitionStrings[i] = sb.toString();
+        }
         
+        Arrays.sort(partitionStrings);
+        // String key;
+        StringBuilder sb = new StringBuilder();
+        for(var x : partitionStrings){
+            sb.append(x + '|');
+        }
 
-        var sb = new StringBuilder();
-        arr1.forEach(s -> sb.append(s + '-') );
-
-        triPartition[0] = sb.toString();
-        sb.setLength(0);
-
-
-        arr2.forEach(s -> sb.append(s + '-') );
-        triPartition[1] = sb.toString();
-        sb.setLength(0);
-
-        arr3.forEach(s -> sb.append(s + '-') );
-        triPartition[2] = sb.toString();
-        
-        Arrays.sort(triPartition);
-
-        var key = triPartition[0] + '|' + triPartition[1] + '|' + triPartition[2];
+        String key = sb.toString();
 
         if(triPartitionsMap.containsKey(key)){
             triPartitionsMap.get(key).frequency++;
@@ -360,10 +360,13 @@ public class Tree {
             node.frequency = 1;
             triPartitionsMap.put(key, node);
         }
-
-        arr1.addAll(arr2);
-
-        return arr1;
+        reachableFromChilds.remove(reachableFromChilds.size() - 1);
+        
+        arr = new ArrayList<>();
+        for(var childTaxa : reachableFromChilds){
+            arr.addAll(childTaxa);
+        }
+        return arr;
     }
 
     public void calculateFrequencies(Map<String, TreeNode> triPartitions){

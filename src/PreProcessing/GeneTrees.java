@@ -80,7 +80,6 @@ public class GeneTrees {
         }
         scanner.close();
 
-        System.out.println(taxaSet.size());
         
         this.taxaMap = new HashMap<>();
         for(var x : taxaSet){
@@ -99,7 +98,7 @@ public class GeneTrees {
             
             var tree = new Tree(line, this.taxaMap);
 
-            System.out.println(tree.root);
+            // System.out.println(tree.root);
 
             tree.calculateFrequencies(triPartitions);
             geneTrees.add(tree);
@@ -127,9 +126,11 @@ public class GeneTrees {
         }
 
 
-
+        System.out.println( "taxon count : " + taxaSet.size());
+        System.out.println("Gene trees count : " + geneTrees.size());
         System.out.println( "total internal nodes : " + internalNodesCount);
-        System.out.println( "unique tripartitions : " + triPartitions.size());
+        System.out.println( "unique partitions : " + triPartitions.size());
+
         // for(var x : triPartitions.entrySet()){
         //     System.out.println(x.getValue().frequency);
         // }

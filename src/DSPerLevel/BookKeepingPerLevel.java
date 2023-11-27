@@ -155,19 +155,20 @@ public class BookKeepingPerLevel {
     
     
                 var childs = node.childs;
-                for(int i = 0; i < 2; ++i){
-                    Utility.subArrayToFirst(branchGains[i], branchGains[2]);
+                for(int i = 0; i < childs.size(); ++i){
+                    Utility.subArrayToFirst(branchGains[i], branchGains[childs.size()]);
                     childs.get(i).info.gainsForSubTree = branchGains[i];
                 }
-                Utility.addArrayToFirst(gainsToAll, branchGains[2]);
+                Utility.addArrayToFirst(gainsToAll, branchGains[childs.size()]);
             }
 
             for(int i = bookTree.nodesForGains.size() - 1; i > -1; --i){
                 var node = bookTree.nodesForGains.get(i);
-                for (int j = 0; j < 2; j++) {
+                for (int j = 0; j < node.childs.size(); j++) {
                     var child = node.childs.get(j);
                     Utility.addArrayToFirst(child.info.gainsForSubTree, node.info.gainsForSubTree);
                 }
+                
                 node.info.gainsForSubTree[0] = 0;
                 node.info.gainsForSubTree[1] = 0;
     
