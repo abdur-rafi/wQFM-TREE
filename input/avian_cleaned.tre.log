@@ -1,0 +1,17 @@
+IQ-TREE multicore version 1.6.12 for Linux 64-bit built Aug 15 2019
+Developed by Bui Quang Minh, Nguyen Lam Tung, Olga Chernomor,
+Heiko Schmidt, Dominik Schrempf, Michael Woodhams.
+
+Host:    abdurrafi-Lenovo-ideapad-320-15IKB (AVX2, FMA3, 7 GB RAM)
+Command: ./iqtree -con -t ./input/avian_cleaned.tre
+Seed:    703975 (Using SPRNG - Scalable Parallel Random Number Generator)
+Time:    Mon Nov 27 12:26:02 2023
+Kernel:  AVX+FMA - 1 threads (8 CPU cores detected)
+
+HINT: Use -nt option to specify number of threads because your CPU has 8 cores!
+HINT: -nt AUTO will automatically determine the best number of threads to use.
+
+Reading tree(s) file ./input/avian_cleaned.tre ...
+14446 un-rooted tree(s) loaded
+8253 1 0
+ERROR: Rooted and unrooted trees are mixed up
