@@ -1,0 +1,17 @@
+#NEXUS
+
+BEGIN NETWORKS;
+
+
+Network g1 = (((a,b,c),d),e);
+Network g2 = (((a,b),c),d);
+Network g3 = (((a,b),c),d);
+
+END;
+
+BEGIN PHYLONET;
+
+
+Generate_Java -rnni -pl "[g1, g2, g3]";
+
+END;

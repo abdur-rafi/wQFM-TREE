@@ -1,0 +1,18 @@
+#NEXUS
+
+BEGIN NETWORKS;
+
+Network g1 = (c,(e,(a,d)));
+Network g2 = (a,b,c,d);
+Network g3 = (((a,b),c),d);
+Network g4 = ((a,c),f);
+
+
+END;
+
+
+BEGIN PHYLONET;
+
+Infer_ST_MC (g1, g2, g3,g4);
+
+END;
