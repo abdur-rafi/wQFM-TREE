@@ -99,7 +99,7 @@ public class GeneTrees {
             
             var tree = new Tree(line, this.taxaMap);
 
-            // System.out.println(tree.root);
+            System.out.println(tree.root);
 
             tree.calculateFrequencies(triPartitions);
             geneTrees.add(tree);

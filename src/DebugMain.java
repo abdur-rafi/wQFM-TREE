@@ -1,5 +1,6 @@
 package src;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import src.DSPerLevel.BookKeepingPerLevel;
@@ -9,15 +10,42 @@ import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 
 public class DebugMain {
+
+    static void polytomyTc1() throws FileNotFoundException{
+        GeneTrees trees = new GeneTrees("./input/custom.tre");
+        RealTaxon[] rt = new RealTaxon[6];
+        rt[0] = trees.taxaMap.get("1");
+        rt[1] = trees.taxaMap.get("2");
+        rt[2] = trees.taxaMap.get("3");
+        rt[3] = trees.taxaMap.get("4");
+        rt[4] = trees.taxaMap.get("5");
+        rt[5] = trees.taxaMap.get("6");
+
+
+        int[] realTaxaPartition = new int[6];
+        realTaxaPartition[0] = 0;
+        realTaxaPartition[1] = 0;
+        realTaxaPartition[2] = 1;
+        realTaxaPartition[3] = 1;
+        realTaxaPartition[4] = 1;
+        realTaxaPartition[5] = 1;        
+
+        TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, new DummyTaxon[0], realTaxaPartition, new int[0], 6);
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
+        double[][] rtGains = new double[6][2];
+        double[] dtGains = new double[0];
+
+        System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+    }
     
     public static void main(String[] args) throws IOException {
+        polytomyTc1();
         // new GeneTrees("../run/07.trueGT.cleaned");
         // new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // new GeneTrees("./input/custom.tre");
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
-        GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
 
 
@@ -40,7 +68,8 @@ public class DebugMain {
         // writer.close();
 
         // System.out.println(spTree.getNewickFormat());
-        tc3(trees);
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // tc3(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
