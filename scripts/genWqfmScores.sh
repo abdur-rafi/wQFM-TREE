@@ -19,7 +19,7 @@ do
                 python ./rfScoreCalculator/getFpFn.py -t $1/true_tree_trimmed -e $1/$file/$file2/wQFM-v1.2-all.tre >> $1/$file/wqfm-v1.2-all-scores.txt
             fi
         done
-        python ./rfAverager.py < $1/$file/wqfm-v1.2-all-scores.txt > $1/$file/avg-wqfm-v1.2-all-scores.txt
+        python ./scripts/rfAverager.py < $1/$file/wqfm-v1.2-all-scores.txt > $1/$file/avg-wqfm-v1.2-all-scores.txt
         echo "$file done"
         # break
     fi

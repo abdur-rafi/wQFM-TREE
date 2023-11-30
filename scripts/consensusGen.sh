@@ -16,7 +16,7 @@ do
                 echo $file2
                 ./raxml-ng --redo --consense MRE --tree $1/$file/$file2/all_gt.tre --prefix $1/$file/$file2/cons >> ./raxml-ng.log
                 consOut=$1/$file/$file2/cons.raxml.consensusTreeMRE
-                python3 consensusCleaner.py < $consOut > $1/$file/$file2/cons.tre
+                python3 ./scripts/consensusCleaner.py < $consOut > $1/$file/$file2/cons.tre
             fi
         done
         echo "$file done"
