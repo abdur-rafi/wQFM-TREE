@@ -100,9 +100,9 @@ public class GeneTrees {
 
             // System.out.println(tree.root);
             
-            if(tree.checkIfNonBinary()){
-                continue;
-            }
+            // if(tree.checkIfNonBinary()){
+            //     continue;
+            // }
 
             tree.calculateFrequencies(triPartitions);
             geneTrees.add(tree);
