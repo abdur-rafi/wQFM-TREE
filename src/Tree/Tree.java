@@ -2,7 +2,6 @@ package src.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -19,6 +18,7 @@ public class Tree {
     public Map<String, RealTaxon> taxaMap;
     // in order of id
     public TreeNode[] leaves;
+    // leavesCount and size of leaves array may be different
     public int leavesCount;
     
 
@@ -45,7 +45,8 @@ public class Tree {
 
     private void parseFromNewick(String newickLine){
 
-        Map<String, RealTaxon> taxaMap = new HashMap<>();
+        // Map<String, RealTaxon> taxaMap = new HashMap<>();
+        int leavesCount = 0;
 
         nodes = new ArrayList<>();
     
@@ -82,28 +83,31 @@ public class Tree {
                     char curr_j = newickLine.charAt(j);
                     if(curr_j == ')' || curr_j == ','){
                         RealTaxon taxon;
-                        if(this.taxaMap != null){
+                        // if(this.taxaMap != null){
                             taxon = this.taxaMap.get(taxa.toString());
-                        }
-                        else{
-                            taxon = new RealTaxon(taxa.toString());
-                            taxaMap.put(taxon.label, taxon);
-                        }   
+                        // }
+                        // else{
+                        //     taxon = new RealTaxon(taxa.toString());
+                        //     taxaMap.put(taxon.label, taxon);
+                        // }   
                         newNode = addLeaf(taxon);
+                        leavesCount++;
+
                         break;
                     }
                     taxa.append(curr_j);
                     ++j;
                 }
                 if(j == n){
+                    leavesCount++;
                     RealTaxon taxon;
-                    if(this.taxaMap != null){
+                    // if(this.taxaMap != null){
                         taxon = this.taxaMap.get(taxa.toString());
-                    }
-                    else{
-                        taxon = new RealTaxon(taxa.toString());
-                        taxaMap.put(taxon.label, taxon);
-                    }   
+                    // }
+                    // else{
+                    //     taxon = new RealTaxon(taxa.toString());
+                    //     taxaMap.put(taxon.label, taxon);
+                    // }   
                     newNode = addLeaf(taxon);
                 }
                 i = j - 1;
@@ -112,10 +116,11 @@ public class Tree {
             ++i;
         }
 
-        if(this.taxaMap == null)
-            this.taxaMap = taxaMap;
+        // if(this.taxaMap == null)
+        //     this.taxaMap = taxaMap;
 
-        this.leavesCount = this.taxaMap.size();
+        // this.leavesCount = this.taxaMap.size();
+        this.leavesCount = leavesCount;
     
         root = nodes.lastElement();
     
@@ -125,6 +130,18 @@ public class Tree {
         
         filterLeaves();
         topSort();
+
+        // System.out.println(this.leavesCount);
+        // for( i = 0; i < this.leaves.length; ++i){
+        //     if(this.leaves[i] == null){
+        //         System.out.println("Error: Taxon " + i + " is not present in tree");
+        //         System.exit(-1);
+        //     }
+        //     if(this.leaves[i].taxon.id != i){
+        //         System.out.println("Error: Taxon " + i + " not matching");
+        //         System.exit(-1);
+        //     }
+        // }
         // bringLeafsToFront();
 
 
@@ -142,10 +159,10 @@ public class Tree {
 
     
     
-    public Tree(String newickLine){
-        taxaMap = null;
-        parseFromNewick(newickLine);
-    }
+    // public Tree(String newickLine){
+    //     taxaMap = null;
+    //     parseFromNewick(newickLine);
+    // }
 
     public Tree(String newickLine, Map<String, RealTaxon> taxaMap){
         this.taxaMap = taxaMap;
@@ -275,6 +292,10 @@ public class Tree {
     public String getNewickFormat(){
         return newickFormatUitl(root) + ";";
     }
+
+    public boolean isTaxonPresent(int id){
+        return this.leaves[id] != null;
+    }
     
 
     private ArrayList<Integer> getChildrens(TreeNode node, Map<String, TreeNode> triPartitionsMap){
@@ -283,45 +304,53 @@ public class Tree {
             arr.add(node.taxon.id);
             return arr;
         }
-        var c1 = node.childs.get(0);
-        var c2 = node.childs.get(1);
-        var arr1 = getChildrens(c1, triPartitionsMap);
-        var arr2 = getChildrens(c2, triPartitionsMap);
+        ArrayList<ArrayList<Integer>> reachableFromChilds = new ArrayList<>();
+        for(var child : node.childs){
+            reachableFromChilds.add(getChildrens(child, triPartitionsMap));
+        }
 
         // flag all elems in left and right partition to find elems of third partition
-        boolean[] mark = new boolean[this.leavesCount];
-        for(var x : arr1){
-            mark[x] = true;
-        }
-        for(var x : arr2){
-            mark[x] = true;
-        }
-        ArrayList<Integer> arr3 = new ArrayList<>();
-        for(int i = 0; i < this.leavesCount; ++i){
-            if(!mark[i]){
-                arr3.add(i);
+        boolean[] mark = new boolean[this.taxaMap.size()];
+
+        for(var childTaxa : reachableFromChilds){
+            for(var x : childTaxa){
+                mark[x] = true;
             }
         }
-
-        String[] triPartition = new String[3];
-
-        var sb = new StringBuilder();
-        arr1.forEach(s -> sb.append(s + '-') );
-
-        triPartition[0] = sb.toString();
-        sb.setLength(0);
-
-
-        arr2.forEach(s -> sb.append(s + '-') );
-        triPartition[1] = sb.toString();
-        sb.setLength(0);
-
-        arr3.forEach(s -> sb.append(s + '-') );
-        triPartition[2] = sb.toString();
         
-        Arrays.sort(triPartition);
+        ArrayList<Integer> arr = new ArrayList<>();
+        for(int i = 0; i < this.taxaMap.size(); ++i){
+            if(!mark[i] && isTaxonPresent(i)){
+                arr.add(i);
+            }
+            // else if(!isTaxonPresent(i)){
+            //     System.out.println("No. " + i + " is not present in tree");
+            // }
+        }
 
-        var key = triPartition[0] + '|' + triPartition[1];
+        reachableFromChilds.add(arr);
+
+        String[] partitionStrings = new String[reachableFromChilds.size()];
+
+        for(var x : reachableFromChilds){
+            x.sort((a, b) -> a - b);
+        }
+
+
+        for(int i = 0; i < reachableFromChilds.size(); ++i){
+            var sb = new StringBuilder();
+            reachableFromChilds.get(i).forEach(s -> sb.append(s + '-') );
+            partitionStrings[i] = sb.toString();
+        }
+        
+        Arrays.sort(partitionStrings);
+        // String key;
+        StringBuilder sb = new StringBuilder();
+        for(var x : partitionStrings){
+            sb.append(x + '|');
+        }
+
+        String key = sb.toString();
 
         if(triPartitionsMap.containsKey(key)){
             triPartitionsMap.get(key).frequency++;
@@ -331,10 +360,13 @@ public class Tree {
             node.frequency = 1;
             triPartitionsMap.put(key, node);
         }
-
-        arr1.addAll(arr2);
-
-        return arr1;
+        reachableFromChilds.remove(reachableFromChilds.size() - 1);
+        
+        arr = new ArrayList<>();
+        for(var childTaxa : reachableFromChilds){
+            arr.addAll(childTaxa);
+        }
+        return arr;
     }
 
     public void calculateFrequencies(Map<String, TreeNode> triPartitions){
@@ -357,6 +389,14 @@ public class Tree {
         ArrayList<TreeNode> topSort = new ArrayList<>();
         topSortUtil(root, topSort);
         this.topSortedNodes = topSort;
+    }
+
+    public boolean checkIfNonBinary(){
+        for(var x : nodes){
+            if( x.childs != null && x.childs.size() > 2)
+                return true;
+        }
+        return false;
     }
 
 }

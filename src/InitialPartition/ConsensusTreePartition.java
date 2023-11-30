@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Scanner;
 
 import src.Config;
+import src.DSPerLevel.BookKeepingPerLevel;
+import src.DSPerLevel.TaxaPerLevelWithPartition;
+import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.Branch;
@@ -21,8 +24,12 @@ public class ConsensusTreePartition implements IMakePartition {
     RandPartition randPartition;
 
     int taxonCount;
+    GeneTrees trees;
+    BookKeepingPerLevel book;
+    double score;
+    
 
-    public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap) throws FileNotFoundException{
+    public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap, GeneTrees trees) throws FileNotFoundException{
         Scanner scanner = new Scanner(new File(filePath));
         String line = scanner.nextLine();
         this.consTree = new Tree(line, taxaMap);
@@ -30,15 +37,10 @@ public class ConsensusTreePartition implements IMakePartition {
         scanner.close();
 
         randPartition = new RandPartition();
+        this.trees = trees;
+
     }
 
-    // private void dfs(TreeNode currNode, RealTaxon[] rts, DummyTaxon[] dts){
-    //     currNode.info = new Info();
-    //     currNode.info.branches = new Branch[1];
-    //     currNode.info.branches[0] = new Branch(dts.length);
-
-    //     for(var x :)
-    // }
 
 
     private void assignSubTreeToPartition(TreeNode node, int[] rtsp, Map<Integer, Integer> idToIndex){
@@ -54,19 +56,74 @@ public class ConsensusTreePartition implements IMakePartition {
         }
     }
 
+
+    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton){
+
+        int[] rtsP = new int[rts.length];
+        int[] dtsp = new int[dts.length];
+
+        Map<Integer, Integer> idToIndex = new HashMap<>();
+        int i = 0;
+        for(var x : rts){
+            idToIndex.put(x.id, i++);
+        }
+    
+        assignSubTreeToPartition(node, rtsP, idToIndex);
+
+        for(i = 0; i < dts.length; ++i){
+            if(node.info.branches[0].dummyTaxaWeightsIndividual[i] >= .5){
+                dtsp[i] = 1;
+            }
+        }
+
+        if(this.book == null){
+            TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
+            this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+        }
+        else{
+            boolean changed = false;
+            for(i = 0; i < rts.length; ++i){
+                if(rtsP[i] != this.book.taxas.inWhichPartitionRealTaxonByIndex(i)){
+                    changed = true;
+                    book.swapTaxon(i, false);
+                }
+            }
+
+            for(i = 0; i < dts.length; ++i){
+                if(dtsp[i] != this.book.taxas.inWhichPartitionDummyTaxonByIndex(i)){
+                    changed = true;
+                    book.swapTaxon(i, true);
+                }
+            }
+            if(!changed){
+                // System.out.println("Not changed");
+                return this.score;
+            }
+        }
+        this.score = this.book.calculateScore();
+
+        return this.score;
+    }
+
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts) {
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton) {
         
+        this.book = null;
+
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
 
         TreeNode minNode = null;
         double minDiff = 0;
+        double maxScore = 0;
 
-        boolean allowSingleton = Config.ALLOW_SINGLETON;
+        boolean[] isRealTaxon = new boolean[consTree.leavesCount];
+
+        // boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         for(var x : rts){
             weight[x.id] = 1;
+            isRealTaxon[x.id] = true;
         }
 
         int i = 0;
@@ -74,27 +131,28 @@ public class ConsensusTreePartition implements IMakePartition {
         for(var x : dts){
             if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
                 x.calcDivCoeffs(Config.ScoreNormalizationType.NESTED_NORMALIZATION, weight, 1);
+                for(var y : x.flattenedRealTaxa){
+                    weight[y.id] = 1 / weight[y.id];
+                }
             }
             else{
                 double sz = x.flattenedTaxonCount;
                 for(var y : x.flattenedRealTaxa){
-                    weight[y.id] = 1./sz;
-                    inWhichDummyTaxa[y.id] = i;
-                }
-                ++i;
-            }
-            if(Config.ALLOW_SINGLETON){
-                if(x.nestedLevel >= this.taxonCount * Config.SINGLETON_THRESHOLD){
-                    allowSingleton = false;
+                    weight[y.id] += 1. / sz;
                 }
             }
+            
+            for(var y : x.flattenedRealTaxa){
+                inWhichDummyTaxa[y.id] = i;
+            }
+            ++i;
         }
 
-        if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
-            for(i = 0; i < dts.length; ++i){
-                if(weight[i] > 1) weight[i] = 1. / weight[i];
-            }
-        }        
+        // if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
+        //     // for(i = 0; i < dts.length; ++i){
+        //     //     if(weight[i] > 1) weight[i] = 1. / weight[i];
+        //     // }
+        // }        
 
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
@@ -105,7 +163,7 @@ public class ConsensusTreePartition implements IMakePartition {
 
             if(node.isLeaf()){
                 double w = weight[node.taxon.id];
-                if(w == 1){
+                if(isRealTaxon[node.taxon.id]){
                     branch.realTaxaCounts[0] = 1;
                     branch.totalTaxaCounts[0] = 1;
                 }
@@ -133,12 +191,26 @@ public class ConsensusTreePartition implements IMakePartition {
                     branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
                     branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
 
-                    if(partASize > 1 && partBSize > 1 || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
-                        double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
-                        if(minNode == null || diff < minDiff){
-                            minNode = child;
-                            minDiff = diff;
+                    if((partASize > 1 && partBSize > 1) || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
+                        if(Config.USE_SCORING_IN_CONSENSUS){
+                            double score = scoreForPartitionByNode(child, rts, dts, allowSingleton);
+                            if( minNode == null || score > maxScore){
+                                maxScore = score;
+                                minNode = child;
+                            }
                         }
+                        else{
+                            double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
+                            if(minNode == null || diff < minDiff){
+                                minNode = child;
+                                minDiff = diff;
+                            }
+                        }
+                        // double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
+                        // if(minNode == null || diff < minDiff){
+                        //     minNode = child;
+                        //     minDiff = diff;
+                        // }
                         // else if(diff < minDiff){
                         //     minNode = child;
                         //     minDiff = diff;
@@ -150,7 +222,7 @@ public class ConsensusTreePartition implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts);
+            return randPartition.makePartition(rts, dts, allowSingleton);
             // System.exit(-1);
         }
         // System.out.println("partition");

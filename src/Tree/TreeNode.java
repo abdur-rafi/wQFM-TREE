@@ -127,8 +127,8 @@ public class TreeNode implements TreePrinter.PrintableNode {
             // buffer.append(" ");
         else
                 // buffer.append(" a : " + info.reachableDummyTaxaA.size() + " b : " + info.reachableDummyTaxaB.size());
-            buffer.append(index);
-            // buffer.append("l : " + taxon.label);
+            // buffer.append(index);
+            buffer.append("l : " + taxon.label);
 
         // if(label != null)
         //     buffer.append(label);

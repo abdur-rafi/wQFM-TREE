@@ -6,7 +6,7 @@ import java.io.IOException;
 import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
-
+// 5:18
 public class Main {
 
     public static void main(String[] args) throws IOException {
@@ -19,6 +19,29 @@ public class Main {
         String consensusFilePath = args[1];
         String outputFilePath = args[2];
 
+        // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
+        // String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
+        // String outputFilePath = "./output.tre";
+        
+        // inputFilePath = "./input/custom2.tre";
+        // consensusFilePath = inputFilePath;
+        // inputFilePath = "../run/07.trueGT.cleaned";
+        // consensusFilePath = "../run/100.raxml.consensusTreeMRE";
+        // outputFilePath = "./output.tre";
+
+        // inputFilePath = "./input/200.500k.gtree";
+        // consensusFilePath = "./input/200.500k.cons.tre";
+        // outputFilePath = "./output.tre";
+        
+        // inputFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
+        // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
+        // outputFilePath = "./output.tre";
+        // String modelCond = "model.10.2000000.0.000001";
+        // inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/37/gt-cleaned";
+        // consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/37/cons.tre";
+        
+        // // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
+        // outputFilePath = "./output.tre";        
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
@@ -27,7 +50,7 @@ public class Main {
 
         GeneTrees trees = new GeneTrees(inputFilePath);
 
-        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap);
+        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap, trees);
 
 
 

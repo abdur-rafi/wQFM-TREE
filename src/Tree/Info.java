@@ -1,19 +1,19 @@
 package src.Tree;
 
-import src.ScoreCalculator.ScoreCalculatorNode;
+import src.ScoreCalculator.NumSatCalculatorNode;
 
 public class Info {
 
-    public final int LEFT_BRANCH = 0;
-    public final int RIGHT_BRANCH = 1;
-    public final int TOP_BRANCH = 2;
+    // public final int LEFT_BRANCH = 0;
+    // public final int RIGHT_BRANCH = 1;
+    // public final int TOP_BRANCH = 2;
     
 
     public double[] gainsForSubTree;
 
     public Branch[] branches;
 
-    public ScoreCalculatorNode scoreCalculator;
+    public NumSatCalculatorNode scoreCalculator;
 
 
     public Info(Branch[] b){
