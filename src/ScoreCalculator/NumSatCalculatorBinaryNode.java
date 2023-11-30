@@ -8,7 +8,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
     double[][] subs;
     int nDummyTaxa;
     int[] dummyTaxaPartition;
-    double[] scoresOfBranches;
     // g1. should be double
     double[][] gainsOfBranches;
 
@@ -16,7 +15,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
-        scoresOfBranches = new double[3];
         this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
         for(int i = 0; i < 3; ++i){
             subs[i][0] = 0;
@@ -65,8 +63,7 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         double res = 0;
 
         for (int i = 0; i < 3; ++i) {
-            scoresOfBranches[i] = scoreOf2Branch(i);
-            res += scoresOfBranches[i];
+            res += scoreOf2Branch(i);
         }
         // this.score = res;
         return res;
@@ -165,49 +162,52 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
 
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
-            int switchedPartition = (currPartition + 1) % 2;
-            double currDummyCountCurrBranch, currDummyCountNextBranch;
+            int switchedPartition = 1 - currPartition;
 
-            for(int j = 0; j < 3; ++j){
+            this.swapDummyTaxon(i, currPartition);
+            // double currDummyCountCurrBranch, currDummyCountNextBranch;
 
-                currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
-                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
+            // for(int j = 0; j < 3; ++j){
 
-                branches[j].totalTaxaCounts[currPartition] -= currDummyCountCurrBranch;
-                branches[j].totalTaxaCounts[switchedPartition] += currDummyCountCurrBranch;
-                // g4. adjust sub
-                if(switchedPartition == 1){                 
-                    this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
-                    // 
-                    this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
-                }
-                else{
-                    this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
-                    this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
-                }
+            //     currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
+            //     currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
+
+            //     branches[j].totalTaxaCounts[currPartition] -= currDummyCountCurrBranch;
+            //     branches[j].totalTaxaCounts[switchedPartition] += currDummyCountCurrBranch;
+            //     // g4. adjust sub
+            //     if(switchedPartition == 1){                 
+            //         this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
+            //         // 
+            //         this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
+            //     }
+            //     else{
+            //         this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
+            //         this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
+            //     }
 
                 
-            }
+            // }
             double newScore = score();
             dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
+            
+            this.swapDummyTaxon(i, switchedPartition);
+            // for(int j = 0; j < 3; ++j){
+            //     currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
+            //     currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
 
-            for(int j = 0; j < 3; ++j){
-                currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
-                currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
-
-                branches[j].totalTaxaCounts[currPartition] += currDummyCountCurrBranch;
-                branches[j].totalTaxaCounts[switchedPartition] -= currDummyCountCurrBranch;
+            //     branches[j].totalTaxaCounts[currPartition] += currDummyCountCurrBranch;
+            //     branches[j].totalTaxaCounts[switchedPartition] -= currDummyCountCurrBranch;
                 
-                if(switchedPartition == 1){                 
-                    this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
-                    // 
-                    this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
-                }
-                else{
-                    this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
-                    this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
-                }
-            }
+            //     if(switchedPartition == 1){                 
+            //         this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
+            //         // 
+            //         this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
+            //     }
+            //     else{
+            //         this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
+            //         this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
+            //     }
+            // }
         }
     }
 

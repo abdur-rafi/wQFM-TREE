@@ -99,6 +99,10 @@ public class GeneTrees {
             var tree = new Tree(line, this.taxaMap);
 
             // System.out.println(tree.root);
+            
+            if(tree.checkIfNonBinary()){
+                continue;
+            }
 
             tree.calculateFrequencies(triPartitions);
             geneTrees.add(tree);
@@ -107,10 +111,13 @@ public class GeneTrees {
             // }
             // System.out.println(tree.leavesCount);
             internalNodesCount += tree.nodes.size() - tree.leavesCount;
+            // if(tree.checkIfNonBinary()){
+            //     break;
+            //     // System.out.println("non binary tree");
+            //     // continue;
+            // }
             // System.out.println(tree.root);
-            if(tree.checkIfNonBinary()){
-                System.out.println("non binary tree");
-            }
+            
 
         }
         

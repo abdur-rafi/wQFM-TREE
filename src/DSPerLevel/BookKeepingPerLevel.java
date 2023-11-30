@@ -127,6 +127,10 @@ public class BookKeepingPerLevel {
 
         for(var bookTree : BookKeepingPerLevel.bookKeepingPerTrees){
             for(var node : bookTree.nodesForScore){
+                // System.out.println(node.index);
+                // if(node.index == 11) {
+                //     System.out.println("11 node");
+                // }
                 totalScore += node.info.scoreCalculator.score() * node.frequency;
             }
             currTotals += bookTree.totalQuartets();
@@ -150,6 +154,8 @@ public class BookKeepingPerLevel {
                 node.info.scoreCalculator.gainDummyTaxa(score, node.frequency, dummyTaxaGains);
                 
                 score *= node.frequency;
+                
+                // System.out.println("Score at node: " + node.index + " " + score);
                 // System.out.println(score);
                 totalScore += score;
     
@@ -258,6 +264,7 @@ public class BookKeepingPerLevel {
         int partition = taxas.inWhichPartitionRealTaxonByIndex(index);
         taxas.swapPartitionRealTaxon(index);
 
+        // System.out.println("swapping : " + taxas.realTaxa[index].label + " " + partition);
         for(var x : BookKeepingPerLevel.bookKeepingPerTrees){
             x.swapRealTaxon(taxas.realTaxa[index], partition);
         }

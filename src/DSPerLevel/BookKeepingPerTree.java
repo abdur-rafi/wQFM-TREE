@@ -185,31 +185,31 @@ public class BookKeepingPerTree {
         if(node.frequency == 0){
             skip = true;
         }
-        else if(nonZeroDummyCount[0] == 1) {
+        // else if(nonZeroDummyCount[0] == 1) {
 
-            boolean breaked = false;
-            int rtCount = branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1];
-            for(int i = 1; i < childCount; ++i){
+        //     // boolean breaked = false;
+        //     // int rtCount = branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1];
+        //     // for(int i = 1; i < childCount; ++i){
                 
-                if(nonZeroDummyCount[i] != 1){
-                    breaked = true;
-                    break;
-                }
-                rtCount += branches[i].realTaxaCounts[0] + branches[i].realTaxaCounts[1];
-            }
-            if(!breaked && rtCount == 0){
-                skip = true;
-            }
+        //     //     if(nonZeroDummyCount[i] != 1){
+        //     //         breaked = true;
+        //     //         break;
+        //     //     }
+        //     //     rtCount += branches[i].realTaxaCounts[0] + branches[i].realTaxaCounts[1];
+        //     // }
+        //     // if(!breaked && rtCount == 0){
+        //     //     skip = true;
+        //     // }
 
-            // if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
-            //     if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
-            //         if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
-            //         branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
-            //             skip = true;
-            //         }
-            //     }
-            // }
-        }
+        //     // if(nonZeroDummyCount[0] == nonZeroDummyCount[1]){
+        //     //     if(nonZeroDummyCount[0] == 1 && nonZeroDummyIndex[0] == nonZeroDummyIndex[1] ){
+        //     //         if(branches[0].realTaxaCounts[0] + branches[0].realTaxaCounts[1] + 
+        //     //         branches[1].realTaxaCounts[0] + branches[1].realTaxaCounts[1] == 0){
+        //     //             skip = true;
+        //     //         }
+        //     //     }
+        //     // }
+        // }
 
         node.info = new Info(branches);
         return skip;
@@ -218,11 +218,12 @@ public class BookKeepingPerTree {
 
     private void updateTopBranchOnRealTaxonSwap(TreeNode node, int currPartition){
         if(!node.isLeaf()){
+            int childCount = node.childs.size();
             if(node.info.scoreCalculator != null){
-                node.info.scoreCalculator.swapRealTaxon(2, currPartition);
+                node.info.scoreCalculator.swapRealTaxon(childCount, currPartition);
             }
             else{
-                node.info.branches[2].swapRealTaxa(currPartition);
+                node.info.branches[childCount].swapRealTaxa(currPartition);
             }
             for(var x : node.childs){
                 updateTopBranchOnRealTaxonSwap(x, currPartition);
@@ -274,7 +275,7 @@ public class BookKeepingPerTree {
         for(int i = 0; i < parent.childs.size(); ++i){
             if(parent.childs.get(i) != node){
                 updateTopBranchOnRealTaxonSwap(parent.childs.get(i), partition);
-                break;
+                // break;
             }
         }
         

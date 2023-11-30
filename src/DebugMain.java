@@ -11,8 +11,154 @@ import src.Taxon.RealTaxon;
 
 public class DebugMain {
 
+    static void cgTest1() throws FileNotFoundException{
+        // String modelCond = "model.10.2000000.0.000001";
+        // String inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/11/gt-cleaned";
+        
+        GeneTrees trees = new GeneTrees("./input/custom4.tre");
+        System.out.println(trees.geneTrees.get(0).root);
+
+        int rtCount = 11;
+
+        RealTaxon[] rt = new RealTaxon[rtCount];
+        for (int i = 0; i < rtCount; i++) {
+            rt[i] = trees.taxaMap.get(Integer.toString(i + 1));
+        }
+
+        // int[] realTaxaPartition = new int[rtCount];
+        int pa = 0;
+        int pb = 1;
+        // for (int i = 0; i < rtCount; i++) {
+        //     realTaxaPartition[i] = pa;
+        // }
+        // // realTaxaPartition[0] = pb;
+        // realTaxaPartition[1] = pb;
+        // // realTaxaPartition[2] = pb;
+        // // realTaxaPartition[4] = pb;
+        // realTaxaPartition[3] = pb;
+        // // realTaxaPartition[6] = pb;
+        // realTaxaPartition[7] = pb;
+        // realTaxaPartition[8] = pb;
+
+        RealTaxon[] rtb = new RealTaxon[1];
+        DummyTaxon[] dtb = new DummyTaxon[3];
+
+        rtb[0] = rt[9];
+        
+        RealTaxon[] dt0r = new RealTaxon[5];
+        dt0r[0] = rt[0];
+        dt0r[1] = rt[1];
+        dt0r[2] = rt[2];
+        dt0r[3] = rt[3];
+        dt0r[4] = rt[10];
+
+        dtb[0] = new DummyTaxon(dt0r, new DummyTaxon[0]);
+
+        RealTaxon[] dt1r = new RealTaxon[3];
+        dt1r[0] = rt[6];
+        dt1r[1] = rt[7];
+        dt1r[2] = rt[8];
+
+        dtb[1] = new DummyTaxon(dt1r, new DummyTaxon[0]);
+
+        RealTaxon[] dt2r = new RealTaxon[2];
+        dt2r[0] = rt[4];
+        dt2r[1] = rt[5];
+
+        dtb[2] = new DummyTaxon(dt2r, new DummyTaxon[0]);
+
+        int[] realTaxaPartition = new int[1];
+        realTaxaPartition[0] = pa;
+
+        int[] dummyTaxaPartition = new int[3];
+        dummyTaxaPartition[0] = pa;
+        dummyTaxaPartition[1] = pb;
+        dummyTaxaPartition[2] = pb;
+        
+        // TaxaPerLevelWithPartition taxaPerLevel = new TaxaPerLevelWithPartition(rt, new DummyTaxon[0], realTaxaPartition, new int[0], rtCount);
+        TaxaPerLevelWithPartition taxaPerLevel = new TaxaPerLevelWithPartition(rtb, dtb, realTaxaPartition, dummyTaxaPartition, rtCount);
+        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxaPerLevel, true);
+
+        System.out.println("score : " + book.calculateScore());
+        // book.swapTaxon(6, false);
+        // System.out.println("score after swap : " + book.calculateScore());
+        // book.swapTaxon(6, false);
+        // System.out.println("score after swap again : " + book.calculateScore());
+
+        // realTaxaPartition[9] = 0;
+
+
+        double[][] rtGains = new double[1][2];
+        double[] dtGains = new double[3];
+
+        // System.out.println("score : " + book.calculateScoreAndGains(rtGains, dtGains));
+
+        // System.out.println("rtGains:");
+        // for (int i = 0; i < rtGains.length; i++) {
+        //     System.out.println("Taxon " + (i) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        // }
+        // for( int i = 0; i < dtGains.length; i++){
+        //     System.out.println("Dummy " + (i) + ": " + dtGains[i]);
+        // }
+    }
+
+
+    static void polytomyTc2() throws FileNotFoundException{
+        // String modelCond = "model.10.2000000.0.000001";
+        // String inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/11/gt-cleaned";
+        
+        GeneTrees trees = new GeneTrees("./input/custom2.tre");
+        // System.out.println(trees.geneTrees.get(0).root);
+
+        int rtCount = 11;
+
+        RealTaxon[] rt = new RealTaxon[rtCount];
+        for (int i = 0; i < rtCount; i++) {
+            rt[i] = trees.taxaMap.get(Integer.toString(i));
+        }
+        int[] realTaxaPartition = new int[rtCount];
+        int pa = 1;
+        int pb = 0;
+        for (int i = 0; i < rtCount; i++) {
+            realTaxaPartition[i] = pa;
+        }
+        realTaxaPartition[0] = pb;
+        realTaxaPartition[1] = pb;
+        realTaxaPartition[2] = pb;
+        realTaxaPartition[4] = pb;
+        realTaxaPartition[3] = pb;
+        realTaxaPartition[5] = pb;
+        // realTaxaPartition[7] = pb;
+        // realTaxaPartition[8] = pb;
+
+        
+        TaxaPerLevelWithPartition taxaPerLevel = new TaxaPerLevelWithPartition(rt, new DummyTaxon[0], realTaxaPartition, new int[0], rtCount);
+        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxaPerLevel, true);
+
+        // System.out.println("score before swap : " + book.calculateScore());
+        // book.swapTaxon(6, false);
+        // System.out.println("score after swap : " + book.calculateScore());
+        // book.swapTaxon(6, false);
+        // System.out.println("score after swap again : " + book.calculateScore());
+
+        // realTaxaPartition[9] = 0;
+
+
+        double[][] rtGains = new double[rtCount][2];
+        double[] dtGains = new double[0];
+
+        System.out.println("score : " + book.calculateScoreAndGains(rtGains, dtGains));
+
+        System.out.println("rtGains:");
+        for (int i = 0; i < rtGains.length; i++) {
+            System.out.println("Taxon " + (i) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+    }
+
     static void polytomyTc1() throws FileNotFoundException{
         GeneTrees trees = new GeneTrees("./input/custom.tre");
+
+        
         RealTaxon[] rt = new RealTaxon[8];
         rt[0] = trees.taxaMap.get("1");
         rt[1] = trees.taxaMap.get("2");
@@ -29,7 +175,7 @@ public class DebugMain {
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
         realTaxaPartition[3] = 0;
-        realTaxaPartition[4] = 1;
+        realTaxaPartition[4] = 0;
         realTaxaPartition[5] = 1;        
         realTaxaPartition[6] = 1;        
         realTaxaPartition[7] = 1;        
@@ -41,9 +187,15 @@ public class DebugMain {
         // System.out.println("score : " + bookKeepingPerLevel.calculateScore());
 
         System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        System.out.println("rtGains:");
+        for (int i = 0; i < rtGains.length; i++) {
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
     }
     
     public static void main(String[] args) throws IOException {
+        // cgTest1();
+        polytomyTc2();
         // polytomyTc1();
         // new GeneTrees("../run/07.trueGT.cleaned");
         // new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
@@ -73,8 +225,8 @@ public class DebugMain {
         // writer.close();
 
         // System.out.println(spTree.getNewickFormat());
-        GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-        tc3(trees);
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // tc3(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
