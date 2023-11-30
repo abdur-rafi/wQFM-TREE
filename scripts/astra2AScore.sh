@@ -15,7 +15,7 @@ astralOutputLabel=astral-v474-p1-halfresolved.genes1000
 
 for file in $(ls $spFolderPath)
 do
-    python treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
+    python ./scripts/treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
 done
 
 
@@ -36,5 +36,5 @@ do
 
 done
 
-python ./rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
+python ./scripts/rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
 

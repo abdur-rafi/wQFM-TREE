@@ -23,4 +23,4 @@ do
 
 done
 
-python ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
+python ./scripts/rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt

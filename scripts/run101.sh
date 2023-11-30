@@ -15,7 +15,7 @@ gtFolderCleanedPath=$gtFolderPath-cleaned
 
 # for file in $(ls $gtFolderPath)
 # do
-#     python treeCleaner.py < $gtFolderPath/$file > $gtFolderCleanedPath/${file:0:2}
+#     python ./scripts/treeCleaner.py < $gtFolderPath/$file > $gtFolderCleanedPath/${file:0:2}
 
 # done
 
@@ -27,7 +27,7 @@ consFolderPath=$path/consensus-trees
 # do
 #     ./raxml-ng --redo --consense MRE --tree $gtFolderCleanedPath/$file --prefix $consFolderPath/$file >> ./raxml-ng.log
 #     consOut=$consFolderPath/$file.raxml.consensusTreeMRE
-#     python consensusCleaner.py < $consOut > $consFolderPath/${file:0:2}
+#     python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/${file:0:2}
 # done
 
 
@@ -41,7 +41,7 @@ spFolderCleanedPath=$spFolderPath-cleaned
 
 # for file in $(ls $spFolderPath)
 # do
-#     python treeCleaner.py < $spFolderPath/$file > $spFolderCleanedPath/${file:0:2}
+#     python ./scripts/treeCleaner.py < $spFolderPath/$file > $spFolderCleanedPath/${file:0:2}
 
 # done
 
@@ -62,7 +62,7 @@ do
 
 done
 
-python ./rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
+python ./scripts/rfAverager.py < $path/$filePrefix-score.txt > $path/avg-$filePrefix-score.txt
 
 
 

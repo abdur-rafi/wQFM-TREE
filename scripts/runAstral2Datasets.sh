@@ -25,15 +25,15 @@ do
     mkdir -p $consFolderPath/$file
     ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
     consOut=$consFolderPath/$file/cons.raxml.consensusTreeMRE
-    python consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
+    python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
 done
 
 # clean gene and species trees
 
 for file in $(ls $gtFolderPath)
 do
-    python treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
-    python treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
+    python ./scripts/treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
+    python ./scripts/treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
 done
 
 
@@ -58,7 +58,7 @@ do
 
 done
 
-python ./rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
+python ./scripts/rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
 
 
 # for file in $(ls $1)

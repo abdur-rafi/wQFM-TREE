@@ -28,17 +28,12 @@ public class NumSatCalculatorPolytomyNode implements NumSatCalculatorNode {
 
             for(int j = 0; j < this.nDummyTaxa; ++j){
                 int pIndex = this.dummyTaxaPartition[j];
-                // if(pIndex == 0){
                 for(int k = i + 1; k < b.length; ++k){
                     subs[i][k][pIndex] += b[i].dummyTaxaWeightsIndividual[j] * b[k].dummyTaxaWeightsIndividual[j];
                 }
-                // }
                 if(pIndex == 1){
                     subsB[i] += (b[i].dummyTaxaWeightsIndividual[j] * (b[i].dummyTaxaWeightsIndividual[j]));
                 }
-                // else{
-                //     System.out.println("error");
-                // }
             }
             subsB[i] += b[i].realTaxaCounts[1];
         }
@@ -47,20 +42,14 @@ public class NumSatCalculatorPolytomyNode implements NumSatCalculatorNode {
     }
 
     private double scoreOf2Branch(int i, int j) {
-        // System.out.println("subs[i][j][0]: " + subs[i][j][0]);
         double pairsOfA = (branches[i].totalTaxaCounts[0] * branches[j].totalTaxaCounts[0] - subs[i][j][0]);
-        // System.out.println("pairsOfA: " + pairsOfA);
         double pairsOfB = 0;
         for(int k = 0; k < this.branches.length; ++k){
             if(k != i && k != j){
                 pairsOfB += (branches[k].totalTaxaCounts[1] * branches[k].totalTaxaCounts[1] - subsB[k]) / 2;
-                // System.out.println( "subs : " + subs[k][0][1]);
             }
         }
-
-
         return pairsOfA * pairsOfB;
-
     }
 
     @Override
@@ -82,12 +71,7 @@ public class NumSatCalculatorPolytomyNode implements NumSatCalculatorNode {
                 res += scoreOf2Branch(i, j);
                 res += (pairsOfA * pairsOfB) / 2;
             }
-            
-            // System.out.println("rt: " + branches[i].realTaxaCounts[0] + " " + branches[i].realTaxaCounts[1]);
-            // System.out.println("tt: " + branches[i].totalTaxaCounts[0] + " " + branches[i].totalTaxaCounts[1]);
-
         }
-        // System.out.println("sat at polytomy node: " + res);
         return res;
     }
 

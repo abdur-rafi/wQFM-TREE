@@ -20,34 +20,34 @@ speciesTreeLabelCleaned=sp-cleaned
 
 # generate consensus trees
 
-# for file in $(ls $gtFolderPath)
-# do
-#     fp=$gtFolderPath/$file/$geneTreeLabel.gz
-#     if [ -f $fp ];then
-#         gzip -d $gtFolderPath/$file/$geneTreeLabel.gz
-#     fi
-# done
+for file in $(ls $gtFolderPath)
+do
+    fp=$gtFolderPath/$file/$geneTreeLabel.gz
+    if [ -f $fp ];then
+        gzip -d $gtFolderPath/$file/$geneTreeLabel.gz
+    fi
+done
 
-# # clean gene and species trees
+# clean gene and species trees
 
-# for file in $(ls $gtFolderPath)
-# do
-#     python treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
-#     python treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
-# done
+for file in $(ls $gtFolderPath)
+do
+    python ./scripts/treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
+    python ./scripts/treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
+done
 
-# >consLog.txt
-# >consErr.txt
-# for file in $(ls $gtFolderPath)
-# do
-#     mkdir -p $consFolderPath/$file
-#     ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
-#     consOut=$consFolderPath/$file/cons.iqtree
+>consLog.txt
+>consErr.txt
+for file in $(ls $gtFolderPath)
+do
+    mkdir -p $consFolderPath/$file
+    ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
+    consOut=$consFolderPath/$file/cons.iqtree
 
-#     mv $gtFolderPath/$file/$geneTreeLabel.contree $consOut
-#     # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
-#     python consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
-# done
+    mv $gtFolderPath/$file/$geneTreeLabel.contree $consOut
+    # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
+    python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
+done
 
 
 
@@ -73,7 +73,7 @@ do
 
     python ./rfScoreCalculator/getFpFn.py -t $spPath -e $outPath >> $scoresFolderPath/$filePrefix-score.txt
 
-    python ./rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
+    python ./scripts/rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
 done
 
 

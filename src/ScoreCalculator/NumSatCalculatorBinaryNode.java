@@ -8,7 +8,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
     double[][] subs;
     int nDummyTaxa;
     int[] dummyTaxaPartition;
-    // g1. should be double
     double[][] gainsOfBranches;
 
     public NumSatCalculatorBinaryNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
@@ -24,7 +23,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
                 if(pIndex == 0)
                     subs[i][0] += b[i].dummyTaxaWeightsIndividual[j] * b[(i+1) % 3].dummyTaxaWeightsIndividual[j];
                 else if(pIndex == 1){
-                    // 8. should be inidividual squarred
                     subs[i][1] += (b[i].dummyTaxaWeightsIndividual[j] * (b[i].dummyTaxaWeightsIndividual[j]) ); 
                 }
                 else{
@@ -32,7 +30,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
                 }
             }
             subs[i][1] += b[i].realTaxaCounts[1];
-            // 9. subs[i][1] += realTaxaCount in 2nd partition in ith branch
         }
         gainsOfBranches = new double[3][2];
 
@@ -46,7 +43,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         csubs[0] = subs[i][0];
         csubs[1] = subs[k][1];
 
-        // int score = satisfiedEqn(s[0][0], s[1][0], s[2][1], csubs);
         double score = satisfiedEqn(
             branches[i].totalTaxaCounts[0], 
             branches[j].totalTaxaCounts[0],
@@ -65,11 +61,9 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         for (int i = 0; i < 3; ++i) {
             res += scoreOf2Branch(i);
         }
-        // this.score = res;
         return res;
     }
 
-    // g2. shoulde be double
     
     @Override
     public double[][] gainRealTaxa(double originalScore, double multiplier){
@@ -80,7 +74,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
     }
 
     private double satisfiedEqn(double a1, double a2, double b3, double[] subs) {
-        // 10. should be b3 squarred, data types should be double
         return (a1 * a2 - subs[0]) * ((( b3 * b3 ) - subs[1] ) / 2);
     }
 
@@ -130,7 +123,6 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         Branch curr = branches[i];
         for(int p = 0; p < 2; ++p){
             if(curr.realTaxaCounts[p] > 0){
-                // g3. adjust sub
                 curr.totalTaxaCounts[p]--;
                 curr.totalTaxaCounts[ ( p + 1) % 2]++;
                 
@@ -163,51 +155,10 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
             int switchedPartition = 1 - currPartition;
-
             this.swapDummyTaxon(i, currPartition);
-            // double currDummyCountCurrBranch, currDummyCountNextBranch;
-
-            // for(int j = 0; j < 3; ++j){
-
-            //     currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
-            //     currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
-
-            //     branches[j].totalTaxaCounts[currPartition] -= currDummyCountCurrBranch;
-            //     branches[j].totalTaxaCounts[switchedPartition] += currDummyCountCurrBranch;
-            //     // g4. adjust sub
-            //     if(switchedPartition == 1){                 
-            //         this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
-            //         // 
-            //         this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
-            //     }
-            //     else{
-            //         this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
-            //         this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
-            //     }
-
-                
-            // }
             double newScore = score();
             dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
-            
             this.swapDummyTaxon(i, switchedPartition);
-            // for(int j = 0; j < 3; ++j){
-            //     currDummyCountCurrBranch = branches[j].dummyTaxaWeightsIndividual[i];
-            //     currDummyCountNextBranch = branches[(j + 1) % 3].dummyTaxaWeightsIndividual[i];
-
-            //     branches[j].totalTaxaCounts[currPartition] += currDummyCountCurrBranch;
-            //     branches[j].totalTaxaCounts[switchedPartition] -= currDummyCountCurrBranch;
-                
-            //     if(switchedPartition == 1){                 
-            //         this.subs[j][0] += currDummyCountCurrBranch * currDummyCountNextBranch;
-            //         // 
-            //         this.subs[j][1] -= currDummyCountCurrBranch * currDummyCountCurrBranch;
-            //     }
-            //     else{
-            //         this.subs[j][0] -= currDummyCountCurrBranch * currDummyCountNextBranch;
-            //         this.subs[j][1] += currDummyCountCurrBranch * currDummyCountCurrBranch;
-            //     }
-            // }
         }
     }
 

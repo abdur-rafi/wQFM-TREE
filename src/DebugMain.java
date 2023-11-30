@@ -88,8 +88,8 @@ public class DebugMain {
         // realTaxaPartition[9] = 0;
 
 
-        double[][] rtGains = new double[1][2];
-        double[] dtGains = new double[3];
+        // double[][] rtGains = new double[1][2];
+        // double[] dtGains = new double[3];
 
         // System.out.println("score : " + book.calculateScoreAndGains(rtGains, dtGains));
 
