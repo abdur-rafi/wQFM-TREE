@@ -150,7 +150,7 @@ public class QFM {
         for(int i = 0; i < book.taxas.realTaxonCount; ++i){
             if(rtLocked[i]) continue;
             int partition = book.taxas.inWhichPartitionRealTaxonByIndex(i);
-            // if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1) ){
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1) ){
                 if(maxGainIndex == -1){
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
@@ -159,7 +159,7 @@ public class QFM {
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
                 }
-            // }
+            }
         }
 
         boolean dummyChosen = false;
@@ -167,7 +167,7 @@ public class QFM {
         for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
             if(dtLocked[i]) continue;
             int partition = book.taxas.inWhichPartitionDummyTaxonByIndex(i);
-            // if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1)){
+            if(book.taxas.getTaxonCountInPartition(partition) > 2 || (book.allowSingleton && book.taxas.getTaxonCountInPartition(partition) > 1)){
                 if(maxGainIndex == -1){
                     maxGain = dtGains[i];
                     maxGainIndex = i;
@@ -178,7 +178,7 @@ public class QFM {
                     maxGainIndex = i;
                     dummyChosen = true;
                 }
-            // }
+            }
         }
 
         if(maxGainIndex == -1) return null;
@@ -230,13 +230,13 @@ public class QFM {
                 cg += gain;
 
                 if(singletonPartition){
-                    if(maxCgIndex == -1  && book.taxas.getTaxonCountInPartition(0) > 1 && book.taxas.getTaxonCountInPartition(1) > 1 ){
+                    if(maxCgIndex == -1 ){ // && book.taxas.getTaxonCountInPartition(0) > 1 && book.taxas.getTaxonCountInPartition(1) > 1 ){
                         maxCg = cg;
                         maxCgIndex = swaps.size() - 1;
                     }
                 }
                 
-                if(cg > maxCg && Math.abs(maxCg - cg) > EPS && book.taxas.getTaxonCountInPartition(0) > 1 && book.taxas.getTaxonCountInPartition(1) > 1 ){
+                if(cg > maxCg && Math.abs(maxCg - cg) > EPS ){ // && book.taxas.getTaxonCountInPartition(0) > 1 && book.taxas.getTaxonCountInPartition(1) > 1 ){
                     maxCg = cg;
                     maxCgIndex = swaps.size() - 1;
                 }

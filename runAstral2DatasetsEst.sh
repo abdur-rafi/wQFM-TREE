@@ -1,5 +1,5 @@
 
-filePrefix="ewqfm-without-poly-gt"
+filePrefix="ewqfm"
 
 
 rootPath=$1
