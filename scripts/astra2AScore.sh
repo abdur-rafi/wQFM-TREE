@@ -1,5 +1,5 @@
 
-filePrefix="astral2"
+filePrefix="astral2-p0"
 
 
 rootPath=$1
@@ -11,7 +11,7 @@ astralFolderPath=$1/astral/$modelCond
 
 speciesTreeLabel=s_tree.trees
 speciesTreeLabelCleaned=sp-cleaned
-astralOutputLabel=astral-v474-p1-halfresolved.genes1000
+astralOutputLabel=astral-v474-p0-halfresolved.genes1000
 
 for file in $(ls $spFolderPath)
 do

@@ -30,8 +30,8 @@ public class Config {
     public static double MAX_LEVEL_MULTIPLIER = .5;
 
 
-    public static ScoreEqn SCORE_EQN = new SatSubVio();
-    // public static ScoreEqn SCORE_EQN = new FractionSat();
+    // public static ScoreEqn SCORE_EQN = new SatSubVio();
+    public static ScoreEqn SCORE_EQN = new FractionSat();
 
 
     public static int MAX_ITERATION = 5;

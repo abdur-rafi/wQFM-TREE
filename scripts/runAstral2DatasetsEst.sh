@@ -1,5 +1,5 @@
 
-filePrefix="ewqfm"
+filePrefix="ewqfm-%sat"
 
 
 rootPath=$1
@@ -14,11 +14,10 @@ scoresFolderPath=$rootPath/scores-estimated-gt/$modelCond
 
 geneTreeLabel=estimatedgenetre
 speciesTreeLabel=s_tree.trees
-consTreeLabel=cons.tre
+consTreeLabel=cons-phylip.tre
 geneTreeLabelCleaned=gt-cleaned
 speciesTreeLabelCleaned=sp-cleaned
 
-# generate consensus trees
 
 for file in $(ls $gtFolderPath)
 do
@@ -38,16 +37,29 @@ done
 
 >consLog.txt
 >consErr.txt
+# generate consensus trees
+
+
 for file in $(ls $gtFolderPath)
 do
-    mkdir -p $consFolderPath/$file
-    ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
-    consOut=$consFolderPath/$file/cons.iqtree
+    echo "consensus tree for $file"
 
-    mv $gtFolderPath/$file/$geneTreeLabel.contree $consOut
+    mkdir -p $consFolderPath/$file
+    # ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
+    bash ./scripts/phylip.sh $gtFolderPath/$file/$geneTreeLabel > consLog.txt 2>consErr.txt
+    # consOut=$consFolderPath/$file/cons.iqtree
+    consOut=$consFolderPath/$file/cons.phyliptree
+
+    mv ./outtree $consOut
     # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
     python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
 done
+
+# for file in $(ls $gtFolderPath)
+# do
+#     python ./rfScoreCalculator/getFpFn.py -t $consFolderPath/$file/$consTreeLabel -e $consFolderPath/$file/cons.iqtree
+#     # cat $consFolderPath/$file/$consTreeLabel
+# done
 
 
 
@@ -58,6 +70,9 @@ mkdir -p $scoresFolderPath
 
 for file in $(ls $gtFolderPath)
 do 
+    # if [[ $file -eq 01 ]]; then
+    #     continue
+    # fi
     gtPath=$gtFolderPath/$file/$geneTreeLabelCleaned
     consPath=$consFolderPath/$file/$consTreeLabel
     spPath=$spFolderPath/$file/$speciesTreeLabelCleaned
