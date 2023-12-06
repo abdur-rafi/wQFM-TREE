@@ -5,7 +5,8 @@
 # filePrefix="ewqfm-%sat-lvs-c-n-n-n-v2"
 # filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
 filePrefix="ewqfm-%sat-init-with-singleton-all-flat"
-filePrefix="ewqfm-merge-test"
+filePrefix="ewqfm-phylip-old-node"
+# filePrefix="ewqfm-num-sat-new"
 
 # filePrefix="ewqfm-all-n-mxscore-init-singleton"
 
@@ -32,6 +33,10 @@ do
                 echo $file2
                 # if directory then run the script recursively
                 # echo $file2
+                bash ./scripts/phylip.sh $1/$file/$file2/all_gt_cleaned.tre > consLog.txt 2>consErr.txt
+                python ./scripts/consensusCleaner.py < ./outtree > $1/$file/$file2/cons.tre
+                # mv ./outtree $1/$file/$file2/cons.tre
+
                 # ./raxml-ng --redo --consense MRE --tree $1/$file/$file2/all_gt.tre --prefix $1/$file/$file2/cons >> ./raxml-ng.log
                 # consOut=$1/$file/$file2/cons.raxml.consensusTreeMRE
                 # python consensusCleaner.py < $consOut > $1/$file/$file2/cons.tre

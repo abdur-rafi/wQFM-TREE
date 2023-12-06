@@ -117,16 +117,16 @@ public class DebugMain {
             rt[i] = trees.taxaMap.get(Integer.toString(i));
         }
         int[] realTaxaPartition = new int[rtCount];
-        int pa = 1;
-        int pb = 0;
+        int pa = 0;
+        int pb = 1 - pa;
         for (int i = 0; i < rtCount; i++) {
             realTaxaPartition[i] = pa;
         }
         realTaxaPartition[0] = pb;
         realTaxaPartition[1] = pb;
         realTaxaPartition[2] = pb;
-        realTaxaPartition[4] = pb;
         realTaxaPartition[3] = pb;
+        realTaxaPartition[4] = pb;
         realTaxaPartition[5] = pb;
         // realTaxaPartition[7] = pb;
         // realTaxaPartition[8] = pb;
@@ -169,16 +169,18 @@ public class DebugMain {
         rt[6] = trees.taxaMap.get("7");
         rt[7] = trees.taxaMap.get("8");
 
+        int pa = 0;
+        int pb = 1 - pa;
 
         int[] realTaxaPartition = new int[8];
-        realTaxaPartition[0] = 0;
-        realTaxaPartition[1] = 0;
-        realTaxaPartition[2] = 0;
-        realTaxaPartition[3] = 0;
-        realTaxaPartition[4] = 0;
-        realTaxaPartition[5] = 1;        
-        realTaxaPartition[6] = 1;        
-        realTaxaPartition[7] = 1;        
+        realTaxaPartition[0] = pa;
+        realTaxaPartition[1] = pa;
+        realTaxaPartition[2] = pa;
+        realTaxaPartition[3] = pa;
+        realTaxaPartition[4] = pa;
+        realTaxaPartition[5] = pb;        
+        realTaxaPartition[6] = pb;        
+        realTaxaPartition[7] = pb;        
 
         TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, new DummyTaxon[0], realTaxaPartition, new int[0], 8);
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
@@ -195,8 +197,8 @@ public class DebugMain {
     
     public static void main(String[] args) throws IOException {
         // cgTest1();
+        // polytomyTc2();
         polytomyTc2();
-        // polytomyTc1();
         // new GeneTrees("../run/07.trueGT.cleaned");
         // new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // new GeneTrees("./input/custom.tre");
@@ -226,11 +228,63 @@ public class DebugMain {
 
         // System.out.println(spTree.getNewickFormat());
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-        // tc3(trees);
+        // tc4(trees);
 
 
         // System.out.println(trees.taxonIdToLabel);
     }
+
+    public static void tc4(GeneTrees trees){
+        RealTaxon[] rt = new RealTaxon[11];
+        rt[0] = trees.taxaMap.get("1");
+        rt[1] = trees.taxaMap.get("2");
+        rt[2] = trees.taxaMap.get("3");
+        rt[3] = trees.taxaMap.get("4");
+        rt[4] = trees.taxaMap.get("5");
+        rt[5] = trees.taxaMap.get("6");
+        rt[6] = trees.taxaMap.get("7");
+        rt[7] = trees.taxaMap.get("8");
+        rt[8] = trees.taxaMap.get("9");
+        rt[9] = trees.taxaMap.get("10");
+        rt[10] = trees.taxaMap.get("11");
+        
+
+
+        int[] realTaxaPartition = new int[11];
+        realTaxaPartition[0] = 0;
+        realTaxaPartition[1] = 0;
+        realTaxaPartition[2] = 0;
+        realTaxaPartition[3] = 0;
+        realTaxaPartition[4] = 0;
+        realTaxaPartition[5] = 1;
+        realTaxaPartition[6] = 1;
+        realTaxaPartition[7] = 1;
+        realTaxaPartition[8] = 1;
+        realTaxaPartition[9] = 1;
+        realTaxaPartition[10] = 0;
+
+
+        int[] dummyTaxaPartition = new int[1];
+        dummyTaxaPartition[0] = 1;
+
+        TaxaPerLevelWithPartition taxa = new TaxaPerLevelWithPartition(rt, new DummyTaxon[0], realTaxaPartition, dummyTaxaPartition, 11);
+
+        BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
+
+        double[][] rtGains = new double[11][2];
+        double[] dtGains = new double[0];
+        // System.out.println("score : " + bookKeepingPerLevel.calculateScore());
+
+        System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        for(int i = 0; i < rtGains.length; ++i){
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+        for(int i = 0; i < dtGains.length; ++i){
+            System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
+        }
+
+    }
+
 
     // 30 - 0 ?
     public static void tc1(GeneTrees trees){
@@ -270,11 +324,19 @@ public class DebugMain {
 
         double[][] rtGains = new double[5][2];
         double[] dtGains = new double[1];
+        // System.out.println("score : " + bookKeepingPerLevel.calculateScore());
 
         System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        for(int i = 0; i < rtGains.length; ++i){
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+        for(int i = 0; i < dtGains.length; ++i){
+            System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
+        }
+
     }
 
-
+    // -1
     public static void tc2(GeneTrees trees){
         RealTaxon[] rt = new RealTaxon[4];
         rt[0] = trees.taxaMap.get("1");
@@ -323,8 +385,9 @@ public class DebugMain {
         double[][] rtGains = new double[4][2];
         double[] dtGains = new double[1];
 
+        System.out.println( "scorea  : " + bookKeepingPerLevel.calculateScore());
 
-        System.out.println( "score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        // System.out.println( "score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
     }
 
 

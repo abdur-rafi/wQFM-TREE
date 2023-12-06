@@ -10,7 +10,10 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
     int[] dummyTaxaPartition;
     double[][] gainsOfBranches;
 
-    public NumSatCalculatorBinaryNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
+    double EPS = 0.000001;
+    // NumSatCalculatorNodeE nscn;
+
+    public NumSatCalculatorBinaryNode(Branch[] b, int[] dummyTaxaToPartitionMap, double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual) {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
@@ -33,6 +36,11 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         }
         gainsOfBranches = new double[3][2];
 
+        // Branch[] bcs = new Branch[branches.length];
+        // for(int i = 0; i < branches.length; ++i){
+        //     bcs[i] = new Branch(branches[i]);
+        // }
+        // this.nscn = new NumSatCalculatorNodeE(bcs, dummyTaxaToPartitionMap, totalTaxaA, totalTaxaB,dummyTaxaWeightsIndividual);
     }
 
     private double scoreOf2Branch(int i) {
@@ -50,6 +58,8 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
             csubs
         );
 
+        
+
         return score;
 
     }
@@ -61,6 +71,13 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         for (int i = 0; i < 3; ++i) {
             res += scoreOf2Branch(i);
         }
+
+        // double nscnScore = this.nscn.score();
+        
+        // if(Math.abs(nscnScore - res) > EPS){
+        //     System.out.println("error in score. diff : " + (nscnScore - res));
+            
+        // }
         return res;
     }
 
@@ -70,6 +87,16 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         for(int i = 0; i < 3; ++i){
             gainOf1BranchRealTaxa(i, originalScore, multiplier);
         }
+
+        // var x = this.nscn.gainRealTaxa(originalScore, multiplier);
+        // for(int i = 0; i < x.length; ++i){
+        //     for(int j = 0; j < 2; ++j){
+        //         if(x[i][j] != this.gainsOfBranches[i][j]){
+        //             System.out.println("error in real gain");
+        //         }
+        //     }
+        // }
+
         return this.gainsOfBranches;
     }
 
@@ -89,6 +116,7 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
             this.subs[branchIndex][1] -= 1;
         }
 
+        // this.nscn.swapRealTaxon(branchIndex, currPartition);
     }
 
     @Override
@@ -114,6 +142,8 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
             }
 
         }
+
+        // this.nscn.swapDummyTaxon(dummyIndex, currPartition);
             
     }
 
@@ -156,9 +186,19 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
             int currPartition = this.dummyTaxaPartition[i];
             int switchedPartition = 1 - currPartition;
             this.swapDummyTaxon(i, currPartition);
+
+            // this.nscn.swapDummyTaxon(i, currPartition);
+            // double nscnScore =  this.nscn.score();
+
+            // if(nscnScore != this.score()){
+            //     System.out.println("error in score in dt gain");
+            // }
+
             double newScore = score();
             dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
             this.swapDummyTaxon(i, switchedPartition);
+
+            // this.nscn.swapDummyTaxon(i, switchedPartition);
         }
     }
 

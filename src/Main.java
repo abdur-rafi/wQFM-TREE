@@ -48,6 +48,8 @@ public class Main {
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
 
+        long time_1 = System.currentTimeMillis(); //calculate starting time
+
         GeneTrees trees = new GeneTrees(inputFilePath);
 
         IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap, trees);
@@ -67,6 +69,11 @@ public class Main {
         writer.write(spTree.getNewickFormat());
 
         writer.close();
+
+        long time_del = System.currentTimeMillis() - time_1;
+        long minutes = (time_del / 1000) / 60;
+        long seconds = (time_del / 1000) % 60;
+        System.out.format("\nTime taken = %d ms ==> %d minutes and %d seconds.\n", time_del, minutes, seconds);
 
         // System.out.println(spTree.getNewickFormat());
         // tc5(trees);

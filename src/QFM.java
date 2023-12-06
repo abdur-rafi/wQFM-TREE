@@ -256,9 +256,17 @@ public class QFM {
         // System.out.println("CG Index : " + maxCgIndex + " cg : " + maxCg);
 
         if(maxCgIndex == -1){
-            for(int i = swaps.size() - 1; i >= 0; --i){
-                var x = swaps.get(i);
-                book.swapTaxon(x.index, x.isDummy);
+            if(swaps.size() != (book.taxas.realTaxonCount + book.taxas.dummyTaxonCount)){
+                for(int i = swaps.size() - 1; i >= 0; --i){
+                    var x = swaps.get(i);
+                    // book.swapTaxon(x.index, x.isDummy);
+                    if(x.isDummy){
+                        book.taxas.swapPartitionDummyTaxon(x.index);
+                    }
+                    else{
+                        book.taxas.swapPartitionRealTaxon(x.index);
+                    }
+                }
             }
             return false;
         }

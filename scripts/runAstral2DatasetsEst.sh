@@ -1,5 +1,5 @@
 
-filePrefix="ewqfm-%sat"
+filePrefix="ewqfm-phylip-mix-quads-del-mod-qfm"
 
 
 rootPath=$1
@@ -19,41 +19,41 @@ geneTreeLabelCleaned=gt-cleaned
 speciesTreeLabelCleaned=sp-cleaned
 
 
-for file in $(ls $gtFolderPath)
-do
-    fp=$gtFolderPath/$file/$geneTreeLabel.gz
-    if [ -f $fp ];then
-        gzip -d $gtFolderPath/$file/$geneTreeLabel.gz
-    fi
-done
+# for file in $(ls $gtFolderPath)
+# do
+#     fp=$gtFolderPath/$file/$geneTreeLabel.gz
+#     if [ -f $fp ];then
+#         gzip -d $gtFolderPath/$file/$geneTreeLabel.gz
+#     fi
+# done
 
-# clean gene and species trees
+# # clean gene and species trees
 
-for file in $(ls $gtFolderPath)
-do
-    python ./scripts/treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
-    python ./scripts/treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
-done
+# for file in $(ls $gtFolderPath)
+# do
+#     python ./scripts/treeCleaner.py < $gtFolderPath/$file/$geneTreeLabel > $gtFolderPath/$file/$geneTreeLabelCleaned
+#     python ./scripts/treeCleaner.py < $spFolderPath/$file/$speciesTreeLabel > $spFolderPath/$file/$speciesTreeLabelCleaned
+# done
 
 >consLog.txt
 >consErr.txt
 # generate consensus trees
 
 
-for file in $(ls $gtFolderPath)
-do
-    echo "consensus tree for $file"
+# for file in $(ls $gtFolderPath)
+# do
+#     echo "consensus tree for $file"
 
-    mkdir -p $consFolderPath/$file
-    # ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
-    bash ./scripts/phylip.sh $gtFolderPath/$file/$geneTreeLabel > consLog.txt 2>consErr.txt
-    # consOut=$consFolderPath/$file/cons.iqtree
-    consOut=$consFolderPath/$file/cons.phyliptree
+#     mkdir -p $consFolderPath/$file
+#     # ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
+#     bash ./scripts/phylip.sh $gtFolderPath/$file/$geneTreeLabel > consLog.txt 2>consErr.txt
+#     # consOut=$consFolderPath/$file/cons.iqtree
+#     consOut=$consFolderPath/$file/cons.phyliptree
 
-    mv ./outtree $consOut
-    # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
-    python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
-done
+#     mv ./outtree $consOut
+#     # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
+#     python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
+# done
 
 # for file in $(ls $gtFolderPath)
 # do

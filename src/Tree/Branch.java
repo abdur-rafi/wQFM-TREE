@@ -45,4 +45,21 @@ public class Branch {
         // this.dummyTaxaWeightSums[switchedPartition] += weight;
         
     }
+
+    public Branch(Branch b){
+        this.realTaxaCounts = new int[2];
+        this.totalTaxaCounts = new double[2];
+        for(int i = 0; i < 2; ++i){
+            this.totalTaxaCounts[i] = b.totalTaxaCounts[i];
+            this.realTaxaCounts[i] = b.realTaxaCounts[i];
+        }
+        this.dummyTaxaWeightsIndividual = new double[b.dummyTaxaWeightsIndividual.length];
+        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
+            this.dummyTaxaWeightsIndividual[i] = b.dummyTaxaWeightsIndividual[i];
+        }
+        // this.realTaxaCounts = b.realTaxaCounts.clone();
+        // this.dummyTaxaWeightsIndividual = b.dummyTaxaWeightsIndividual.clone();
+        // // this.dummyTaxaWeightSums = b.dummyTaxaWeightSums.clone();
+        // this.totalTaxaCounts = b.totalTaxaCounts.clone();
+    }
 }

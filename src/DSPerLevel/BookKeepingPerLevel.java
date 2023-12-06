@@ -135,7 +135,7 @@ public class BookKeepingPerLevel {
             }
             currTotals += bookTree.totalQuartets();
         }
-
+        
         return Config.SCORE_EQN.scoreFromSatAndTotal(currTotals, totalScore);
     
     }
@@ -148,7 +148,7 @@ public class BookKeepingPerLevel {
             double[] gainsToAll = new double[2];
 
             for(var node : bookTree.nodesForScore){
-    
+                // System.out.println("node index : " + node.index);
                 double score = node.info.scoreCalculator.score();
                 var branchGains = node.info.scoreCalculator.gainRealTaxa(score, node.frequency);
                 node.info.scoreCalculator.gainDummyTaxa(score, node.frequency, dummyTaxaGains);

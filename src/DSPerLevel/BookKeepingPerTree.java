@@ -9,6 +9,7 @@ import src.Tree.Tree;
 import src.Tree.TreeNode;
 import src.ScoreCalculator.NumSatCalculatorBinaryNode;
 import src.ScoreCalculator.NumSatCalculatorNode;
+import src.ScoreCalculator.NumSatCalculatorNodeE;
 import src.ScoreCalculator.NumSatCalculatorPolytomyNode;
 
 public class BookKeepingPerTree {
@@ -83,12 +84,13 @@ public class BookKeepingPerTree {
             if(!bookKeepingAtANode(node, taxas)){
                 this.nodesForScore.add(node);
                 NumSatCalculatorNode sCalculatorNode = null;
+                // sCalculatorNode  = new NumSatCalculatorNodeE(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
                 if(node.childs.size() == 2){
-                    sCalculatorNode = new NumSatCalculatorBinaryNode(node.info.branches, taxas.dummyTaxonPartition);
+                    sCalculatorNode = new NumSatCalculatorBinaryNode(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
                 }
                 else if(node.childs.size() > 2){
                     // System.out.println("klajsdf");
-                    sCalculatorNode = new NumSatCalculatorPolytomyNode(node.info.branches, taxas.dummyTaxonPartition);
+                    sCalculatorNode = new NumSatCalculatorNodeE(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
                 }
                 else{
                     System.out.println("error, branch length is less than 3");
