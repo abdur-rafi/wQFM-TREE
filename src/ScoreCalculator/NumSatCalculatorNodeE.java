@@ -250,6 +250,7 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             for(int j = i + 1; j < this.branches.length; ++j){
                 
                 double wj = this.branches[j].dummyTaxaWeightsIndividual[dummyIndex];
+                
                 double inc = wi * this.branches[j].totalTaxaCounts[1 - currPartition] + wj * this.branches[i].totalTaxaCounts[1-currPartition];
                 this.pairs[i][j][1 - currPartition] += inc;
                 

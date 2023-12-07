@@ -47,9 +47,9 @@ public class Branch {
     }
 
     public Branch(Branch b){
-        this.realTaxaCounts = new int[2];
-        this.totalTaxaCounts = new double[2];
-        for(int i = 0; i < 2; ++i){
+        this.realTaxaCounts = new int[b.realTaxaCounts.length];
+        this.totalTaxaCounts = new double[b.totalTaxaCounts.length];
+        for(int i = 0; i < this.totalTaxaCounts.length; ++i){
             this.totalTaxaCounts[i] = b.totalTaxaCounts[i];
             this.realTaxaCounts[i] = b.realTaxaCounts[i];
         }
