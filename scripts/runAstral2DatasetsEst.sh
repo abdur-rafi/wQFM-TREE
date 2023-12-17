@@ -1,5 +1,5 @@
 
-filePrefix="ewqfm-phylip-mix-quads-del-mod-qfm"
+filePrefix="ewqfm-test"
 
 
 rootPath=$1

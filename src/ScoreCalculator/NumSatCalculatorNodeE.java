@@ -24,6 +24,20 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
 
     int[] dummyTaxaPartition;
 
+    double calcNonQuartets(){
+        double q = 0;
+        for(int i = 0; i < this.branches.length; ++i){
+            for(int j = i + 1; j < this.branches.length; ++j){
+                q += this.pairs[i][j][0] * (this.sumPairs[1] - this.pairs[i][j][1]);
+                // q += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
+
+                // q += this.pairs[i][j][1] * (this.sumPairs[0] - this.sumPairsBranch[i][0] - this.sumPairsBranch[j][0] + this.pairs[i][j][0]);
+            }
+        }
+
+        return q;
+    }
+
     public NumSatCalculatorNodeE(Branch[] b, int[] dummyTaxaToPartitionMap,
     double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual) {
 
@@ -82,12 +96,16 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
         }
 
 
-        for(int i = 0; i < b.length; ++i){
-            for(int j = i + 1; j < b.length; ++j){
-                this.nonQuartets += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
-                // this.nonQuartets += this.pairs[i][j][1] * (this.sumPairs[0] - this.sumPairsBranch[i][0] - this.sumPairsBranch[j][0] + this.pairs[i][j][0]);
-            }
-        }
+        this.nonQuartets = this.calcNonQuartets();
+
+        // for(int i = 0; i < b.length; ++i){
+        //     for(int j = i + 1; j < b.length; ++j){
+        //         this.nonQuartets += this.pairs[i][j][0] * (this.sumPairs[1] - this.pairs[i][j][1]);
+        //         // this.nonQuartets += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
+
+        //         // this.nonQuartets += this.pairs[i][j][1] * (this.sumPairs[0] - this.sumPairsBranch[i][0] - this.sumPairsBranch[j][0] + this.pairs[i][j][0]);
+        //     }
+        // }
         // if(this.branches.length > 3){
 
         //     System.out.println("nonQuartets: " + this.nonQuartets);
@@ -113,8 +131,15 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             int mni = branchIndex > i ? i : branchIndex;
             int mxi = branchIndex > i ? branchIndex : i;
             
-            this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
-            this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
+            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
+            // this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
+
+            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
+            this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
+
+            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+            this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);
+
 
         }
         for(int i = 0; i < this.branches.length; ++i){
@@ -156,85 +181,30 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
         this.totalTaxa[currPartition] -= 1;
         this.totalTaxa[1 - currPartition] += 1;
 
+        // this.nonQuartets = this.calcNonQuartets();
 
         for(int i = 0; i < this.branches.length; ++i){
             if(i == branchIndex) continue;
             int mni = branchIndex > i ? i : branchIndex;
             int mxi = branchIndex > i ? branchIndex : i;
-            this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
-            this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
+            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
+            // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
+
+            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
+            this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
+            
+            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+            this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);            
+            
+            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+            // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);        
         }
-
-
-        // if(this.branches.length > 3){
-        //     // System.out.println("branch Index: " + branchIndex + " currPartition: " + currPartition);
-        //     // System.out.println("nonQuartets: " + this.nonQuartets);
-        //     double t = 0;
-        //     for(int i = 0; i < this.branches.length; ++i){
-        //         for(int j = i + 1; j < this.branches.length; ++j){
-        //             t += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
-        //         }
-        //     }
-        //     if(t != this.nonQuartets){
-        //         System.out.println("not equal");
-        //     }
-        //     else{
-        //         System.out.println("equal");
-        //     }
-        //     // this.nonQuartets = t;
-        // }
-
-        // if(currPartition == 1){
-        //     for(int i = 0; i < this.branches.length; ++i){
-        //         if(branchIndex == i){
-        //             this.sumPairsBranch[i][0] += (this.totalTaxa[0] - this.branches[i].totalTaxaCounts[0]);
-        //         }
-        //         else{
-
-        //             int mni = branchIndex > i ? i : branchIndex;
-        //             int mxi = branchIndex > i ? branchIndex : i;
-
-
-        //             this.pairs[mni][mxi][0] += this.branches[i].totalTaxaCounts[0];
-        //             this.pairs[mni][mxi][1] -= this.branches[i].totalTaxaCounts[1];
-                    
-                    
-        //             this.sumPairs[1] -= this.branches[i].totalTaxaCounts[1];
-
-        //             this.sumPairsBranch[i][0] += this.branches[i].totalTaxaCounts[0];
-        //             this.sumPairs[0] += this.branches[i].totalTaxaCounts[0];
-        //         }
-        //     }
-        //     pairsBFromSingleBranch[branchIndex] -= this.branches[branchIndex].totalTaxaCounts[1] - 1;
-        //     this.sumPairsBSingleBranch -= this.branches[branchIndex].totalTaxaCounts[1] - 1;
-        //     this.totalTaxa[0] += 1;
-        //     this.totalTaxa[1] -= 1;
+        // double diff = Math.abs(this.calcNonQuartets() - this.nonQuartets);
+        // if(diff > .00001){
+        //     System.out.println("not equal.diff : " + diff);
         // }
         // else{
-        //     for(int i = 0; i < this.branches.length; ++i){
-        //         if(branchIndex == i){
-        //             this.sumPairsBranch[i][0] -= (this.totalTaxa[0] - this.branches[i].totalTaxaCounts[0]);
-        //             // continue;
-        //         }
-        //         else{
-        //             int mni = branchIndex > i ? i : branchIndex;
-        //             int mxi = branchIndex > i ? branchIndex : i;
-
-
-        //             this.pairs[mni][mxi][0] -= this.branches[i].totalTaxaCounts[0];
-        //             this.pairs[mni][mxi][1] += this.branches[i].totalTaxaCounts[1];
-
-                    
-        //             this.sumPairs[1] += this.branches[i].totalTaxaCounts[1];
-
-        //             this.sumPairsBranch[i][0] -= this.branches[i].totalTaxaCounts[0];
-        //             this.sumPairs[0] -= this.branches[i].totalTaxaCounts[0];
-        //         }
-        //     }
-        //     pairsBFromSingleBranch[branchIndex] += this.branches[branchIndex].totalTaxaCounts[1];
-        //     this.sumPairsBSingleBranch += this.branches[branchIndex].totalTaxaCounts[1];
-        //     this.totalTaxa[0] -= 1;
-        //     this.totalTaxa[1] += 1;
+        //     // System.out.println("equal");
         // }
 
         branches[branchIndex].swapRealTaxa(currPartition);
@@ -282,71 +252,11 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
         this.totalTaxa[currPartition] -= this.dummyTaxaWeightsIndividual[dummyIndex];
 
 
-
-
-        
-        // if(currPartition == 1){
-        //     double incrA = 0;
-        //     for(int i = 0; i < this.branches.length; ++i){
-        //         double wi = this.branches[i].dummyTaxaWeightsIndividual[dummyIndex];
-        //         // double wAllOther = this.dummyTaxaWeightsIndividual[dummyIndex] - wi;
-        //         // double totAllOther = this.totalTaxaA - this.branches[i].totalTaxaCounts[0];
-        //         // double inc = (wi * totAllOther) + (wAllOther * this.branches[i].totalTaxaCounts[0]);
-        //         // this.sumOfPairsA[i] += inc;
-        //         // incrA += wi * totAllOther;
-        //         this.pairsBFromSingleBranch[i] -= (this.branches[i].totalTaxaCounts[1] - wi) * wi;
-        //         this.sumPairsBSingleBranch -= (this.branches[i].totalTaxaCounts[1] - wi) * wi; 
-
-        //         for(int j = i + 1; j < this.branches.length; ++j){
-        //             // double wi = this.branches[i].dummyTaxaWeightsIndividual[dummyIndex];
-        //             double wj = this.branches[j].dummyTaxaWeightsIndividual[dummyIndex];
-        //             double inc = wi * this.branches[j].totalTaxaCounts[0] + wj * this.branches[i].totalTaxaCounts[0];
-        //             // pairs[i][j][0] +=  ;
-        //             // pairs[i][j][0] += ;
-
-        //             pairs[i][j][1] -= wi * (this.branches[j].totalTaxaCounts[1] - wj);
-        //             pairs[i][j][1] -= wj * (this.branches[i].totalTaxaCounts[1] - wi);
-        //         }
-
-        //     }
-        //     this.sumPairsA += incrA;
-        //     this.totalTaxaA += dummyTaxaWeightsIndividual[dummyIndex];
-        //     this.totalTaxaB -= dummyTaxaWeightsIndividual[dummyIndex];
-        // }
-        // else{
-        //     // System.out.println("kjsndfjkhk");
-        //     double decrA = 0;
-        //     for(int i = 0; i < this.branches.length; ++i){
-        //         double wCurr = this.branches[i].dummyTaxaWeightsIndividual[dummyIndex];
-        //         double wAllOther = this.dummyTaxaWeightsIndividual[dummyIndex] - wCurr;
-        //         double totAllOther = this.totalTaxaA - this.branches[i].totalTaxaCounts[0] - wAllOther;
-        //         double dec = wCurr * totAllOther + wAllOther * (this.branches[i].totalTaxaCounts[0] - wCurr );
-        //         this.sumOfPairsA[i] -= dec;
-        //         decrA += wCurr * totAllOther;
-        //         this.pairsBFromSingleBranch[i] += (this.branches[i].totalTaxaCounts[1]) * wCurr;
-        //         this.sumPairsBSingleBranch += (this.branches[i].totalTaxaCounts[1]) * wCurr; 
-
-        //         for(int j = i + 1; j < this.branches.length; ++j){
-        //             pairs[i][j][0] += this.branches[i].dummyTaxaWeightsIndividual[dummyIndex] * this.branches[j].totalTaxaCounts[0];
-        //             pairs[i][j][0] += this.branches[j].dummyTaxaWeightsIndividual[dummyIndex] * this.branches[i].totalTaxaCounts[0];
-        //         }
-
-        //     }
-        //     this.sumPairsA -= decrA ;
-        //     this.totalTaxaA -= dummyTaxaWeightsIndividual[dummyIndex];
-        //     this.totalTaxaB += dummyTaxaWeightsIndividual[dummyIndex];
-        // }
-
         for(int i = 0; i < this.branches.length; ++i){
             branches[i].swapDummyTaxon(dummyIndex, currPartition);
         }
 
-        this.nonQuartets = 0;
-        for(int i = 0; i < this.branches.length; ++i){
-            for(int j = i + 1; j < this.branches.length; ++j){
-                this.nonQuartets += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
-            }
-        }
+        this.nonQuartets = this.calcNonQuartets();
         
     }
 
