@@ -11,13 +11,25 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length < 3){
-            System.out.println("Specify all file paths");
+        if(args.length < 4){
+            System.out.println("Specify all file paths and non quartet type");
             System.exit(-1);
         }
         String inputFilePath = args[0];
         String consensusFilePath = args[1];
         String outputFilePath = args[2];
+
+        String nonQuartetType = args[3];
+        
+        if(nonQuartetType.equals("A")){
+            Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
+        }else if(nonQuartetType.equals("B")){
+            Config.NON_QUARTET_TYPE = Config.NonQuartetType.B;
+        }else{
+            System.out.println("Specify non quartet type as A or B");
+            System.exit(-1);
+        }
+
 
         // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
         // String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
@@ -36,9 +48,9 @@ public class Main {
         // inputFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
         // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
         // outputFilePath = "./output.tre";
-        // String modelCond = "model.10.2000000.0.000001";
-        // inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/37/gt-cleaned";
-        // consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/37/cons.tre";
+        // String modelCond = "model.50.2000000.0.000001";
+        // inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/03/gt-cleaned";
+        // consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/03/cons.tre";
         
         // // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
         // outputFilePath = "./output.tre";        
@@ -51,8 +63,15 @@ public class Main {
         long time_1 = System.currentTimeMillis(); //calculate starting time
 
         GeneTrees trees = new GeneTrees(inputFilePath);
+        var taxaMap = trees.readTaxaNames();
 
-        IMakePartition  partitionMaker = new ConsensusTreePartition(consensusFilePath, trees.taxaMap, trees);
+        ConsensusTreePartition consensusTreePartition = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
+        
+        trees.readGeneTrees(consensusTreePartition.dist);
+
+        IMakePartition  partitionMaker = consensusTreePartition;
+
+
 
 
 

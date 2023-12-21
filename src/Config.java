@@ -37,4 +37,11 @@ public class Config {
     public static int MAX_ITERATION = 5;
     // public static boolean USE_MAX_DEPTH_MULTIPLIER = true;
 
+    public static boolean RESOLVE_POLYTOMY = false;
+
+    public enum NonQuartetType{
+        A,B
+    }
+
+    public static NonQuartetType NON_QUARTET_TYPE = NonQuartetType.A;
 }

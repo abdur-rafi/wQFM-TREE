@@ -157,6 +157,55 @@ public class Tree {
         }
     }
 
+    public ArrayList<Integer> resolveNonBinaryUtil(TreeNode node, double[][] distanceMatrix){
+        if(node.isLeaf()){
+            return new ArrayList<>(Arrays.asList(node.taxon.id));
+        }
+        var reachableFromChilds = new ArrayList<ArrayList<Integer>>();
+        for(var x : node.childs){
+            reachableFromChilds.add(resolveNonBinaryUtil(x, distanceMatrix));
+        }
+        var allReachableFromChilds = new ArrayList<Integer>();
+        for(var x : reachableFromChilds){
+            allReachableFromChilds.addAll(x);
+        }
+
+        if(node.childs.size() > 2){
+            double mxDist = Double.MIN_VALUE;
+            int mxIndex = -1;
+            for(int i = 0; i < node.childs.size(); ++i){
+                double currDist = 0;
+                for(var a : allReachableFromChilds){
+                    for(var b : reachableFromChilds.get(i)){
+                        currDist += distanceMatrix[a][b];
+                    }
+                }
+                if(currDist > mxDist){
+                    mxDist = currDist;
+                    mxIndex = i;
+                }
+            }
+
+            var branchI = node.childs.get(mxIndex);
+            node.childs.remove(mxIndex);
+            
+            var newNode = addInternalNode(node.childs);
+            newNode.setParent(node);
+            node.childs = new ArrayList<>();
+            node.childs.add(branchI);
+            node.childs.add(newNode);
+            resolveNonBinaryUtil(newNode, distanceMatrix);
+
+        }
+        return allReachableFromChilds;
+    }
+
+    public void resolveNonBinary(double[][] distanceMatrix){
+        // System.out.println(root.childs.size());
+        resolveNonBinaryUtil(root, distanceMatrix);
+        topSort();
+    }
+
     
     
     // public Tree(String newickLine){

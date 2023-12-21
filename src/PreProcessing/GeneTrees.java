@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import src.Config;
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
@@ -22,6 +23,7 @@ public class GeneTrees {
     public Map<String, TreeNode> triPartitions;
     public Map<String, RealTaxon> taxaMap;
     public int realTaxaCount;
+    public String path;
 
     private void parseTaxa(String newickLine, Set<String> taxaSet){
         newickLine.replaceAll("\\s", "");
@@ -63,16 +65,10 @@ public class GeneTrees {
     }
     
 
-    public GeneTrees(String path) throws FileNotFoundException{
-
-        this.geneTrees = new ArrayList<>();
-        this.triPartitions = new HashMap<>();
-
-        int internalNodesCount = 0;
-        
+    public Map<String, RealTaxon> readTaxaNames() throws FileNotFoundException{
         Set<String> taxaSet = new HashSet<>();
 
-        Scanner scanner = new Scanner(new File(path));
+        Scanner scanner = new Scanner(new File(this.path));
         while(scanner.hasNextLine()){
             String line = scanner.nextLine();
             if(line.trim().length() == 0) continue;
@@ -86,9 +82,14 @@ public class GeneTrees {
             RealTaxon taxon = new RealTaxon(x);
             taxaMap.put(x, taxon);
         }
-        
 
-        scanner = new Scanner(new File(path));
+        return taxaMap;
+    }
+
+    public void readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
+        int internalNodesCount = 0;
+
+        Scanner scanner = new Scanner(new File(path));
 
         while (scanner.hasNextLine()) {
 
@@ -97,6 +98,10 @@ public class GeneTrees {
             if(line.trim().length() == 0) continue;
             
             var tree = new Tree(line, this.taxaMap);
+            
+            if(Config.RESOLVE_POLYTOMY){
+                tree.resolveNonBinary(distanceMatrix);
+            }
 
             // System.out.println(tree.root);
             
@@ -133,15 +138,23 @@ public class GeneTrees {
         }
 
 
-        System.out.println( "taxon count : " + taxaSet.size());
+        System.out.println( "taxon count : " + this.taxaMap.size());
         System.out.println("Gene trees count : " + geneTrees.size());
         System.out.println( "total internal nodes : " + internalNodesCount);
         System.out.println( "unique partitions : " + triPartitions.size());
 
-        // for(var x : triPartitions.entrySet()){
-        //     System.out.println(x.getValue().frequency);
-        // }
+        if(internalNodesCount == 50000){
+            System.out.println("No polytomy, skipping");
+            System.exit(-1);
+        }
 
+    }
+
+    public GeneTrees(String path) throws FileNotFoundException{
+
+        this.geneTrees = new ArrayList<>();
+        this.triPartitions = new HashMap<>();
+        this.path = path;
     }
     
 } 

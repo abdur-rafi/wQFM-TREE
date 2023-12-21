@@ -27,6 +27,9 @@ public class ConsensusTreePartition implements IMakePartition {
     GeneTrees trees;
     BookKeepingPerLevel book;
     double score;
+
+    public double[][] dist;
+    Map<String, RealTaxon> taxaMap;
     
 
     public ConsensusTreePartition(String filePath, Map<String, RealTaxon> taxaMap, GeneTrees trees) throws FileNotFoundException{
@@ -38,7 +41,62 @@ public class ConsensusTreePartition implements IMakePartition {
 
         randPartition = new RandPartition();
         this.trees = trees;
+        dist = new double[this.taxonCount][this.taxonCount];
+        this.taxaMap = taxaMap;
 
+        calculateDistanceMatrix();
+        // for(var x : this.taxaMap.entrySet()){
+        //     System.out.println(x.getKey() + " " + x.getValue().id);
+        // }
+        // printDistanceMatrix();
+        
+    }
+
+    public void printDistanceMatrix() {
+        
+        for (int i = 0; i < taxonCount; i++) {
+            for (int j = 0; j < taxonCount; j++) {
+                System.out.print(dist[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    
+
+    private void distToLeaves(TreeNode node, int from, double dist){
+        if(node.isLeaf()){
+            this.dist[from][node.taxon.id] = dist;
+        }
+        else{
+            for(var child : node.childs){
+                distToLeaves(child, from, dist + 1);
+            }
+        }
+    }
+
+    
+    private void distFromTaxon(RealTaxon rt){
+        var leafNode = this.consTree.leaves[rt.id];
+        var parent = leafNode.parent;
+        int from = rt.id;
+        double dist = 1;
+        while(parent != null){
+            for(var child : parent.childs){
+                if(child != leafNode){
+                    distToLeaves(child, from, dist + 1);
+                }
+            }
+            leafNode = parent;
+            parent = parent.parent;
+            dist++;
+        }
+    }
+
+    private void calculateDistanceMatrix(){
+        for(var x : this.taxaMap.entrySet()){
+            distFromTaxon(x.getValue());    
+        }
     }
 
 

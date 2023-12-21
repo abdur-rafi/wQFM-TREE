@@ -1,9 +1,10 @@
 
-filePrefix="ewqfm-test"
+filePrefix="ewqfm-score-testing"
 
 
 rootPath=$1
 modelCond=$2
+nonQuartType="B"
 gtFolderPath=$rootPath/estimated-gene-trees/$modelCond
 spFolderPath=$rootPath/true-specis-trees/$modelCond
 consFolderPath=$rootPath/estimated-consensus-trees/$modelCond
@@ -67,12 +68,9 @@ mkdir -p $scoresFolderPath
 
 > $scoresFolderPath/$filePrefix-score.txt
 
+runOne() {
 
-for file in $(ls $gtFolderPath)
-do 
-    # if [[ $file -eq 01 ]]; then
-    #     continue
-    # fi
+    file=$1
     gtPath=$gtFolderPath/$file/$geneTreeLabelCleaned
     consPath=$consFolderPath/$file/$consTreeLabel
     spPath=$spFolderPath/$file/$speciesTreeLabelCleaned
@@ -82,13 +80,25 @@ do
     outPath=$outFolderPath/$file/$filePrefix-tree.txt
 
     echo $file
-    # /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -cp /home/bayzid/.config/Code/User/workspaceStorage/41a1dfbd7def114e5267294232ad568a/redhat.java/jdt_ws/E-WQFM-2_3fef4584/bin src.Main $gtPath $consPath $outPath
-    # /usr/bin/env /usr/lib/jvm/java-11-openjdk-amd64/bin/java -cp /home/bayzid/.config/Code/User/workspaceStorage/33cdc9765c74852cf61a5d29da37e4a1/redhat.java/jdt_ws/E-WQFM_9c2bab9f/bin src.Main 
-    /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $gtPath $consPath $outPath
+
+    /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $gtPath $consPath $outPath $nonQuartType
 
     python ./rfScoreCalculator/getFpFn.py -t $spPath -e $outPath >> $scoresFolderPath/$filePrefix-score.txt
 
     python ./scripts/rfAverager.py < $scoresFolderPath/$filePrefix-score.txt > $scoresFolderPath/avg-$filePrefix-score.txt
-done
+
+}
+
+if [ "$#" -gt 2 ]; then
+    for (( i=3; i< $#; i++ )); do
+        runOne ${!i}
+    done
+else
+    for file in $(ls $gtFolderPath)
+    do 
+        runOne $file
+    done
+fi
+
 
 

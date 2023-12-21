@@ -1,5 +1,6 @@
 package src.ScoreCalculator;
 
+import src.Config;
 import src.Tree.Branch;
 
 public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
@@ -20,23 +21,112 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
 
     int nDummyTaxa;
 
+    NonQuartCalculator nonQuartCalculator;
+
+
+    public interface NonQuartCalculator{
+        double calcNonQuartets();
+        double decBeforeRTSwap(int branchIndex);
+        double incAfterRTSwap(int branchIndex);
+    }
+
+    class NonQuartCalculatorB implements NonQuartCalculator{
+        @Override
+        public double calcNonQuartets(){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                for(int j = i + 1; j < branches.length; ++j){
+                    q += pairs[i][j][0] * (sumPairs[1] - pairs[i][j][1]);
+                }
+            }
+            return q;
+        }
+
+        @Override
+        public double incAfterRTSwap(int branchIndex){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                if(i == branchIndex) continue;
+                int mni = branchIndex > i ? i : branchIndex;
+                int mxi = branchIndex > i ? branchIndex : i;
+                q -= pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[branchIndex][1]);
+                q -= pairs[mni][mxi][1] * (sumPairs[0] - pairs[mni][mxi][0]);
+            }
+            return q;
+        }
+
+        @Override
+        public double decBeforeRTSwap(int branchIndex){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                if(i == branchIndex) continue;
+                int mni = branchIndex > i ? i : branchIndex;
+                int mxi = branchIndex > i ? branchIndex : i;
+                q += pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[branchIndex][1]);
+                q += pairs[mni][mxi][1] * (sumPairs[0] - pairs[mni][mxi][0]);
+            }
+            return q;
+        }
+    }
+
+    class NonQuartCalculatorA implements NonQuartCalculator{
+        @Override
+        public double calcNonQuartets(){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                for(int j = i + 1; j < branches.length; ++j){
+                    q += pairs[i][j][0] * (sumPairs[1] - sumPairsBranch[i][1] - sumPairsBranch[j][1] + pairs[i][j][1]);
+                }
+            }
+            return q;
+        }
+
+        @Override
+        public double incAfterRTSwap(int branchIndex){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                if(i == branchIndex) continue;
+                int mni = branchIndex > i ? i : branchIndex;
+                int mxi = branchIndex > i ? branchIndex : i;
+                q -= pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[mni][1] - sumPairsBranch[mxi][1] + pairs[mni][mxi][1]);
+                q -= pairs[mni][mxi][1] * (sumPairs[0] - sumPairsBranch[mni][0] - sumPairsBranch[mxi][0] + pairs[mni][mxi][0]);
+                
+            }
+            return q;
+        }
+
+        @Override
+        public double decBeforeRTSwap(int branchIndex){
+            double q = 0;
+            for(int i = 0; i < branches.length; ++i){
+                if(i == branchIndex) continue;
+                int mni = branchIndex > i ? i : branchIndex;
+                int mxi = branchIndex > i ? branchIndex : i;
+
+                q += pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[mni][1] - sumPairsBranch[mxi][1] + pairs[mni][mxi][1]);
+                q += pairs[mni][mxi][1] * (sumPairs[0] - sumPairsBranch[mni][0] - sumPairsBranch[mxi][0] + pairs[mni][mxi][0]);
+                
+            }
+            return q;
+        }
+    }
 
 
     int[] dummyTaxaPartition;
 
-    double calcNonQuartets(){
-        double q = 0;
-        for(int i = 0; i < this.branches.length; ++i){
-            for(int j = i + 1; j < this.branches.length; ++j){
-                q += this.pairs[i][j][0] * (this.sumPairs[1] - this.pairs[i][j][1]);
-                // q += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
+    // double calcNonQuartets(){
+    //     double q = 0;
+    //     for(int i = 0; i < this.branches.length; ++i){
+    //         for(int j = i + 1; j < this.branches.length; ++j){
+    //             q += this.pairs[i][j][0] * (this.sumPairs[1] - this.pairs[i][j][1]);
+    //             // q += this.pairs[i][j][0] * (this.sumPairs[1] - this.sumPairsBranch[i][1] - this.sumPairsBranch[j][1] + this.pairs[i][j][1]);
 
-                // q += this.pairs[i][j][1] * (this.sumPairs[0] - this.sumPairsBranch[i][0] - this.sumPairsBranch[j][0] + this.pairs[i][j][0]);
-            }
-        }
+    //             // q += this.pairs[i][j][1] * (this.sumPairs[0] - this.sumPairsBranch[i][0] - this.sumPairsBranch[j][0] + this.pairs[i][j][0]);
+    //         }
+    //     }
 
-        return q;
-    }
+    //     return q;
+    // }
 
     public NumSatCalculatorNodeE(Branch[] b, int[] dummyTaxaToPartitionMap,
     double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual) {
@@ -95,8 +185,15 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             this.sumPairsBSingleBranch += pairsBFromSingleBranch[i];
         }
 
+        if(Config.NON_QUARTET_TYPE == Config.NonQuartetType.A){
+            this.nonQuartCalculator = new NonQuartCalculatorA();
+        }
+        else{
+            this.nonQuartCalculator = new NonQuartCalculatorB();
+        }
+        this.nonQuartets = this.nonQuartCalculator.calcNonQuartets();
 
-        this.nonQuartets = this.calcNonQuartets();
+        // this.nonQuartets = this.calcNonQuartets();
 
         // for(int i = 0; i < b.length; ++i){
         //     for(int j = i + 1; j < b.length; ++j){
@@ -119,6 +216,21 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             res -=  pairsBFromSingleBranch[i] * sumPairsBranch[i][0];
         }
         res += this.sumPairs[0] * this.sumPairsBSingleBranch;
+
+        // double res2 = 0;
+        // for(int i = 0; i < this.branches.length; ++i){
+        //     for(int j = i + 1; j < this.branches.length; ++j ){
+        //         res2 += (this.pairs[i][j][0] * (this.sumPairsBSingleBranch - this.pairsBFromSingleBranch[i] - this.pairsBFromSingleBranch[j]));
+        //     }
+        // }
+
+        // if(Math.abs(res - res2) > .00001){
+        //     System.out.println("not equal. diff : " + (res - res2));
+        // }
+        // else{
+        //     // System.out.println("equal");
+        // }
+
         res += (this.nonQuartets / 2);
         return res;
     }
@@ -126,22 +238,23 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
     @Override
     public void swapRealTaxon(int branchIndex, int currPartition){
         
-        for(int i = 0; i < this.branches.length; ++i){
-            if(i == branchIndex) continue;
-            int mni = branchIndex > i ? i : branchIndex;
-            int mxi = branchIndex > i ? branchIndex : i;
+        this.nonQuartets -= this.nonQuartCalculator.decBeforeRTSwap(branchIndex);
+        // for(int i = 0; i < this.branches.length; ++i){
+        //     if(i == branchIndex) continue;
+        //     int mni = branchIndex > i ? i : branchIndex;
+        //     int mxi = branchIndex > i ? branchIndex : i;
             
-            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
-            // this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
+        //     // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
+        //     // this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
 
-            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
-            this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
+        //     // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
+        //     this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
 
-            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
-            this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);
+        //     // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+        //     this.nonQuartets -= this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);
 
 
-        }
+        // }
         for(int i = 0; i < this.branches.length; ++i){
             if(branchIndex == i){
                 this.sumPairsBranch[i][1 - currPartition] += (this.totalTaxa[1-currPartition] - this.branches[i].totalTaxaCounts[1-currPartition]);
@@ -182,23 +295,23 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
         this.totalTaxa[1 - currPartition] += 1;
 
         // this.nonQuartets = this.calcNonQuartets();
+        this.nonQuartets += this.nonQuartCalculator.incAfterRTSwap(branchIndex);
+        // for(int i = 0; i < this.branches.length; ++i){
+        //     if(i == branchIndex) continue;
+        //     int mni = branchIndex > i ? i : branchIndex;
+        //     int mxi = branchIndex > i ? branchIndex : i;
+        //     // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
+        //     // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
 
-        for(int i = 0; i < this.branches.length; ++i){
-            if(i == branchIndex) continue;
-            int mni = branchIndex > i ? i : branchIndex;
-            int mxi = branchIndex > i ? branchIndex : i;
-            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[mni][1] - this.sumPairsBranch[mxi][1] + this.pairs[mni][mxi][1]);
-            // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.sumPairsBranch[mni][0] - this.sumPairsBranch[mxi][0] + this.pairs[mni][mxi][0]);
-
-            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
-            this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
+        //     // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1] + this.pairs[mni][mxi][1]);
+        //     this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.sumPairsBranch[branchIndex][1]);
             
-            // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
-            this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);            
+        //     // this.nonQuartets -= this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+        //     this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);            
             
-            // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
-            // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);        
-        }
+        //     // this.nonQuartets += this.pairs[mni][mxi][0] * (this.sumPairs[1] - this.pairs[mni][mxi][1]);
+        //     // this.nonQuartets += this.pairs[mni][mxi][1] * (this.sumPairs[0] - this.pairs[mni][mxi][0]);        
+        // }
         // double diff = Math.abs(this.calcNonQuartets() - this.nonQuartets);
         // if(diff > .00001){
         //     System.out.println("not equal.diff : " + diff);
@@ -256,7 +369,8 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             branches[i].swapDummyTaxon(dummyIndex, currPartition);
         }
 
-        this.nonQuartets = this.calcNonQuartets();
+        this.nonQuartets = this.nonQuartCalculator.calcNonQuartets();
+        // this.nonQuartets = this.calcNonQuartets();
         
     }
 
