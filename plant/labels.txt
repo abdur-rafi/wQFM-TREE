@@ -1,0 +1,1172 @@
+MWXT,MWXT,Charophyceae
+Chabr_v0.1,Chabr_v0.1,Charophyceae
+HHXJ,HHXJ,Chlorodendrales
+DUMA,DUMA,Chlorodendrales
+FMVB,FMVB,Chlorodendrales
+HVNO,HVNO,Chlorodendrales
+AZZW,AZZW,Chlorokybales
+BAZF,BAZF,Chlorophyceae
+IJMT,IJMT,Chlorophyceae
+ISGT,ISGT,Chlorophyceae
+JMUI,JMUI,Chlorophyceae
+RAWF,RAWF,Chlorophyceae
+VFIV,VFIV,Chlorophyceae
+ACRY,ACRY,Chlorophyceae
+AJUW,AJUW,Chlorophyceae
+AOUJ,AOUJ,Chlorophyceae
+BCYF,BCYF,Chlorophyceae
+DZPJ,DZPJ,Chlorophyceae
+ENAU,ENAU,Chlorophyceae
+FXHG,FXHG,Chlorophyceae
+GFUR,GFUR,Chlorophyceae
+GUBD,GUBD,Chlorophyceae
+IHOI,IHOI,Chlorophyceae
+IRYH,IRYH,Chlorophyceae
+ISPU,ISPU,Chlorophyceae
+JKKI,JKKI,Chlorophyceae
+JRGZ,JRGZ,Chlorophyceae
+JWGT,JWGT,Chlorophyceae
+KFEB,KFEB,Chlorophyceae
+KUJU,KUJU,Chlorophyceae
+LBRP,LBRP,Chlorophyceae
+LNIL,LNIL,Chlorophyceae
+MULF,MULF,Chlorophyceae
+MXDS,MXDS,Chlorophyceae
+OFUE,OFUE,Chlorophyceae
+PRIQ,PRIQ,Chlorophyceae
+QRTH,QRTH,Chlorophyceae
+QWRA,QWRA,Chlorophyceae
+RHVC,RHVC,Chlorophyceae
+RNAT,RNAT,Chlorophyceae
+RUIF,RUIF,Chlorophyceae
+RYJX,RYJX,Chlorophyceae
+SYJM,SYJM,Chlorophyceae
+TSBQ,TSBQ,Chlorophyceae
+UKUC,UKUC,Chlorophyceae
+UTRE,UTRE,Chlorophyceae
+VALZ,VALZ,Chlorophyceae
+VIAU,VIAU,Chlorophyceae
+WDWX,WDWX,Chlorophyceae
+WRSL,WRSL,Chlorophyceae
+XDLL,XDLL,Chlorophyceae
+ZDIZ,ZDIZ,Chlorophyceae
+ZFXU,ZFXU,Chlorophyceae
+ZIVZ,ZIVZ,Chlorophyceae
+ZLQE,ZLQE,Chlorophyceae
+USIX,USIX,Chlorophyceae
+DVYE,DVYE,Chlorophyceae
+SDPC,SDPC,Chlorophyceae
+BZSH,BZSH,Chlorophyceae
+FOYQ,FOYQ,Chlorophyceae
+MWAN,MWAN,Chlorophyceae
+OTQG,OTQG,Chlorophyceae
+PZIF,PZIF,Chlorophyceae
+VJDZ,VJDZ,Chlorophyceae
+XKWQ,XKWQ,Chlorophyceae
+XTON,XTON,Chlorophyceae
+Volca_v2.0,Volca_v2.0,Chlorophyceae
+Chlre_v5.5,Chlre_v5.5,Chlorophyceae
+APTP,APTP,Chromista
+ASZK,ASZK,Chromista
+BAKF,BAKF,Chromista
+FIDQ,FIDQ,Chromista
+FIKG,FIKG,Chromista
+FOMH,FOMH,Chromista
+FSQE,FSQE,Chromista
+HFIK,HFIK,Chromista
+IAYV,IAYV,Chromista
+IRZA,IRZA,Chromista
+JCXF,JCXF,Chromista
+JGGD,JGGD,Chromista
+LDRY,LDRY,Chromista
+LIRF,LIRF,Chromista
+QLMZ,QLMZ,Chromista
+RAPY,RAPY,Chromista
+ROZZ,ROZZ,Chromista
+RWXW,RWXW,Chromista
+SRSQ,SRSQ,Chromista
+ULXR,ULXR,Chromista
+VRGZ,VRGZ,Chromista
+VYER,VYER,Chromista
+YRMA,YRMA,Chromista
+BOGT,BOGT,Chromista Chrysophyta
+DBYD,DBYD,Chromista Chrysophyta
+VKVG,VKVG,Chromista Chrysophyta
+BAJW,BAJW,Chromista Haptophyceae
+LLEN,LLEN,Chromista Haptophyceae
+LXRN,LXRN,Chromista Haptophyceae
+NMAK,NMAK,Chromista Haptophyceae
+RFAD,RFAD,Chromista Haptophyceae
+VJED,VJED,Chromista Haptophyceae
+EBWI,EBWI,Chromista Haptophyceae
+DRGY,DRGY,Coleochaetophyceae
+QPDY,QPDY,Coleochaetophyceae
+VQBJ,VQBJ,Coleochaetophyceae
+WCQU,WCQU,Zygnemophyceae
+WDGV,WDGV,Zygnemophyceae
+AEKF,AEKF,Zygnemophyceae
+BHBK,BHBK,Zygnemophyceae
+DFDS,DFDS,Zygnemophyceae
+DRFX,DRFX,Zygnemophyceae
+GBGT,GBGT,Zygnemophyceae
+GGWH,GGWH,Zygnemophyceae
+GYRP,GYRP,Zygnemophyceae
+HIDG,HIDG,Zygnemophyceae
+ISHC,ISHC,Zygnemophyceae
+KEYW,KEYW,Zygnemophyceae
+MCHJ,MCHJ,Zygnemophyceae
+MNNM,MNNM,Zygnemophyceae
+MOYY,MOYY,Zygnemophyceae
+QWFV,QWFV,Zygnemophyceae
+RPQV,RPQV,Zygnemophyceae
+RPRU,RPRU,Zygnemophyceae
+RQFE,RQFE,Zygnemophyceae
+STKJ,STKJ,Zygnemophyceae
+YSQT,YSQT,Zygnemophyceae
+JOJQ,JOJQ,Zygnemophyceae
+RPGL,RPGL,Zygnemophyceae
+VAZE,VAZE,Zygnemophyceae
+YOXI,YOXI,Zygnemophyceae
+FFGR,FFGR,Zygnemophyceae
+HAOX,HAOX,Zygnemophyceae
+HKZW,HKZW,Zygnemophyceae
+KMNX,KMNX,Zygnemophyceae
+MFZO,MFZO,Zygnemophyceae
+NBYP,NBYP,Zygnemophyceae
+SNOX,SNOX,Zygnemophyceae
+TPHT,TPHT,Zygnemophyceae
+WDCW,WDCW,Zygnemophyceae
+WSJO,WSJO,Zygnemophyceae
+XRTZ,XRTZ,Zygnemophyceae
+ZRMT,ZRMT,Zygnemophyceae
+Pinta_v2.0,Pinta_v2.0,Pinales
+AQFM,AQFM,Pinales
+AREG,AREG,Pinales
+AWQB,AWQB,Pinales
+DZQM,DZQM,Pinales
+GAMH,GAMH,Pinales
+GGEA,GGEA,Pinales
+IIOL,IIOL,Pinales
+IOVS,IOVS,Pinales
+JUWL,JUWL,Pinales
+MFTM,MFTM,Pinales
+NPRL,NPRL,Pinales
+VSRH,VSRH,Pinales
+WVWN,WVWN,Pinales
+JBND,JBND,Pinales
+ACWS,ACWS,Pinales
+AIGO,AIGO,Pinales
+AUDE,AUDE,Pinales
+BBDD,BBDD,Pinales
+BTTS,BTTS,Pinales
+BUWV,BUWV,Pinales
+CDFR,CDFR,Pinales
+CGDN,CGDN,Pinales
+EFMS,EFMS,Pinales
+EGLZ,EGLZ,Pinales
+ETCJ,ETCJ,Pinales
+FHST,FHST,Pinales
+FMWZ,FMWZ,Pinales
+FRPM,FRPM,Pinales
+GKCZ,GKCZ,Pinales
+GMHZ,GMHZ,Pinales
+HBGV,HBGV,Pinales
+HILW,HILW,Pinales
+HQOM,HQOM,Pinales
+IAJW,IAJW,Pinales
+IFLI,IFLI,Pinales
+IZGN,IZGN,Pinales
+JDQB,JDQB,Pinales
+JRNA,JRNA,Pinales
+JZVE,JZVE,Pinales
+KLGF,KLGF,Pinales
+MHGD,MHGD,Pinales
+MIXZ,MIXZ,Pinales
+NKIN,NKIN,Pinales
+NRXL,NRXL,Pinales
+NVGZ,NVGZ,Pinales
+OVIJ,OVIJ,Pinales
+OWFC,OWFC,Pinales
+OXGJ,OXGJ,Pinales
+QCGM,QCGM,Pinales
+QFAE,QFAE,Pinales
+QHBI,QHBI,Pinales
+QNGJ,QNGJ,Pinales
+QSNJ,QSNJ,Pinales
+RMMV,RMMV,Pinales
+ROWR,ROWR,Pinales
+RSCE,RSCE,Pinales
+SCEB,SCEB,Pinales
+UEVI,UEVI,Pinales
+UUJS,UUJS,Pinales
+VFYZ,VFYZ,Pinales
+VGSX,VGSX,Pinales
+WWSS,WWSS,Pinales
+XIRK,XIRK,Pinales
+XLGK,XLGK,Pinales
+XMGP,XMGP,Pinales
+XQSG,XQSG,Pinales
+XTZO,XTZO,Pinales
+YFZK,YFZK,Pinales
+YLPM,YLPM,Pinales
+YYPE,YYPE,Pinales
+ZQVF,ZQVF,Pinales
+ZQWM,ZQWM,Pinales
+ZYAX,ZYAX,Pinales
+Ambtr_v1.0.27,Ambtr_v1.0.27,ANAGrade
+URDJ,URDJ,ANAGrade
+FZJL,FZJL,ANAGrade
+NWMY,NWMY,ANAGrade
+VZCI,VZCI,ANAGrade
+PZRT,PZRT,ANAGrade
+WTKZ,WTKZ,ANAGrade
+Nelnu_v1.0,Nelnu_v1.0,Eudicots
+Aquco_v1.1,Aquco_v1.1,Eudicots
+QUTB,QUTB,Eudicots
+HAEU,HAEU,Eudicots
+EHNF,EHNF,Eudicots
+XMQO,XMQO,Eudicots
+IWMW,IWMW,Eudicots
+FAKD,FAKD,Eudicots
+GRRW,GRRW,Eudicots
+RQUG,RQUG,Eudicots
+SIIK,SIIK,Eudicots
+VQFW,VQFW,Eudicots
+SWOH,SWOH,Eudicots
+AALA,AALA,Eudicots
+Betvu_v1.1,Betvu_v1.1,CoreEudicots Caryophyllales
+AAXJ,AAXJ,CoreEudicots Caryophyllales
+AZBL,AZBL,CoreEudicots Caryophyllales
+BERS,BERS,CoreEudicots Caryophyllales
+BJKT,BJKT,CoreEudicots Caryophyllales
+BKQU,BKQU,CoreEudicots Caryophyllales
+BWRK,BWRK,CoreEudicots Caryophyllales
+BYNZ,BYNZ,CoreEudicots Caryophyllales
+CBJR,CBJR,CoreEudicots Caryophyllales
+CPKP,CPKP,CoreEudicots Caryophyllales
+CPLT,CPLT,CoreEudicots Caryophyllales
+CTYH,CTYH,CoreEudicots Caryophyllales
+CUTE,CUTE,CoreEudicots Caryophyllales
+CVDF,CVDF,CoreEudicots Caryophyllales
+DVXD,DVXD,CoreEudicots Caryophyllales
+EDIT,EDIT,CoreEudicots Caryophyllales
+EGOS,EGOS,CoreEudicots Caryophyllales
+EYRD,EYRD,CoreEudicots Caryophyllales
+EZGR,EZGR,CoreEudicots Caryophyllales
+FVXD,FVXD,CoreEudicots Caryophyllales
+FYSJ,FYSJ,CoreEudicots Caryophyllales
+FZQN,FZQN,CoreEudicots Caryophyllales
+GCYL,GCYL,CoreEudicots Caryophyllales
+GIWN,GIWN,CoreEudicots Caryophyllales
+GJNX,GJNX,CoreEudicots Caryophyllales
+HDSY,HDSY,CoreEudicots Caryophyllales
+HZTS,HZTS,CoreEudicots Caryophyllales
+IWIS,IWIS,CoreEudicots Caryophyllales
+JAFJ,JAFJ,CoreEudicots Caryophyllales
+JGAB,JGAB,CoreEudicots Caryophyllales
+JLOV,JLOV,CoreEudicots Caryophyllales
+KDCH,KDCH,CoreEudicots Caryophyllales
+KJAA,KJAA,CoreEudicots Caryophyllales
+LDEL,LDEL,CoreEudicots Caryophyllales
+LKKX,LKKX,CoreEudicots Caryophyllales
+LLQV,LLQV,CoreEudicots Caryophyllales
+MRKX,MRKX,CoreEudicots Caryophyllales
+NXTS,NXTS,CoreEudicots Caryophyllales
+OHKC,OHKC,CoreEudicots Caryophyllales
+OLES,OLES,CoreEudicots Caryophyllales
+ONLQ,ONLQ,CoreEudicots Caryophyllales
+PDQH,PDQH,CoreEudicots Caryophyllales
+RNBN,RNBN,CoreEudicots Caryophyllales
+RUUB,RUUB,CoreEudicots Caryophyllales
+RXEN,RXEN,CoreEudicots Caryophyllales
+SCAO,SCAO,CoreEudicots Caryophyllales
+SFKQ,SFKQ,CoreEudicots Caryophyllales
+SHEZ,SHEZ,CoreEudicots Caryophyllales
+SKNL,SKNL,CoreEudicots Caryophyllales
+SMMC,SMMC,CoreEudicots Caryophyllales
+TJES,TJES,CoreEudicots Caryophyllales
+UQCB,UQCB,CoreEudicots Caryophyllales
+VJPU,VJPU,CoreEudicots Caryophyllales
+WGET,WGET,CoreEudicots Caryophyllales
+WMLW,WMLW,CoreEudicots Caryophyllales
+WOBD,WOBD,CoreEudicots Caryophyllales
+WQUF,WQUF,CoreEudicots Caryophyllales
+XSSD,XSSD,CoreEudicots Caryophyllales
+YNFJ,YNFJ,CoreEudicots Caryophyllales
+ZBPY,ZBPY,CoreEudicots Caryophyllales
+ZBTA,ZBTA,CoreEudicots Caryophyllales
+OMYK,OMYK,CoreEudicots Caryophyllales
+Solly_iTAGv2.3,Solly_iTAGv2.3,CoreEudicots/Asterids
+Mimgu_v2.0,Mimgu_v2.0,CoreEudicots/Asterids
+AJFN,AJFN,CoreEudicots/Asterids
+CWYJ,CWYJ,CoreEudicots/Asterids
+EDBB,EDBB,CoreEudicots/Asterids
+MVSE,MVSE,CoreEudicots/Asterids
+NTEO,NTEO,CoreEudicots/Asterids
+OINM,OINM,CoreEudicots/Asterids
+QIKZ,QIKZ,CoreEudicots/Asterids
+SALZ,SALZ,CoreEudicots/Asterids
+SBZH,SBZH,CoreEudicots/Asterids
+SUVN,SUVN,CoreEudicots/Asterids
+TQKZ,TQKZ,CoreEudicots/Asterids
+WEQK,WEQK,CoreEudicots/Asterids
+ASMV,ASMV,CoreEudicots/Asterids
+DFYF,DFYF,CoreEudicots/Asterids
+QACK,QACK,CoreEudicots/Asterids
+SXML,SXML,CoreEudicots/Asterids
+AFQQ,AFQQ,CoreEudicots/Asterids
+AQZD,AQZD,CoreEudicots/Asterids
+AUIP,AUIP,CoreEudicots/Asterids
+BIDT,BIDT,CoreEudicots/Asterids
+BMSE,BMSE,CoreEudicots/Asterids
+CFRN,CFRN,CoreEudicots/Asterids
+DDRL,DDRL,CoreEudicots/Asterids
+DESP,DESP,CoreEudicots/Asterids
+DOVJ,DOVJ,CoreEudicots/Asterids
+DUNJ,DUNJ,CoreEudicots/Asterids
+DUQG,DUQG,CoreEudicots/Asterids
+EYKJ,EYKJ,CoreEudicots/Asterids
+FUPX,FUPX,CoreEudicots/Asterids
+FXGI,FXGI,CoreEudicots/Asterids
+GIOY,GIOY,CoreEudicots/Asterids
+GUMF,GUMF,CoreEudicots/Asterids
+HUQC,HUQC,CoreEudicots/Asterids
+HXCD,HXCD,CoreEudicots/Asterids
+IHPC,IHPC,CoreEudicots/Asterids
+IXVJ,IXVJ,CoreEudicots/Asterids
+IZLO,IZLO,CoreEudicots/Asterids
+JEPE,JEPE,CoreEudicots/Asterids
+JNKW,JNKW,CoreEudicots/Asterids
+JYMN,JYMN,CoreEudicots/Asterids
+KFZY,KFZY,CoreEudicots/Asterids
+KGJF,KGJF,CoreEudicots/Asterids
+LYPZ,LYPZ,CoreEudicots/Asterids
+MHYG,MHYG,CoreEudicots/Asterids
+NVSO,NVSO,CoreEudicots/Asterids
+OAGK,OAGK,CoreEudicots/Asterids
+QXWF,QXWF,CoreEudicots/Asterids
+RFSD,RFSD,CoreEudicots/Asterids
+TEZA,TEZA,CoreEudicots/Asterids
+TPEM,TPEM,CoreEudicots/Asterids
+UBLN,UBLN,CoreEudicots/Asterids
+UYED,UYED,CoreEudicots/Asterids
+XRCX,XRCX,CoreEudicots/Asterids
+YRBQ,YRBQ,CoreEudicots/Asterids
+ZCUA,ZCUA,CoreEudicots/Asterids
+ABEH,ABEH,CoreEudicots/Asterids
+DIHD,DIHD,CoreEudicots/Asterids
+DKFZ,DKFZ,CoreEudicots/Asterids
+EMAL,EMAL,CoreEudicots/Asterids
+HANM,HANM,CoreEudicots/Asterids
+IDGE,IDGE,CoreEudicots/Asterids
+JWEY,JWEY,CoreEudicots/Asterids
+MDJK,MDJK,CoreEudicots/Asterids
+MZOB,MZOB,CoreEudicots/Asterids
+NIGS,NIGS,CoreEudicots/Asterids
+OEKO,OEKO,CoreEudicots/Asterids
+OUER,OUER,CoreEudicots/Asterids
+SMUR,SMUR,CoreEudicots/Asterids
+XVRU,XVRU,CoreEudicots/Asterids
+YQIJ,YQIJ,CoreEudicots/Asterids
+BFJL,BFJL,CoreEudicots/Asterids
+FWBF,FWBF,CoreEudicots/Asterids
+QURC,QURC,CoreEudicots/Asterids
+VTLJ,VTLJ,CoreEudicots/Asterids
+VUSY,VUSY,CoreEudicots/Asterids
+ZETY,ZETY,CoreEudicots/Asterids
+CAQZ,CAQZ,CoreEudicots/Asterids
+FFFY,FFFY,CoreEudicots/Asterids
+GSZA,GSZA,CoreEudicots/Asterids
+HLJG,HLJG,CoreEudicots/Asterids
+JTRM,JTRM,CoreEudicots/Asterids
+ZJRC,ZJRC,CoreEudicots/Asterids
+ADHK,ADHK,CoreEudicots/Asterids
+AVJK,AVJK,CoreEudicots/Asterids
+AXBO,AXBO,CoreEudicots/Asterids
+BEFC,BEFC,CoreEudicots/Asterids
+BNTL,BNTL,CoreEudicots/Asterids
+DAAD,DAAD,CoreEudicots/Asterids
+FNEN,FNEN,CoreEudicots/Asterids
+HUSX,HUSX,CoreEudicots/Asterids
+JEXA,JEXA,CoreEudicots/Asterids
+JPDJ,JPDJ,CoreEudicots/Asterids
+KVFU,KVFU,CoreEudicots/Asterids
+LRTN,LRTN,CoreEudicots/Asterids
+NGRR,NGRR,CoreEudicots/Asterids
+ODDO,ODDO,CoreEudicots/Asterids
+OXYP,OXYP,CoreEudicots/Asterids
+PPPZ,PPPZ,CoreEudicots/Asterids
+PTFA,PTFA,CoreEudicots/Asterids
+QAUE,QAUE,CoreEudicots/Asterids
+SERM,SERM,CoreEudicots/Asterids
+UFHF,UFHF,CoreEudicots/Asterids
+VKJD,VKJD,CoreEudicots/Asterids
+WRPP,WRPP,CoreEudicots/Asterids
+WVMY,WVMY,CoreEudicots/Asterids
+WXVX,WXVX,CoreEudicots/Asterids
+YSRZ,YSRZ,CoreEudicots/Asterids
+CLMX,CLMX,CoreEudicots/Asterids
+CLNU,CLNU,CoreEudicots/Asterids
+GIPR,GIPR,CoreEudicots/Asterids
+SZUO,SZUO,CoreEudicots/Asterids
+DSUV,DSUV,CoreEudicots/Asterids
+ECTD,ECTD,CoreEudicots/Asterids
+EDEQ,EDEQ,CoreEudicots/Asterids
+GGJD,GGJD,CoreEudicots/Asterids
+HGSM,HGSM,CoreEudicots/Asterids
+JCLQ,JCLQ,CoreEudicots/Asterids
+JGYZ,JGYZ,CoreEudicots/Asterids
+KPUM,KPUM,CoreEudicots/Asterids
+MGVU,MGVU,CoreEudicots/Asterids
+PCNH,PCNH,CoreEudicots/Asterids
+QEHE,QEHE,CoreEudicots/Asterids
+UOYN,UOYN,CoreEudicots/Asterids
+WQRD,WQRD,CoreEudicots/Asterids
+YADI,YADI,CoreEudicots/Asterids
+YFQX,YFQX,CoreEudicots/Asterids
+ZSGF,ZSGF,CoreEudicots/Asterids
+KTWL,KTWL,CoreEudicots/Asterids
+YZGX,YZGX,CoreEudicots/Asterids
+ATYL,ATYL,CoreEudicots/Asterids
+AYIY,AYIY,CoreEudicots/Asterids
+BAHE,BAHE,CoreEudicots/Asterids
+CLRW,CLRW,CoreEudicots/Asterids
+COBX,COBX,CoreEudicots/Asterids
+DCCI,DCCI,CoreEudicots/Asterids
+DMLT,DMLT,CoreEudicots/Asterids
+DTNC,DTNC,CoreEudicots/Asterids
+EAAA,EAAA,CoreEudicots/Asterids
+EDXZ,EDXZ,CoreEudicots/Asterids
+EJBY,EJBY,CoreEudicots/Asterids
+EJCM,EJCM,CoreEudicots/Asterids
+EQDA,EQDA,CoreEudicots/Asterids
+FAMO,FAMO,CoreEudicots/Asterids
+FDMM,FDMM,CoreEudicots/Asterids
+FROP,FROP,CoreEudicots/Asterids
+FUMQ,FUMQ,CoreEudicots/Asterids
+FYUH,FYUH,CoreEudicots/Asterids
+GCFE,GCFE,CoreEudicots/Asterids
+GDZS,GDZS,CoreEudicots/Asterids
+GETL,GETL,CoreEudicots/Asterids
+GNPX,GNPX,CoreEudicots/Asterids
+GNRI,GNRI,CoreEudicots/Asterids
+GRFT,GRFT,CoreEudicots/Asterids
+HRUR,HRUR,CoreEudicots/Asterids
+IYDF,IYDF,CoreEudicots/Asterids
+JCMU,JCMU,CoreEudicots/Asterids
+KTAR,KTAR,CoreEudicots/Asterids
+LRRR,LRRR,CoreEudicots/Asterids
+MQIV,MQIV,CoreEudicots/Asterids
+MXFG,MXFG,CoreEudicots/Asterids
+MZLD,MZLD,CoreEudicots/Asterids
+NBMW,NBMW,CoreEudicots/Asterids
+OWAS,OWAS,CoreEudicots/Asterids
+PCGJ,PCGJ,CoreEudicots/Asterids
+PHCE,PHCE,CoreEudicots/Asterids
+PSHB,PSHB,CoreEudicots/Asterids
+PTBJ,PTBJ,CoreEudicots/Asterids
+PUCW,PUCW,CoreEudicots/Asterids
+RTNA,RTNA,CoreEudicots/Asterids
+RWKR,RWKR,CoreEudicots/Asterids
+SIBR,SIBR,CoreEudicots/Asterids
+SNNC,SNNC,CoreEudicots/Asterids
+TAGM,TAGM,CoreEudicots/Asterids
+TKEK,TKEK,CoreEudicots/Asterids
+TORX,TORX,CoreEudicots/Asterids
+UCNM,UCNM,CoreEudicots/Asterids
+UMUL,UMUL,CoreEudicots/Asterids
+UTQR,UTQR,CoreEudicots/Asterids
+VYDM,VYDM,CoreEudicots/Asterids
+WEAC,WEAC,CoreEudicots/Asterids
+WHNV,WHNV,CoreEudicots/Asterids
+WOHL,WOHL,CoreEudicots/Asterids
+XAYK,XAYK,CoreEudicots/Asterids
+XISJ,XISJ,CoreEudicots/Asterids
+XMBA,XMBA,CoreEudicots/Asterids
+XRLM,XRLM,CoreEudicots/Asterids
+XXYA,XXYA,CoreEudicots/Asterids
+YKZB,YKZB,CoreEudicots/Asterids
+YRHD,YRHD,CoreEudicots/Asterids
+ZRIN,ZRIN,CoreEudicots/Asterids
+QZZU,QZZU,CoreEudicots/Asterids
+AHRN,AHRN,CoreEudicots/Asterids
+AIOU,AIOU,CoreEudicots/Asterids
+ALUC,ALUC,CoreEudicots/Asterids
+BOLZ,BOLZ,CoreEudicots/Asterids
+CPOC,CPOC,CoreEudicots/Asterids
+DLAI,DLAI,CoreEudicots/Asterids
+DLJZ,DLJZ,CoreEudicots/Asterids
+EMBR,EMBR,CoreEudicots/Asterids
+ERWT,ERWT,CoreEudicots/Asterids
+GHLP,GHLP,CoreEudicots/Asterids
+IZNU,IZNU,CoreEudicots/Asterids
+JNVS,JNVS,CoreEudicots/Asterids
+LQJY,LQJY,CoreEudicots/Asterids
+LWCK,LWCK,CoreEudicots/Asterids
+MKZR,MKZR,CoreEudicots/Asterids
+NAUM,NAUM,CoreEudicots/Asterids
+NHAG,NHAG,CoreEudicots/Asterids
+NMDZ,NMDZ,CoreEudicots/Asterids
+OQBM,OQBM,CoreEudicots/Asterids
+OSMU,OSMU,CoreEudicots/Asterids
+QSLH,QSLH,CoreEudicots/Asterids
+UGJI,UGJI,CoreEudicots/Asterids
+VXKB,VXKB,CoreEudicots/Asterids
+XQRV,XQRV,CoreEudicots/Asterids
+Theca_v1.1,Theca_v1.1,CoreEudicots/Rosids
+Arath_TAIR10,Arath_TAIR10,CoreEudicots/Rosids
+Carpa_ASGPBv0.4,Carpa_ASGPBv0.4,CoreEudicots/Rosids
+Phavu_v1.0,Phavu_v1.0,CoreEudicots/Rosids
+Eucgr_v1.1,Eucgr_v1.1,CoreEudicots/Rosids
+Manes_v4.1,Manes_v4.1,CoreEudicots/Rosids
+Poptr_v3.0,Poptr_v3.0,CoreEudicots/Rosids
+Prupe_v1.0,Prupe_v1.0,CoreEudicots/Rosids
+Vitvi_Genoscope.12X,Vitvi_Genoscope.12X,CoreEudicots/Rosids
+BXBF,BXBF,CoreEudicots/Rosids
+CRNC,CRNC,CoreEudicots/Rosids
+CSUV,CSUV,CoreEudicots/Rosids
+CZPV,CZPV,CoreEudicots/Rosids
+DZTK,DZTK,CoreEudicots/Rosids
+GTSV,GTSV,CoreEudicots/Rosids
+HABV,HABV,CoreEudicots/Rosids
+HYZL,HYZL,CoreEudicots/Rosids
+IPWB,IPWB,CoreEudicots/Rosids
+JOIS,JOIS,CoreEudicots/Rosids
+LAPO,LAPO,CoreEudicots/Rosids
+LJQF,LJQF,CoreEudicots/Rosids
+LVUS,LVUS,CoreEudicots/Rosids
+MYZV,MYZV,CoreEudicots/Rosids
+QSKP,QSKP,CoreEudicots/Rosids
+RTTY,RTTY,CoreEudicots/Rosids
+SWPE,SWPE,CoreEudicots/Rosids
+TZWR,TZWR,CoreEudicots/Rosids
+UAXP,UAXP,CoreEudicots/Rosids
+UPZX,UPZX,CoreEudicots/Rosids
+UVQL,UVQL,CoreEudicots/Rosids
+VDKG,VDKG,CoreEudicots/Rosids
+VMNH,VMNH,CoreEudicots/Rosids
+IHCQ,IHCQ,CoreEudicots/Rosids
+MFEA,MFEA,CoreEudicots/Rosids
+PTLU,PTLU,CoreEudicots/Rosids
+VYGG,VYGG,CoreEudicots/Rosids
+AXAF,AXAF,CoreEudicots/Rosids
+NNGU,NNGU,CoreEudicots/Rosids
+OCTM,OCTM,CoreEudicots/Rosids
+CMFF,CMFF,CoreEudicots/Rosids
+GEHT,GEHT,CoreEudicots/Rosids
+HJMP,HJMP,CoreEudicots/Rosids
+JETM,JETM,CoreEudicots/Rosids
+JTQQ,JTQQ,CoreEudicots/Rosids
+KEGA,KEGA,CoreEudicots/Rosids
+KNMB,KNMB,CoreEudicots/Rosids
+KZED,KZED,CoreEudicots/Rosids
+MYMP,MYMP,CoreEudicots/Rosids
+NXOH,NXOH,CoreEudicots/Rosids
+OHAE,OHAE,CoreEudicots/Rosids
+OQHZ,OQHZ,CoreEudicots/Rosids
+PEZP,PEZP,CoreEudicots/Rosids
+PJSX,PJSX,CoreEudicots/Rosids
+QZXQ,QZXQ,CoreEudicots/Rosids
+RKFX,RKFX,CoreEudicots/Rosids
+RKLL,RKLL,CoreEudicots/Rosids
+RMWJ,RMWJ,CoreEudicots/Rosids
+SLYR,SLYR,CoreEudicots/Rosids
+SUAK,SUAK,CoreEudicots/Rosids
+TTRG,TTRG,CoreEudicots/Rosids
+TVSH,TVSH,CoreEudicots/Rosids
+VHZV,VHZV,CoreEudicots/Rosids
+VLNB,VLNB,CoreEudicots/Rosids
+XOOE,XOOE,CoreEudicots/Rosids
+ZCDJ,ZCDJ,CoreEudicots/Rosids
+ZSSR,ZSSR,CoreEudicots/Rosids
+CWZU,CWZU,CoreEudicots/Rosids
+DXQW,DXQW,CoreEudicots/Rosids
+HENI,HENI,CoreEudicots/Rosids
+INSP,INSP,CoreEudicots/Rosids
+LNER,LNER,CoreEudicots/Rosids
+LWDA,LWDA,CoreEudicots/Rosids
+NHUA,NHUA,CoreEudicots/Rosids
+SVVG,SVVG,CoreEudicots/Rosids
+TJLC,TJLC,CoreEudicots/Rosids
+UZWG,UZWG,CoreEudicots/Rosids
+HDWF,HDWF,CoreEudicots/Rosids
+YGCX,YGCX,CoreEudicots/Rosids
+WWKL,WWKL,CoreEudicots/Rosids
+AEPI,AEPI,CoreEudicots/Rosids
+AXPJ,AXPJ,CoreEudicots/Rosids
+BHYC,BHYC,CoreEudicots/Rosids
+BNDE,BNDE,CoreEudicots/Rosids
+BVOF,BVOF,CoreEudicots/Rosids
+CKDK,CKDK,CoreEudicots/Rosids
+COAQ,COAQ,CoreEudicots/Rosids
+EZZT,EZZT,CoreEudicots/Rosids
+FWCQ,FWCQ,CoreEudicots/Rosids
+GLVK,GLVK,CoreEudicots/Rosids
+HBUQ,HBUQ,CoreEudicots/Rosids
+HNCF,HNCF,CoreEudicots/Rosids
+IEPQ,IEPQ,CoreEudicots/Rosids
+INQX,INQX,CoreEudicots/Rosids
+KCPT,KCPT,CoreEudicots/Rosids
+KKDQ,KKDQ,CoreEudicots/Rosids
+LFOG,LFOG,CoreEudicots/Rosids
+LPGY,LPGY,CoreEudicots/Rosids
+MYVH,MYVH,CoreEudicots/Rosids
+NFXV,NFXV,CoreEudicots/Rosids
+NJLF,NJLF,CoreEudicots/Rosids
+OODC,OODC,CoreEudicots/Rosids
+OSIP,OSIP,CoreEudicots/Rosids
+PAZJ,PAZJ,CoreEudicots/Rosids
+POZS,POZS,CoreEudicots/Rosids
+PXYR,PXYR,CoreEudicots/Rosids
+RHAU,RHAU,CoreEudicots/Rosids
+RPPC,RPPC,CoreEudicots/Rosids
+RVGH,RVGH,CoreEudicots/Rosids
+RZTJ,RZTJ,CoreEudicots/Rosids
+SIZE,SIZE,CoreEudicots/Rosids
+TDTF,TDTF,CoreEudicots/Rosids
+TVCU,TVCU,CoreEudicots/Rosids
+TXMP,TXMP,CoreEudicots/Rosids
+VNMY,VNMY,CoreEudicots/Rosids
+VVPY,VVPY,CoreEudicots/Rosids
+VXOD,VXOD,CoreEudicots/Rosids
+XNLP,XNLP,CoreEudicots/Rosids
+XPBC,XPBC,CoreEudicots/Rosids
+YGAT,YGAT,CoreEudicots/Rosids
+ZBVT,ZBVT,CoreEudicots/Rosids
+ZIWB,ZIWB,CoreEudicots/Rosids
+ZTLR,ZTLR,CoreEudicots/Rosids
+ATFX,ATFX,CoreEudicots/Rosids
+AWJM,AWJM,CoreEudicots/Rosids
+KPTE,KPTE,CoreEudicots/Rosids
+OLXF,OLXF,CoreEudicots/Rosids
+PKMO,PKMO,CoreEudicots/Rosids
+PUDI,PUDI,CoreEudicots/Rosids
+WMUK,WMUK,CoreEudicots/Rosids
+WYIG,WYIG,CoreEudicots/Rosids
+ZSAB,ZSAB,CoreEudicots/Rosids
+AYMT,AYMT,CoreEudicots/Rosids
+FGDU,FGDU,CoreEudicots/Rosids
+NEBM,NEBM,CoreEudicots/Rosids
+AJJE,AJJE,CoreEudicots/Rosids
+ARYD,ARYD,CoreEudicots/Rosids
+AXNH,AXNH,CoreEudicots/Rosids
+BZDF,BZDF,CoreEudicots/Rosids
+CJGZ,CJGZ,CoreEudicots/Rosids
+DZLN,DZLN,CoreEudicots/Rosids
+EQYT,EQYT,CoreEudicots/Rosids
+FEDW,FEDW,CoreEudicots/Rosids
+GVCB,GVCB,CoreEudicots/Rosids
+HKMQ,HKMQ,CoreEudicots/Rosids
+IDAU,IDAU,CoreEudicots/Rosids
+IMZV,IMZV,CoreEudicots/Rosids
+JKNQ,JKNQ,CoreEudicots/Rosids
+KBRW,KBRW,CoreEudicots/Rosids
+PMTB,PMTB,CoreEudicots/Rosids
+RJNQ,RJNQ,CoreEudicots/Rosids
+ROLB,ROLB,CoreEudicots/Rosids
+SJAN,SJAN,CoreEudicots/Rosids
+SWGX,SWGX,CoreEudicots/Rosids
+TLCA,TLCA,CoreEudicots/Rosids
+UJGI,UJGI,CoreEudicots/Rosids
+WWQZ,WWQZ,CoreEudicots/Rosids
+YHLF,YHLF,CoreEudicots/Rosids
+YNUE,YNUE,CoreEudicots/Rosids
+ZINQ,ZINQ,CoreEudicots/Rosids
+JHCN,JHCN,CoreEudicots/Rosids
+THHD,THHD,CoreEudicots/Rosids
+TIUZ,TIUZ,CoreEudicots/Rosids
+YZVJ,YZVJ,CoreEudicots/Rosids
+ACFP,ACFP,CoreEudicots/Rosids
+AQGE,AQGE,CoreEudicots/Rosids
+BJSW,BJSW,CoreEudicots/Rosids
+BLVL,BLVL,CoreEudicots/Rosids
+CQMG,CQMG,CoreEudicots/Rosids
+DHAW,DHAW,CoreEudicots/Rosids
+EAVM,EAVM,CoreEudicots/Rosids
+EDHN,EDHN,CoreEudicots/Rosids
+EILE,EILE,CoreEudicots/Rosids
+IANR,IANR,CoreEudicots/Rosids
+KYAD,KYAD,CoreEudicots/Rosids
+NCVK,NCVK,CoreEudicots/Rosids
+QIEH,QIEH,CoreEudicots/Rosids
+QNOC,QNOC,CoreEudicots/Rosids
+RBYC,RBYC,CoreEudicots/Rosids
+SQCF,SQCF,CoreEudicots/Rosids
+SXCE,SXCE,CoreEudicots/Rosids
+TJQY,TJQY,CoreEudicots/Rosids
+VCIN,VCIN,CoreEudicots/Rosids
+WKCY,WKCY,CoreEudicots/Rosids
+WVEF,WVEF,CoreEudicots/Rosids
+XFFT,XFFT,CoreEudicots/Rosids
+XVJB,XVJB,CoreEudicots/Rosids
+ZHEE,ZHEE,CoreEudicots/Rosids
+ZPKK,ZPKK,CoreEudicots/Rosids
+BCAA,BCAA,CoreEudicots/Rosids
+FCCA,FCCA,CoreEudicots/Rosids
+HBHB,HBHB,CoreEudicots/Rosids
+IKFD,IKFD,CoreEudicots/Rosids
+JSZD,JSZD,CoreEudicots/Rosids
+OBTI,OBTI,CoreEudicots/Rosids
+QICX,QICX,CoreEudicots/Rosids
+RJIM,RJIM,CoreEudicots/Rosids
+UHJR,UHJR,CoreEudicots/Rosids
+UVDC,UVDC,CoreEudicots/Rosids
+VFFP,VFFP,CoreEudicots/Rosids
+WAXR,WAXR,CoreEudicots/Rosids
+YUOM,YUOM,CoreEudicots/Rosids
+KVAY,KVAY,CoreEudicots/Rosids
+UDUT,UDUT,CoreEudicots/Rosids
+ZHMB,ZHMB,CoreEudicots/Rosids
+BBBA,BBBA,CoreEudicots/Rosids
+BGZG,BGZG,CoreEudicots/Rosids
+SZPD,SZPD,CoreEudicots/Rosids
+Klefl_v1.0,Klefl_v1.0,Klebsormidiales
+Selmo_v1.0,Selmo_v1.0,Lycophytes
+PKOX,PKOX,Lycophytes
+PYHZ,PYHZ,Lycophytes
+CBAE,CBAE,Lycophytes
+ENQF,ENQF,Lycophytes
+GAON,GAON,Lycophytes
+GKAG,GKAG,Lycophytes
+PQTO,PQTO,Lycophytes
+ULKT,ULKT,Lycophytes
+UPMJ,UPMJ,Lycophytes
+WAFT,WAFT,Lycophytes
+XNXF,XNXF,Lycophytes
+YHZW,YHZW,Lycophytes
+ZZEI,ZZEI,Lycophytes
+ABIJ,ABIJ,Lycophytes
+JKAA,JKAA,Lycophytes
+KJYC,KJYC,Lycophytes
+KUXM,KUXM,Lycophytes
+LGDQ,LGDQ,Lycophytes
+ZFGK,ZFGK,Lycophytes
+ZYCD,ZYCD,Lycophytes
+ZZOL,ZZOL,Lycophytes
+Micpu_v3.0,Micpu_v3.0,Mamiellophyceae
+Ostlu_v2.0,Ostlu_v2.0,Mamiellophyceae
+XOAL,XOAL,Mamiellophyceae
+MCPK,MCPK,Mamiellophyceae
+QXSZ,QXSZ,Mamiellophyceae
+BTFM,BTFM,Mamiellophyceae
+Sorbi_v2.1,Sorbi_v2.1,Monocots
+Spipo_v2,Spipo_v2,Monocots
+Elagu_v2.0,Elagu_v2.0,Monocots
+Orysa_v7.0,Orysa_v7.0,Monocots
+Musac_v1.0,Musac_v1.0,Monocots
+MTII,MTII,Monocots
+BYQM,BYQM,Monocots
+COCP,COCP,Monocots
+DWZT,DWZT,Monocots
+MFIN,MFIN,Monocots
+YMES,YMES,Monocots
+BLAJ,BLAJ,Monocots
+CMCY,CMCY,Monocots
+CNTZ,CNTZ,Monocots
+DMIN,DMIN,Monocots
+DPFW,DPFW,Monocots
+EMJJ,EMJJ,Monocots
+FCEL,FCEL,Monocots
+FGRF,FGRF,Monocots
+GJPF,GJPF,Monocots
+HOKG,HOKG,Monocots
+ICNN,ICNN,Monocots
+IXEM,IXEM,Monocots
+JDTY,JDTY,Monocots
+JHUL,JHUL,Monocots
+JSAG,JSAG,Monocots
+JVBR,JVBR,Monocots
+KBXS,KBXS,Monocots
+KOFB,KOFB,Monocots
+KXSK,KXSK,Monocots
+KYNE,KYNE,Monocots
+LDME,LDME,Monocots
+LELS,LELS,Monocots
+LSJW,LSJW,Monocots
+LTZF,LTZF,Monocots
+MTHW,MTHW,Monocots
+MUMD,MUMD,Monocots
+MVRF,MVRF,Monocots
+ONBE,ONBE,Monocots
+PLBZ,PLBZ,Monocots
+PRFO,PRFO,Monocots
+RCUX,RCUX,Monocots
+RDYY,RDYY,Monocots
+RQZP,RQZP,Monocots
+SART,SART,Monocots
+SVTS,SVTS,Monocots
+TCYS,TCYS,Monocots
+THDM,THDM,Monocots
+TRRQ,TRRQ,Monocots
+UZXL,UZXL,Monocots
+VTUS,VTUS,Monocots
+WTDE,WTDE,Monocots
+XFJG,XFJG,Monocots
+XZME,XZME,Monocots
+YBML,YBML,Monocots
+YJUG,YJUG,Monocots
+ZKPF,ZKPF,Monocots
+OCWZ,OCWZ,Monocots
+AFLV,AFLV,Monocots
+GDKK,GDKK,Monocots
+MWYQ,MWYQ,Monocots
+NHIX,NHIX,Monocots
+OOSO,OOSO,Monocots
+QNPH,QNPH,Monocots
+THEW,THEW,Monocots
+VVVV,VVVV,Monocots
+DGXS,DGXS,Monocots
+QOXT,QOXT,Monocots
+SILJ,SILJ,Monocots
+VBHQ,VBHQ,Monocots
+HWUP,HWUP,Monocots
+HXJE,HXJE,Monocots
+NSPR,NSPR,Monocots
+BPKH,BPKH,Monocots
+BRUD,BRUD,Monocots
+BSTR,BSTR,Monocots
+BXAY,BXAY,Monocots
+BYPY,BYPY,Monocots
+CIEA,CIEA,Monocots
+EFCZ,EFCZ,Monocots
+HATH,HATH,Monocots
+IADP,IADP,Monocots
+NNOK,NNOK,Monocots
+PPQR,PPQR,Monocots
+PWSG,PWSG,Monocots
+RCAH,RCAH,Monocots
+RMVB,RMVB,Monocots
+ROEI,ROEI,Monocots
+SOHV,SOHV,Monocots
+VQYB,VQYB,Monocots
+WBIB,WBIB,Monocots
+WCOR,WCOR,Monocots
+WXNT,WXNT,Monocots
+XBKS,XBKS,Monocots
+XPAF,XPAF,Monocots
+XUAB,XUAB,Monocots
+YLWW,YLWW,Monocots
+YPIC,YPIC,Monocots
+YXNR,YXNR,Monocots
+ZENX,ZENX,Monocots
+ZMGN,ZMGN,Monocots
+BDJQ,BDJQ,Monocots
+JNUB,JNUB,Monocots
+LEMW,LEMW,Monocots
+LSKK,LSKK,Monocots
+TZNS,TZNS,Monocots
+UOEL,UOEL,Monocots
+XHHU,XHHU,Monocots
+Phypa_v3.0,Phypa_v3.0,Mosses
+WOGB,WOGB,Mosses
+ORKS,ORKS,Mosses
+BGXB,BGXB,Mosses
+JMXW,JMXW,Mosses
+XWHK,XWHK,Mosses
+AWOI,AWOI,Mosses
+HRWG,HRWG,Mosses
+FFPD,FFPD,Mosses
+NGTD,NGTD,Mosses
+RGKI,RGKI,Mosses
+VMXJ,VMXJ,Mosses
+KEFD,KEFD,Mosses
+YEPO,YEPO,Mosses
+ABCD,ABCD,Mosses
+BPSG,BPSG,Mosses
+RDOO,RDOO,Mosses
+YWNF,YWNF,Mosses
+DHWX,DHWX,Mosses
+EEMJ,EEMJ,Mosses
+IGUH,IGUH,Mosses
+JADL,JADL,Mosses
+LNSF,LNSF,Mosses
+MIRS,MIRS,Mosses
+QKQO,QKQO,Mosses
+QMWB,QMWB,Mosses
+TAVP,TAVP,Mosses
+TMAJ,TMAJ,Mosses
+VBMM,VBMM,Mosses
+WSPM,WSPM,Mosses
+ZACW,ZACW,Mosses
+SZYG,SZYG,Mosses
+ZTHV,ZTHV,Mosses
+GRKU,GRKU,Mosses
+CMEQ,CMEQ,Mosses
+WNGH,WNGH,Mosses
+GOWD,GOWD,Mosses
+RCBT,RCBT,Mosses
+UHLI,UHLI,Mosses
+SKQD,SKQD,Mosses
+HVBQ,HVBQ,Mosses
+ZQRI,ZQRI,Mosses
+Chlva_v1.0,Chlva_v1.0,Trebouxiophyceae
+EEJO,EEJO,Trebouxiophyceae
+PFUD,PFUD,Trebouxiophyceae
+AKCR,AKCR,Trebouxiophyceae
+BILC,BILC,Trebouxiophyceae
+JQFK,JQFK,Trebouxiophyceae
+MFYC,MFYC,Trebouxiophyceae
+MNCB,MNCB,Trebouxiophyceae
+GXBM,GXBM,Trebouxiophyceae
+ZNUM,ZNUM,Trebouxiophyceae
+EATP,EATP,Trebouxiophyceae
+NKXU,NKXU,Trebouxiophyceae
+WXRI,WXRI,Trebouxiophyceae
+ETGN,ETGN,Trebouxiophyceae
+QYXY,QYXY,Trebouxiophyceae
+WCLV,WCLV,Trebouxiophyceae
+JKHA,JKHA,Glaucophyta
+POOW,POOW,Glaucophyta
+PQED,PQED,Glaucophyta
+QFND,QFND,Glaucophyta
+BFIK,BFIK,Klebsormidiophyceae
+FPCO,FPCO,Klebsormidiophyceae
+FQLP,FQLP,Klebsormidiophyceae
+KYIO,KYIO,Mesostigmatophyceae
+ISIM,ISIM,Nephroselmidophyceae Nephroselmidales
+MMKU,MMKU,Nephroselmidophyceae Nephroselmidales
+GTHK,GTHK,Gnetales
+TOXE,TOXE,Gnetales
+VDAO,VDAO,Gnetales
+NPND,NPND,Ceratophyllales
+WFBF,WFBF,Eudicots Ranunculales
+YHFG,YHFG,Eudicots Ranunculales
+AUGV,AUGV,Eudicots Ranunculales
+BEKN,BEKN,Eudicots Ranunculales
+CCID,CCID,Eudicots Ranunculales
+EVOD,EVOD,Eudicots Ranunculales
+GBVZ,GBVZ,Eudicots Ranunculales
+IRAF,IRAF,Eudicots Ranunculales
+NMGG,NMGG,Eudicots Ranunculales
+QCOU,QCOU,Eudicots Ranunculales
+QTJY,QTJY,Eudicots Ranunculales
+RQNK,RQNK,Eudicots Ranunculales
+SSDU,SSDU,Eudicots Ranunculales
+UDHA,UDHA,Eudicots Ranunculales
+UPOG,UPOG,Eudicots Ranunculales
+VGHH,VGHH,Eudicots Ranunculales
+XHKT,XHKT,Eudicots Ranunculales
+XMVD,XMVD,Eudicots Ranunculales
+ZGQD,ZGQD,Eudicots Ranunculales
+ZUHO,ZUHO,Eudicots Ranunculales
+OSHQ,OSHQ,Chloranthales Chloranthales
+WZFE,WZFE,Chloranthales Chloranthales
+BSEY,BSEY,CoreEudicots Santalales
+QKMG,QKMG,CoreEudicots Santalales
+RSPO,RSPO,CoreEudicots Santalales
+VGVI,VGVI,CoreEudicots Santalales
+XGFU,XGFU,CoreEudicots Santalales
+XKPS,XKPS,CoreEudicots Santalales
+CIAC,CIAC,CoreEudicots Saxifragales
+CKKR,CKKR,CoreEudicots Saxifragales
+CTSS,CTSS,CoreEudicots Saxifragales
+DAYQ,DAYQ,CoreEudicots Saxifragales
+DRIL,DRIL,CoreEudicots Saxifragales
+ERIA,ERIA,CoreEudicots Saxifragales
+FCBJ,FCBJ,CoreEudicots Saxifragales
+FYTP,FYTP,CoreEudicots Saxifragales
+HQRJ,HQRJ,CoreEudicots Saxifragales
+HTIP,HTIP,CoreEudicots Saxifragales
+IUSR,IUSR,CoreEudicots Saxifragales
+KWGC,KWGC,CoreEudicots Saxifragales
+NUZN,NUZN,CoreEudicots Saxifragales
+OMDH,OMDH,CoreEudicots Saxifragales
+OOVX,OOVX,CoreEudicots Saxifragales
+SLOI,SLOI,CoreEudicots Saxifragales
+SYHW,SYHW,CoreEudicots Saxifragales
+TOKV,TOKV,CoreEudicots Saxifragales
+UHBY,UHBY,CoreEudicots Saxifragales
+UWFU,UWFU,CoreEudicots Saxifragales
+YKFU,YKFU,CoreEudicots Saxifragales
+YKQR,YKQR,CoreEudicots Saxifragales
+ZJUL,ZJUL,CoreEudicots Saxifragales
+GNQG,GNQG,Cycadales Cycadales
+KAWQ,KAWQ,Cycadales Cycadales
+WLIC,WLIC,Cycadales Cycadales
+XZUY,XZUY,Cycadales Cycadales
+CAPN,CAPN,EusporangiateMonilophytes
+JVSZ,JVSZ,EusporangiateMonilophytes
+DFHO,DFHO,EusporangiateMonilophytes
+UGNK,UGNK,EusporangiateMonilophytes
+BEGM,BEGM,EusporangiateMonilophytes
+DJSE,DJSE,EusporangiateMonilophytes
+EEAQ,EEAQ,EusporangiateMonilophytes
+ALVQ,ALVQ,EusporangiateMonilophytes
+QVMR,QVMR,EusporangiateMonilophytes
+SGTW,SGTW,Ginkgoales Ginkgoales
+ANON,ANON,Hornworts
+BSNI,BSNI,Hornworts
+DXOU,DXOU,Hornworts
+FAJB,FAJB,Hornworts
+TCBC,TCBC,Hornworts
+TWUW,TWUW,Hornworts
+WEEQ,WEEQ,Hornworts
+AKXB,AKXB,Hornworts
+GANB,GANB,LeptosporangiateMonilophytes
+PNZO,PNZO,LeptosporangiateMonilophytes
+EWXK,EWXK,LeptosporangiateMonilophytes
+UWOD,UWOD,LeptosporangiateMonilophytes
+MEKP,MEKP,LeptosporangiateMonilophytes
+QIAD,QIAD,LeptosporangiateMonilophytes
+WGTU,WGTU,LeptosporangiateMonilophytes
+RFMZ,RFMZ,LeptosporangiateMonilophytes
+UOMY,UOMY,LeptosporangiateMonilophytes
+VIBO,VIBO,LeptosporangiateMonilophytes
+AFPO,AFPO,LeptosporangiateMonilophytes
+BMIF,BMIF,LeptosporangiateMonilophytes
+BMJR,BMJR,LeptosporangiateMonilophytes
+CJNT,CJNT,LeptosporangiateMonilophytes
+DCDT,DCDT,LeptosporangiateMonilophytes
+FCHS,FCHS,LeptosporangiateMonilophytes
+FLTD,FLTD,LeptosporangiateMonilophytes
+FQGQ,FQGQ,LeptosporangiateMonilophytes
+GSXD,GSXD,LeptosporangiateMonilophytes
+HEGQ,HEGQ,LeptosporangiateMonilophytes
+HNDZ,HNDZ,LeptosporangiateMonilophytes
+HTFH,HTFH,LeptosporangiateMonilophytes
+JBLI,JBLI,LeptosporangiateMonilophytes
+KJZG,KJZG,LeptosporangiateMonilophytes
+LHLE,LHLE,LeptosporangiateMonilophytes
+MROH,MROH,LeptosporangiateMonilophytes
+MTGC,MTGC,LeptosporangiateMonilophytes
+NOKI,NOKI,LeptosporangiateMonilophytes
+NWWI,NWWI,LeptosporangiateMonilophytes
+OCZL,OCZL,LeptosporangiateMonilophytes
+OQWW,OQWW,LeptosporangiateMonilophytes
+ORJE,ORJE,LeptosporangiateMonilophytes
+PIVW,PIVW,LeptosporangiateMonilophytes
+POPJ,POPJ,LeptosporangiateMonilophytes
+PSKY,PSKY,LeptosporangiateMonilophytes
+RFRB,RFRB,LeptosporangiateMonilophytes
+RICC,RICC,LeptosporangiateMonilophytes
+SKYV,SKYV,LeptosporangiateMonilophytes
+UFJN,UFJN,LeptosporangiateMonilophytes
+UJTT,UJTT,LeptosporangiateMonilophytes
+UJWU,UJWU,LeptosporangiateMonilophytes
+URCP,URCP,LeptosporangiateMonilophytes
+VITX,VITX,LeptosporangiateMonilophytes
+VVRN,VVRN,LeptosporangiateMonilophytes
+WCLG,WCLG,LeptosporangiateMonilophytes
+WQML,WQML,LeptosporangiateMonilophytes
+XDDT,XDDT,LeptosporangiateMonilophytes
+XXHP,XXHP,LeptosporangiateMonilophytes
+YCKE,YCKE,LeptosporangiateMonilophytes
+YIXP,YIXP,LeptosporangiateMonilophytes
+YJJY,YJJY,LeptosporangiateMonilophytes
+YLJA,YLJA,LeptosporangiateMonilophytes
+YOWV,YOWV,LeptosporangiateMonilophytes
+YQEC,YQEC,LeptosporangiateMonilophytes
+ZQYU,ZQYU,LeptosporangiateMonilophytes
+ZXJO,ZXJO,LeptosporangiateMonilophytes
+CVEG,CVEG,LeptosporangiateMonilophytes
+KIIX,KIIX,LeptosporangiateMonilophytes
+CQPW,CQPW,LeptosporangiateMonilophytes
+PBUU,PBUU,LeptosporangiateMonilophytes
+IRBN,IRBN,Liverworts
+LGOW,LGOW,Liverworts
+OFTV,OFTV,Liverworts
+RTMU,RTMU,Liverworts
+WZYK,WZYK,Liverworts
+YBQN,YBQN,Liverworts
+TXVB,TXVB,Liverworts
+HMHL,HMHL,Liverworts
+ILBQ,ILBQ,Liverworts
+JPYU,JPYU,Liverworts
+TFYI,TFYI,Liverworts
+WJLO,WJLO,Liverworts
+NRWZ,NRWZ,Liverworts
+YFGP,YFGP,Liverworts
+JHFI,JHFI,Liverworts
+PIUF,PIUF,Liverworts
+BNCU,BNCU,Liverworts
+KRUQ,KRUQ,Liverworts
+TGKW,TGKW,Liverworts
+UUHD,UUHD,Liverworts
+HPXA,HPXA,Liverworts
+HERT,HERT,Liverworts
+SJEV,SJEV,Magnoliids
+WKSU,WKSU,Magnoliids
+ABSS,ABSS,Magnoliids
+BCGB,BCGB,Magnoliids
+BSVG,BSVG,Magnoliids
+FALI,FALI,Magnoliids
+KAYP,KAYP,Magnoliids
+KRJP,KRJP,Magnoliids
+MAQO,MAQO,Magnoliids
+VYLQ,VYLQ,Magnoliids
+WAIL,WAIL,Magnoliids
+WIGA,WIGA,Magnoliids
+WPHN,WPHN,Magnoliids
+DHPO,DHPO,Magnoliids
+OBPL,OBPL,Magnoliids
+PSJT,PSJT,Magnoliids
+WBOD,WBOD,Magnoliids
+XQWC,XQWC,Magnoliids
+YZRI,YZRI,Magnoliids
+CSSK,CSSK,Magnoliids
+MUNP,MUNP,Magnoliids
+OPDF,OPDF,Magnoliids
+PAWA,PAWA,Magnoliids
+QDVW,QDVW,Magnoliids
+XSZI,XSZI,Magnoliids
+RRSV,RRSV,Pedinophyceae
+PUAN,PUAN,Pedinophyceae
+AYPS,AYPS,Chlorophyta
+TGNL,TGNL,prasinophytes Chlorophyta incertae sedis
+JMTE,JMTE,prasinophytes Pseudoscourfieldiales
+TNAW,TNAW,prasinophytes Pyramimonadales
+XIVI,XIVI,prasinophytes Pyramimonadales
+EGNB,EGNB,prasinophytes Scourfieldiales
+HYHN,HYHN,prasinophytes/Prasinococcales Prasinococcales
+XJGM,XJGM,prasinophytes/Prasinococcales Prasinococcales
+XMCL,XMCL,prasinophytes/Prasinococcales Prasinococcales
+BWVJ,BWVJ,Rhodophyta
+CKXF,CKXF,Rhodophyta
+Cyame_v1.0,Cyame_v1.0,Rhodophyta
+FTRP,FTRP,Rhodophyta
+IEHF,IEHF,Rhodophyta
+IHJY,IHJY,Rhodophyta
+IKIZ,IKIZ,Rhodophyta
+IKWM,IKWM,Rhodophyta
+JEBK,JEBK,Rhodophyta
+JJZR,JJZR,Rhodophyta
+LJPN,LJPN,Rhodophyta
+LLXJ,LLXJ,Rhodophyta
+OBUY,OBUY,Rhodophyta
+PVGP,PVGP,Rhodophyta
+PWKQ,PWKQ,Rhodophyta
+PYDB,PYDB,Rhodophyta
+RSOF,RSOF,Rhodophyta
+RTLC,RTLC,Rhodophyta
+SBLT,SBLT,Rhodophyta
+UGPM,UGPM,Rhodophyta
+URSB,URSB,Rhodophyta
+UYFR,UYFR,Rhodophyta
+VNAL,VNAL,Rhodophyta
+VZWX,VZWX,Rhodophyta
+WEJN,WEJN,Rhodophyta
+XAXW,XAXW,Rhodophyta
+YSBD,YSBD,Rhodophyta
+ZJOJ,ZJOJ,Rhodophyta
+ZULJ,ZULJ,Rhodophyta
+NNHQ,NNHQ,Streptophytaincertaesedis
+GYBH,GYBH,Ulvophyceae
+JTIG,JTIG,Ulvophyceae
+VHIJ,VHIJ,Ulvophyceae
+VBLH,VBLH,Ulvophyceae
+KADG,KADG,Ulvophyceae
+ALZF,ALZF,Ulvophyceae
+NSTT,NSTT,Ulvophyceae
+NATT,NATT,Ulvophyceae
+YDCQ,YDCQ,Ulvophyceae
+LETF,LETF,Ulvophyceae
+AJAU,AJAU,Ulvophyceae
+CBNG,CBNG,Ulvophyceae
+JIWJ,JIWJ,Ulvophyceae
+GJIY,GJIY,Ulvophyceae
+CQQP,CQQP,Ulvophyceae
+LSHT,LSHT,Ulvophyceae
+OAEZ,OAEZ,Ulvophyceae
+OQON,OQON,Ulvophyceae
+KSFK,KSFK,Ulvophyceae
+NQYP,NQYP,Ulvophyceae
