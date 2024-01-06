@@ -131,7 +131,9 @@ public class BookKeepingPerLevel {
                 // if(node.index == 11) {
                 //     System.out.println("11 node");
                 // }
-                totalScore += node.info.scoreCalculator.score() * node.frequency;
+                // System.out.println(node.index);
+                double currScore = node.info.scoreCalculator.score();
+                totalScore +=  currScore * node.frequency;
             }
             currTotals += bookTree.totalQuartets();
         }

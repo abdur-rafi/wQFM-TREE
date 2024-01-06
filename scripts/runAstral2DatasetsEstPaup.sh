@@ -56,21 +56,21 @@ speciesTreeLabelCleaned=sp-cleaned
 #     python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
 # done
 
-for file in $(ls $gtFolderPath)
-do
-    echo "consensus tree for $file"
+# for file in $(ls $gtFolderPath)
+# do
+#     echo "consensus tree for $file"
 
-    mkdir -p $consFolderPath/$file
-    # ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
-    perl ./scripts/run_paup_consensus.pl -i $gtFolderPath/$file/$geneTreeLabelCleaned -o $consFolderPath/$file/cons > consLog.txt 2>consErr.txt
-    # bash ./scripts/phylip.sh $gtFolderPath/$file/$geneTreeLabel > consLog.txt 2>consErr.txt
-    # consOut=$consFolderPath/$file/cons.iqtree
-    consOut=$consFolderPath/$file/cons.greedy.tree
+#     mkdir -p $consFolderPath/$file
+#     # ./iqtree -t $gtFolderPath/$file/$geneTreeLabel -con >> consLog.txt 2>>consErr.txt
+#     perl ./scripts/run_paup_consensus.pl -i $gtFolderPath/$file/$geneTreeLabelCleaned -o $consFolderPath/$file/cons > consLog.txt 2>consErr.txt
+#     # bash ./scripts/phylip.sh $gtFolderPath/$file/$geneTreeLabel > consLog.txt 2>consErr.txt
+#     # consOut=$consFolderPath/$file/cons.iqtree
+#     consOut=$consFolderPath/$file/cons.greedy.tree
 
-    # mv ./outtree $consOut
-    # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
-    python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
-done
+#     # mv ./outtree $consOut
+#     # ./raxml-ng --redo --consense MRE --tree $gtFolderPath/$file/$geneTreeLabel --prefix $consFolderPath/$file/cons > ./raxml-ng.log
+#     python ./scripts/consensusCleaner.py < $consOut > $consFolderPath/$file/$consTreeLabel
+# done
 
 
 
@@ -109,7 +109,7 @@ runOne() {
 }
 
 if [ "$#" -gt 2 ]; then
-    for (( i=3; i< $#; i++ )); do
+    for (( i=3; i<= $#; i++ )); do
         runOne ${!i}
     done
 else

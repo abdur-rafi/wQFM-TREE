@@ -46,7 +46,7 @@ public class QFM {
 
         boolean allowSingleton = Config.ALLOW_SINGLETON;
 
-        System.out.println("level : " + level);
+        // System.out.println("level : " + level);
 
         if(allowSingleton){
             if(Config.USE_LEVEL_BASED_SINGLETON_THRESHOLD){
@@ -77,7 +77,7 @@ public class QFM {
             
         }
 
-        System.out.println( "#iterations: " + itrCount);
+        // System.out.println( "#iterations: " + itrCount);
 
         Tree[] trees = new Tree[2];
 
@@ -212,6 +212,8 @@ public class QFM {
 
         ArrayList<Swap> swaps = new ArrayList<Swap>();
 
+        ArrayList<Double> cgs = new ArrayList<Double>();
+
         while(true){
             rtGains = new double[book.taxas.realTaxonCount][2];
             dtGains = new double[book.taxas.dummyTaxonCount];
@@ -229,6 +231,8 @@ public class QFM {
 
                 cg += gain;
 
+                cgs.add(cg);
+
                 if(singletonPartition){
                     if(maxCgIndex == -1 ){ // && book.taxas.getTaxonCountInPartition(0) > 1 && book.taxas.getTaxonCountInPartition(1) > 1 ){
                         maxCg = cg;
@@ -240,12 +244,18 @@ public class QFM {
                     maxCg = cg;
                     maxCgIndex = swaps.size() - 1;
                 }
+
+                if(cg < 0){
+                    break;
+                }
             }
             else{
                 break;
             }
             
         }
+
+        // checkCG(cgs);
         // if(Math.abs(cg) > EPS && swaps.size() == (book.taxas.realTaxonCount + book.taxas.dummyTaxonCount)){
         //     System.out.println(book.taxas.realTaxonCount + book.taxas.dummyTaxonCount);
         //     System.out.println(swaps.size());
@@ -254,6 +264,10 @@ public class QFM {
         //     System.exit(-1);
         // }
         // System.out.println("CG Index : " + maxCgIndex + " cg : " + maxCg);
+
+
+
+
 
         if(maxCgIndex == -1){
             if(swaps.size() != (book.taxas.realTaxonCount + book.taxas.dummyTaxonCount)){
@@ -278,4 +292,133 @@ public class QFM {
         return true;
 
     }
+
+    public static void checkCG(ArrayList<Double> cg){
+        if(cg.size() < 3) return;
+        // for(var g : cg){
+        //     System.out.printf("%.5f ", g);
+        // }
+        // System.out.println();
+
+        var x = checkNegativeToPositive(cg);
+        if(!x.equalsIgnoreCase("Neither")){
+            for(var g : cg){
+                System.out.printf("%.5f ", g);
+            }
+            System.out.println();
+            System.out.println("Error: CG negative to positive");
+            // System.exit(-1);
+        }
+        
+        // boolean inc = cg.get(0) < cg.get(1);
+
+        // if(inc){
+        //     var x = checkIncreaseThenDecrease(cg);
+        //     if(x.equalsIgnoreCase("Neither")){
+        //         System.out.println("Error: CG not increasing then decreasing");
+        //         // System.exit(-1);
+        //     }
+        // }
+        // else{
+        //     var x = checkDecreaseThenIncrease(cg);
+        //     if(x.equalsIgnoreCase("Neither")){
+        //         System.out.println("Error: CG not decreasing then increasing");
+        //         // System.exit(-1);
+        //     }
+        // }
+        
+        // for(int i = 1; i < cg.size(); ++i){
+        //     if(inc && cg.get(i) < cg.get(i - 1)){
+        //         System.out.println("Error: CG decreasing");
+        //         // System.exit(-1);
+        //     }
+        //     if(!inc && cg.get(i) > cg.get(i - 1)){
+        //         System.out.println("Error: CG increasing");
+        //         // System.exit(-1);
+        //     }
+        // }
+    }
+
+    public static String checkNegativeToPositive(ArrayList<Double> arr) {
+        int size = arr.size();
+        if (size <= 0) {
+            return "Neither"; // Empty arrays can't exhibit a clear pattern
+        }
+
+        boolean negativeFound = false;
+
+        for (double num : arr) {
+            if (num < 0) {
+                negativeFound = true;
+            } else if (negativeFound && num > EPS) {
+                return "Negative to Positive";
+            }
+        }
+
+        return "Neither"; // No change from negative to positive found
+    }
+
+    public static String checkIncreaseThenDecrease(ArrayList<Double> arr) {
+        int size = arr.size();
+        if (size <= 2) {
+            return "Neither"; // Arrays with 2 or fewer elements can't exhibit a clear pattern
+        }
+
+        boolean increasing = true;
+        int increasingIndex = -1;
+
+        // Check if increasing
+        for (int i = 1; i < size; i++) {
+            if (arr.get(i) <= arr.get(i - 1)) {
+                increasing = false;
+                increasingIndex = i - 1;
+                break;
+            }
+        }
+
+        // Check if decreasing after increasing
+        if (increasing && increasingIndex < size - 1) {
+            for (int i = increasingIndex + 1; i < size; i++) {
+                if (arr.get(i) >= arr.get(i - 1)) {
+                    return "Neither"; // Continuation of increasing or not strictly decreasing
+                }
+            }
+            return "Increase then Decrease";
+        }
+
+        return "Neither"; // No increasing followed by decreasing pattern found
+    }
+
+    public static String checkDecreaseThenIncrease(ArrayList<Double> arr) {
+        int size = arr.size();
+        if (size <= 2) {
+            return "Neither"; // Arrays with 2 or fewer elements can't exhibit a clear pattern
+        }
+
+        boolean decreasing = true;
+        int decreasingIndex = -1;
+
+        // Check if decreasing
+        for (int i = 1; i < size; i++) {
+            if (arr.get(i) >= arr.get(i - 1)) {
+                decreasing = false;
+                decreasingIndex = i - 1;
+                break;
+            }
+        }
+
+        // Check if increasing after decreasing
+        if (decreasing && decreasingIndex < size - 1) {
+            for (int i = decreasingIndex + 1; i < size; i++) {
+                if (arr.get(i) <= arr.get(i - 1)) {
+                    return "Neither"; // Continuation of decreasing or not strictly increasing
+                }
+            }
+            return "Decrease then Increase";
+        }
+
+        return "Neither"; // No decreasing followed by increasing pattern found
+    }
+
+
 }

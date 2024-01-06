@@ -143,10 +143,10 @@ public class GeneTrees {
         System.out.println( "total internal nodes : " + internalNodesCount);
         System.out.println( "unique partitions : " + triPartitions.size());
 
-        if(internalNodesCount == 50000){
-            System.out.println("No polytomy, skipping");
-            System.exit(-1);
-        }
+        // if(internalNodesCount == 50000){
+        //     System.out.println("No polytomy, skipping");
+        //     System.exit(-1);
+        // }
 
     }
 
@@ -155,6 +155,17 @@ public class GeneTrees {
         this.geneTrees = new ArrayList<>();
         this.triPartitions = new HashMap<>();
         this.path = path;
+    }
+
+
+    public GeneTrees(String path, Map<String, RealTaxon> taxaMap) throws FileNotFoundException{
+
+        this.geneTrees = new ArrayList<>();
+        this.triPartitions = new HashMap<>();
+        this.path = path;
+        this.taxaMap = taxaMap;
+
+        this.readGeneTrees(null);
     }
     
 } 

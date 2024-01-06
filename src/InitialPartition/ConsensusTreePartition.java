@@ -139,24 +139,49 @@ public class ConsensusTreePartition implements IMakePartition {
             this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
         }
         else{
+            int rtCount = 0;
+            int dtCount = 0;
             boolean changed = false;
             for(i = 0; i < rts.length; ++i){
                 if(rtsP[i] != this.book.taxas.inWhichPartitionRealTaxonByIndex(i)){
                     changed = true;
-                    book.swapTaxon(i, false);
+                    rtCount++;
+                    // book.swapTaxon(i, false);
                 }
             }
 
             for(i = 0; i < dts.length; ++i){
                 if(dtsp[i] != this.book.taxas.inWhichPartitionDummyTaxonByIndex(i)){
                     changed = true;
-                    book.swapTaxon(i, true);
+                    dtCount++;
+                    // book.swapTaxon(i, true);
                 }
             }
             if(!changed){
                 // System.out.println("Not changed");
                 return this.score;
             }
+            else{
+                if(rtCount + 9 * dtCount + 5 > dts.length){
+                    TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
+                    this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+
+                }
+                else{
+                    for(i = 0; i < rts.length; ++i){
+                        if(rtsP[i] != this.book.taxas.inWhichPartitionRealTaxonByIndex(i)){
+                            book.swapTaxon(i, false);
+                        }
+                    }
+
+                    for(i = 0; i < dts.length; ++i){
+                        if(dtsp[i] != this.book.taxas.inWhichPartitionDummyTaxonByIndex(i)){
+                            book.swapTaxon(i, true);
+                        }
+                    }
+                }
+            }
+            
         }
         this.score = this.book.calculateScore();
 

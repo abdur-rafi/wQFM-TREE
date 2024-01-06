@@ -6,6 +6,10 @@ import java.io.IOException;
 import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
+
+import java.lang.management.ManagementFactory;
+import java.lang.management.ThreadMXBean;
+
 // 5:18
 public class Main {
 
@@ -59,8 +63,9 @@ public class Main {
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
-
+        ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         long time_1 = System.currentTimeMillis(); //calculate starting time
+        long cpuTimeBefore = threadMXBean.getCurrentThreadCpuTime();
 
         GeneTrees trees = new GeneTrees(inputFilePath);
         var taxaMap = trees.readTaxaNames();
@@ -88,12 +93,28 @@ public class Main {
         writer.write(spTree.getNewickFormat());
 
         writer.close();
+        long cpuTimeAfter = threadMXBean.getCurrentThreadCpuTime();
 
         long time_del = System.currentTimeMillis() - time_1;
         long minutes = (time_del / 1000) / 60;
         long seconds = (time_del / 1000) % 60;
-        System.out.format("\nTime taken = %d ms ==> %d minutes and %d seconds.\n", time_del, minutes, seconds);
+        System.out.format("\nElapsed Time taken = %d ms ==> %d minutes and %d seconds.\n", time_del, minutes, seconds);
 
+        long cpuTimeUsed = cpuTimeAfter - cpuTimeBefore;
+
+        seconds = cpuTimeUsed / 1_000_000_000;
+        
+        // Calculate remaining nanoseconds after converting to seconds
+        long remainingNanos = cpuTimeUsed % 1_000_000_000;
+
+        // Convert remaining nanoseconds to milliseconds
+        long milliseconds = remainingNanos / 1_000_000;
+
+        // Calculate minutes
+        minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        System.out.println("CPU time used: " + minutes + " minutes, " + seconds + " seconds");
         // System.out.println(spTree.getNewickFormat());
         // tc5(trees);
 

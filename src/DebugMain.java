@@ -11,6 +11,73 @@ import src.Taxon.RealTaxon;
 
 public class DebugMain {
 
+
+    static void example() throws FileNotFoundException{
+        GeneTrees trees = new GeneTrees("./input/example.tre");
+        var taxaMap = trees.readTaxaNames();
+        trees.readGeneTrees(null);
+        
+        System.out.println(trees.geneTrees.get(0).root);
+
+        int rtCount = 11;
+        int pa = 0;
+        int pb = 1 - pa;
+
+        RealTaxon[] rt = new RealTaxon[rtCount];
+        for (int i = 0; i < rtCount; i++) {
+            rt[i] = trees.taxaMap.get(Integer.toString(i + 1));
+        }
+
+        RealTaxon[] rtCurrLevel = new RealTaxon[5];
+        rtCurrLevel[0] = rt[0];
+        rtCurrLevel[1] = rt[1];
+        rtCurrLevel[2] = rt[3];
+        rtCurrLevel[3] = rt[5];
+        rtCurrLevel[4] = rt[6];
+
+        DummyTaxon[] dtCurrLevel = new DummyTaxon[2];
+        RealTaxon[] dt0r = new RealTaxon[1];
+        dt0r[0] = rt[4];
+
+        RealTaxon[] rtdt0d = new RealTaxon[2];
+        rtdt0d[0] = rt[9];
+        rtdt0d[1] = rt[10];
+        DummyTaxon dt0d = new DummyTaxon(rtdt0d, new DummyTaxon[0]);
+
+        DummyTaxon dt0 = new DummyTaxon(dt0r, new DummyTaxon[]{dt0d});
+        
+        RealTaxon[] dt1r = new RealTaxon[3];
+        dt1r[0] = rt[2];
+        dt1r[1] = rt[7];
+        dt1r[2] = rt[8];
+
+        DummyTaxon dt1 = new DummyTaxon(dt1r, new DummyTaxon[0]);
+
+        dtCurrLevel[0] = dt0;
+        dtCurrLevel[1] = dt1;
+
+        int[] realTaxaPartition = new int[5];
+        realTaxaPartition[0] = pa;
+        realTaxaPartition[1] = pb;
+        realTaxaPartition[2] = pa;
+        realTaxaPartition[3] = pb;
+        realTaxaPartition[4] = pb;
+
+        int[] dummyTaxaPartition = new int[2];
+        dummyTaxaPartition[0] = pa;
+        dummyTaxaPartition[1] = pb;
+
+        TaxaPerLevelWithPartition taxaPerLevel = new TaxaPerLevelWithPartition(rtCurrLevel, dtCurrLevel, realTaxaPartition, dummyTaxaPartition, rtCount);
+        BookKeepingPerLevel book = new BookKeepingPerLevel(trees, taxaPerLevel, true);
+
+        System.out.println("score : " + book.calculateScore());
+
+
+
+
+
+    }
+
     static void cgTest1() throws FileNotFoundException{
         // String modelCond = "model.10.2000000.0.000001";
         // String inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/11/gt-cleaned";
@@ -197,8 +264,9 @@ public class DebugMain {
     
     public static void main(String[] args) throws IOException {
         // cgTest1();
+        example();
         // polytomyTc2();
-        polytomyTc2();
+        // polytomyTc2();
         // new GeneTrees("../run/07.trueGT.cleaned");
         // new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // new GeneTrees("./input/custom.tre");
