@@ -9,6 +9,7 @@ for item in *; do
                 echo "Deleting $file"
                 # Remove the file
                 # rm "$file"
+            fi
         done
         cd ..
     fi
