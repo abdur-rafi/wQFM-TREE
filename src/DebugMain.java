@@ -14,7 +14,7 @@ public class DebugMain {
 
     static void example() throws FileNotFoundException{
         GeneTrees trees = new GeneTrees("./input/example.tre");
-        var taxaMap = trees.readTaxaNames();
+        trees.readTaxaNames();
         trees.readGeneTrees(null);
         
         System.out.println(trees.geneTrees.get(0).root);
@@ -450,8 +450,8 @@ public class DebugMain {
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
 
-        double[][] rtGains = new double[4][2];
-        double[] dtGains = new double[1];
+        // double[][] rtGains = new double[4][2];
+        // double[] dtGains = new double[1];
 
         System.out.println( "scorea  : " + bookKeepingPerLevel.calculateScore());
 

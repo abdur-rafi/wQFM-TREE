@@ -105,10 +105,10 @@ public class Main {
         seconds = cpuTimeUsed / 1_000_000_000;
         
         // Calculate remaining nanoseconds after converting to seconds
-        long remainingNanos = cpuTimeUsed % 1_000_000_000;
+        // long remainingNanos = cpuTimeUsed % 1_000_000_000;
 
         // Convert remaining nanoseconds to milliseconds
-        long milliseconds = remainingNanos / 1_000_000;
+        // long milliseconds = remainingNanos / 1_000_000;
 
         // Calculate minutes
         minutes = seconds / 60;

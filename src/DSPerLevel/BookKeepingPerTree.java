@@ -10,7 +10,6 @@ import src.Tree.TreeNode;
 import src.ScoreCalculator.NumSatCalculatorBinaryNode;
 import src.ScoreCalculator.NumSatCalculatorNode;
 import src.ScoreCalculator.NumSatCalculatorNodeE;
-import src.ScoreCalculator.NumSatCalculatorPolytomyNode;
 
 public class BookKeepingPerTree {
     
