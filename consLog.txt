@@ -1,0 +1,5 @@
+output at:
+../run/astral2/estimated-consensus-trees/model.200.10000000.0.0000001/50/cons.strict.tree
+../run/astral2/estimated-consensus-trees/model.200.10000000.0.0000001/50/cons.majority.tree
+../run/astral2/estimated-consensus-trees/model.200.10000000.0.0000001/50/cons.greedy.tree
+done.
