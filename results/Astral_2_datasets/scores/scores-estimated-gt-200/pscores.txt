@@ -1,0 +1,27 @@
+/home/abdur-rafi/.local/lib/python3.8/site-packages/scipy/stats/_morestats.py:3414: UserWarning: Exact p-value calculation does not work if there are zeros. Switching to normal approximation.
+  warnings.warn("Exact p-value calculation does not work if there are "
+
+Model: 200.500K.6                     wqfm vs astral p-value: 0.7457293700841414
+Model: 200.500K.6                     wqfm vs treeqmc p-value: 0.9100028486235021
+Model: 200.500K.6                     wqfm-resolved vs astral p-value: 0.6546146680063172
+Model: 200.500K.6                     wqfm-resolved vs treeqmc p-value: 0.748744121732996
+Model: 200.500K.7                     wqfm vs astral p-value: 0.9229792598014539
+Model: 200.500K.7                     wqfm vs treeqmc p-value: 0.2956448467343823
+Model: 200.500K.7                     wqfm-resolved vs astral p-value: 0.7926660428638143
+Model: 200.500K.7                     wqfm-resolved vs treeqmc p-value: 0.27009363447601575
+Model: 200.2M.6                       wqfm vs astral p-value: 0.00480896209789644
+Model: 200.2M.6                       wqfm vs treeqmc p-value: 0.033016419598701
+Model: 200.2M.6                       wqfm-resolved vs astral p-value: 0.02711223671544869
+Model: 200.2M.6                       wqfm-resolved vs treeqmc p-value: 0.17261965095073362
+Model: 200.2M.7                       wqfm vs astral p-value: 0.092174190682021
+Model: 200.2M.7                       wqfm vs treeqmc p-value: 0.36452366125737434
+Model: 200.2M.7                       wqfm-resolved vs astral p-value: 0.030464441320113646
+Model: 200.2M.7                       wqfm-resolved vs treeqmc p-value: 0.8582744782744304
+Model: 200.10M.6                      wqfm vs astral p-value: 0.0012125209517093011
+Model: 200.10M.6                      wqfm vs treeqmc p-value: 0.0360974699693874
+Model: 200.10M.6                      wqfm-resolved vs astral p-value: 0.004905684036845123
+Model: 200.10M.6                      wqfm-resolved vs treeqmc p-value: 0.06462720580070369
+Model: 200.10M.7                      wqfm vs astral p-value: 0.0014387732978715737
+Model: 200.10M.7                      wqfm vs treeqmc p-value: 0.28027217266537385
+Model: 200.10M.7                      wqfm-resolved vs astral p-value: 0.0013414350595041314
+Model: 200.10M.7                      wqfm-resolved vs treeqmc p-value: 0.22719827240200552
