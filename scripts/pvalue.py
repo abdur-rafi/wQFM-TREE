@@ -9,7 +9,7 @@ fileDir = sys.argv[1]
 # Read the CSV file
 df = pd.read_csv(fileDir)
 
-modelConds = ['200.500K.6','200.500K.7','200.2M.6','200.2M.7','200.10M.6','200.10M.7']
+modelConds = ['200.500K.6','200.500K.7','200.2M.6','200.2M.7','200.10M.6','200.10M.7','500.2M.6','1000.2M.6']
 
 comps1s = ['wqfm', 'wqfm-resolved']
 comps2s = ['astral', 'treeqmc']

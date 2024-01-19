@@ -1,6 +1,6 @@
 root=$1
 # astralOutput=astral-v474-p1-halfresolved.genes1000
-
+scoreFolder=results/Astral_2_datasets/scores-by-model-cond
 for modelCond in $(ls $root); do
 
     if [ ! -d "$root/$modelCond" ]; then
