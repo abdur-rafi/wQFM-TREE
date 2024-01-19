@@ -30,7 +30,7 @@ with open(inpFile, 'r') as f:
         dCount += 1
         for i in range(n):
             numbers = tuple(map(float, f.readline().strip().strip('()').replace(' ', '').split(',')))
-            data[keys[i]].append(numbers[2])
+            data[keys[i]].append( float(f"{numbers[2]:.3f}"))
         
         # data[key] = vals
 

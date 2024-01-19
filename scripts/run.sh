@@ -6,6 +6,7 @@
 # filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
 filePrefix="ewqfm-%sat-init-with-singleton-all-flat"
 filePrefix="ewqfm-test"
+filePrefix="wqfm-Tree"
 # filePrefix="ewqfm-num-sat-new"
 
 # filePrefix="ewqfm-all-n-mxscore-init-singleton"
@@ -31,17 +32,20 @@ do
             if [ -d $1/$file/$file2 ]
             then
                 echo $file2
-                # if directory then run the script recursively
-                # echo $file2
-                bash ./scripts/phylip.sh $1/$file/$file2/all_gt_cleaned.tre > consLog.txt 2>consErr.txt
-                python ./scripts/consensusCleaner.py < ./outtree > $1/$file/$file2/cons.tre
-                # mv ./outtree $1/$file/$file2/cons.tre
+                gtInput=$1/$file/$file2/all_gt_cleaned.tre
+                consOutput=$1/$file/$file2/cons
+                consCleaned=$1/$file/$file2/cons.tre
+                outPath=$1/$file/$file2/$filePrefix-tree.txt
 
-                # ./raxml-ng --redo --consense MRE --tree $1/$file/$file2/all_gt.tre --prefix $1/$file/$file2/cons >> ./raxml-ng.log
-                # consOut=$1/$file/$file2/cons.raxml.consensusTreeMRE
-                # python consensusCleaner.py < $consOut > $1/$file/$file2/cons.tre
-                # python treeCleaner.py < $1/$file/$file2/all_gt.tre > $1/$file/$file2/all_gt_cleaned.tre 
-                /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $1/$file/$file2/all_gt_cleaned.tre $1/$file/$file2/cons.tre $1/$file/$file2/$filePrefix-tree.txt
+                
+                # perl ./scripts/run_paup_consensus.pl -i $gtInput -o $consOutput > consLog.txt 2>consErr.txt
+
+                consOut=$1/$file/$file2/cons.greedy.tree
+
+                # python ./scripts/consensusCleaner.py < $consOut > $consCleaned
+
+
+                /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java  -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $gtInput $consCleaned $outPath A
                 python ./rfScoreCalculator/getFpFn.py -t $1/true_tree_trimmed -e $1/$file/$file2/$filePrefix-tree.txt >> $1/$file/$filePrefix-score.txt
             fi
         done

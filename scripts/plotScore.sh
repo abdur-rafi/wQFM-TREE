@@ -1,3 +1,3 @@
-bash ./scripts/printScore.sh $1 > tmp.txt
-python ./scripts/plotter.py tmp.txt ./comparison/$2
-rm tmp.txt
+bash ./scripts/printScore.sh $1 > 48.txt
+python ./scripts/plotter.py 48.txt ./img.png
+# rm tmp.txt

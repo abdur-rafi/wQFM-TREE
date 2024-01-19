@@ -1,0 +1,5 @@
+output at:
+../run/37-taxon//noscale.100g.500b/R11/cons.strict.tree
+../run/37-taxon//noscale.100g.500b/R11/cons.majority.tree
+../run/37-taxon//noscale.100g.500b/R11/cons.greedy.tree
+done.
