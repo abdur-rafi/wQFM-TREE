@@ -2,7 +2,8 @@
 
 # Check if a directory is provided
 root=results/Astral_2_datasets/scores-by-model-cond
-for model in $(ls $root); do
+# for model in $(ls $root); do
+for model in model.1000.2000000.0.000001 ; do
     for file in $(ls $root/$model); do
         new_filename="${file/-tree.txt/-score.txt}"
 

@@ -1,7 +1,3 @@
-/home/abdur-rafi/.local/lib/python3.8/site-packages/scipy/stats/_morestats.py:3414: UserWarning: Exact p-value calculation does not work if there are zeros. Switching to normal approximation.
-  warnings.warn("Exact p-value calculation does not work if there are "
-/home/abdur-rafi/.local/lib/python3.8/site-packages/scipy/stats/_morestats.py:3428: UserWarning: Sample size too small for normal approximation.
-  warnings.warn("Sample size too small for normal approximation.")
 Model: 200.500K.6                     wqfm vs astral p-value: 0.6108370472935991
 Model: 200.500K.6                     wqfm vs treeqmc p-value: 0.04467750054048834
 Model: 200.500K.6                     wqfm-resolved vs astral p-value: 0.7796237933045385
@@ -30,7 +26,7 @@ Model: 500.2M.6                       wqfm vs astral p-value: 1.4873539247108951
 Model: 500.2M.6                       wqfm vs treeqmc p-value: 0.9712897046767986
 Model: 500.2M.6                       wqfm-resolved vs astral p-value: 3.078978773498484e-05
 Model: 500.2M.6                       wqfm-resolved vs treeqmc p-value: 0.9448450848777679
-Model: 1000.2M.6                      wqfm vs astral p-value: 0.0037289239852603294
-Model: 1000.2M.6                      wqfm vs treeqmc p-value: 0.4692211560417394
-Model: 1000.2M.6                      wqfm-resolved vs astral p-value: 0.030894948501992314
-Model: 1000.2M.6                      wqfm-resolved vs treeqmc p-value: 0.17163400299925546
+Model: 1000.2M.6                      wqfm vs astral p-value: 0.005577994003398275
+Model: 1000.2M.6                      wqfm vs treeqmc p-value: 0.537932325120023
+Model: 1000.2M.6                      wqfm-resolved vs astral p-value: 0.006005875612369602
+Model: 1000.2M.6                      wqfm-resolved vs treeqmc p-value: 0.25367842744391944
