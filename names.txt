@@ -1,0 +1,3 @@
+astral,ewqfm,resolved,treeqmc
+500-astral,500-ewqfm,500-resolved,500-treeqmc
+1000-astral,1000-ewqfm,1000-resolved,1000-treeqmc
