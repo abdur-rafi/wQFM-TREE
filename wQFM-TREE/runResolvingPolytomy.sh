@@ -27,7 +27,7 @@ resolvedPolytomyPath=$geneTreesInputPath.resolved
 
 echo "Resolving Polytomy"
 
-python arb_resolve_polytomies.py $geneTreesInputPath
+python3 arb_resolve_polytomies.py $geneTreesInputPath
 
 echo "Resolved gene trees written to $resolvedPolytomyPath"
 

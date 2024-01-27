@@ -32,7 +32,7 @@ echo "Gene Trees path: $geneTreesInputPath, output path: $speciesTreeOutputPath"
 
 echo "Cleaning input file"
 
-python ./treeCleaner.py < $geneTreesInputPath > $gtCleaned
+python3 ./treeCleaner.py < $geneTreesInputPath > $gtCleaned
 
 echo "Cleaned input file written to $gtCleaned"
 
