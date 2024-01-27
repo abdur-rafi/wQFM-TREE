@@ -23,7 +23,7 @@ Output file contains the estimated species tree in newick format.
 ## Running the application
 
 Steps
-1. Download wQFM-TREE.zip
+1. Download the provided wQFM-TREE.zip file.
 2. Unzip, this will create a wQFM-TREE folder.
 3. Open a terminal inside the wQFM-TREE folder.
 4. Execute the following command to run wQFM-TREE **Without** resolving gene trees. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
