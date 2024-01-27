@@ -1,12 +1,13 @@
 #NEXUS 
 
-Begin trees;  [Treefile saved Sat Jan 27 20:57:02 2024]
+Begin trees;  [Treefile saved Sat Jan 27 21:01:01 2024]
 [!
 >Consensus of 5 trees
 >
 >Source of trees from which consensus(es) calculated...
 >
->Processing TREES block from file "input/gtree_11tax_est_5genes_R1.tre-cleaned-cons.nexus":
+>Processing TREES block from file "./test-data/11Tax5Genes.tre-cleaned-
+>cons.nexus":
 >   Keeping: trees from file (replacing trees in memory)
 >   5 trees read from file
 ]

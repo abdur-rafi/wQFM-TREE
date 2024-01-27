@@ -14,7 +14,7 @@ BEGIN {  # BEGIN means this will all happen at compile time
     #our @EXPORT_OK = qw( PI );  # what to export
 
     #use constant PI => 3.14159; # define your constant
-use constant PAUP => "/home/abdur-rafi/Academic/Thesis/E-WQFM/paup -n ";
+use constant PAUP => "./paup -n ";
 }
 
 use constants;
