@@ -18,6 +18,6 @@ perl run_paup_consensus.pl -i $gtCleaned -o $consensusTreePath
 
 echo "Running wqfm-TREE"
 
-java -jar wqfm-TREE.jar $gtCleaned $consensusTreePath.greedy.tree $speciesTreeOutputPath "A"
+java -jar E-WQFM.jar $gtCleaned $consensusTreePath.greedy.tree $speciesTreeOutputPath "A"
 
 echo "wqfm-TREE run complete"
