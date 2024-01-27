@@ -6,7 +6,7 @@ This repository contains the official implementation of wQFM-TREE.
 
 ### Packages, Programming Languages and Operating Systems Requirements
 
-- Java (required to run the main wQFM application).
+- Java (required to run the main wQFM=TREE application).
 - Linux O.S. required to generate consensus tree using paup and run bash scripts.
 - (Only to run on resolved gene trees) Python, DendroPy are required to generate resolved gene trees.
 
