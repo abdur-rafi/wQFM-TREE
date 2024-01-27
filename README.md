@@ -25,7 +25,7 @@ Steps
 1. Download wQFM-TREE.zip
 2. Unzip, this will create a wQFM-TREE folder.
 3. Open a terminal inside the wQFM-TREE folder.
-4. Execute the following command to run wQFM-TREE **Without** resolving gene trees
+4. Execute the following command to run wQFM-TREE **Without** resolving gene trees. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
 ```
 bash run.sh geneTreesFilePath outputFilePath
 ```
