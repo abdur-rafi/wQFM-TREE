@@ -1,7 +1,9 @@
 # declare -a allowed=("astral2-200-tree.txt" "astral2-50-tree.txt" "ewqfm-50-resolved-tree.txt" "ewqfm-200-resolved-tree.txt" "ewqfm-50-tree.txt" "ewqfm-200-tree.txt" "treeqmc-50-tree.txt" "treeqmc-200-tree.txt" "ewqfm-paup-nq-A-tree.txt"  "ewqfm-with-resolved-gene-trees-tree.txt" "treeqmc-tree.txt" )
 # declare -a allowed=("ewqfm-paup-nq-A-tree.txt")
 # declare -a allowed=("astral-tree.txt")
-declare -a allowed=("sp-cleaned")
+# declare -a allowed=("sp-cleaned")
+# declare -a allowed=("astral3-tree.txt" "astral3-50-tree.txt" "astral3-200-tree.txt" "astral3--tree.txt")
+declare -a allowed=("astral3-200-tree.txt")
 root=$1
 for folder in $(ls $root); do
     echo $folder
@@ -20,6 +22,11 @@ for folder in $(ls $root); do
             # fi
             # rename $file
         done
+
+        # if [ -f "$root/$folder/$folder2/astral3--tree.txt" ]; then
+        #     echo "Renaming astral3--tree.txt"
+        #     mv "$root/$folder/$folder2/astral3--tree.txt" "$root/$folder/$folder2/astral3-50-tree.txt"
+        # fi
     done
 done
 # for item in *; do
