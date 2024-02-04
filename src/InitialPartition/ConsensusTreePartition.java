@@ -44,7 +44,7 @@ public class ConsensusTreePartition implements IMakePartition {
         dist = new double[this.taxonCount][this.taxonCount];
         this.taxaMap = taxaMap;
 
-        calculateDistanceMatrix();
+        // calculateDistanceMatrix();
         // for(var x : this.taxaMap.entrySet()){
         //     System.out.println(x.getKey() + " " + x.getValue().id);
         // }

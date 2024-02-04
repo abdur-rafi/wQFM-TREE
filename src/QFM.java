@@ -14,23 +14,27 @@ import src.Tree.TreeNode;
 public class QFM {
     
     public RealTaxon[] realTaxa;
+    public DummyTaxon[] dummyTaxa;
     public IMakePartition initPartition;
     public GeneTrees geneTrees;
     private int level;
+    private int realTaxaCount;
 
     static double EPS = 1e-5;
 
-    public QFM(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition){
+    public QFM(GeneTrees trees, RealTaxon[] realTaxa, DummyTaxon[] dts, IMakePartition initPartition, int realTaxaCount){
         this.realTaxa = realTaxa;
         this.initPartition = initPartition;
         this.geneTrees = trees;
+        this.dummyTaxa = dts;
+        this.realTaxaCount = realTaxaCount;
     }
 
     public Tree runWQFM(){
         this.level = 0;
 
-        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
-        var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
+        var y = initPartition.makePartition(realTaxa, this.dummyTaxa, true);
+        var x = new TaxaPerLevelWithPartition(realTaxa, this.dummyTaxa, y.realTaxonPartition, y.dummyTaxonPartition, this.realTaxaCount);
         BookKeepingPerLevel initialBook = new BookKeepingPerLevel(geneTrees, x, Config.ALLOW_SINGLETON);
 
         return recurse(initialBook);

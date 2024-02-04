@@ -15,24 +15,31 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length < 4){
-            System.out.println("Specify all file paths and non quartet type");
-            System.exit(-1);
-        }
-        String inputFilePath = args[0];
-        String consensusFilePath = args[1];
-        String outputFilePath = args[2];
+        // if(args.length < 4){
+        //     System.out.println("Specify all file paths and non quartet type");
+        //     System.exit(-1);
+        // }
+        // String inputFilePath = args[0];
+        // String consensusFilePath = args[1];
+        // String outputFilePath = args[2];
 
-        String nonQuartetType = args[3];
+        // String nonQuartetType = args[3];
         
-        if(nonQuartetType.equals("A")){
-            Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
-        }else if(nonQuartetType.equals("B")){
-            Config.NON_QUARTET_TYPE = Config.NonQuartetType.B;
-        }else{
-            System.out.println("Specify non quartet type as A or B");
-            System.exit(-1);
-        }
+        // if(nonQuartetType.equals("A")){
+        //     Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
+        // }else if(nonQuartetType.equals("B")){
+        //     Config.NON_QUARTET_TYPE = Config.NonQuartetType.B;
+        // }else{
+        //     System.out.println("Specify non quartet type as A or B");
+        //     System.exit(-1);
+        // }
+
+        String inputFilePath = "./e500.cleaned.tre";
+        String consensusFilePath = "./e500.greedy.tree";
+        String outputFilePath = "./output.tre";
+        
+        // inputFilePath = "./t.txt";
+        // consensusFilePath = "./t.txt";
 
 
         // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
@@ -72,19 +79,20 @@ public class Main {
 
         ConsensusTreePartition consensusTreePartition = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
         
-        trees.readGeneTrees(consensusTreePartition.dist);
+        var x = trees.readGeneTrees(consensusTreePartition.dist);
 
         IMakePartition  partitionMaker = consensusTreePartition;
 
 
 
-
+        System.out.println("Taxon without duplicates " + x.rt.length);
+        System.out.println("Taxon with duplicates " + x.dt.length);
 
         
         // var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
-        var qfm = new QFM(trees, trees.taxa, partitionMaker);
+        var qfm = new QFM(trees, x.rt, x.dt, partitionMaker, trees.taxaMap.size());
         
         var spTree = qfm.runWQFM();
 

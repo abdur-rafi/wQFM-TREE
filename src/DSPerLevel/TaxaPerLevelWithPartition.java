@@ -205,7 +205,7 @@ public class TaxaPerLevelWithPartition {
         }
 
         for(var x : this.dummyTaxa){
-            childs.add(t.addLeaf(null).setInfo(new Info(x.id)));
+            childs.add(t.addLeaf(null).setInfo(new Info(x.id)).setDummyTaxon(x));
         }
 
         t.root = t.addInternalNode(childs).setInfo(new Info(-1));

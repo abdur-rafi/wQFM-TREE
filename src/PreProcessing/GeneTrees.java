@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import src.Config;
+import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
@@ -86,7 +87,7 @@ public class GeneTrees {
         return taxaMap;
     }
 
-    public void readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
+    public RtDt readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
         int internalNodesCount = 0;
 
         Scanner scanner = new Scanner(new File(path));
@@ -143,12 +144,48 @@ public class GeneTrees {
         System.out.println( "total internal nodes : " + internalNodesCount);
         System.out.println( "unique partitions : " + triPartitions.size());
 
+        return reduceTaxon(taxa);
+
+
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");
         //     System.exit(-1);
         // }
 
-    }
+    }   
+
+    public RtDt reduceTaxon(RealTaxon[] rts){
+        ArrayList<RealTaxon> fRts = new ArrayList<>();
+        ArrayList<DummyTaxon> newDts = new ArrayList<>();
+        Set<String> seen = new HashSet<>();
+        Map<String, ArrayList<RealTaxon>> dups = new HashMap<>();
+        for(var rt : rts){
+            var name = rt.label.split("_")[0];
+            if(seen.contains(name)){
+                dups.get(name).add(rt);
+            }
+            else{
+                seen.add(name);
+                ArrayList<RealTaxon> list = new ArrayList<>();
+                list.add(rt);
+                dups.put(name, list);
+            }
+        }
+        for(var dt : dups.entrySet()){
+            if(dt.getValue().size() > 1){
+                RealTaxon[] rs = dt.getValue().toArray(new RealTaxon[dt.getValue().size()]);
+                var newDt = new DummyTaxon(rs, new DummyTaxon[0], dt.getKey());
+                newDts.add(newDt);
+            }
+            else{
+                dt.getValue().get(0).label = dt.getKey();
+                fRts.add(dt.getValue().get(0));
+            }
+        }
+
+        return new RtDt(fRts.toArray(new RealTaxon[fRts.size()]), newDts.toArray(new DummyTaxon[newDts.size()]));
+
+    } 
 
     public GeneTrees(String path) throws FileNotFoundException{
 

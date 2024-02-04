@@ -22,6 +22,12 @@ public class DummyTaxon {
 
     public int nestedLevel;
 
+    public String label;
+
+    public DummyTaxon(RealTaxon[] rts, DummyTaxon[] dts, String label){
+        this(rts, dts);
+        this.label = label;
+    }
 
     public DummyTaxon(RealTaxon[] rts, DummyTaxon[] dts){
         this.realTaxonCount = rts.length;
@@ -53,6 +59,7 @@ public class DummyTaxon {
 
         this.id = idCounter++;
         this.nestedLevel += 1;
+        this.label = null;
 
     }
 
@@ -74,4 +81,6 @@ public class DummyTaxon {
             }
         }
     }
+
+
 }

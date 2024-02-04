@@ -3,6 +3,7 @@ package src.Tree;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.TreePrinter.PrintableNode;
 
@@ -14,7 +15,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
     public TreeNode parent;
 
     public RealTaxon taxon;
-    
+    public DummyTaxon dummyTaxon;
     public Info info;
     
     public double weight;
@@ -61,6 +62,11 @@ public class TreeNode implements TreePrinter.PrintableNode {
 
     public TreeNode setWeight(double w){
         this.weight = w;
+        return this;
+    }
+
+    public TreeNode setDummyTaxon(DummyTaxon dt){
+        this.dummyTaxon = dt;
         return this;
     }
 

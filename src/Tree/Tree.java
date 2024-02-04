@@ -324,7 +324,16 @@ public class Tree {
     
     private String newickFormatUitl(TreeNode node){
         if(node.isLeaf()){
-            return node.taxon.label;
+            if(node.taxon != null){
+                return node.taxon.label;
+            }
+            else if(node.dummyTaxon != null){
+                return node.dummyTaxon.label;
+            }
+            else{
+                System.out.println("Error: Leaf node has no taxon or dummy taxon");
+                System.exit(-1);
+            }
         }
         StringBuilder sb = new StringBuilder();
         sb.append("(");
@@ -426,6 +435,10 @@ public class Tree {
         if(node.isLeaf()){
         }
         else{
+            if(node.childs.size() > 2){
+                System.out.println("Tree is not binary");
+                // System.exit(-1);
+            }
             for(var x : node.childs){
                 topSortUtil(x, topSort);
             }
