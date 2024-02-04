@@ -1,5 +1,7 @@
 geneTreesInputPath=$1
 speciesTreeOutputPath=$2
+gtCleaned=$geneTreesInputPath-cleaned
+consensusTreePath=$gtCleaned-cons
 
 # check if any of the above paths are empty
 if [ -z "$geneTreesInputPath" ]
@@ -22,16 +24,33 @@ then
     exit 1
 fi
 
+echo "Gene Trees path: $geneTreesInputPath, output path: $speciesTreeOutputPath"
 
-resolvedPolytomyPath=$geneTreesInputPath.resolved
+
+echo "Cleaning input file"
+
+python3 ./treeCleaner.py < $geneTreesInputPath > $gtCleaned
+
+echo "Cleaned input file written to $gtCleaned"
+
+
+resolvedPolytomyPath=$gtCleaned.resolved
 
 echo "Resolving Polytomy"
 
-python3 arb_resolve_polytomies.py $geneTreesInputPath
+python3 arb_resolve_polytomies.py $gtCleaned
+python ./treeCleaner.py < $resolvedPolytomyPath > $resolvedPolytomyPath-cleaned
+rm $resolvedPolytomyPath
+echo "Resolved gene trees written to $resolvedPolytomyPath-cleaned"
 
-echo "Resolved gene trees written to $resolvedPolytomyPath"
 
-echo "Running run.sh script"
 
-bash run.sh $resolvedPolytomyPath $speciesTreeOutputPath
+echo "Generating consensus tree using paup"
+
+perl run_paup_consensus.pl -i $gtCleaned -o $consensusTreePath 
+
+echo " ===================== Running wQFM-TREE ===================== "
+
+java -jar wQFM-TREE.jar $resolvedPolytomyPath-cleaned $consensusTreePath.greedy.tree $speciesTreeOutputPath "A"
+
 
