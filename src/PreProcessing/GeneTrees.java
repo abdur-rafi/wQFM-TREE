@@ -149,7 +149,7 @@ public class GeneTrees {
 
 
         PartitionGraph partitionGraph = createPartitionGraph();
-        Partitions partitions = createPartitions(partitionGraph.realTaxaInPartition);
+        PartitionsByTreeNode partitions = createPartitions(partitionGraph.realTaxaInPartition);
 
 
         System.out.println("Partition graph created");
@@ -158,7 +158,20 @@ public class GeneTrees {
         System.out.println("Partitions created");
         System.out.println("Partitions count : " + partitions.getPartitionCount());
         
-
+        DataContainer dataContainer = new DataContainer();
+        dataContainer.partitionsByTreeNodes = partitions.partitions;
+        dataContainer.topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
+        dataContainer.realTaxaPartitionNodes = partitionGraph.taxaPartitionNodes;
+        dataContainer.realTaxaInTrees = new Boolean[geneTrees.size()][];
+        for(int i = 0; i < geneTrees.size(); ++i){
+            dataContainer.realTaxaInTrees[i] = new Boolean[this.realTaxaCount];
+            for(int j = 0; j < this.realTaxaCount; ++j){
+                dataContainer.realTaxaInTrees[i][j] = geneTrees.get(i).leaves[j] != null;
+            }
+        }
+        dataContainer.taxa = this.taxa;
+        
+        
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");
         //     System.exit(-1);
@@ -178,8 +191,8 @@ public class GeneTrees {
 
     }
 
-    public Partitions createPartitions(Map<PartitionNode, boolean[]> realTaxaInPartition){
-        Partitions partitions = new Partitions(realTaxaInPartition);
+    public PartitionsByTreeNode createPartitions(Map<PartitionNode, boolean[]> realTaxaInPartition){
+        PartitionsByTreeNode partitions = new PartitionsByTreeNode(realTaxaInPartition);
         for(Tree tree : geneTrees){
             for(TreeNode node : tree.topSortedNodes){
                 if(node.isLeaf() || node.isRoot()) continue;

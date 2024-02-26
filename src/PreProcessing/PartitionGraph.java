@@ -2,7 +2,10 @@ package src.PreProcessing;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 
 import src.Taxon.RealTaxon;
 
@@ -14,6 +17,8 @@ public class PartitionGraph {
     public Map<PartitionNode, boolean[]> realTaxaInPartition;
     private Map<String, PartitionNode> stringIdToPartition;
 
+    private ArrayList<PartitionNode> partitionNodes;
+
 
 
     public int count = 0;
@@ -24,6 +29,7 @@ public class PartitionGraph {
         this.taxaPartitionNodes = new PartitionNode[taxa.length];
         this.realTaxaInPartition = new HashMap<>();
         this.stringIdToPartition = new HashMap<>();
+        this.partitionNodes = new ArrayList<>();
 
         for(int i = 0; i < taxa.length; ++i){
             this.taxaPartitionNodes[i] = new PartitionNode(true);
@@ -62,10 +68,40 @@ public class PartitionGraph {
             }
             this.realTaxaInPartition.put(partitionNode, b);
             this.stringIdToPartition.put(partitionString, partitionNode);
+            this.partitionNodes.add(partitionNode);
             count += 1;
             return partitionNode;
         }
         
+    }
+
+    public ArrayList<PartitionNode> getTopSortedNodes(){
+        ArrayList<PartitionNode> topSortedNodes = new ArrayList<>();
+        
+        Queue<PartitionNode> q = new java.util.LinkedList<>();
+        Map<PartitionNode, Integer> inDegree = new HashMap<>();
+        
+        for(PartitionNode partitionNode: this.partitionNodes){
+            inDegree.put(partitionNode, partitionNode.parents.size());
+            if(partitionNode.parents.size() == 0){
+                q.add(partitionNode);
+            }
+        }
+
+        while(!q.isEmpty()){
+            PartitionNode partitionNode = q.poll();
+            topSortedNodes.add(partitionNode);
+            for(PartitionNode child: partitionNode.children){
+                inDegree.put(child, inDegree.get(child) - 1);
+                if(inDegree.get(child) == 0){
+                    q.add(child);
+                }
+            }
+        }
+        
+
+
+        return topSortedNodes;
     }
 
 

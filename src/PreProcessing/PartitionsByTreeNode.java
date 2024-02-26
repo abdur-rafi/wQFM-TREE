@@ -5,13 +5,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Partitions {
+public class PartitionsByTreeNode {
 
     public ArrayList<PartitionByTreeNode> partitions;
     public Map<PartitionNode, boolean[]> realTaxaInPartition;
     public Map<String, PartitionByTreeNode> stringIdToPartitionByTreeNode;
 
-    public Partitions(Map<PartitionNode, boolean[]> realTaxaInPartition){
+    public PartitionsByTreeNode(Map<PartitionNode, boolean[]> realTaxaInPartition){
         this.partitions = new ArrayList<>();
         this.realTaxaInPartition = realTaxaInPartition;
         this.stringIdToPartitionByTreeNode = new HashMap<>();
