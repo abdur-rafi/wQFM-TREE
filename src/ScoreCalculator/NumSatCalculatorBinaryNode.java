@@ -20,13 +20,13 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         
         public NumSatCalculatorNodeE nscn;
 
-        public TestNodeE(Branch[] b, int[] dummyTaxaToPartitionMap, double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual){
+        public TestNodeE(Branch[] b, int[] dummyTaxaToPartitionMap){
             
             Branch[] bcs = new Branch[b.length];
             for(int i = 0; i < b.length; ++i){
                 bcs[i] = new Branch(b[i]);
             }
-            this.nscn = new NumSatCalculatorNodeE(bcs, dummyTaxaToPartitionMap, totalTaxaA, totalTaxaB,dummyTaxaWeightsIndividual);
+            this.nscn = new NumSatCalculatorNodeE(bcs, dummyTaxaToPartitionMap);
         }
 
         public void testScore(double score){
@@ -50,7 +50,7 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
 
     }
 
-    public NumSatCalculatorBinaryNode(Branch[] b, int[] dummyTaxaToPartitionMap, double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual) {
+    public NumSatCalculatorBinaryNode(Branch[] b, int[] dummyTaxaToPartitionMap) {
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         subs = new double[3][2];
@@ -74,7 +74,7 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
         gainsOfBranches = new double[3][2];
 
         if(testE){
-            this.test = new TestNodeE(b, dummyTaxaToPartitionMap, totalTaxaA, totalTaxaB, dummyTaxaWeightsIndividual);
+            this.test = new TestNodeE(b, dummyTaxaToPartitionMap);
         }
 
     }

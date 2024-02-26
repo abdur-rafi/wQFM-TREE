@@ -10,7 +10,7 @@ public class DataContainer {
     public ArrayList<PartitionByTreeNode> partitionsByTreeNodes;
     public ArrayList<PartitionNode> topSortedPartitionNodes;
     public PartitionNode[] realTaxaPartitionNodes;
-    public Boolean[][] realTaxaInTrees;
+    public boolean[][] realTaxaInTrees;
     public RealTaxon[] taxa;
 
     // public DataContainer(

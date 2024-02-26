@@ -85,11 +85,11 @@ public class BookKeepingPerTree {
                 NumSatCalculatorNode sCalculatorNode = null;
                 // sCalculatorNode  = new NumSatCalculatorNodeE(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
                 if(node.childs.size() == 2){
-                    sCalculatorNode = new NumSatCalculatorBinaryNode(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
+                    sCalculatorNode = new NumSatCalculatorBinaryNode(node.info.branches, taxas.dummyTaxonPartition);
                 }
                 else if(node.childs.size() > 2){
                     // System.out.println("klajsdf");
-                    sCalculatorNode = new NumSatCalculatorNodeE(node.info.branches, taxas.dummyTaxonPartition, getTotalTaxon(0), getTotalTaxon(1), dummyTaxonWeightsIndividual);
+                    sCalculatorNode = new NumSatCalculatorNodeE(node.info.branches, taxas.dummyTaxonPartition);
                 }
                 else{
                     System.out.println("error, branch length is less than 3");

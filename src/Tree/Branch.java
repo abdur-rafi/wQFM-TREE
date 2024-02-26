@@ -62,4 +62,14 @@ public class Branch {
         // // this.dummyTaxaWeightSums = b.dummyTaxaWeightSums.clone();
         // this.totalTaxaCounts = b.totalTaxaCounts.clone();
     }
+
+    public void addToSelf(Branch b){
+        for(int i = 0; i < this.totalTaxaCounts.length; ++i){
+            this.totalTaxaCounts[i] += b.totalTaxaCounts[i];
+            this.realTaxaCounts[i] += b.realTaxaCounts[i];
+        }
+        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
+            this.dummyTaxaWeightsIndividual[i] += b.dummyTaxaWeightsIndividual[i];
+        }
+    }
 }

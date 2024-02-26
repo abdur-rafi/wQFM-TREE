@@ -162,15 +162,15 @@ public class GeneTrees {
         dataContainer.partitionsByTreeNodes = partitions.partitions;
         dataContainer.topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
         dataContainer.realTaxaPartitionNodes = partitionGraph.taxaPartitionNodes;
-        dataContainer.realTaxaInTrees = new Boolean[geneTrees.size()][];
+        dataContainer.realTaxaInTrees = new boolean[geneTrees.size()][];
         for(int i = 0; i < geneTrees.size(); ++i){
-            dataContainer.realTaxaInTrees[i] = new Boolean[this.realTaxaCount];
+            dataContainer.realTaxaInTrees[i] = new boolean[this.realTaxaCount];
             for(int j = 0; j < this.realTaxaCount; ++j){
                 dataContainer.realTaxaInTrees[i][j] = geneTrees.get(i).leaves[j] != null;
             }
         }
         dataContainer.taxa = this.taxa;
-        
+
         
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");

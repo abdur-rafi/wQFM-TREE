@@ -100,15 +100,14 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
     //     return q;
     // }
 
-    public NumSatCalculatorNodeE(Branch[] b, int[] dummyTaxaToPartitionMap,
-    double totalTaxaA, double totalTaxaB, double[] dummyTaxaWeightsIndividual) {
+    public NumSatCalculatorNodeE(Branch[] b, int[] dummyTaxaToPartitionMap) {
 
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
         // this.totalTaxaA = totalTaxaA;
         // this.totalTaxaB = totalTaxaB;
-        this.dummyTaxaWeightsIndividual = dummyTaxaWeightsIndividual;
-        this.totalTaxa = new double[]{totalTaxaA, totalTaxaB};
+        this.dummyTaxaWeightsIndividual = new double[b[0].dummyTaxaWeightsIndividual.length];
+        this.totalTaxa = new double[2];
 
         this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
 
@@ -148,6 +147,7 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             pairsBFromSingleBranch[i] = b[i].totalTaxaCounts[1] * b[i].totalTaxaCounts[1];
             for(int k = 0; k < this.nDummyTaxa; ++k){
                 int partition = this.dummyTaxaPartition[k];
+                this.dummyTaxaWeightsIndividual[k] += b[i].dummyTaxaWeightsIndividual[k];
                 if(partition == 1){
                     pairsBFromSingleBranch[i] -= b[i].dummyTaxaWeightsIndividual[k] * b[i].dummyTaxaWeightsIndividual[k];
                 }
@@ -155,6 +155,10 @@ public class NumSatCalculatorNodeE implements NumSatCalculatorNode {
             pairsBFromSingleBranch[i] -= b[i].realTaxaCounts[1];
             pairsBFromSingleBranch[i] /= 2;
             this.sumPairsBSingleBranch += pairsBFromSingleBranch[i];
+
+            this.totalTaxa[0] += b[i].totalTaxaCounts[0];
+            this.totalTaxa[1] += b[i].totalTaxaCounts[1];
+            
         }
 
         if(Config.NON_QUARTET_TYPE == Config.NonQuartetType.A){
