@@ -6,30 +6,15 @@ import java.util.Map;
 
 import src.Taxon.RealTaxon;
 
-
-class Utility{
-    public static String getPartitionString(boolean[] b){
-        StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < b.length; ++i){
-            if(b[i]){
-                sb.append("1");
-            }
-            else{
-                sb.append("0");
-            }
-        }
-        return sb.toString();
-    }
-
-}
-
 public class PartitionGraph {
     
 
     public RealTaxon[] taxa;
     public PartitionNode[] taxaPartitionNodes;
-    private Map<PartitionNode, boolean[]> realTaxaInPartition;
+    public Map<PartitionNode, boolean[]> realTaxaInPartition;
     private Map<String, PartitionNode> stringIdToPartition;
+
+
 
     public int count = 0;
     

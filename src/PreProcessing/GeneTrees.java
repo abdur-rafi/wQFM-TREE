@@ -25,6 +25,7 @@ public class GeneTrees {
     public int realTaxaCount;
     public String path;
 
+
     private void parseTaxa(String newickLine, Set<String> taxaSet){
         newickLine.replaceAll("\\s", "");
     
@@ -148,15 +149,56 @@ public class GeneTrees {
 
 
         PartitionGraph partitionGraph = createPartitionGraph();
+        Partitions partitions = createPartitions(partitionGraph.realTaxaInPartition);
+
 
         System.out.println("Partition graph created");
         System.out.println("Partition graph nodes count : " + partitionGraph.count);
+
+        System.out.println("Partitions created");
+        System.out.println("Partitions count : " + partitions.getPartitionCount());
+        
 
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");
         //     System.exit(-1);
         // }
 
+    }
+
+    void printPartition(boolean[] b){
+        StringBuffer sb = new StringBuffer();
+        for(int i = 0; i < this.taxa.length; ++i){
+            if(b[i]){
+                sb.append(this.taxa[i].label);
+                sb.append(",");
+            }
+        }
+        System.out.println(sb.toString());
+
+    }
+
+    public Partitions createPartitions(Map<PartitionNode, boolean[]> realTaxaInPartition){
+        Partitions partitions = new Partitions(realTaxaInPartition);
+        for(Tree tree : geneTrees){
+            for(TreeNode node : tree.topSortedNodes){
+                if(node.isLeaf() || node.isRoot()) continue;
+                ArrayList<PartitionNode> ps = new ArrayList<>();
+                for(TreeNode child : node.childs){
+                    ps.add(child.partitionNode);
+                }
+                ps.add(node.parentPartitionNode);
+                PartitionNode[] p = new PartitionNode[ps.size()];
+                for(int i = 0; i < ps.size(); ++i){
+                    p[i] = ps.get(i);
+                }
+                partitions.addPartitionByTreeNode(p);
+                // System.out.println("=============Partition=================");
+                // for(int i = 0; i < ps.size(); ++i)
+                //     printPartition(realTaxaInPartition.get(p[i]));
+            }
+        }
+        return partitions;
     }
 
     public PartitionGraph createPartitionGraph(){
