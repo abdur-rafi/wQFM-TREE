@@ -3,6 +3,7 @@ package src.Tree;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import src.PreProcessing.PartitionNode;
 import src.Taxon.RealTaxon;
 import src.Tree.TreePrinter.PrintableNode;
 
@@ -18,6 +19,9 @@ public class TreeNode implements TreePrinter.PrintableNode {
     public Info info;
     
     public double weight;
+
+    public PartitionNode partitionNode;
+    public PartitionNode parentPartitionNode;
     
 
 
@@ -32,6 +36,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
         taxon = null;
         weight = 0;
         frequency = 0;
+        this.partitionNode = null;
     }
 
     public TreeNode setIndex(int id){

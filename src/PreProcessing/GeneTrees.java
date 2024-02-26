@@ -83,6 +83,16 @@ public class GeneTrees {
             taxaMap.put(x, taxon);
         }
 
+
+        this.taxonIdToLabel = new String[this.taxaMap.size()];
+        this.taxa = new RealTaxon[this.taxaMap.size()];
+        this.realTaxaCount = this.taxaMap.size();
+
+        for(var x : this.taxaMap.entrySet()){
+            taxonIdToLabel[x.getValue().id] = x.getKey();
+            taxa[x.getValue().id] = x.getValue();
+        }
+
         return taxaMap;
     }
 
@@ -128,14 +138,7 @@ public class GeneTrees {
         
         scanner.close();
         
-        this.taxonIdToLabel = new String[this.taxaMap.size()];
-        this.taxa = new RealTaxon[this.taxaMap.size()];
-        this.realTaxaCount = this.taxaMap.size();
-
-        for(var x : this.taxaMap.entrySet()){
-            taxonIdToLabel[x.getValue().id] = x.getKey();
-            taxa[x.getValue().id] = x.getValue();
-        }
+        
 
 
         System.out.println( "taxon count : " + this.taxaMap.size());
@@ -143,11 +146,54 @@ public class GeneTrees {
         System.out.println( "total internal nodes : " + internalNodesCount);
         System.out.println( "unique partitions : " + triPartitions.size());
 
+
+        PartitionGraph partitionGraph = createPartitionGraph();
+
+        System.out.println("Partition graph created");
+        System.out.println("Partition graph nodes count : " + partitionGraph.count);
+
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");
         //     System.exit(-1);
         // }
 
+    }
+
+    public PartitionGraph createPartitionGraph(){
+        PartitionGraph partitionGraph = new PartitionGraph(this.taxa);
+        for(Tree tree : geneTrees){
+            for(TreeNode node : tree.leaves){
+                node.partitionNode = partitionGraph.getPartitionNode(node.taxon);
+            }
+
+            for (TreeNode node : tree.topSortedNodes) {
+                if(node.isRoot() || node.isLeaf()) continue;
+                ArrayList<PartitionNode> childs = new ArrayList<>();
+                for(TreeNode child : node.childs){
+                    childs.add(child.partitionNode);
+                }
+                node.partitionNode = partitionGraph.addPartition(childs);
+            }
+            tree.root.childs.get(0).parentPartitionNode = tree.root.childs.get(1).partitionNode;
+            tree.root.childs.get(1).parentPartitionNode = tree.root.childs.get(0).partitionNode;
+            
+            int sz = tree.topSortedNodes.size() - 1;
+            for(int i = sz - 1; i > -1; --i){
+                TreeNode node = tree.topSortedNodes.get(i);
+                if(node.isLeaf() || node.parent == tree.root) continue;
+
+                ArrayList<PartitionNode> childs = new ArrayList<>();
+                for(TreeNode child : node.parent.childs){
+                    if(child == node) continue;
+                    childs.add(child.partitionNode);
+                }
+                childs.add(node.parent.parentPartitionNode);
+                node.parentPartitionNode = partitionGraph.addPartition(childs);
+            }
+        }
+
+        return partitionGraph;
+        
     }
 
     public GeneTrees(String path) throws FileNotFoundException{
