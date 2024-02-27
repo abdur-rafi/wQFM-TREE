@@ -165,4 +165,16 @@ public class BookKeepingPerLevelDC {
         return totalScore;
     }
 
+    public void swapRealTaxon(int index){
+        
+        int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
+        this.taxaPerLevel.swapPartitionRealTaxon(index);
+
+        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+            bkpt.swapRealTaxon(index, partition);
+        }
+
+        
+    }
+
 }

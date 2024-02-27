@@ -1,5 +1,7 @@
 package src.DSPerLevel;
 
+import src.Taxon.RealTaxon;
+
 public class BookKeepingPerTreeDC {
     boolean[] realTaxaInTree;
     TaxaPerLevelWithPartition taxaPerLevel;
@@ -79,5 +81,16 @@ public class BookKeepingPerTreeDC {
         }
         return (this.pairsFromPart[1 - toPartition] - (this.getTotalTaxon(1 - toPartition) - 1)) * 
         (this.pairsFromPart[toPartition] + (this.getTotalTaxon(toPartition)));
+    }
+
+    public void swapRealTaxon(int rtId, int partition){
+        if(!this.realTaxaInTree[rtId]) return;
+
+        this.pairsFromPart[ 1 - partition] += this.getTotalTaxon(1 - partition);
+        this.pairsFromPart[partition] -= this.getTotalTaxon(partition) - 1;
+        
+        this.realTaxaCountsInPartitions[partition]--;
+        this.realTaxaCountsInPartitions[1 - partition]++;
+
     }
 }

@@ -13,6 +13,11 @@ public class PartitionByTreeNode {
         this.partitionNodes = partitionNodes;
         this.count = 1;
         this.scoreCalculator = null;
+
+        for(int i = 0; i < partitionNodes.length; ++i){
+            PartitionNode p = partitionNodes[i];
+            p.addNodePartitions(this, i);
+        }
     }
 
     public void increaseCount(){
