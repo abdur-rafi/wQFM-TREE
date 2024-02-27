@@ -159,6 +159,7 @@ public class GeneTrees {
         System.out.println("Partitions count : " + partitions.getPartitionCount());
         
         DataContainer dataContainer = new DataContainer();
+        
         dataContainer.partitionsByTreeNodes = partitions.partitions;
         dataContainer.topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
         dataContainer.realTaxaPartitionNodes = partitionGraph.taxaPartitionNodes;

@@ -37,6 +37,7 @@ public class PartitionGraph {
             realTaxaInSubTree[i] = true;
             this.realTaxaInPartition.put(this.taxaPartitionNodes[i], realTaxaInSubTree);
             this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.taxaPartitionNodes[i]);
+            this.partitionNodes.add(this.taxaPartitionNodes[i]);
         }
 
         count = taxa.length;
@@ -82,9 +83,11 @@ public class PartitionGraph {
         Map<PartitionNode, Integer> inDegree = new HashMap<>();
         
         for(PartitionNode partitionNode: this.partitionNodes){
-            inDegree.put(partitionNode, partitionNode.parents.size());
             if(partitionNode.parents.size() == 0){
                 q.add(partitionNode);
+            }
+            else{
+                inDegree.put(partitionNode, partitionNode.parents.size());
             }
         }
 
