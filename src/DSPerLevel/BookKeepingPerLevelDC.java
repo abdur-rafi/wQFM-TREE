@@ -22,8 +22,8 @@ import src.Tree.Branch;
 
 public class BookKeepingPerLevelDC {
 
-    DataContainer dc;
-    TaxaPerLevelWithPartition taxaPerLevel;
+    public DataContainer dc;
+    public TaxaPerLevelWithPartition taxaPerLevel;
     BookKeepingPerTreeDC[] bookKeepingPerTreeDCs;
 
     public BookKeepingPerLevelDC(DataContainer dc, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
