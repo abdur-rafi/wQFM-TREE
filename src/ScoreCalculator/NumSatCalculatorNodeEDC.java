@@ -1,6 +1,5 @@
 package src.ScoreCalculator;
 
-import src.Config;
 import src.Tree.Branch;
 
 public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
@@ -152,7 +151,7 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         this.totalTaxa[currPartition] -= 1;
         this.totalTaxa[1 - currPartition] += 1;
         this.nonQuartets += changeAmount(branchIndex);
-        branches[branchIndex].swapRealTaxa(currPartition);
+
 
     }
     @Override
@@ -196,11 +195,6 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         this.totalTaxa[1 - currPartition] += this.dummyTaxaWeightsIndividual[dummyIndex];
         this.totalTaxa[currPartition] -= this.dummyTaxaWeightsIndividual[dummyIndex];
 
-
-        for(int i = 0; i < this.branches.length; ++i){
-            branches[i].swapDummyTaxon(dummyIndex, currPartition);
-        }
-
         this.nonQuartets = calcNonQuartets();
         
     }
@@ -213,8 +207,10 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
             for(int p = 0; p < 2; ++p){
                 if(this.branches[i].realTaxaCounts[p] > 0){
                     this.swapRealTaxon(i, p);
+                    this.branches[i].swapRealTaxa(p);
                     gainsOfBranches[i][p] = multiplier * (this.score() - originalScore);
                     this.swapRealTaxon(i, 1 - p);
+                    this.branches[i].swapRealTaxa(1 - p);
                 }
             }
         }
@@ -227,8 +223,14 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
             this.swapDummyTaxon(i, currPartition);
+            for(int j = 0; j < this.branches.length; ++j){
+                this.branches[j].swapDummyTaxon(i, currPartition);
+            }
             dummyTaxaGains[i] += multiplier * (this.score() - originalScore);
             this.swapDummyTaxon(i, 1 - currPartition);
+            for(int j = 0; j < this.branches.length; ++j){
+                this.branches[j].swapDummyTaxon(i, 1 - currPartition);
+            }
         }
     }
 

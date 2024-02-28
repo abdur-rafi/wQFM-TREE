@@ -1,14 +1,23 @@
 package src.DSPerLevel;
 
 
+import java.util.ArrayDeque;
+import java.util.HashSet;
+import java.util.Queue;
+import java.util.Set;
+
 import src.Config;
 import src.Utility;
+import src.InitialPartition.IMakePartition;
 import src.PreProcessing.Data;
 import src.PreProcessing.DataContainer;
 import src.PreProcessing.PartitionByTreeNode;
 import src.PreProcessing.PartitionNode;
-import src.ScoreCalculator.NumSatCalculatorBinaryNode;
-import src.ScoreCalculator.NumSatCalculatorNodeE;
+import src.PreProcessing.PartitionNode.PartitionByTreeNodeWithIndex;
+import src.ScoreCalculator.NumSatCalculatorBinaryNodeDC;
+import src.ScoreCalculator.NumSatCalculatorNodeEDC;
+import src.Taxon.DummyTaxon;
+import src.Taxon.RealTaxon;
 import src.Tree.Branch;
 
 public class BookKeepingPerLevelDC {
@@ -74,10 +83,10 @@ public class BookKeepingPerLevelDC {
                 b[i] = p.partitionNodes[i].data.branch;
             }
             if(p.partitionNodes.length > 3){
-                p.scoreCalculator = new NumSatCalculatorNodeE(b,this.taxaPerLevel.dummyTaxonPartition);
+                p.scoreCalculator = new NumSatCalculatorNodeEDC(b,this.taxaPerLevel.dummyTaxonPartition);
             }
             else{
-                p.scoreCalculator = new NumSatCalculatorBinaryNode(b, this.taxaPerLevel.dummyTaxonPartition);
+                p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
             }
         }
     }
@@ -174,7 +183,134 @@ public class BookKeepingPerLevelDC {
             bkpt.swapRealTaxon(index, partition);
         }
 
-        
+        Queue<PartitionNode> q = new ArrayDeque<>();
+        // q.add(this.dc.realTaxaPartitionNodes[index]);
+        q.addAll(this.dc.realTaxaPartitionNodes[index].parents);
+
+        while(!q.isEmpty()){
+            PartitionNode f = q.poll();
+            f.data.branch.swapRealTaxa(partition);
+            for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
+                p.partitionByTreeNode.scoreCalculator.swapRealTaxon(
+                    p.index,
+                    partition
+                );
+
+            }
+            q.addAll(f.parents);
+        }
     }
+
+    public void swapDummyTaxon(int index){
+        int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(index);
+        this.taxaPerLevel.swapPartitionDummyTaxon(index);
+        
+        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+            bkpt.swapDummyTaxon(index, partition);
+        }
+
+        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+            p.scoreCalculator.swapDummyTaxon(index, partition);
+        }
+
+        Set<PartitionNode> st = new HashSet<>();
+        
+        Queue<PartitionNode> q = new ArrayDeque<>();
+        DummyTaxon dt = this.taxaPerLevel.dummyTaxa[index];
+
+        for(RealTaxon rt : dt.flattenedRealTaxa){
+            for(PartitionNode p : this.dc.realTaxaPartitionNodes[rt.id].parents){
+                if(st.add(p)){
+                    q.add(p);
+                }
+            }
+        }
+
+        while(!q.isEmpty()){
+            PartitionNode f = q.poll();
+            f.data.branch.swapDummyTaxon(index, partition);
+            for(PartitionNode p : f.parents){
+                if(st.add(p)){
+                    q.add(p);
+                }
+            }
+        }
+
+    }
+
+    public void swapTaxon(int index, boolean isDummy){
+        if(isDummy) this.swapDummyTaxon(index);
+        else this.swapRealTaxon(index);
+    }
+
+    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition, boolean allowSingleton){
+        RealTaxon[][] rts = new RealTaxon[2][];
+        DummyTaxon[][] dts = new DummyTaxon[2][];
+
+
+        for(int i = 0; i < 2; ++i){
+            rts[i] = new RealTaxon[this.taxaPerLevel.getRealTaxonCountInPartition(i)];
+            dts[i] = new DummyTaxon[this.taxaPerLevel.getDummyTaxonCountInPartition(i)];
+            // var x = makePartition.makePartition(rts[i], dts[i]);
+            // rtsPart[i] = x.realTaxonPartition;
+            // dtsPart[i] = x.dummyTaxonPartition;
+        }
+
+        int[] index = new int[2];
+
+        for(var x : this.taxaPerLevel.realTaxa){
+            int part = this.taxaPerLevel.inWhichPartition(x.id);
+            rts[part][index[part]++] = x;
+        }
+        index[0] = 0;
+        index[1] = 0;
+        int i = 0;
+        for(var x : this.taxaPerLevel.dummyTaxa){
+            int part = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i++);
+            dts[part][index[part]++] = x;
+        }
+
+
+        // ith dummy taxon for ith partition
+        DummyTaxon[] newDt = new DummyTaxon[2];
+        
+        
+
+        // BookKeepingPerLevel[] bookKeepingPerLevels = new BookKeepingPerLevel[2];
+        TaxaPerLevelWithPartition[] taxaPerLevelWithPartitions = new TaxaPerLevelWithPartition[2];
+        for( i = 0; i < 2; ++i){
+            newDt[i] = new DummyTaxon(rts[1 - i], dts[1 - i]);
+            
+            DummyTaxon[] dtsWithNewDt = new DummyTaxon[dts[i].length + 1];
+            for(int j = 0; j < dts[i].length; ++j){
+                dtsWithNewDt[j] = dts[i][j];
+            }
+            dtsWithNewDt[dtsWithNewDt.length - 1] = newDt[i];
+
+            if(rts[i].length + dtsWithNewDt.length > 3){
+
+                var y = makePartition.makePartition(rts[i], dtsWithNewDt, true);
+                taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
+                    rts[i], dtsWithNewDt, 
+                    y.realTaxonPartition, 
+                    y.dummyTaxonPartition, 
+                    this.dc.taxa.length
+                );
+            }
+            else{
+                taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
+                    rts[i], dtsWithNewDt, 
+                    null, null,
+                    this.dc.taxa.length
+                );
+            }
+            
+            // bookKeepingPerLevels[i] = new BookKeepingPerLevel(this.geneTrees,x);
+        }
+
+        return taxaPerLevelWithPartitions;
+    }
+
+
 
 }

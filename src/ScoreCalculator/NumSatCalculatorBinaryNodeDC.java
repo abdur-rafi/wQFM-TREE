@@ -86,8 +86,6 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
     @Override
     public void swapRealTaxon(int branchIndex, int currPartition){
 
-        branches[branchIndex].swapRealTaxa(currPartition);
-
         if(currPartition == 0){
             this.subs[branchIndex][1] += 1;
         }
@@ -105,7 +103,6 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
 
         for(int i = 0; i < 3; ++i){
 
-            branches[i].swapDummyTaxon(dummyIndex, currPartition);
             currDummyCountCurrBranch = branches[i].dummyTaxaWeightsIndividual[dummyIndex];
             currDummyCountNextBranch = branches[(i + 1) % 3].dummyTaxaWeightsIndividual[dummyIndex];
 
@@ -130,29 +127,11 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
         Branch curr = branches[i];
         for(int p = 0; p < 2; ++p){
             if(curr.realTaxaCounts[p] > 0){
-                curr.totalTaxaCounts[p]--;
-                curr.totalTaxaCounts[ ( p + 1) % 2]++;
-                
-                if(p == 0){
-                    this.subs[i][1] += 1;
-                }
-                else{
-                    this.subs[i][1] -= 1;
-                }
-                
-
+                this.swapRealTaxon(i, p);
+                curr.swapRealTaxa(p);
                 gainsOfBranches[i][p] = multiplier * (score() - originalScore);
-
-
-                curr.totalTaxaCounts[p]++;
-                curr.totalTaxaCounts[ ( p + 1) % 2]--;
-
-                if(p == 0){
-                    this.subs[i][1] -= 1;
-                }
-                else{
-                    this.subs[i][1] += 1;
-                }
+                this.swapRealTaxon(i, 1 - p);
+                curr.swapRealTaxa(1 - p);
             }
         }
     }
@@ -165,20 +144,18 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
             int switchedPartition = 1 - currPartition;
 
             this.swapDummyTaxon(i, currPartition);
+            for(Branch b : this.branches){
+                b.swapDummyTaxon(i, currPartition);
+            }
 
             double newScore = score();
 
-            // if(this.testE){
-            //     this.test.nscn.swapDummyTaxon(i, currPartition);
-            //     // this.test.testScore(newScore);
-            // }
-
             dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
+            
             this.swapDummyTaxon(i, switchedPartition);
-
-            // if(this.testE){
-            //     this.test.nscn.swapDummyTaxon(i, switchedPartition);
-            // }
+            for(Branch b : this.branches){
+                b.swapDummyTaxon(i, switchedPartition);
+            }
         }
     }
 

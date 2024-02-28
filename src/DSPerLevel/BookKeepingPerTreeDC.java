@@ -93,4 +93,15 @@ public class BookKeepingPerTreeDC {
         this.realTaxaCountsInPartitions[1 - partition]++;
 
     }
+
+    public void swapDummyTaxon(int index, int partition){
+
+        this.pairsFromPart[ 1 - partition] += this.dummyTaxonWeightsIndividual[index] * this.getTotalTaxon(1 - partition);
+        this.pairsFromPart[partition] -= this.dummyTaxonWeightsIndividual[index] * (this.getTotalTaxon(partition) - this.dummyTaxonWeightsIndividual[index]);
+        
+        this.dummyTaxonCountsInPartitions[partition] -= this.dummyTaxonWeightsIndividual[index];
+        this.dummyTaxonCountsInPartitions[1 - partition] += this.dummyTaxonWeightsIndividual[index];
+
+    }
+
 }
