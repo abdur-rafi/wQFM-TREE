@@ -97,7 +97,7 @@ public class GeneTrees {
         return taxaMap;
     }
 
-    public void readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
+    public DataContainer readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
         int internalNodesCount = 0;
 
         Scanner scanner = new Scanner(new File(path));
@@ -172,6 +172,7 @@ public class GeneTrees {
         }
         dataContainer.taxa = this.taxa;
 
+        return dataContainer;
         
         // if(internalNodesCount == 50000){
         //     System.out.println("No polytomy, skipping");

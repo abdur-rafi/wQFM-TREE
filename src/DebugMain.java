@@ -4,7 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import src.DSPerLevel.BookKeepingPerLevel;
+import src.DSPerLevel.BookKeepingPerLevelDC;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
+import src.PreProcessing.DataContainer;
 import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
@@ -264,7 +266,12 @@ public class DebugMain {
     
     public static void main(String[] args) throws IOException {
         // cgTest1();
-        example();
+        // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        // trees.readTaxaNames();
+        // trees.readGeneTrees(null);
+
+        tc2();
+        // example();
         // polytomyTc2();
         // polytomyTc2();
         // new GeneTrees("../run/07.trueGT.cleaned");
@@ -355,7 +362,11 @@ public class DebugMain {
 
 
     // 30 - 0 ?
-    public static void tc1(GeneTrees trees){
+    public static void tc1() throws FileNotFoundException{
+        GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        trees.readTaxaNames();
+        DataContainer dc = trees.readGeneTrees(null);
+
         RealTaxon[] rt = new RealTaxon[5];
         rt[0] = trees.taxaMap.get("1");
         rt[1] = trees.taxaMap.get("2");
@@ -402,10 +413,28 @@ public class DebugMain {
             System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
         }
 
+        BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(dc, taxa);
+
+        rtGains = new double[5][2];
+        dtGains = new double[1];
+        System.out.println("score : " + bookDc.calculateScoreAndGains(rtGains, dtGains));
+
+        for(int i = 0; i < rtGains.length; ++i){
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+
+        for(int i = 0; i < dtGains.length; ++i){
+            System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
+        }
+
     }
 
     // -1
-    public static void tc2(GeneTrees trees){
+    public static void tc2() throws FileNotFoundException{
+        GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+        trees.readTaxaNames();
+        DataContainer dc = trees.readGeneTrees(null);
+
         RealTaxon[] rt = new RealTaxon[4];
         rt[0] = trees.taxaMap.get("1");
         rt[1] = trees.taxaMap.get("2");
@@ -450,12 +479,35 @@ public class DebugMain {
         BookKeepingPerLevel bookKeepingPerLevel = new BookKeepingPerLevel(trees, taxa, Config.ALLOW_SINGLETON);
 
 
-        // double[][] rtGains = new double[4][2];
-        // double[] dtGains = new double[1];
+        double[][] rtGains = new double[4][2];
+        double[] dtGains = new double[1];
 
-        System.out.println( "scorea  : " + bookKeepingPerLevel.calculateScore());
+        // System.out.println( "scorea  : " + bookKeepingPerLevel.calculateScore());
 
-        // System.out.println( "score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+        System.out.println( "score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
+
+        for(int i = 0; i < rtGains.length; ++i){
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+        for(int i = 0; i < dtGains.length; ++i){
+            System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
+        }
+
+        rtGains = new double[4][2];
+        dtGains = new double[1];
+
+        BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(dc, taxa);
+
+        System.out.println( "score : " + bookDc.calculateScoreAndGains(rtGains, dtGains));
+
+        for(int i = 0; i < rtGains.length; ++i){
+            System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
+        }
+
+        for(int i = 0; i < dtGains.length; ++i){
+            System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
+        }
+
     }
 
 

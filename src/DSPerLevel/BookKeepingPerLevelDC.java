@@ -146,11 +146,24 @@ public class BookKeepingPerLevelDC {
 
         double totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(currTotalQuartets, totalSat);
 
-        for(int i = 0; i < this.dc.realTaxaPartitionNodes.length; ++i){
-            PartitionNode p = this.dc.realTaxaPartitionNodes[i];
-            Utility.addArrayToFirst(realTaxaGains[i], p.data.gainsForSubTree);
+        // for(int i = 0; i < this.dc.realTaxaPartitionNodes.length; ++i){
+        //     PartitionNode p = this.dc.realTaxaPartitionNodes[i];
+        //     Utility.addArrayToFirst(realTaxaGains[i], p.data.gainsForSubTree);
+        //     double totalQuartetsAfterTransferringi = 0;
+        //     int partition = this.taxaPerLevel.inWhichPartition(i);
+        //     for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+        //         totalQuartetsAfterTransferringi += bkpt.totalQuartetsAfterSwap(i, 1 - partition);
+        //     }
+        //     realTaxaGains[i][partition] += totalSat;
+        //     realTaxaGains[i][partition] = Config.SCORE_EQN.scoreFromSatAndTotal(totalQuartetsAfterTransferringi, realTaxaGains[i][partition]);
+        //     realTaxaGains[i][partition] -= totalScore;   
+        // }
+
+        for(int i = 0; i < this.taxaPerLevel.realTaxonCount; ++i){
+            RealTaxon rt = this.taxaPerLevel.realTaxa[i];
+            int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i);
+            Utility.addArrayToFirst(realTaxaGains[i], this.dc.realTaxaPartitionNodes[rt.id].data.gainsForSubTree);
             double totalQuartetsAfterTransferringi = 0;
-            int partition = this.taxaPerLevel.inWhichPartition(i);
             for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
                 totalQuartetsAfterTransferringi += bkpt.totalQuartetsAfterSwap(i, 1 - partition);
             }

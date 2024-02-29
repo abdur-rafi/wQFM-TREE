@@ -44,6 +44,8 @@ public class QFMDC {
         this.level++;
         int itrCount = 0;
 
+        System.out.println("Level: " + this.level);
+
         boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         if(allowSingleton){
@@ -75,7 +77,7 @@ public class QFMDC {
             
         }
 
-        // System.out.println( "#iterations: " + itrCount);
+        System.out.println( "#iterations: " + itrCount);
 
         Tree[] trees = new Tree[2];
 

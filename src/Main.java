@@ -4,8 +4,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 import src.InitialPartition.ConsensusTreePartition;
+import src.InitialPartition.ConsensusTreePartitionDC;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
+import src.PreProcessing.Preprocess;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -71,13 +73,17 @@ public class Main {
         long time_1 = System.currentTimeMillis(); //calculate starting time
         long cpuTimeBefore = threadMXBean.getCurrentThreadCpuTime();
 
-        GeneTrees trees = new GeneTrees(inputFilePath);
-        var taxaMap = trees.readTaxaNames();
+        // GeneTrees trees = new GeneTrees(inputFilePath);
+        // var taxaMap = trees.readTaxaNames();
 
-        ConsensusTreePartition consensusTreePartition = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
         
-        trees.readGeneTrees(consensusTreePartition.dist);
-
+        
+        // trees.readGeneTrees(consensusTreePartition.dist);
+        
+        Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
+        
+        // ConsensusTreePartition consensusTreePartition = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
+        ConsensusTreePartitionDC consensusTreePartition = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
         IMakePartition  partitionMaker = consensusTreePartition;
 
 
@@ -88,7 +94,8 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
-        var qfm = new QFM(trees, trees.taxa, partitionMaker);
+        // var qfm = new QFM(trees, trees.taxa, partitionMaker);
+        QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMaker);
         
         var spTree = qfm.runWQFM();
 
@@ -97,6 +104,7 @@ public class Main {
         writer.write(spTree.getNewickFormat());
 
         writer.close();
+
         long cpuTimeAfter = threadMXBean.getCurrentThreadCpuTime();
 
         long time_del = System.currentTimeMillis() - time_1;
@@ -108,22 +116,11 @@ public class Main {
 
         seconds = cpuTimeUsed / 1_000_000_000;
         
-        // Calculate remaining nanoseconds after converting to seconds
-        // long remainingNanos = cpuTimeUsed % 1_000_000_000;
-
-        // Convert remaining nanoseconds to milliseconds
-        // long milliseconds = remainingNanos / 1_000_000;
-
-        // Calculate minutes
         minutes = seconds / 60;
         seconds = seconds % 60;
 
         System.out.println("CPU time used: " + minutes + " minutes, " + seconds + " seconds");
-        // System.out.println(spTree.getNewickFormat());
-        // tc5(trees);
-
-
-        // System.out.println(trees.taxonIdToLabel);
+    
     }
 
     
