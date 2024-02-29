@@ -197,21 +197,33 @@ public class BookKeepingPerLevelDC {
             bkpt.swapRealTaxon(rtId, partition);
         }
         
-        this.dc.realTaxaPartitionNodes[rtId].data.branch.swapRealTaxa(partition);
+        // this.dc.realTaxaPartitionNodes[rtId].data.branch.swapRealTaxa(partition);
 
         Queue<PartitionNode> q = new ArrayDeque<>();
         // q.add(this.dc.realTaxaPartitionNodes[index]);
         // System.out.println(this.dc.realTaxaPartitionNodes[rtId].parents);
-        q.addAll(this.dc.realTaxaPartitionNodes[rtId].parents);
+        // q.addAll(this.dc.realTaxaPartitionNodes[rtId].parents);
+        q.add(this.dc.realTaxaPartitionNodes[rtId]);
 
         // Set<PartitionNode> st = new HashSet<>();
         // st.addAll(this.dc.realTaxaPartitionNodes[rtId].parents);
+        
+        // for(var x : this.dc.partitionsByTreeNodes){
+        //     System.out.println(x);
+        // }
+        // System.out.println();
 
         while(!q.isEmpty()){
             PartitionNode f = q.poll();
             f.data.branch.swapRealTaxa(partition);
 
+
             for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
+                // System.out.println(p.partitionByTreeNode);
+                // System.out.println("index: " + p.index);
+                // if(p.partitionByTreeNode.partitionNodes[p.index] != f){
+                //     System.out.println("------------------");
+                // }
                 p.partitionByTreeNode.scoreCalculator.swapRealTaxon(
                     p.index,
                     partition

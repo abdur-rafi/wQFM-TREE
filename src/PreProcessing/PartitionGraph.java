@@ -38,6 +38,7 @@ public class PartitionGraph {
             this.realTaxaInPartition.put(this.taxaPartitionNodes[i], realTaxaInSubTree);
             this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.taxaPartitionNodes[i]);
             this.partitionNodes.add(this.taxaPartitionNodes[i]);
+            this.taxaPartitionNodes[i].label = taxa[i].label;
         }
 
         count = taxa.length;

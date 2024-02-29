@@ -85,7 +85,7 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
 
     @Override
     public void swapRealTaxon(int branchIndex, int currPartition){
-
+        
         if(currPartition == 0){
             this.subs[branchIndex][1] += 1;
         }

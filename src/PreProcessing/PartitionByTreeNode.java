@@ -26,5 +26,13 @@ public class PartitionByTreeNode {
     
 
 
-    
+    @Override
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        for(PartitionNode p : this.partitionNodes){
+            sb.append(p.toString());
+            sb.append("|");
+        }
+        return sb.toString();
+    }
 }

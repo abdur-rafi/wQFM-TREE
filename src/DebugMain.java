@@ -405,8 +405,8 @@ public class DebugMain {
         double[] dtGains = new double[1];
         // System.out.println("score : " + bookKeepingPerLevel.calculateScore());
 
-        // bookKeepingPerLevel.swapTaxon(1, false);
-        bookKeepingPerLevel.swapTaxon(0, true);
+        bookKeepingPerLevel.swapTaxon(1, false);
+        // bookKeepingPerLevel.swapTaxon(0, true);
 
         System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
         for(int i = 0; i < rtGains.length; ++i){
@@ -416,8 +416,8 @@ public class DebugMain {
             System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
         }
 
-        // bookKeepingPerLevel.swapTaxon(1, false);
-        bookKeepingPerLevel.swapTaxon(0, true);
+        bookKeepingPerLevel.swapTaxon(1, false);
+        // bookKeepingPerLevel.swapTaxon(0, true);
 
         BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(dc, taxa);
 
@@ -425,8 +425,8 @@ public class DebugMain {
         dtGains = new double[1];
         
 
-        // bookDc.swapTaxon(1, false);
-        bookDc.swapTaxon(0, true);
+        bookDc.swapTaxon(1, false);
+        // bookDc.swapTaxon(0, true);
         System.out.println("score : " + bookDc.calculateScoreAndGains(rtGains, dtGains));
 
         for(int i = 0; i < rtGains.length; ++i){

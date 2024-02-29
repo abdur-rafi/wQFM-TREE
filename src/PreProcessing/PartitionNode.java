@@ -1,6 +1,7 @@
 package src.PreProcessing;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class PartitionNode{
 
@@ -20,6 +21,7 @@ public class PartitionNode{
     public ArrayList<PartitionByTreeNodeWithIndex> nodePartitions;
     
     public boolean isLeaf;
+    public String label;
 
     public Data data;
 
@@ -50,5 +52,33 @@ public class PartitionNode{
 
     public void addNodePartitions(PartitionByTreeNode p, int index){
         this.nodePartitions.add(new PartitionByTreeNodeWithIndex(p, index));
+    }
+
+
+    @Override
+    public String toString(){
+        ArrayList<String> members = this.members();
+        Collections.sort(members);
+
+        StringBuilder sb = new StringBuilder();
+        for(String s: members){
+            sb.append(s);
+            sb.append(",");
+        }
+        return sb.toString();
+
+    }
+
+    public ArrayList<String> members(){
+        ArrayList<String> members = new ArrayList<>();
+        if(this.isLeaf){
+            members.add(this.label);
+        }
+        else{
+            for(PartitionNode child: this.children){
+                members.addAll(child.members());
+            }
+        }
+        return members;
     }
 }

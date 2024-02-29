@@ -6,5 +6,4 @@ public class Data {
     
     public double[] gainsForSubTree;
     public Branch branch;
-    
 }
