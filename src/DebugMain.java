@@ -270,7 +270,7 @@ public class DebugMain {
         // trees.readTaxaNames();
         // trees.readGeneTrees(null);
 
-        tc2();
+        tc1();
         // example();
         // polytomyTc2();
         // polytomyTc2();
@@ -391,7 +391,7 @@ public class DebugMain {
         realTaxaPartition[0] = 0;
         realTaxaPartition[1] = 0;
         realTaxaPartition[2] = 0;
-        realTaxaPartition[3] = 0;
+        realTaxaPartition[3] = 1;
         realTaxaPartition[4] = 1;
 
         int[] dummyTaxaPartition = new int[1];
@@ -405,6 +405,9 @@ public class DebugMain {
         double[] dtGains = new double[1];
         // System.out.println("score : " + bookKeepingPerLevel.calculateScore());
 
+        // bookKeepingPerLevel.swapTaxon(1, false);
+        bookKeepingPerLevel.swapTaxon(0, true);
+
         System.out.println("score : " + bookKeepingPerLevel.calculateScoreAndGains(rtGains, dtGains));
         for(int i = 0; i < rtGains.length; ++i){
             System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
@@ -413,10 +416,17 @@ public class DebugMain {
             System.out.println("Dummy " + (i+1) + ": " + dtGains[i]);
         }
 
+        // bookKeepingPerLevel.swapTaxon(1, false);
+        bookKeepingPerLevel.swapTaxon(0, true);
+
         BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(dc, taxa);
 
         rtGains = new double[5][2];
         dtGains = new double[1];
+        
+
+        // bookDc.swapTaxon(1, false);
+        bookDc.swapTaxon(0, true);
         System.out.println("score : " + bookDc.calculateScoreAndGains(rtGains, dtGains));
 
         for(int i = 0; i < rtGains.length; ++i){

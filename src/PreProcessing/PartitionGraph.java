@@ -59,7 +59,16 @@ public class PartitionGraph {
 
         String partitionString = Utility.getPartitionString(b);
         if(this.stringIdToPartition.containsKey(partitionString)){
-            return this.stringIdToPartition.get(partitionString);
+            // System.out.println("-------here-----------");
+            PartitionNode node = this.stringIdToPartition.get(partitionString);
+            for(PartitionNode child: childs){
+                if(node.children.contains(child)){
+                    continue;
+                }
+                node.addChild(child);
+                child.addParent(node);
+            }
+            return node;
         }
         else{
             PartitionNode partitionNode = new PartitionNode(false);

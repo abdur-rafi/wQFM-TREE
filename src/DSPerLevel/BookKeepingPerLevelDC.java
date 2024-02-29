@@ -191,18 +191,26 @@ public class BookKeepingPerLevelDC {
         
         int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
         this.taxaPerLevel.swapPartitionRealTaxon(index);
+        int rtId = this.taxaPerLevel.realTaxa[index].id;
 
         for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            bkpt.swapRealTaxon(index, partition);
+            bkpt.swapRealTaxon(rtId, partition);
         }
+        
+        this.dc.realTaxaPartitionNodes[rtId].data.branch.swapRealTaxa(partition);
 
         Queue<PartitionNode> q = new ArrayDeque<>();
         // q.add(this.dc.realTaxaPartitionNodes[index]);
-        q.addAll(this.dc.realTaxaPartitionNodes[index].parents);
+        // System.out.println(this.dc.realTaxaPartitionNodes[rtId].parents);
+        q.addAll(this.dc.realTaxaPartitionNodes[rtId].parents);
+
+        // Set<PartitionNode> st = new HashSet<>();
+        // st.addAll(this.dc.realTaxaPartitionNodes[rtId].parents);
 
         while(!q.isEmpty()){
             PartitionNode f = q.poll();
             f.data.branch.swapRealTaxa(partition);
+
             for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
                 p.partitionByTreeNode.scoreCalculator.swapRealTaxon(
                     p.index,
@@ -210,6 +218,14 @@ public class BookKeepingPerLevelDC {
                 );
 
             }
+            // for(PartitionNode p : f.parents){
+            //     if(st.add(p)){
+            //         q.add(p);
+            //     }
+            //     else{
+            //         System.out.println("----------------------------");
+            //     }
+            // }
             q.addAll(f.parents);
         }
     }
@@ -229,9 +245,11 @@ public class BookKeepingPerLevelDC {
         Set<PartitionNode> st = new HashSet<>();
         
         Queue<PartitionNode> q = new ArrayDeque<>();
+
         DummyTaxon dt = this.taxaPerLevel.dummyTaxa[index];
 
         for(RealTaxon rt : dt.flattenedRealTaxa){
+            this.dc.realTaxaPartitionNodes[rt.id].data.branch.swapDummyTaxon(index, partition);
             for(PartitionNode p : this.dc.realTaxaPartitionNodes[rt.id].parents){
                 if(st.add(p)){
                     q.add(p);
