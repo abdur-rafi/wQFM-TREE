@@ -62,13 +62,33 @@ public class PartitionGraph {
         if(this.stringIdToPartition.containsKey(partitionString)){
             // System.out.println("-------here-----------");
             PartitionNode node = this.stringIdToPartition.get(partitionString);
-            for(PartitionNode child: childs){
-                if(node.children.contains(child)){
-                    continue;
-                }
-                node.addChild(child);
-                child.addParent(node);
-            }
+            // Set<String> nodeChildren = new HashSet<>();
+            // for(PartitionNode child: node.children){
+            //     nodeChildren.add(Utility.getPartitionString(this.realTaxaInPartition.get(child)));
+            // }
+            // System.out.println(nodeChildren);
+            // for(PartitionNode child: childs){
+            //     if(nodeChildren.contains(Utility.getPartitionString(this.realTaxaInPartition.get(child)))){
+            //         continue;
+            //     }
+            //     node.addChild(child);
+            //     child.addParent(node);
+            //     // if(node.children.contains(child)){
+            //     //     System.out.println("continue");
+            //     //     continue;
+            //     // }
+            //     // // System.out.println("Not continue");
+            //     // node.addChild(child);
+            //     // child.addParent(node);
+            // }
+            // for(PartitionNode child: childs){
+            //     if(child.isLeaf){
+            //         if(child.parents.contains(node)){
+            //             continue;
+            //         }
+            //         child.addParent(node);
+            //     }  
+            // }
             return node;
         }
         else{

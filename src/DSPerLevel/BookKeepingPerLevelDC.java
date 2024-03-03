@@ -220,6 +220,7 @@ public class BookKeepingPerLevelDC {
 
             for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
                 // System.out.println(p.partitionByTreeNode);
+
                 // System.out.println("index: " + p.index);
                 // if(p.partitionByTreeNode.partitionNodes[p.index] != f){
                 //     System.out.println("------------------");

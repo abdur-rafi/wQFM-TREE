@@ -20,6 +20,15 @@ public class Preprocess {
         ret.taxaMap = geneTrees.readTaxaNames();
         ret.dc = geneTrees.readGeneTrees(null);
         ret.realTaxa = geneTrees.taxa;
+
+
+        // System.out.println("-------------------");
+        // for(var x : ret.dc.partitionsByTreeNodes){
+        //     System.out.println(x);
+        // }
+        // for(var x : ret.dc.topSortedPartitionNodes){
+        //     System.out.println(x);
+        // }
         return ret;
     }
     

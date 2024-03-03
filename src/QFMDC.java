@@ -203,6 +203,7 @@ public class QFMDC {
         int maxCgIndex = -1;
         double maxCg = 0;
 
+
         boolean singletonPartition = book.taxaPerLevel.getTaxonCountInPartition(0) == 1  || book.taxaPerLevel.getTaxonCountInPartition(1) == 1;
 
         boolean[] rtLocked = new boolean[book.taxaPerLevel.realTaxonCount];

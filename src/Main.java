@@ -41,10 +41,10 @@ public class Main {
         String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
         String outputFilePath = "./output.tre";
         
-        inputFilePath = "./input/gt-cleaned";
-        inputFilePath = "input/gtree_11tax_est_5genes_R1.tre";
-        consensusFilePath = "./input/cons.greedy.tree";
-        consensusFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
+        // inputFilePath = "./input/gt-cleaned";
+        // inputFilePath = "input/gtree_11tax_est_5genes_R1.tre";
+        // consensusFilePath = "./input/cons.greedy.tree";
+        // consensusFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
         // inputFilePath = "./input/custom2.tre";
         // consensusFilePath = inputFilePath;
         // inputFilePath = "../run/07.trueGT.cleaned";
