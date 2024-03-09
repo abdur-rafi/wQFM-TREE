@@ -42,8 +42,8 @@ public class Main {
         String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
 
 
-        inputFilePath = "./input/gt-cleaned-50.resolved.cleaned";
-        consensusFilePath = "./input/cons-50.tre";
+        // inputFilePath = "./input/gt-cleaned-50.resolved.cleaned";
+        // consensusFilePath = "./input/cons-50.tre";
         
 
         String outputFilePath = "./output.tre";
