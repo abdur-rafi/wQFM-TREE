@@ -3,8 +3,10 @@ package src;
 import java.util.ArrayList;
 
 import src.DSPerLevel.BookKeepingPerLevel;
+import src.DSPerLevel.BookKeepingPerLevelDC;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
 import src.InitialPartition.IMakePartition;
+import src.PreProcessing.DataContainer;
 import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
@@ -16,14 +18,16 @@ public class QFMTest {
     public RealTaxon[] realTaxa;
     public IMakePartition initPartition;
     public GeneTrees geneTrees;
+    public DataContainer dc;
     private int level;
 
     static double EPS = 1e-5;
 
-    public QFMTest(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition){
+    public QFMTest(GeneTrees trees, RealTaxon[] realTaxa, IMakePartition initPartition, DataContainer dc){
         this.realTaxa = realTaxa;
         this.initPartition = initPartition;
         this.geneTrees = trees;
+        this.dc = dc;
     }
 
     public Tree runWQFM(){
@@ -197,7 +201,7 @@ public class QFMTest {
 
     }
 
-    public static boolean oneInteration(BookKeepingPerLevel book){
+    public boolean oneInteration(BookKeepingPerLevel book){
         
         double cg = 0;
         int maxCgIndex = -1;
@@ -210,7 +214,11 @@ public class QFMTest {
         double[][] rtGains;
         double[] dtGains;
 
+        double[][] rtGainsdc;
+        double[] dtGainsdc;
+
         ArrayList<Swap> swaps = new ArrayList<Swap>();
+
 
         // ArrayList<Double> cgs = new ArrayList<Double>();
 
@@ -218,7 +226,40 @@ public class QFMTest {
             rtGains = new double[book.taxas.realTaxonCount][2];
             dtGains = new double[book.taxas.dummyTaxonCount];
             
-            book.calculateScoreAndGains(rtGains, dtGains);
+            double score = book.calculateScoreAndGains(rtGains, dtGains);
+
+            rtGainsdc = new double[book.taxas.realTaxonCount][2];
+            dtGainsdc = new double[book.taxas.dummyTaxonCount];
+            
+            BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(this.dc, book.taxas);
+            double scoredc = bookDc.calculateScoreAndGains(rtGainsdc, dtGainsdc);
+
+            if(Math.abs(score - scoredc) > EPS){
+                System.out.println("Error: Score mismatch " + (score - scoredc));
+                // System.exit(-1);
+            }
+
+            // compare both gains
+            for(int i = 0; i < book.taxas.realTaxonCount; ++i){
+                int j = book.taxas.inWhichPartitionRealTaxonByIndex(i);
+                double difference = Math.abs(rtGains[i][j] - rtGainsdc[i][j]);
+                if(difference > EPS){
+                    System.out.println("Error: Real taxon gain mismatch " + difference);
+                    // System.exit(-1);
+                }
+            }
+
+            // compare dt gains
+            for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
+                double difference = Math.abs(dtGains[i] - dtGainsdc[i]);
+
+                if(difference > EPS){
+                    System.out.println("Error: Dummy taxon gain mismatch " + difference);
+                    // System.exit(-1);
+                }
+            }
+
+
 
             var x = swapMax(book, rtGains, dtGains, rtLocked,dtLocked);
             

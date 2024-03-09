@@ -18,7 +18,8 @@ public class Preprocess {
         GeneTrees geneTrees = new GeneTrees(geneTreePath);
         PreprocessReturnType ret = new PreprocessReturnType();
         ret.taxaMap = geneTrees.readTaxaNames();
-        ret.dc = geneTrees.readGeneTrees(null);
+        geneTrees.readGeneTrees(null);
+        ret.dc = geneTrees.createDateContainer();
         ret.realTaxa = geneTrees.taxa;
 
 

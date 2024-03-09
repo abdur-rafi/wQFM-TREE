@@ -8,6 +8,7 @@ import src.InitialPartition.ConsensusTreePartitionDC;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
 import src.PreProcessing.Preprocess;
+import src.Taxon.RealTaxon;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -39,6 +40,12 @@ public class Main {
 
         String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
         String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
+
+
+        inputFilePath = "./input/gt-cleaned-50.resolved.cleaned";
+        consensusFilePath = "./input/cons-50.tre";
+        
+
         String outputFilePath = "./output.tre";
         
         // inputFilePath = "./input/gt-cleaned";
@@ -73,18 +80,20 @@ public class Main {
         long time_1 = System.currentTimeMillis(); //calculate starting time
         long cpuTimeBefore = threadMXBean.getCurrentThreadCpuTime();
 
-        // GeneTrees trees = new GeneTrees(inputFilePath);
-        // var taxaMap = trees.readTaxaNames();
+        GeneTrees trees = new GeneTrees(inputFilePath);
+        var taxaMap = trees.readTaxaNames();
+        trees.readGeneTrees(null);
+
+        IMakePartition partitionMaker = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
 
         
         
-        // trees.readGeneTrees(consensusTreePartition.dist);
+        RealTaxon.count = 0;
         
+
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
-        
-        // ConsensusTreePartition consensusTreePartition = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
-        ConsensusTreePartitionDC consensusTreePartition = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
-        IMakePartition  partitionMaker = consensusTreePartition;
+        ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
+        IMakePartition  partitionMakerDC = consensusTreePartitionDC;
 
 
 
@@ -95,8 +104,9 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
         // var qfm = new QFM(trees, trees.taxa, partitionMaker);
-        QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMaker);
-        
+        // QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
+        var qfm = new QFMTest(trees, trees.taxa, partitionMakerDC, ret.dc);
+
         var spTree = qfm.runWQFM();
 
         FileWriter writer = new FileWriter(outputFilePath);
