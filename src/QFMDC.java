@@ -45,28 +45,6 @@ public class QFMDC {
         int itrCount = 0;
 
         System.out.println("Level: " + this.level);
-
-        boolean allowSingleton = Config.ALLOW_SINGLETON;
-
-        if(allowSingleton){
-            if(Config.USE_LEVEL_BASED_SINGLETON_THRESHOLD){
-                if(this.level > Config.MAX_LEVEL_MULTIPLIER * this.realTaxa.length){
-                    System.out.println("Made false");
-                    System.out.println("rts : " + book.taxaPerLevel.realTaxonCount + " dts : " + book.taxaPerLevel.dummyTaxonCount);
-                    System.out.println("part[0]: " + book.taxaPerLevel.getTaxonCountInPartition(0) + " part[1]: " + book.taxaPerLevel.getTaxonCountInPartition(1));
-                    allowSingleton = false;
-                }
-            }
-            else{
-                int maxDepth = 0;
-                for(var x : book.taxaPerLevel.dummyTaxa){
-                    maxDepth = Math.max(maxDepth, x.nestedLevel);
-                }
-                if(maxDepth > Config.SINGLETON_THRESHOLD * this.realTaxa.length){
-                    allowSingleton = false;
-                }
-            }
-        }
         
         while(oneInteration(book) ){
             itrCount++;
@@ -81,7 +59,7 @@ public class QFMDC {
 
         Tree[] trees = new Tree[2];
 
-        var x = book.divide(initPartition, allowSingleton);
+        var x = book.divide(initPartition);
         int i = 0;
         int[] dummyIds = new int[2];
         
@@ -150,7 +128,7 @@ public class QFMDC {
         for(int i = 0; i < book.taxaPerLevel.realTaxonCount; ++i){
             if(rtLocked[i]) continue;
             int partition = book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i);
-            if((book.taxaPerLevel.getTaxonCountInPartition(partition) > 1) ){
+            if((book.taxaPerLevel.getTaxonCountInPartition(partition) > 2) ){
                 if(maxGainIndex == -1){
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
@@ -167,7 +145,7 @@ public class QFMDC {
         for(int i = 0; i < book.taxaPerLevel.dummyTaxonCount; ++i){
             if(dtLocked[i]) continue;
             int partition = book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i);
-            if(book.taxaPerLevel.getTaxonCountInPartition(partition) > 2 || (Config.ALLOW_SINGLETON && book.taxaPerLevel.getTaxonCountInPartition(partition) > 1)){
+            if(book.taxaPerLevel.getTaxonCountInPartition(partition) > 2 ){
                 if(maxGainIndex == -1){
                     maxGain = dtGains[i];
                     maxGainIndex = i;
@@ -255,6 +233,8 @@ public class QFMDC {
             }
             
         }
+
+        // System.out.println("Cg : " + cg);
 
         if(maxCgIndex == -1){
             if(swaps.size() != (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount)){

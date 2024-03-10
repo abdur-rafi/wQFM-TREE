@@ -59,7 +59,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     }
 
 
-    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton){
+    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts){
 
         int[] rtsP = new int[rts.length];
         int[] dtsp = new int[dts.length];
@@ -133,7 +133,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     }
 
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton) {
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean a_) {
         
         this.book = null;
 
@@ -218,9 +218,9 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                     branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
                     branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
 
-                    if((partASize > 1 && partBSize > 1) || (allowSingleton && partASize >= 1 && partBSize >= 1) ){
+                    if(partASize >= 1 && partBSize >= 1){
                         if(Config.USE_SCORING_IN_CONSENSUS){
-                            double score = scoreForPartitionByNode(child, rts, dts, allowSingleton);
+                            double score = scoreForPartitionByNode(child, rts, dts);
                             if( minNode == null || score > maxScore){
                                 maxScore = score;
                                 minNode = child;
@@ -249,7 +249,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts, allowSingleton);
+            return randPartition.makePartition(rts, dts, true);
             // System.exit(-1);
         }
         // System.out.println("partition");

@@ -18,15 +18,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        // if(args.length < 4){
-        //     System.out.println("Specify all file paths and non quartet type");
-        //     System.exit(-1);
-        // }
-        // String inputFilePath = args[0];
-        // String consensusFilePath = args[1];
-        // String outputFilePath = args[2];
+        if(args.length < 4){
+            System.out.println("Specify all file paths and non quartet type");
+            System.exit(-1);
+        }
+        String inputFilePath = args[0];
+        String consensusFilePath = args[1];
+        String outputFilePath = args[2];
 
-        // String nonQuartetType = args[3];
+        String nonQuartetType = args[3];
         
         // if(nonQuartetType.equals("A")){
         //     Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
@@ -38,15 +38,18 @@ public class Main {
         // }
 
 
-        String inputFilePath = "../run/15-taxon/1000gene-1000bp/R10/all_gt_cleaned.tre";
-        String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R10/cons.tre";
+        // String inputFilePath = "../run/15-taxon/1000gene-1000bp/R1/all_gt_cleaned.tre";
+        // String consensusFilePath = "../run/15-taxon/1000gene-1000bp/R1/cons.tre";
+
+        // inputFilePath = "../run/15-taxon/1000gene-100bp/R4/all_gt_cleaned.tre";
+        // consensusFilePath = "../run/15-taxon/1000gene-100bp/R4/cons.tre";
 
 
-        // inputFilePath = "./input/gt-cleaned-50.resolved.cleaned";
-        // consensusFilePath = "./input/cons-50.tre";
+        // // inputFilePath = "./input/gt-cleaned-50.resolved.cleaned";
+        // // consensusFilePath = "./input/cons-50.tre";
         
 
-        String outputFilePath = "./output.tre";
+        // String outputFilePath = "./outputdc.tre";
         
         // inputFilePath = "./input/gt-cleaned";
         // inputFilePath = "input/gtree_11tax_est_5genes_R1.tre";
@@ -80,15 +83,15 @@ public class Main {
         long time_1 = System.currentTimeMillis(); //calculate starting time
         long cpuTimeBefore = threadMXBean.getCurrentThreadCpuTime();
 
-        GeneTrees trees = new GeneTrees(inputFilePath);
-        var taxaMap = trees.readTaxaNames();
-        trees.readGeneTrees(null);
+        // GeneTrees trees = new GeneTrees(inputFilePath);
+        // var taxaMap = trees.readTaxaNames();
+        // trees.readGeneTrees(null);
 
-        IMakePartition partitionMaker = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
+        // IMakePartition partitionMaker = new ConsensusTreePartition(consensusFilePath, taxaMap, trees);
 
         
         
-        RealTaxon.count = 0;
+        // RealTaxon.count = 0;
         
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
@@ -104,8 +107,8 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
         // var qfm = new QFM(trees, trees.taxa, partitionMaker);
-        // QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
-        var qfm = new QFMTest(trees, trees.taxa, partitionMakerDC, ret.dc);
+        QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
+        // var qfm = new QFMTest(trees, trees.taxa, partitionMaker, ret.dc);
 
         var spTree = qfm.runWQFM();
 

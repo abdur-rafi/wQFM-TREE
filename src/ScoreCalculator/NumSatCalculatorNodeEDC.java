@@ -26,7 +26,7 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         double q = 0;
         for(int i = 0; i < branches.length; ++i){
             for(int j = i + 1; j < branches.length; ++j){
-                q += pairs[i][j][0] * (sumPairs[1] - pairs[i][j][1]);
+                q += pairs[i][j][0] * (sumPairs[1] - sumPairsBranch[i][1] - sumPairsBranch[j][1] + pairs[i][j][1]);
             }
         }
         return q;
@@ -38,8 +38,9 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
             if(i == branchIndex) continue;
             int mni = branchIndex > i ? i : branchIndex;
             int mxi = branchIndex > i ? branchIndex : i;
-            q += pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[branchIndex][1]);
-            q += pairs[mni][mxi][1] * (sumPairs[0] - pairs[mni][mxi][0]);
+            q += pairs[mni][mxi][0] * (sumPairs[1] - sumPairsBranch[mni][1] - sumPairsBranch[mxi][1] + pairs[mni][mxi][1]);
+            q += pairs[mni][mxi][1] * (sumPairs[0] - sumPairsBranch[mni][0] - sumPairsBranch[mxi][0] + pairs[mni][mxi][0]);
+            
         }
         return q;
     }
@@ -47,6 +48,8 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
     int[] dummyTaxaPartition;
 
     public NumSatCalculatorNodeEDC(Branch[] b, int[] dummyTaxaToPartitionMap) {
+
+        // System.out.println("kjasdfj");
 
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
@@ -97,6 +100,8 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
             this.totalTaxa[1] += b[i].totalTaxaCounts[1];
             
         }
+
+        this.nonQuartets = this.calcNonQuartets();
 
     }
 

@@ -6,7 +6,6 @@ public class BookKeepingPerTreeDC {
     boolean[] realTaxaInTree;
     TaxaPerLevelWithPartition taxaPerLevel;
     private double[] pairsFromPart;
-    private double[] totalTaxon;
     private double[] realTaxaCountsInPartitions;
     private double[] dummyTaxonWeightsIndividual;
     public double[] dummyTaxonCountsInPartitions;
@@ -15,7 +14,7 @@ public class BookKeepingPerTreeDC {
         this.realTaxaInTree = realTaxaInTree;
         this.taxaPerLevel = taxaPerLevel;
         this.pairsFromPart = new double[2];
-        this.totalTaxon = new double[2];
+        double[] totalTaxon = new double[2];
         this.realTaxaCountsInPartitions = new double[2];
         this.dummyTaxonWeightsIndividual = new double[taxaPerLevel.dummyTaxonCount];
         this.dummyTaxonCountsInPartitions = new double[2];
@@ -25,7 +24,7 @@ public class BookKeepingPerTreeDC {
         for(int i = 0; i < this.realTaxaInTree.length; ++i){
             if(this.realTaxaInTree[i]){
                 int partition = this.taxaPerLevel.inWhichPartition(i);
-                this.totalTaxon[partition] += this.taxaPerLevel.getWeight(i);
+                totalTaxon[partition] += this.taxaPerLevel.getWeight(i);
                 if(this.taxaPerLevel.isInDummyTaxa(i)){
                     this.dummyTaxonWeightsIndividual[this.taxaPerLevel.inWhichDummyTaxa(i)] += this.taxaPerLevel.getWeight(i);
                 }
@@ -35,8 +34,8 @@ public class BookKeepingPerTreeDC {
             }
         }
 
-        this.pairsFromPart[0] = this.totalTaxon[0] * this.totalTaxon[0];
-        this.pairsFromPart[1] = this.totalTaxon[1] * this.totalTaxon[1];
+        this.pairsFromPart[0] = totalTaxon[0] * totalTaxon[0];
+        this.pairsFromPart[1] = totalTaxon[1] * totalTaxon[1];
 
         for(int i = 0; i < this.taxaPerLevel.dummyTaxonCount; ++i){
             int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i);

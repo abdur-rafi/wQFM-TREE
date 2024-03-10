@@ -223,59 +223,70 @@ public class QFMTest {
         // ArrayList<Double> cgs = new ArrayList<Double>();
 
         while(true){
+
+            // if(book.taxas.realTaxa.length > 0){
+            //     int partition = book.taxas.inWhichPartitionRealTaxonByIndex(0);
+            //     if(book.taxas.getTaxonCountInPartition(partition) > 1){
+
+            //         System.out.println("---------- Testing real taxon swap ------------");
+                    
+            //         rtGains = new double[book.taxas.realTaxonCount][2];
+            //         dtGains = new double[book.taxas.dummyTaxonCount];
+        
+            //         book.swapTaxon(0, false);
+    
+            //         double score = book.calculateScoreAndGains(rtGains, dtGains);
+                    
+            //         book.swapTaxon(0, false);
+    
+    
+            //         rtGainsdc = new double[book.taxas.realTaxonCount][2];
+            //         dtGainsdc = new double[book.taxas.dummyTaxonCount];
+                    
+            //         BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(this.dc, book.taxas);
+    
+            //         bookDc.swapTaxon(0, false);
+            //         double scoredc = bookDc.calculateScoreAndGains(rtGainsdc, dtGainsdc);
+    
+            //         if(Math.abs(score - scoredc) > EPS){
+            //             System.out.println("Error: Score mismatch " + (score - scoredc));
+            //             // System.exit(-1);
+            //         }
+    
+            //         // compare both gains
+            //         for(int i = 0; i < book.taxas.realTaxonCount; ++i){
+            //             int j = book.taxas.inWhichPartitionRealTaxonByIndex(i);
+            //             String taxonLabel = book.taxas.realTaxa[i].label;
+            //             double difference = Math.abs(rtGains[i][j] - rtGainsdc[i][j]);
+            //             if(difference > EPS){
+            //                 System.out.println("Error: Real taxon gain mismatch " + difference + " " + taxonLabel + " index : " + i);
+            //                 // System.exit(-1);
+            //             }
+            //         }
+    
+            //         // compare dt gains
+            //         for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
+            //             double difference = Math.abs(dtGains[i] - dtGainsdc[i]);
+    
+            //             if(difference > EPS){
+            //                 System.out.println("Error: Dummy taxon gain mismatch " + difference);
+            //                 // System.exit(-1);
+            //             }
+            //         }
+
+
+
+
+            //         bookDc.swapTaxon(0, false);
+
+            //     }
+
+
+            // }
+            
             rtGains = new double[book.taxas.realTaxonCount][2];
             dtGains = new double[book.taxas.dummyTaxonCount];
 
-            if(book.taxas.realTaxa.length > 0){
-
-                int partition = book.taxas.inWhichPartitionRealTaxonByIndex(0);
-                if(book.taxas.getTaxonCountInPartition(partition) > 1){
-
-                    System.out.println("---------- Testing real taxon swap ------------");
-                    book.swapTaxon(0, false);
-    
-                    double score = book.calculateScoreAndGains(rtGains, dtGains);
-                    
-                    book.swapTaxon(0, false);
-    
-    
-                    rtGainsdc = new double[book.taxas.realTaxonCount][2];
-                    dtGainsdc = new double[book.taxas.dummyTaxonCount];
-                    
-                    BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(this.dc, book.taxas);
-    
-                    bookDc.swapTaxon(0, false);
-                    double scoredc = bookDc.calculateScoreAndGains(rtGainsdc, dtGainsdc);
-                    bookDc.swapTaxon(0, false);
-    
-                    if(Math.abs(score - scoredc) > EPS){
-                        System.out.println("Error: Score mismatch " + (score - scoredc));
-                        // System.exit(-1);
-                    }
-    
-                    // compare both gains
-                    for(int i = 0; i < book.taxas.realTaxonCount; ++i){
-                        int j = book.taxas.inWhichPartitionRealTaxonByIndex(i);
-                        double difference = Math.abs(rtGains[i][j] - rtGainsdc[i][j]);
-                        if(difference > EPS){
-                            System.out.println("Error: Real taxon gain mismatch " + difference);
-                            // System.exit(-1);
-                        }
-                    }
-    
-                    // compare dt gains
-                    for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
-                        double difference = Math.abs(dtGains[i] - dtGainsdc[i]);
-    
-                        if(difference > EPS){
-                            System.out.println("Error: Dummy taxon gain mismatch " + difference);
-                            // System.exit(-1);
-                        }
-                    }
-                }
-
-
-            }
 
 
             // if(book.taxas.dummyTaxa.length > 0){
@@ -328,36 +339,36 @@ public class QFMTest {
             
             double score = book.calculateScoreAndGains(rtGains, dtGains);
 
-            // rtGainsdc = new double[book.taxas.realTaxonCount][2];
-            // dtGainsdc = new double[book.taxas.dummyTaxonCount];
+            rtGainsdc = new double[book.taxas.realTaxonCount][2];
+            dtGainsdc = new double[book.taxas.dummyTaxonCount];
             
-            // BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(this.dc, book.taxas);
-            // double scoredc = bookDc.calculateScoreAndGains(rtGainsdc, dtGainsdc);
+            BookKeepingPerLevelDC bookDc = new BookKeepingPerLevelDC(this.dc, book.taxas);
+            double scoredc = bookDc.calculateScoreAndGains(rtGainsdc, dtGainsdc);
 
-            // if(Math.abs(score - scoredc) > EPS){
-            //     System.out.println("Error: Score mismatch " + (score - scoredc));
-            //     // System.exit(-1);
-            // }
+            if(Math.abs(score - scoredc) > EPS){
+                System.out.println("Error: Score mismatch " + (score - scoredc));
+                // System.exit(-1);
+            }
 
-            // // compare both gains
-            // for(int i = 0; i < book.taxas.realTaxonCount; ++i){
-            //     int j = book.taxas.inWhichPartitionRealTaxonByIndex(i);
-            //     double difference = Math.abs(rtGains[i][j] - rtGainsdc[i][j]);
-            //     if(difference > EPS){
-            //         System.out.println("Error: Real taxon gain mismatch " + difference);
-            //         // System.exit(-1);
-            //     }
-            // }
+            // compare both gains
+            for(int i = 0; i < book.taxas.realTaxonCount; ++i){
+                int j = book.taxas.inWhichPartitionRealTaxonByIndex(i);
+                double difference = Math.abs(rtGains[i][j] - rtGainsdc[i][j]);
+                if(difference > EPS){
+                    System.out.println("Error: Real taxon gain mismatch " + difference);
+                    // System.exit(-1);
+                }
+            }
 
-            // // compare dt gains
-            // for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
-            //     double difference = Math.abs(dtGains[i] - dtGainsdc[i]);
+            // compare dt gains
+            for(int i = 0; i < book.taxas.dummyTaxonCount; ++i){
+                double difference = Math.abs(dtGains[i] - dtGainsdc[i]);
 
-            //     if(difference > EPS){
-            //         System.out.println("Error: Dummy taxon gain mismatch " + difference);
-            //         // System.exit(-1);
-            //     }
-            // }
+                if(difference > EPS){
+                    System.out.println("Error: Dummy taxon gain mismatch " + difference);
+                    // System.exit(-1);
+                }
+            }
 
 
 

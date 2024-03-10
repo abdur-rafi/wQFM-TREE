@@ -183,7 +183,7 @@ public class GeneTrees {
 
     public DataContainer createDateContainer(){
         PartitionGraph partitionGraph = createPartitionGraph();
-        PartitionsByTreeNode partitions = createPartitions(partitionGraph.realTaxaInPartition);
+        PartitionsByTreeNode partitions = createPartitionsByTreeNode(partitionGraph.realTaxaInPartition);
 
 
         System.out.println("Partition graph created");
@@ -206,6 +206,8 @@ public class GeneTrees {
         }
         dataContainer.taxa = this.taxa;
 
+        // dataContainer.partitionGraph = partitionGraph;
+
         return dataContainer;
     }
 
@@ -221,7 +223,7 @@ public class GeneTrees {
 
     }
 
-    public PartitionsByTreeNode createPartitions(Map<PartitionNode, boolean[]> realTaxaInPartition){
+    public PartitionsByTreeNode createPartitionsByTreeNode(Map<PartitionNode, boolean[]> realTaxaInPartition){
         PartitionsByTreeNode partitions = new PartitionsByTreeNode(realTaxaInPartition);
         for(Tree tree : geneTrees){
             for(TreeNode node : tree.topSortedNodes){

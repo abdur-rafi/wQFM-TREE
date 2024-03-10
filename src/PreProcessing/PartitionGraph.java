@@ -17,7 +17,7 @@ public class PartitionGraph {
     public Map<PartitionNode, boolean[]> realTaxaInPartition;
     private Map<String, PartitionNode> stringIdToPartition;
 
-    private ArrayList<PartitionNode> partitionNodes;
+    public ArrayList<PartitionNode> partitionNodes;
 
 
 

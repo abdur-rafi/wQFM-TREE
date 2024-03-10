@@ -6,7 +6,8 @@
 # filePrefix="ewqfm-%sat-lvs-mxpart-c-n-n-n-v2"
 filePrefix="ewqfm-%sat-init-with-singleton-all-flat"
 filePrefix="ewqfm-test"
-filePrefix="wqfm-Tree"
+filePrefix="wqfm-Tree-input-merged"
+# filePrefix="wqfm-Tree"
 # filePrefix="ewqfm-num-sat-new"
 
 # filePrefix="ewqfm-all-n-mxscore-init-singleton"

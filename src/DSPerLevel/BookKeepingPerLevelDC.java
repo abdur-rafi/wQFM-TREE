@@ -104,7 +104,7 @@ public class BookKeepingPerLevelDC {
         }
         
 
-        return Config.SCORE_EQN.scoreFromSatAndTotal(score, totalQuartets);
+        return Config.SCORE_EQN.scoreFromSatAndTotal(totalQuartets, score);
     }
 
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
@@ -187,6 +187,72 @@ public class BookKeepingPerLevelDC {
         return totalScore;
     }
 
+    public void swapRealTaxon3(int index){
+        int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
+        this.taxaPerLevel.swapPartitionRealTaxon(index);
+        int rtId = this.taxaPerLevel.realTaxa[index].id;
+
+        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+            bkpt.swapRealTaxon(rtId, partition);
+        }
+
+        
+
+        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+            boolean f = false;
+            for(int i = 0; i < p.partitionNodes.length; ++i){
+                if(this.dc.partitionGraph.realTaxaInPartition.get(p.partitionNodes[i])[rtId]){
+                    p.scoreCalculator.swapRealTaxon(i, partition);
+                    if(f){
+                        System.out.println("----------------------------");
+                        System.exit(-1);
+                    }
+                    f = true;
+                }
+            }
+            // p.scoreCalculator.swapRealTaxon(index, partition);
+        }
+
+        for(PartitionNode p : this.dc.partitionGraph.partitionNodes){
+            boolean[] b = this.dc.partitionGraph.realTaxaInPartition.get(p);
+            if(b[rtId]){
+                p.data.branch.swapRealTaxa(partition);
+            }
+        }
+    }
+
+
+    public void swapRealTaxon2(int index){
+        int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
+        this.taxaPerLevel.swapPartitionRealTaxon(index);
+        int rtId = this.taxaPerLevel.realTaxa[index].id;
+
+        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+            bkpt.swapRealTaxon(rtId, partition);
+        }
+
+        for(PartitionNode p : this.dc.topSortedPartitionNodes){
+            boolean[] b = this.dc.partitionGraph.realTaxaInPartition.get(p);
+            if(b[rtId]){
+                for(PartitionByTreeNodeWithIndex pbt : p.nodePartitions){
+                    if(pbt.partitionByTreeNode.partitionNodes[pbt.index].data.branch != p.data.branch){
+                        System.out.println("------------------");
+                        System.exit(-1);
+                    }
+                    pbt.partitionByTreeNode.scoreCalculator.swapRealTaxon(
+                        pbt.index,
+                        partition
+                        );
+                }
+                p.data.branch.swapRealTaxa(partition);
+
+            }
+        }
+        
+    }
+
+
+
     public void swapRealTaxon(int index){
         
         int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
@@ -215,7 +281,6 @@ public class BookKeepingPerLevelDC {
 
         while(!q.isEmpty()){
             PartitionNode f = q.poll();
-            f.data.branch.swapRealTaxa(partition);
 
 
             for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
@@ -240,6 +305,7 @@ public class BookKeepingPerLevelDC {
             //     }
             // }
             q.addAll(f.parents);
+            f.data.branch.swapRealTaxa(partition);
         }
     }
 
@@ -287,7 +353,7 @@ public class BookKeepingPerLevelDC {
         else this.swapRealTaxon(index);
     }
 
-    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition, boolean allowSingleton){
+    public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition){
         RealTaxon[][] rts = new RealTaxon[2][];
         DummyTaxon[][] dts = new DummyTaxon[2][];
 
