@@ -26,7 +26,7 @@ Steps
 1. Download [this](https://github.com/abdur-rafi/wQFM-TREE/raw/master/wQFM-TREE.zip) zip file.
 2. Unzip, this will create a wQFM-TREE folder.
 3. Open a terminal inside the wQFM-TREE folder.
-4. Execute the following command to run wQFM-TREE. The input gene trees **can contain polytomy** and the **will not be resolved**. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
+4. Execute the following command to run wQFM-TREE. The input gene trees **can contain polytomy** and they **will not be resolved**. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
 ```
 bash run.sh geneTreesFilePath outputFilePath
 ```
