@@ -96,6 +96,18 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
     }
 
     @Override
+    public void batchTransferRealTaxon(int branchIndex, int netTranser){
+        // negative if transfering from 1 to 0
+        // positive if transfering from 0 to 1
+        if(netTranser < 0){
+            this.subs[branchIndex][1] += netTranser;
+        }
+        else{
+            this.subs[branchIndex][1] += netTranser;
+        }
+    }
+
+    @Override
     public void swapDummyTaxon(int dummyIndex, int currPartition){
             
         int switchedPartition = 1 - currPartition;

@@ -2,6 +2,7 @@ package src.DSPerLevel;
 
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Queue;
 import java.util.Set;
@@ -251,6 +252,52 @@ public class BookKeepingPerLevelDC {
         
     }
 
+
+
+
+    public void batchTrasferRealTaxon(ArrayList<Integer> realTaxonIndices){
+        ArrayList<Integer> currPartitions = new ArrayList<>();
+        ArrayList<Integer> realTaxonIds = new ArrayList<>();
+
+        for(int i = 0; i < realTaxonIndices.size(); ++i){
+            int index = realTaxonIndices.get(i);
+            int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
+            currPartitions.add(partition);
+            realTaxonIds.add(this.taxaPerLevel.realTaxa[index].id);
+        }
+        
+
+        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+            bkpt.batchTranserRealTaxon(realTaxonIds, currPartitions);
+        }
+
+        Queue<Utility.Pair<PartitionNode, Integer>> q = new ArrayDeque<>();
+
+        for(Integer rtId : realTaxonIds){
+            q.add(new Utility.Pair<PartitionNode,Integer>(this.dc.realTaxaPartitionNodes[rtId], this.taxaPerLevel.inWhichPartition(rtId)));
+        }
+
+        Set<PartitionByTreeNode> st = new HashSet<>();
+
+        while(!q.isEmpty()){
+            var f = q.poll();
+            for(PartitionByTreeNodeWithIndex p : f.first.nodePartitions){
+                p.partitionByTreeNode.cumulateTransfer(p.index, f.second);
+                st.add(p.partitionByTreeNode);
+            }
+            for(var x : f.first.parents){
+                q.add(new Utility.Pair<PartitionNode, Integer>(x, f.second));
+            }
+            // q.addAll(f.parents);
+        }
+
+        for(var x : st){
+            x.batchTransfer();
+        }
+
+        this.taxaPerLevel.batchTransferRealTaxon(realTaxonIndices);
+
+    }
 
 
     public void swapRealTaxon(int index){

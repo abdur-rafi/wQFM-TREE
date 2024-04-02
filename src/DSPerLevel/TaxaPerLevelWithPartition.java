@@ -158,6 +158,38 @@ public class TaxaPerLevelWithPartition {
         return this.dummyTaxa[index].flattenedTaxonCount;
     }
 
+    public void batchTransferRealTaxon(ArrayList<Integer> indices){
+        int netTranser = 0;
+
+        for(int i = 0; i < indices.size(); ++i){
+            int index = indices.get(i);
+            int partition = this.realTaxonPartition[index];
+            netTranser += (partition == 0 ? 1 : -1);
+
+            this.realTaxonPartition[index] = 1 - partition;
+            this.inWhichPartition[this.realTaxa[index].id] = 1 - partition;
+        }
+
+        if(netTranser == 0) return;
+
+        int add = 1;
+        int sub = 0;
+        
+        if(netTranser < 0){
+            add = 0;
+            sub = 1;
+            netTranser = -netTranser;
+        }
+
+        this.taxonCountsInPartitions[sub] -= netTranser;
+        this.taxonCountsInPartitions[add] += netTranser;
+
+        this.realTaxonCountsInPartitions[sub] -= netTranser;
+        this.realTaxonCountsInPartitions[add] += netTranser;
+
+
+    }
+
     public void swapPartitionRealTaxon(int index){
         int currPartition = this.realTaxonPartition[index];
         int switchedPartition = (int) (1 - currPartition);

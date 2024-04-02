@@ -1,5 +1,7 @@
 package src.DSPerLevel;
 
+import java.util.ArrayList;
+
 import src.Taxon.RealTaxon;
 
 public class BookKeepingPerTreeDC {
@@ -100,6 +102,36 @@ public class BookKeepingPerTreeDC {
         
         this.dummyTaxonCountsInPartitions[partition] -= this.dummyTaxonWeightsIndividual[index];
         this.dummyTaxonCountsInPartitions[1 - partition] += this.dummyTaxonWeightsIndividual[index];
+
+    }
+
+    public void batchTranserRealTaxon(ArrayList<Integer> rtIds, ArrayList<Integer> currPartition){
+        int netTranser = 0;
+        for(int i = 0; i < rtIds.size(); ++i){
+            int rtId = rtIds.get(i);
+            int partition = currPartition.get(i);
+            if(this.realTaxaInTree[rtId]){
+                netTranser += (partition == 0 ? 1 : -1);
+            }
+        }
+
+        if(netTranser == 0) return;
+
+        int add = 1;
+        int sub = 0;
+        
+        if(netTranser < 0){
+            add = 0;
+            sub = 1;
+            netTranser = -netTranser;
+        }
+
+        this.pairsFromPart[sub] -= (this.getTotalTaxon(sub) - netTranser) * netTranser + netTranser * (netTranser - 1) / 2;
+        this.pairsFromPart[add] += (this.getTotalTaxon(add)) * netTranser + netTranser * (netTranser - 1) / 2;
+        
+        this.realTaxaCountsInPartitions[sub] -= netTranser;
+        this.realTaxaCountsInPartitions[add] += netTranser;
+        
 
     }
 

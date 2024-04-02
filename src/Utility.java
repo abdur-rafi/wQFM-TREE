@@ -43,4 +43,16 @@ public class Utility {
         return (n * (n - 1)) / 2;
     }
 
+    public static class Pair<F, S> {
+        public F first;
+        public S second;
+    
+        public Pair(F first, S second) {
+            this.first = first;
+            this.second = second;
+        }
+    }
+    
+
+
 }

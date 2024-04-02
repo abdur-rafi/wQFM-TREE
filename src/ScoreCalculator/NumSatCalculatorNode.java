@@ -12,5 +12,7 @@ public interface NumSatCalculatorNode {
 
     public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains);
 
+    public void batchTransferRealTaxon(int branchIndex, int netTranser);    
+
 }
 

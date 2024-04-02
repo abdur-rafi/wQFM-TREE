@@ -11,6 +11,7 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
     // double totalTaxaB;
     double[] totalTaxa;
     double[][][] pairs;
+    // double[][][] subs;
     double[] sumPairs;
 
     double nonQuartets;
@@ -63,6 +64,7 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         this.sumPairs = new double[2];
         this.sumPairsBSingleBranch = 0;
         this.pairs = new double[b.length][b.length][2];
+        // this.subs = new double[b.length][b.length][2];
         this.nonQuartets = 0;
 
         for(int i = 0; i < b.length; ++i){
@@ -72,8 +74,12 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
 
                 for(int k = 0; k < this.nDummyTaxa; ++k){
                     int partition = this.dummyTaxaPartition[k];
+                    // subs[i][j][partition] += b[i].dummyTaxaWeightsIndividual[k] * b[j].dummyTaxaWeightsIndividual[k];
                     this.pairs[i][j][partition] -= b[i].dummyTaxaWeightsIndividual[k] * b[j].dummyTaxaWeightsIndividual[k];
                 }
+                // this.pairs[i][j][0] -= subs[i][j][0];
+                // this.pairs[i][j][1] -= subs[i][j][1];
+
                 sumPairsBranch[i][0] += this.pairs[i][j][0];
                 sumPairsBranch[j][0] += this.pairs[i][j][0];
                 sumPairsBranch[i][1] += this.pairs[i][j][1];
@@ -183,6 +189,9 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
 
                 this.sumPairs[1 - currPartition] += inc;
                 this.sumPairs[currPartition] -= dec;
+
+                // this.subs[i][j][currPartition] -= wi * wj;
+                // this.subs[i][j][1 - currPartition] += wi * wj;
             }
 
             if(currPartition == 1){
@@ -239,7 +248,65 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         }
     }
 
-    
+    @Override
+    public void batchTransferRealTaxon(int branchIndex, int netTranser){
+        // negative if transfering from 1 to 0
+        // positive if transfering from 0 to 1
+
+        int currPartition = netTranser > 0 ? 0 : 1;
+        
+        netTranser = Math.abs(netTranser);
+
+        this.nonQuartets -= changeAmount(branchIndex);
+
+        for(int i = 0; i < this.branches.length; ++i){
+            if(branchIndex == i){
+                this.sumPairsBranch[i][1 - currPartition] += netTranser * (this.totalTaxa[1-currPartition] - this.branches[i].totalTaxaCounts[1-currPartition]);
+                this.sumPairsBranch[i][currPartition] -= netTranser * (this.totalTaxa[currPartition] - this.branches[i].totalTaxaCounts[currPartition]);
+
+                this.sumPairs[1 - currPartition] += netTranser * (this.totalTaxa[1-currPartition] - this.branches[i].totalTaxaCounts[1-currPartition]);
+                this.sumPairs[currPartition] -= netTranser * (this.totalTaxa[currPartition] - this.branches[i].totalTaxaCounts[currPartition]);
+
+            }
+            else{
+                int mni = branchIndex > i ? i : branchIndex;
+                int mxi = branchIndex > i ? branchIndex : i;
+
+
+                this.pairs[mni][mxi][currPartition] -= netTranser * this.branches[i].totalTaxaCounts[currPartition];
+                this.pairs[mni][mxi][1 - currPartition] += netTranser * this.branches[i].totalTaxaCounts[1 - currPartition];
+
+
+                this.sumPairsBranch[i][currPartition] -= netTranser * this.branches[i].totalTaxaCounts[currPartition];
+                this.sumPairsBranch[i][1 - currPartition] += netTranser * this.branches[i].totalTaxaCounts[1 - currPartition];
+            }
+            
+
+        }
+
+        if(currPartition == 1){
+            pairsBFromSingleBranch[branchIndex] -= netTranser * (this.branches[branchIndex].totalTaxaCounts[1] - netTranser) + (netTranser * (netTranser - 1)) / 2;
+            this.sumPairsBSingleBranch -= netTranser * (this.branches[branchIndex].totalTaxaCounts[1] - netTranser) + (netTranser * (netTranser - 1)) / 2;                
+        }
+        else{
+            pairsBFromSingleBranch[branchIndex] += netTranser * (this.branches[branchIndex].totalTaxaCounts[1]) + (netTranser * (netTranser - 1)) / 2;
+            this.sumPairsBSingleBranch += netTranser * (this.branches[branchIndex].totalTaxaCounts[1]) + (netTranser * (netTranser - 1)) / 2;
+        }
+        this.totalTaxa[currPartition] -= netTranser;
+        this.totalTaxa[1 - currPartition] += netTranser;
+        this.nonQuartets += changeAmount(branchIndex);
+        
+    }
+
+
+    // public void batchTransferDummyTaxon(ArrayList<Utility.Pair<Integer, Integer>> dummyIndicesWithCurrPartition){
+
+    //     for(int i = 0; i < this.branches.length; ++i){
+    //         for(int j = i + 1; j < this.branches.length; ++j){
+
+    //         }
+    //     }
+    // }
 
 
     

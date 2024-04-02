@@ -235,6 +235,7 @@ public class QFMDC {
         }
 
         // System.out.println("Cg : " + cg);
+        
 
         if(maxCgIndex == -1){
             if(swaps.size() != (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount)){

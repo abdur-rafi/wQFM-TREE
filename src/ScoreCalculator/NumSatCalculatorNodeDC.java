@@ -11,6 +11,6 @@ public interface NumSatCalculatorNodeDC {
     public void swapDummyTaxon(int dummyIndex, int currPartition, boolean changeBranchInfo);
 
     public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains);
-
+    
 }
 
