@@ -19,6 +19,7 @@ public class PartitionGraph {
 
     public ArrayList<PartitionNode> partitionNodes;
 
+    public PartitionNode sentinel;
 
 
     public int count = 0;
@@ -41,8 +42,18 @@ public class PartitionGraph {
             this.taxaPartitionNodes[i].label = taxa[i].label;
         }
 
+        this.sentinel = new PartitionNode(true);
+        boolean[] realTaxaInSubTree = new boolean[taxa.length];
+        this.realTaxaInPartition.put(this.sentinel, realTaxaInSubTree);
+        this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.sentinel);
+        
+
         count = taxa.length;
 
+    }
+
+    public PartitionNode getSentinel(){
+        return this.sentinel;
     }
 
     public PartitionNode getPartitionNode(RealTaxon taxon){

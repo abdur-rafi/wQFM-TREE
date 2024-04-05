@@ -62,6 +62,8 @@ public class BookKeepingPerLevelDC {
             }
 
         }
+        this.dc.sentinel.data = new Data();
+        this.dc.sentinel.data.branch = new Branch(this.taxaPerLevel.dummyTaxonCount);
 
         int sz = this.dc.topSortedForBranch.size();
         for(int i = sz - 1; i >  -1; --i){
@@ -114,6 +116,8 @@ public class BookKeepingPerLevelDC {
         for(PartitionNode p : this.dc.topSortedForBranch){
             p.data.gainsForSubTree = new double[2];
         }
+
+        this.dc.sentinel.data.gainsForSubTree = new double[2];
 
         for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
             double score = p.scoreCalculator.score();

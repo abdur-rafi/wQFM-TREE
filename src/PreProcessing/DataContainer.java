@@ -15,6 +15,7 @@ public class DataContainer {
     public RealTaxon[] taxa;
 
     public PartitionGraph partitionGraph;
+    public PartitionNode sentinel;
 
     // public DataContainer(
     //     ArrayList<PartitionsByTreeNode> partitionsByTreeNodes, 

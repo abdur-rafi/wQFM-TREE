@@ -227,6 +227,7 @@ public class GeneTrees {
             }
         }
         dataContainer.taxa = this.taxa;
+        dataContainer.sentinel = partitionGraph.getSentinel();
 
         System.out.println("Partition graph nodes count : " + partitionGraph.count);
         System.out.println("Partition Graph Branch nodes : " + dataContainer.topSortedForBranch.size());
@@ -256,8 +257,6 @@ public class GeneTrees {
     public PartitionsByTreeNode createPartitionsByTreeNode(PartitionGraph partitionGraph){
         PartitionsByTreeNode partitions = new PartitionsByTreeNode(partitionGraph.realTaxaInPartition);
         // int j = 0;
-        PartitionNode sentinel = new PartitionNode(false);
-        sentinel.data = new Data();
         for(Tree tree : geneTrees){
             // j++;
             int[] fre = new int[this.taxaMap.size()];
@@ -347,20 +346,30 @@ public class GeneTrees {
 
                 if(!node.dupplicationNode){
                     PartitionNode[][] gainNodes = new PartitionNode[node.childs.size()][];
-                    ArrayList<PartitionNode> ps = new ArrayList<>();
+                    PartitionNode[] p = new PartitionNode[node.childs.size() + 1];
                     int k = 0;
                     for(TreeNode child : node.childs){
-                        ps.add(child.partitionNode);
+                        p[k] = child.partitionNode;
                         gainNodes[k++] = child.gainChildNodes;
                     }
-                    ps.add(node.parentPartitionNode);
-                    PartitionNode[] p = new PartitionNode[ps.size()];
-                    for(int j = 0; j < ps.size(); ++j){
-                        p[j] = ps.get(j);
-                    }
+                    p[k] = node.parentPartitionNode;
+
                     partitions.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
                 }
             }
+
+            TreeNode rootNode = tree.root;
+            PartitionNode[] ps = new PartitionNode[rootNode.childs.size() + 1];
+            PartitionNode[][] gainNodes = new PartitionNode[rootNode.childs.size()][];
+            int k = 0;
+            for(TreeNode child : rootNode.childs){
+                ps[k] = child.partitionNode;
+                gainNodes[k++] = child.gainChildNodes;
+            }
+            ps[k] = partitionGraph.getSentinel();
+
+            partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
+
         }
 
         return partitions;
