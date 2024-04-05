@@ -17,7 +17,7 @@ public class PartitionsByTreeNode {
         this.stringIdToPartitionByTreeNode = new HashMap<>();
     }
 
-    public void addPartitionByTreeNode(PartitionNode[] partitionNodes){
+    public void addPartitionByTreeNode(PartitionNode[] partitionNodes, PartitionNode[][] gainChildNodes, PartitionNode gainParentNode){
         ArrayList<String> partitionStrings = new ArrayList<>();        
         for(PartitionNode p : partitionNodes){
             partitionStrings.add(Utility.getPartitionString(this.realTaxaInPartition.get(p)));
@@ -25,8 +25,10 @@ public class PartitionsByTreeNode {
         Collections.sort(partitionStrings);
         StringBuilder sb = new StringBuilder();
         for(String s : partitionStrings){
+            // System.out.println(s);
             sb.append(s);
         }
+        // System.out.println();
         String partitionByTreeNodeString = sb.toString();
 
         if(this.stringIdToPartitionByTreeNode.containsKey(partitionByTreeNodeString)){
@@ -34,7 +36,7 @@ public class PartitionsByTreeNode {
             partitionByTreeNode.increaseCount();
         }
         else{
-            PartitionByTreeNode partitionByTreeNode = new PartitionByTreeNode(partitionNodes);
+            PartitionByTreeNode partitionByTreeNode = new PartitionByTreeNode(partitionNodes, gainChildNodes, gainParentNode);
             this.partitions.add(partitionByTreeNode);
             this.stringIdToPartitionByTreeNode.put(partitionByTreeNodeString, partitionByTreeNode);
         }

@@ -8,7 +8,8 @@ import src.Taxon.RealTaxon;
 public class DataContainer {
 
     public ArrayList<PartitionByTreeNode> partitionsByTreeNodes;
-    public ArrayList<PartitionNode> topSortedPartitionNodes;
+    public ArrayList<PartitionNode> topSortedForBranch;
+    public ArrayList<PartitionNode> topSortedForGain;
     public PartitionNode[] realTaxaPartitionNodes;
     public boolean[][] realTaxaInTrees;
     public RealTaxon[] taxa;

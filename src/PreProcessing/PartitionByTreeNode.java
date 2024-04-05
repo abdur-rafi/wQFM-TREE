@@ -5,22 +5,33 @@ import src.ScoreCalculator.NumSatCalculatorNode;
 public class PartitionByTreeNode {
 
     public PartitionNode[] partitionNodes;
+    public PartitionNode[][] gainChildNodes;
+    public PartitionNode gainParentNode;
+
     public int[] netTranser;
 
     public int count;
     public NumSatCalculatorNode scoreCalculator;
 
-    public PartitionByTreeNode(PartitionNode[] partitionNodes){
+    public PartitionByTreeNode(PartitionNode[] partitionNodes, PartitionNode[][] gainChildNodes, PartitionNode gainParentNode){
         this.partitionNodes = partitionNodes;
+        this.gainChildNodes = gainChildNodes;
+        this.gainParentNode = gainParentNode;
+
         this.count = 1;
         this.scoreCalculator = null;
 
         for(int i = 0; i < partitionNodes.length; ++i){
+            if(partitionNodes.length > 3){
+                System.out.println("polytomy");
+            }
             PartitionNode p = partitionNodes[i];
             p.addNodePartitions(this, i);
         }
 
+
         this.netTranser = new int[partitionNodes.length];
+
     }
 
     public void increaseCount(){

@@ -1,0 +1,19 @@
+
+#NEXUS
+
+begin taxa;
+        dimensions ntax=11;
+        taxlabels 0 1 10 2 3 4 5 6 7 8 9;
+end;
+
+begin paup;
+        set autoclose = yes warntree = no warnreset = no notifybeep = no monitor = yes taxlabels = full;
+        set criterion = parsimony;
+        set increase = auto;
+        gettrees file = ./input/proCons.nexus allblocks = yes warntree = no unrooted = yes;
+        contree all / strict = yes treefile = ./input/proCons.strict replace;
+        contree all / strict = no majrule = yes treefile = ./input/proCons.majority replace;
+        contree all / strict = no majrule = yes le50 = yes treefile = ./input/proCons.greedy replace;
+end;
+
+quit warntsave = no;

@@ -49,7 +49,7 @@ public class PartitionGraph {
         return this.taxaPartitionNodes[taxon.id];
     }
 
-    public PartitionNode addPartition(ArrayList<PartitionNode> childs){
+    public PartitionNode addPartition(ArrayList<PartitionNode> childs, boolean forGain){
         boolean[] b = new boolean[this.taxa.length];
         for(PartitionNode child: childs){
             boolean[] realTaxaInSubTree = this.realTaxaInPartition.get(child);
@@ -62,6 +62,9 @@ public class PartitionGraph {
         if(this.stringIdToPartition.containsKey(partitionString)){
             // System.out.println("-------here-----------");
             PartitionNode node = this.stringIdToPartition.get(partitionString);
+            if(forGain){
+                node.gainPartition = true;
+            }
             // Set<String> nodeChildren = new HashSet<>();
             // for(PartitionNode child: node.children){
             //     nodeChildren.add(Utility.getPartitionString(this.realTaxaInPartition.get(child)));
@@ -100,10 +103,26 @@ public class PartitionGraph {
             this.realTaxaInPartition.put(partitionNode, b);
             this.stringIdToPartition.put(partitionString, partitionNode);
             this.partitionNodes.add(partitionNode);
+            if(forGain){
+                partitionNode.onlyGainPartition = true;
+                partitionNode.gainPartition = true;
+            }
             count += 1;
             return partitionNode;
         }
         
+    }
+
+    public void removeOnlyGainPartitionsFromParent(){
+        for(PartitionNode partitionNode: this.partitionNodes){
+            ArrayList<PartitionNode> filteredParents = new ArrayList<>();
+            for(PartitionNode parent: partitionNode.parents){
+                if(!parent.onlyGainPartition){
+                    filteredParents.add(parent);
+                }
+            }
+            partitionNode.parents = filteredParents;
+        }
     }
 
     public ArrayList<PartitionNode> getTopSortedNodes(){
@@ -136,6 +155,7 @@ public class PartitionGraph {
 
         return topSortedNodes;
     }
+
 
 
 

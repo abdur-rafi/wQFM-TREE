@@ -63,9 +63,9 @@ public class BookKeepingPerLevelDC {
 
         }
 
-        int sz = this.dc.topSortedPartitionNodes.size();
+        int sz = this.dc.topSortedForBranch.size();
         for(int i = sz - 1; i >  -1; --i){
-            PartitionNode p = this.dc.topSortedPartitionNodes.get(i);
+            PartitionNode p = this.dc.topSortedForBranch.get(i);
             if(p.isLeaf){
                 continue;
             }
@@ -111,7 +111,7 @@ public class BookKeepingPerLevelDC {
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
         double totalSat = 0;
         
-        for(PartitionNode p : this.dc.topSortedPartitionNodes){
+        for(PartitionNode p : this.dc.topSortedForBranch){
             p.data.gainsForSubTree = new double[2];
         }
 
@@ -129,7 +129,7 @@ public class BookKeepingPerLevelDC {
             }
         }
 
-        for(PartitionNode p : this.dc.topSortedPartitionNodes){
+        for(PartitionNode p : this.dc.topSortedForBranch){
             for(PartitionNode childs : p.children){
                 Utility.addArrayToFirst(childs.data.gainsForSubTree, p.data.gainsForSubTree);
             }
@@ -232,7 +232,7 @@ public class BookKeepingPerLevelDC {
             bkpt.swapRealTaxon(rtId, partition);
         }
 
-        for(PartitionNode p : this.dc.topSortedPartitionNodes){
+        for(PartitionNode p : this.dc.topSortedForBranch){
             boolean[] b = this.dc.partitionGraph.realTaxaInPartition.get(p);
             if(b[rtId]){
                 for(PartitionByTreeNodeWithIndex pbt : p.nodePartitions){

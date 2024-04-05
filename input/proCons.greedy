@@ -1,0 +1,14 @@
+#NEXUS 
+
+Begin trees;  [Treefile saved Wed Apr  3 10:12:46 2024]
+[!
+>Consensus of 1621 trees
+>
+>Source of trees from which consensus(es) calculated...
+>
+>Processing TREES block from file "./input/proCons.nexus":
+>   Keeping: trees from file (replacing trees in memory)
+>   1621 trees read from file
+]
+	tree MajRule = [&U] (0,((((1,4),6),((2,3),5)),7),(10,(8,9)));
+end;

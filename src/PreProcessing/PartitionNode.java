@@ -15,6 +15,7 @@ public class PartitionNode{
         }
     }
 
+
     public ArrayList<PartitionNode> parents;
     public ArrayList<PartitionNode> children;
 
@@ -24,6 +25,9 @@ public class PartitionNode{
     public String label;
 
     public Data data;
+
+    public boolean gainPartition;
+    public boolean onlyGainPartition;
 
 
     // public PartitionNode(ArrayList<PartitionNode> parents, ArrayList<PartitionNode> children, boolean isLeaf, Data data){
@@ -40,6 +44,8 @@ public class PartitionNode{
         this.isLeaf = isLeaf;
         this.nodePartitions = new ArrayList<>();
         this.data = null;
+        this.gainPartition = false;
+        this.onlyGainPartition = false;
     }
     
     public void addChild(PartitionNode child){

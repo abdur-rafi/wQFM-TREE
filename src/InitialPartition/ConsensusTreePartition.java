@@ -44,7 +44,7 @@ public class ConsensusTreePartition implements IMakePartition {
         dist = new double[this.taxonCount][this.taxonCount];
         this.taxaMap = taxaMap;
 
-        calculateDistanceMatrix();
+        // calculateDistanceMatrix();
         // for(var x : this.taxaMap.entrySet()){
         //     System.out.println(x.getKey() + " " + x.getValue().id);
         // }
@@ -76,28 +76,28 @@ public class ConsensusTreePartition implements IMakePartition {
     }
 
     
-    private void distFromTaxon(RealTaxon rt){
-        var leafNode = this.consTree.leaves[rt.id];
-        var parent = leafNode.parent;
-        int from = rt.id;
-        double dist = 1;
-        while(parent != null){
-            for(var child : parent.childs){
-                if(child != leafNode){
-                    distToLeaves(child, from, dist + 1);
-                }
-            }
-            leafNode = parent;
-            parent = parent.parent;
-            dist++;
-        }
-    }
+    // private void distFromTaxon(RealTaxon rt){
+    //     var leafNode = this.consTree.leaves[rt.id];
+    //     var parent = leafNode.parent;
+    //     int from = rt.id;
+    //     double dist = 1;
+    //     while(parent != null){
+    //         for(var child : parent.childs){
+    //             if(child != leafNode){
+    //                 distToLeaves(child, from, dist + 1);
+    //             }
+    //         }
+    //         leafNode = parent;
+    //         parent = parent.parent;
+    //         dist++;
+    //     }
+    // }
 
-    private void calculateDistanceMatrix(){
-        for(var x : this.taxaMap.entrySet()){
-            distFromTaxon(x.getValue());    
-        }
-    }
+    // private void calculateDistanceMatrix(){
+    //     for(var x : this.taxaMap.entrySet()){
+    //         distFromTaxon(x.getValue());    
+    //     }
+    // }
 
 
 

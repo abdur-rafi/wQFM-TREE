@@ -18,15 +18,15 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length < 4){
-            System.out.println("Specify all file paths and non quartet type");
-            System.exit(-1);
-        }
-        String inputFilePath = args[0];
-        String consensusFilePath = args[1];
-        String outputFilePath = args[2];
+        // if(args.length < 4){
+        //     System.out.println("Specify all file paths and non quartet type");
+        //     System.exit(-1);
+        // }
+        // String inputFilePath = args[0];
+        // String consensusFilePath = args[1];
+        // String outputFilePath = args[2];
 
-        String nonQuartetType = args[3];
+        // String nonQuartetType = args[3];
         
         // if(nonQuartetType.equals("A")){
         //     Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
@@ -79,6 +79,11 @@ public class Main {
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
+
+        String inputFilePath = "./input/n10ProRooted.cleaned";
+        String consensusFilePath = "./input/proCons.greedy.tree";
+        String outputFilePath = "./proOutput.tre";
+
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();
         long time_1 = System.currentTimeMillis(); //calculate starting time
         long cpuTimeBefore = threadMXBean.getCurrentThreadCpuTime();

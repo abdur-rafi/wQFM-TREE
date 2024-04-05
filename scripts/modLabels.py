@@ -1,8 +1,7 @@
 import sys
 import re
 
-reg = r"[:].*?(?=[),])"
-reg2 = r"[)].*?(?=[),])"
+reg = r'_\w+'
 
 line = ""
 while(True):
@@ -10,7 +9,6 @@ while(True):
     if not line:
         break
     line = re.sub(reg, "", line)
-    line = re.sub(reg2, ")", line)
     print(line, end="")
     
     

@@ -2,7 +2,10 @@ package src.Tree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import src.Taxon.RealTaxon;
@@ -16,8 +19,9 @@ public class Tree {
 
     public TreeNode root;
     public Map<String, RealTaxon> taxaMap;
+    public Set<Integer> taxaInTreeIds;
     // in order of id
-    public TreeNode[] leaves;
+    // public TreeNode[] leaves;
     // leavesCount and size of leaves array may be different
     public int leavesCount;
     
@@ -121,14 +125,23 @@ public class Tree {
 
         // this.leavesCount = this.taxaMap.size();
         this.leavesCount = leavesCount;
+
+        for(var x : nodes){
+            if(x.isLeaf()){
+                this.taxaInTreeIds.add(x.taxon.id);
+            }
+        }
     
         root = nodes.lastElement();
-    
-        if(root.childs.size() > 2)
+        
+        if(root.childs.size() > 2){
+            // System.out.println(newickLine);
+            // System.out.println("laksjdfljkd");
             balanceRoot();
+        }
         
         
-        filterLeaves();
+        // filterLeaves();
         topSort();
 
         // System.out.println(this.leavesCount);
@@ -148,14 +161,14 @@ public class Tree {
 
     }
 
-    private void filterLeaves(){
-        this.leaves = new TreeNode[this.taxaMap.size()];
-        for(var x : nodes){
-            if(x.isLeaf()){
-                this.leaves[x.taxon.id] = x;
-            }
-        }
-    }
+    // private void filterLeaves(){
+    //     this.leaves = new TreeNode[this.taxaMap.size()];
+    //     for(var x : nodes){
+    //         if(x.isLeaf()){
+    //             this.leaves[x.taxon.id] = x;
+    //         }
+    //     }
+    // }
 
     public ArrayList<Integer> resolveNonBinaryUtil(TreeNode node, double[][] distanceMatrix){
         if(node.isLeaf()){
@@ -215,11 +228,13 @@ public class Tree {
 
     public Tree(String newickLine, Map<String, RealTaxon> taxaMap){
         this.taxaMap = taxaMap;
+        this.taxaInTreeIds = new HashSet<>();
         parseFromNewick(newickLine);
     }
 
     public Tree(){
         taxaMap = null;
+        this.taxaInTreeIds = new HashSet<>();
         nodes = new ArrayList<>();
     }
 
@@ -343,8 +358,10 @@ public class Tree {
     }
 
     public boolean isTaxonPresent(int id){
-        return this.leaves[id] != null;
+        return this.taxaInTreeIds.contains(id);
     }
+
+
     
 
     private ArrayList<Integer> getChildrens(TreeNode node, Map<String, TreeNode> triPartitionsMap){
@@ -446,6 +463,33 @@ public class Tree {
                 return true;
         }
         return false;
+    }
+
+    public boolean[] tagUtil(TreeNode node){
+        
+        boolean[] taxaInSubtree = new boolean[this.taxaMap.size()];
+
+        if(node.isLeaf()){
+            taxaInSubtree[node.taxon.id] = true;
+            return taxaInSubtree;
+        }
+        for(var child : node.childs){
+            var childTaxa = tagUtil(child);
+            for(int i = 0; i < this.taxaMap.size(); ++i){
+                if(childTaxa[i]){
+                    if(taxaInSubtree[i]){
+                        node.dupplicationNode = true;
+                    }
+                    taxaInSubtree[i] = true;
+                }
+            }
+        }
+        return taxaInSubtree;
+
+    }
+
+    public void tag(){
+        tagUtil(root);
     }
 
 }

@@ -109,6 +109,9 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
 
         this.nonQuartets = this.calcNonQuartets();
 
+        System.out.println("======================= polytomy node =========================");
+        // System.out.println(";lkajdslfjksdfljk");
+
     }
 
     @Override
