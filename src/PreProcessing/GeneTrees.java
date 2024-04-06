@@ -358,17 +358,20 @@ public class GeneTrees {
                 }
             }
 
-            TreeNode rootNode = tree.root;
-            PartitionNode[] ps = new PartitionNode[rootNode.childs.size() + 1];
-            PartitionNode[][] gainNodes = new PartitionNode[rootNode.childs.size()][];
-            int k = 0;
-            for(TreeNode child : rootNode.childs){
-                ps[k] = child.partitionNode;
-                gainNodes[k++] = child.gainChildNodes;
+            if(!tree.root.dupplicationNode){
+                TreeNode rootNode = tree.root;
+                PartitionNode[] ps = new PartitionNode[rootNode.childs.size() + 1];
+                PartitionNode[][] gainNodes = new PartitionNode[rootNode.childs.size()][];
+                int k = 0;
+                for(TreeNode child : rootNode.childs){
+                    ps[k] = child.partitionNode;
+                    gainNodes[k++] = child.gainChildNodes;
+                }
+                ps[k] = partitionGraph.getSentinel();
+    
+                partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
             }
-            ps[k] = partitionGraph.getSentinel();
 
-            partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
 
         }
 

@@ -24,11 +24,13 @@ public class PartitionNode{
     public boolean isLeaf;
     public String label;
 
+
+
     public Data data;
 
     public boolean gainPartition;
     public boolean onlyGainPartition;
-
+    public double[] gainsForSubTree;
 
     // public PartitionNode(ArrayList<PartitionNode> parents, ArrayList<PartitionNode> children, boolean isLeaf, Data data){
     //     this.parents = parents;

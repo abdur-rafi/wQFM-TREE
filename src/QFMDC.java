@@ -234,7 +234,7 @@ public class QFMDC {
             
         }
 
-        // System.out.println("Cg : " + cg);
+        System.out.println("Cg : " + cg);
         
 
         if(maxCgIndex == -1){

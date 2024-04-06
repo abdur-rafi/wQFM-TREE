@@ -46,7 +46,7 @@ public class PartitionGraph {
         boolean[] realTaxaInSubTree = new boolean[taxa.length];
         this.realTaxaInPartition.put(this.sentinel, realTaxaInSubTree);
         this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.sentinel);
-        
+
 
         count = taxa.length;
 
@@ -58,6 +58,18 @@ public class PartitionGraph {
 
     public PartitionNode getPartitionNode(RealTaxon taxon){
         return this.taxaPartitionNodes[taxon.id];
+    }
+
+    private void markChildsForGain(PartitionNode p){
+        if(p.isLeaf){
+            return;
+        }
+        for(PartitionNode child: p.children){
+            if(!child.gainPartition){
+                child.gainPartition = true;
+                markChildsForGain(child);
+            }
+        }
     }
 
     public PartitionNode addPartition(ArrayList<PartitionNode> childs, boolean forGain){
@@ -75,6 +87,7 @@ public class PartitionGraph {
             PartitionNode node = this.stringIdToPartition.get(partitionString);
             if(forGain){
                 node.gainPartition = true;
+                markChildsForGain(node);
             }
             // Set<String> nodeChildren = new HashSet<>();
             // for(PartitionNode child: node.children){
@@ -117,6 +130,7 @@ public class PartitionGraph {
             if(forGain){
                 partitionNode.onlyGainPartition = true;
                 partitionNode.gainPartition = true;
+                markChildsForGain(partitionNode);
             }
             count += 1;
             return partitionNode;

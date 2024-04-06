@@ -3,12 +3,9 @@ package src;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.ConsensusTreePartitionDC;
 import src.InitialPartition.IMakePartition;
-import src.PreProcessing.GeneTrees;
 import src.PreProcessing.Preprocess;
-import src.Taxon.RealTaxon;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -80,8 +77,10 @@ public class Main {
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
         // GeneTrees trees = new GeneTrees("./input/gtree_11tax_est_5genes_R1.tre");
 
-        String inputFilePath = "./input/n10ProRooted.cleaned";
-        String consensusFilePath = "./input/proCons.greedy.tree";
+        // String inputFilePath = "./input/n10ProRooted.cleaned";
+        String inputFilePath = "./input/t.txt";
+        // String consensusFilePath = "./input/proCons.greedy.tree";
+        String consensusFilePath = "./input/t.txt";
         String outputFilePath = "./proOutput.tre";
 
         ThreadMXBean threadMXBean = ManagementFactory.getThreadMXBean();

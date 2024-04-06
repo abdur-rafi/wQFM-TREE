@@ -1,6 +1,7 @@
 package src.PreProcessing;
 
 import src.ScoreCalculator.NumSatCalculatorNode;
+import src.ScoreCalculator.NumSatSQ;
 
 public class PartitionByTreeNode {
 
@@ -11,7 +12,7 @@ public class PartitionByTreeNode {
     public int[] netTranser;
 
     public int count;
-    public NumSatCalculatorNode scoreCalculator;
+    public NumSatSQ scoreCalculator;
 
     public PartitionByTreeNode(PartitionNode[] partitionNodes, PartitionNode[][] gainChildNodes, PartitionNode gainParentNode){
         this.partitionNodes = partitionNodes;

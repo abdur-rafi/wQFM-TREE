@@ -8,6 +8,7 @@ import src.DSPerLevel.BookKeepingPerLevelDC;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
 import src.PreProcessing.DataContainer;
 import src.PreProcessing.GeneTrees;
+import src.PreProcessing.Preprocess;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 
@@ -262,6 +263,12 @@ public class DebugMain {
         for (int i = 0; i < rtGains.length; i++) {
             System.out.println("Taxon " + (i+1) + ": " + rtGains[i][0] + ", " + rtGains[i][1]);
         }
+    }
+
+    public void proTC() throws FileNotFoundException{
+        String inputFilePath = "./input/t.txt";
+        Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
+
     }
     
     public static void main(String[] args) throws IOException {
