@@ -12,6 +12,7 @@ public class TestSQ {
 
     public static void proTC() throws FileNotFoundException{
         String inputFilePath = "./input/t.txt";
+        // String inputFilePath = "./input/n10ProRooted.cleaned";
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
 
         RealTaxon[] rts = ret.dc.taxa;

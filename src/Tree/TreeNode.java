@@ -3,9 +3,9 @@ package src.Tree;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import src.PreProcessing.PartitionByTreeNode;
-import src.PreProcessing.PartitionGraph;
-import src.PreProcessing.PartitionNode;
+import src.PreProcessing.InternalNode;
+import src.PreProcessing.ComponentGraph;
+import src.PreProcessing.Component;
 import src.Taxon.RealTaxon;
 import src.Tree.TreePrinter.PrintableNode;
 
@@ -22,15 +22,16 @@ public class TreeNode implements TreePrinter.PrintableNode {
     
     public double weight;
 
-    public PartitionNode partitionNode;
-    public PartitionNode parentPartitionNode;
+    // public Component subTreeComponent;
+    // public Component parentComponent;
 
-    public PartitionByTreeNode partitionByTreeNode;
+    // public InternalNode internalNode;
     
     // 0 -> Common with parent
     // 1 -> Uniques
-    public PartitionNode[] gainChildNodes;
-    public PartitionNode gainParentNode;
+    // public Component[] childComponents;
+    public Component commonWithParent, distinctWithParent;
+    public Component parentDistinct;
 
     public boolean dupplicationNode;
 
@@ -46,7 +47,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
         taxon = null;
         weight = 0;
         frequency = 0;
-        this.partitionNode = null;
+        // this.subTreeComponent = null;
     }
 
     public TreeNode setIndex(int id){

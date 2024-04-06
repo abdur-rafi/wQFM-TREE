@@ -2,69 +2,67 @@ package src.PreProcessing;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Queue;
-import java.util.Set;
 
 import src.Taxon.RealTaxon;
 
-public class PartitionGraph {
+public class ComponentGraph {
     
 
     public RealTaxon[] taxa;
-    public PartitionNode[] taxaPartitionNodes;
-    public Map<PartitionNode, boolean[]> realTaxaInPartition;
-    private Map<String, PartitionNode> stringIdToPartition;
+    public Component[] taxaPartitionNodes;
+    public Map<Component, boolean[]> realTaxaInComponent;
+    private Map<String, Component> stringIdToComponent;
 
-    public ArrayList<PartitionNode> partitionNodes;
+    public ArrayList<Component> components;
 
-    public PartitionNode sentinel;
+    private Component sentinel;
 
 
     public int count = 0;
     
 
-    public PartitionGraph(RealTaxon[] taxa){
+    public ComponentGraph(RealTaxon[] taxa){
         this.taxa = taxa;
-        this.taxaPartitionNodes = new PartitionNode[taxa.length];
-        this.realTaxaInPartition = new HashMap<>();
-        this.stringIdToPartition = new HashMap<>();
-        this.partitionNodes = new ArrayList<>();
+        this.taxaPartitionNodes = new Component[taxa.length];
+        this.realTaxaInComponent = new HashMap<>();
+        this.stringIdToComponent = new HashMap<>();
+        this.components = new ArrayList<>();
 
         for(int i = 0; i < taxa.length; ++i){
-            this.taxaPartitionNodes[i] = new PartitionNode(true);
+            this.taxaPartitionNodes[i] = new Component(true);
             boolean[] realTaxaInSubTree = new boolean[taxa.length];
             realTaxaInSubTree[i] = true;
-            this.realTaxaInPartition.put(this.taxaPartitionNodes[i], realTaxaInSubTree);
-            this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.taxaPartitionNodes[i]);
-            this.partitionNodes.add(this.taxaPartitionNodes[i]);
+            this.realTaxaInComponent.put(this.taxaPartitionNodes[i], realTaxaInSubTree);
+            this.stringIdToComponent.put(Utility.getComponentString(realTaxaInSubTree), this.taxaPartitionNodes[i]);
+            this.components.add(this.taxaPartitionNodes[i]);
             this.taxaPartitionNodes[i].label = taxa[i].label;
         }
 
-        this.sentinel = new PartitionNode(true);
+        this.sentinel = new Component(true);
         boolean[] realTaxaInSubTree = new boolean[taxa.length];
-        this.realTaxaInPartition.put(this.sentinel, realTaxaInSubTree);
-        this.stringIdToPartition.put(Utility.getPartitionString(realTaxaInSubTree), this.sentinel);
-
+        this.realTaxaInComponent.put(this.sentinel, realTaxaInSubTree);
+        this.stringIdToComponent.put(Utility.getComponentString(realTaxaInSubTree), this.sentinel);
+        this.sentinel.label = "";
 
         count = taxa.length;
 
     }
 
-    public PartitionNode getSentinel(){
+    public Component getSentinel(){
         return this.sentinel;
     }
 
-    public PartitionNode getPartitionNode(RealTaxon taxon){
+    public Component getPartitionNode(RealTaxon taxon){
         return this.taxaPartitionNodes[taxon.id];
     }
 
-    private void markChildsForGain(PartitionNode p){
+    private void markChildsForGain(Component p){
         if(p.isLeaf){
             return;
         }
-        for(PartitionNode child: p.children){
+        for(Component child: p.children){
             if(!child.gainPartition){
                 child.gainPartition = true;
                 markChildsForGain(child);
@@ -72,19 +70,19 @@ public class PartitionGraph {
         }
     }
 
-    public PartitionNode addPartition(ArrayList<PartitionNode> childs, boolean forGain){
+    public Component addComponent(ArrayList<Component> childs, boolean forGain){
         boolean[] b = new boolean[this.taxa.length];
-        for(PartitionNode child: childs){
-            boolean[] realTaxaInSubTree = this.realTaxaInPartition.get(child);
+        for(Component child: childs){
+            boolean[] realTaxaInSubTree = this.realTaxaInComponent.get(child);
             for(int i = 0; i < this.taxa.length; ++i){
                 b[i] = b[i] || realTaxaInSubTree[i];
             }
         }
 
-        String partitionString = Utility.getPartitionString(b);
-        if(this.stringIdToPartition.containsKey(partitionString)){
+        String partitionString = Utility.getComponentString(b);
+        if(this.stringIdToComponent.containsKey(partitionString)){
             // System.out.println("-------here-----------");
-            PartitionNode node = this.stringIdToPartition.get(partitionString);
+            Component node = this.stringIdToComponent.get(partitionString);
             if(forGain){
                 node.gainPartition = true;
                 markChildsForGain(node);
@@ -119,14 +117,16 @@ public class PartitionGraph {
             return node;
         }
         else{
-            PartitionNode partitionNode = new PartitionNode(false);
-            for(PartitionNode child: childs){
-                partitionNode.addChild(child);
-                child.addParent(partitionNode);
+            Component partitionNode = new Component(false);
+            for(Component child: childs){
+                if(child != sentinel){
+                    partitionNode.addChild(child);
+                    child.addParent(partitionNode);
+                }
             }
-            this.realTaxaInPartition.put(partitionNode, b);
-            this.stringIdToPartition.put(partitionString, partitionNode);
-            this.partitionNodes.add(partitionNode);
+            this.realTaxaInComponent.put(partitionNode, b);
+            this.stringIdToComponent.put(partitionString, partitionNode);
+            this.components.add(partitionNode);
             if(forGain){
                 partitionNode.onlyGainPartition = true;
                 partitionNode.gainPartition = true;
@@ -139,9 +139,9 @@ public class PartitionGraph {
     }
 
     public void removeOnlyGainPartitionsFromParent(){
-        for(PartitionNode partitionNode: this.partitionNodes){
-            ArrayList<PartitionNode> filteredParents = new ArrayList<>();
-            for(PartitionNode parent: partitionNode.parents){
+        for(Component partitionNode: this.components){
+            ArrayList<Component> filteredParents = new ArrayList<>();
+            for(Component parent: partitionNode.parents){
                 if(!parent.onlyGainPartition){
                     filteredParents.add(parent);
                 }
@@ -150,13 +150,13 @@ public class PartitionGraph {
         }
     }
 
-    public ArrayList<PartitionNode> getTopSortedNodes(){
-        ArrayList<PartitionNode> topSortedNodes = new ArrayList<>();
+    public ArrayList<Component> getTopSortedNodes(){
+        ArrayList<Component> topSortedNodes = new ArrayList<>();
         
-        Queue<PartitionNode> q = new java.util.LinkedList<>();
-        Map<PartitionNode, Integer> inDegree = new HashMap<>();
+        Queue<Component> q = new java.util.LinkedList<>();
+        Map<Component, Integer> inDegree = new HashMap<>();
         
-        for(PartitionNode partitionNode: this.partitionNodes){
+        for(Component partitionNode: this.components){
             if(partitionNode.parents.size() == 0){
                 q.add(partitionNode);
             }
@@ -166,9 +166,9 @@ public class PartitionGraph {
         }
 
         while(!q.isEmpty()){
-            PartitionNode partitionNode = q.poll();
+            Component partitionNode = q.poll();
             topSortedNodes.add(partitionNode);
-            for(PartitionNode child: partitionNode.children){
+            for(Component child: partitionNode.children){
                 inDegree.put(child, inDegree.get(child) - 1);
                 if(inDegree.get(child) == 0){
                     q.add(child);

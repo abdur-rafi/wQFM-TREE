@@ -3,23 +3,23 @@ package src.PreProcessing;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class PartitionNode{
+public class Component{
 
-    public static class PartitionByTreeNodeWithIndex{
-        public PartitionByTreeNode partitionByTreeNode;
+    public static class InternalNodeWithIndex{
+        public InternalNode internalNode;
         public int index;
         
-        public PartitionByTreeNodeWithIndex(PartitionByTreeNode a, int b){
-            this.partitionByTreeNode = a;
+        public InternalNodeWithIndex(InternalNode a, int b){
+            this.internalNode = a;
             this.index = b;
         }
     }
 
 
-    public ArrayList<PartitionNode> parents;
-    public ArrayList<PartitionNode> children;
+    public ArrayList<Component> parents;
+    public ArrayList<Component> children;
 
-    public ArrayList<PartitionByTreeNodeWithIndex> nodePartitions;
+    public ArrayList<InternalNodeWithIndex> partOfInternalNodes;
     
     public boolean isLeaf;
     public String label;
@@ -40,26 +40,26 @@ public class PartitionNode{
         
     // }
 
-    public PartitionNode(boolean isLeaf){
-        this.parents = new ArrayList<PartitionNode>();
-        this.children = new ArrayList<PartitionNode>();
+    public Component(boolean isLeaf){
+        this.parents = new ArrayList<Component>();
+        this.children = new ArrayList<Component>();
         this.isLeaf = isLeaf;
-        this.nodePartitions = new ArrayList<>();
+        this.partOfInternalNodes = new ArrayList<>();
         this.data = null;
         this.gainPartition = false;
         this.onlyGainPartition = false;
     }
     
-    public void addChild(PartitionNode child){
+    public void addChild(Component child){
         this.children.add(child);
     }
 
-    public void addParent(PartitionNode parent){
+    public void addParent(Component parent){
         this.parents.add(parent);
     }
 
-    public void addNodePartitions(PartitionByTreeNode p, int index){
-        this.nodePartitions.add(new PartitionByTreeNodeWithIndex(p, index));
+    public void addInternalNode(InternalNode p, int index){
+        this.partOfInternalNodes.add(new InternalNodeWithIndex(p, index));
     }
 
 
@@ -83,7 +83,7 @@ public class PartitionNode{
             members.add(this.label);
         }
         else{
-            for(PartitionNode child: this.children){
+            for(Component child: this.children){
                 members.addAll(child.members());
             }
         }

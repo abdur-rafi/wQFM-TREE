@@ -1,5 +1,7 @@
 package src.Taxon;
 
+import src.PreProcessing.Component;
+
 public class RealTaxon {
 
     public static int count = 0;
@@ -22,6 +24,8 @@ public class RealTaxon {
     public String toString(){
         return label;
     }
+
+    public Component component;
 
     
 }

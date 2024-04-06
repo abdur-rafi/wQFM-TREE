@@ -4,7 +4,7 @@ public interface NumSatSQ {
 
     public double score();
 
-    public double[][][] gainRealTaxa(double originalScore, double multiplier);
+    public double[][] gainRealTaxa(double originalScore, double multiplier);
 
     public void swapRealTaxon(int branchIndex, int currPartition);
 

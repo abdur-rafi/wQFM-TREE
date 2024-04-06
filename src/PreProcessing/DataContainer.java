@@ -7,15 +7,16 @@ import src.Taxon.RealTaxon;
 
 public class DataContainer {
 
-    public ArrayList<PartitionByTreeNode> partitionsByTreeNodes;
-    public ArrayList<PartitionNode> topSortedForBranch;
-    public ArrayList<PartitionNode> topSortedForGain;
-    public PartitionNode[] realTaxaPartitionNodes;
+    public ArrayList<InternalNode> internalNodes;
+    public ArrayList<Component> topSortedComponents;
+    // public ArrayList<PartitionNode> topSortedForBranch;
+    // public ArrayList<PartitionNode> topSortedForGain;
+    public Component[] realTaxaComponents;
     public boolean[][] realTaxaInTrees;
     public RealTaxon[] taxa;
 
-    public PartitionGraph partitionGraph;
-    public PartitionNode sentinel;
+    public ComponentGraph componentGraph;
+    public Component sentinel;
 
     // public DataContainer(
     //     ArrayList<PartitionsByTreeNode> partitionsByTreeNodes, 
