@@ -11,10 +11,14 @@ public class NumSatSQBin implements NumSatSQ{
     int[] dummyTaxaPartition;
     double[][] pairsFromBranch;
     double[][] pairsWithParentBranch;
+    double[] pairsLR;
+
+    // double[] pairsABFromBranch;
+    // double[] pairsABWithParentBranch;
+    
 
     // double[] pairsFromLeftRightBranch;
 
-    double[] pairsABFromBranch;
     // double pairsABFromLeftRightBranch;
 
     double EPS = 0.000001;
@@ -27,11 +31,12 @@ public class NumSatSQBin implements NumSatSQ{
         this.uniquesParent = uniquesParent;
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.pairsFromBranch = new double[2][2];
-        this.pairsABFromBranch = new double[2];
         this.pairsWithParentBranch = new double[2][2];
+        this.pairsLR = new double[2];
+        // this.pairsABFromBranch = new double[2];
+        // this.pairsABWithParentBranch = new double[2];
 
         this.nDummyTaxa = common[0].dummyTaxaWeightsIndividual.length;
-        // this.pairsFromLeftRightBranch = new double[2];
 
         double[] totalParent = new double[2];
         totalParent[0] = uniquesParent.totalTaxaCounts[0] + common[0].totalTaxaCounts[0] + common[1].totalTaxaCounts[0];
@@ -45,9 +50,10 @@ public class NumSatSQBin implements NumSatSQ{
                 totalInBranch[p] = common[i].totalTaxaCounts[p] + uniques[i].totalTaxaCounts[p];
                 this.pairsFromBranch[i][p] = totalInBranch[p] * totalInBranch[p] - totalInBranch[p];
                 this.pairsWithParentBranch[i][p] = totalInBranch[p] * totalParent[p] - common[i].realTaxaCounts[p];
+                // this.pairsABFromBranch[i] = totalInBranch[0] * totalInBranch[1];
+                
+                // this.pairsABWithParentBranch[i] = totalInBranch[0] * totalParent[1] + totalInBranch[1] * totalParent[0];
 
-                // this.pairsWithParentBranch[i][0] = b[i].totalTaxaCounts[0] * b[2].totalTaxaCounts[0];
-                // this.pairsWithParentBranch[i][1] = b[i].totalTaxaCounts[1] * b[2].totalTaxaCounts[1];
             }
 
             for(int j = 0; j < this.nDummyTaxa; ++j){
@@ -64,6 +70,16 @@ public class NumSatSQBin implements NumSatSQ{
 
             // this.pairsABFromBranch[i] = b[i].totalTaxaCounts[0] * b[i].totalTaxaCounts[1];
         }
+        for(int p = 0; p < 2; ++p){
+            this.pairsLR[p] = (common[0].totalTaxaCounts[p] + uniques[0].totalTaxaCounts[p]) * (common[1].totalTaxaCounts[p] + uniques[1].totalTaxaCounts[p]);
+        }
+        for(int j = 0; j < this.nDummyTaxa; ++j){
+
+            int partition = this.dummyTaxaPartition[j];
+            double totalWi = common[0].dummyTaxaWeightsIndividual[j] + uniques[0].dummyTaxaWeightsIndividual[j];
+            double totalWi2 = common[1].dummyTaxaWeightsIndividual[j] + uniques[1].dummyTaxaWeightsIndividual[j];
+            this.pairsLR[partition] -= totalWi * totalWi2;
+        }
         // this.pairsFromLeftRightBranch[0] = b[0].totalTaxaCounts[0] * b[1].totalTaxaCounts[0];
         // this.pairsFromLeftRightBranch[1] = b[0].totalTaxaCounts[1] * b[1].totalTaxaCounts[1];
 
@@ -79,17 +95,28 @@ public class NumSatSQBin implements NumSatSQ{
     @Override
     public double score() {
         double score = 0;
-        score += pairsFromBranch[0][0] * pairsFromBranch[1][1];
-        score += pairsFromBranch[0][1] * pairsFromBranch[1][0];
+        // score += pairsFromBranch[0][0] * pairsFromBranch[1][1];
+        // score += pairsFromBranch[0][1] * pairsFromBranch[1][0];
         
-        score += pairsFromBranch[0][0] * pairsWithParentBranch[1][1];
-        score += pairsFromBranch[0][1] * pairsWithParentBranch[1][0];
-        score += pairsFromBranch[1][0] * pairsWithParentBranch[0][1];
-        score += pairsFromBranch[1][1] * pairsWithParentBranch[0][0];
+        // score += pairsFromBranch[0][0] * pairsWithParentBranch[1][1];
+        // score += pairsFromBranch[0][1] * pairsWithParentBranch[1][0];
+        // score += pairsFromBranch[1][0] * pairsWithParentBranch[0][1];
+        // score += pairsFromBranch[1][1] * pairsWithParentBranch[0][0];
+
+        score -= pairsLR[0] * pairsLR[1];
+        score -= pairsLR[0] * ( pairsWithParentBranch[0][1] + pairsWithParentBranch[1][1] );
+        score -= pairsLR[1] * ( pairsWithParentBranch[0][0] + pairsWithParentBranch[1][0] );
+        // score -= pairsWithParentBranch[0][0] * pairsWithParentBranch[0][1];
+        // score -= pairsWithParentBranch[1][0] * pairsWithParentBranch[1][1];
+
+        
+        // score -= pairsABFromBranch[0] * pairsABFromBranch[1];
+        // score -= pairsABFromBranch[0] * pairsABWithParentBranch[1];
+        // score -= pairsABFromBranch[1] * pairsABWithParentBranch[0];
 
         System.out.println("node score : " + score);
 
-        // print common and unique branches
+        // // print common and unique branches
         for(int i = 0; i < 2; ++i){
             System.out.println("branch " + i + " common total taxon count : " + common[i].totalTaxaCounts[0] + " " + common[i].totalTaxaCounts[1]);
             System.out.println("branch " + i + " unique total taxon count : " + uniques[i].totalTaxaCounts[0] + " " + uniques[i].totalTaxaCounts[1]);

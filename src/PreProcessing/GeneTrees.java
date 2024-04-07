@@ -342,10 +342,10 @@ public class GeneTrees {
                     // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
                 }
 
-                System.out.println("node index : " + node.index);
-                System.out.println("common with parent: " + node.commonWithParent);
-                System.out.println( "distict from parent: " + node.distinctWithParent);
-                System.out.println("parent distincts : " + node.parentDistinct);
+                // System.out.println("node index : " + node.index);
+                // System.out.println("common with parent: " + node.commonWithParent);
+                // System.out.println( "distict from parent: " + node.distinctWithParent);
+                // System.out.println("parent distincts : " + node.parentDistinct);
 
 
 
