@@ -8,10 +8,18 @@ public class Component{
     public static class InternalNodeWithIndex{
         public InternalNode internalNode;
         public int index;
+        public enum Method{
+            COMMON,
+            UNIQUE,
+            PARENT
+        }
+
+        public Method method;
         
-        public InternalNodeWithIndex(InternalNode a, int b){
+        public InternalNodeWithIndex(InternalNode a, int b, Method method){
             this.internalNode = a;
             this.index = b;
+            this.method = method;
         }
     }
 
@@ -58,8 +66,8 @@ public class Component{
         this.parents.add(parent);
     }
 
-    public void addInternalNode(InternalNode p, int index){
-        this.partOfInternalNodes.add(new InternalNodeWithIndex(p, index));
+    public void addInternalNode(InternalNode p, int index, InternalNodeWithIndex.Method method){
+        this.partOfInternalNodes.add(new InternalNodeWithIndex(p, index, method));
     }
 
 

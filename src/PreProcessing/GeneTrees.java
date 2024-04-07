@@ -140,7 +140,7 @@ public class GeneTrees {
             //     // System.out.println("non binary tree");
             //     // continue;
             // }
-            System.out.println(tree.root);
+            // System.out.println(tree.root);
             
 
         }

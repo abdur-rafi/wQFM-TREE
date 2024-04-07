@@ -24,14 +24,15 @@ public class InternalNode {
         this.count = 1;
         this.scoreCalculator = null;
 
+        if(childCompsCommon.length > 2){
+            System.out.println("polytomy");
+        }
         for(int i = 0; i < childCompsCommon.length; ++i){
-            if(childCompsCommon.length > 3){
-                System.out.println("polytomy");
-            }
-            Component p = childCompsCommon[i];
-            p.addInternalNode(this, i);
+            childCompsCommon[i].addInternalNode(this, i, Component.InternalNodeWithIndex.Method.COMMON);
+            childCompsUniques[i].addInternalNode(this, i, Component.InternalNodeWithIndex.Method.UNIQUE);
         }
 
+        parentUniques.addInternalNode(this, 0, Component.InternalNodeWithIndex.Method.PARENT);
 
         this.netTranser = new int[childCompsCommon.length];
 

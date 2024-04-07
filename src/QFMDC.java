@@ -31,6 +31,9 @@ public class QFMDC {
 
         var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
+        for(int i = 0; i < realTaxa.length; ++i){
+            System.out.println("Real Taxon " + i + " : " + y.realTaxonPartition[i]);
+        }
         BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
 
         return recurse(initialBook);
@@ -202,6 +205,7 @@ public class QFMDC {
             var x = swapMax(book, rtGains, dtGains, rtLocked,dtLocked);
             
             if(x != null){
+                System.out.println("Swap : " + x.index + " " + x.isDummy + " " + x.gain);
                 swaps.add(x);
                 
                 double gain = x.gain;
@@ -234,6 +238,8 @@ public class QFMDC {
             
         }
 
+        System.out.println("swaps size : " + swaps.size());
+        System.out.println("Total taxon count : " + (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount));
         System.out.println("Cg : " + cg);
         
 

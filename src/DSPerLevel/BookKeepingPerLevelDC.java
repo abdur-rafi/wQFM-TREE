@@ -339,15 +339,15 @@ public class BookKeepingPerLevelDC {
     }
 
 
-    public void swapRealTaxon(int index){
+    public void transferRealTaxon(int index){
         
         int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
         this.taxaPerLevel.swapPartitionRealTaxon(index);
         int rtId = this.taxaPerLevel.realTaxa[index].id;
 
-        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            bkpt.swapRealTaxon(rtId, partition);
-        }
+        // for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+        //     bkpt.swapRealTaxon(rtId, partition);
+        // }
         
         // this.dc.realTaxaPartitionNodes[rtId].data.branch.swapRealTaxa(partition);
 
@@ -380,6 +380,21 @@ public class BookKeepingPerLevelDC {
                 //     p.index,
                 //     partition
                 // );
+                if(p.method == InternalNodeWithIndex.Method.COMMON){
+                    p.internalNode.scoreCalculator.transferCommon(
+                        p.index,
+                        partition
+                    );
+                }
+                else if(p.method == InternalNodeWithIndex.Method.UNIQUE){
+                    p.internalNode.scoreCalculator.transferUnique(
+                        p.index,
+                        partition
+                    );
+                }
+                else{
+                    p.internalNode.scoreCalculator.transferParentUnique(partition);
+                }
 
             }
             // for(PartitionNode p : f.parents){
@@ -399,9 +414,9 @@ public class BookKeepingPerLevelDC {
         int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(index);
         this.taxaPerLevel.swapPartitionDummyTaxon(index);
         
-        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            bkpt.swapDummyTaxon(index, partition);
-        }
+        // for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
+        //     bkpt.swapDummyTaxon(index, partition);
+        // }
 
         for(InternalNode p : this.dc.internalNodes){
             p.scoreCalculator.transferDummyTaxon(index, partition);
@@ -436,7 +451,7 @@ public class BookKeepingPerLevelDC {
 
     public void swapTaxon(int index, boolean isDummy){
         if(isDummy) this.swapDummyTaxon(index);
-        else this.swapRealTaxon(index);
+        else this.transferRealTaxon(index);
     }
 
     public TaxaPerLevelWithPartition[] divide(IMakePartition makePartition){
