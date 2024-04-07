@@ -204,6 +204,16 @@ public class GeneTrees {
         
         dataContainer.internalNodes = internalNodes.nodes;
         dataContainer.topSortedComponents = compGraph.getTopSortedNodes();
+
+        // System.out.println("================ comps ===================");
+        // for(var x : compGraph.components){
+        //     System.out.println(x);
+        // }
+        // System.out.println("================ top sorted comps ===================");
+        // for(var x : dataContainer.topSortedComponents){
+        //     System.out.println(x);
+        // }
+
         // ArrayList<PartitionNode> topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
         // partitionGraph.removeOnlyGainPartitionsFromParent();
         

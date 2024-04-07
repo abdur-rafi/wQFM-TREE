@@ -23,6 +23,8 @@ public class NumSatSQBin implements NumSatSQ{
 
     double EPS = 0.000001;
     
+
+
     
     public NumSatSQBin(Branch[] common, Branch[] uniques, Branch uniquesParent, int[] dummyTaxaToPartitionMap){
 
@@ -95,13 +97,13 @@ public class NumSatSQBin implements NumSatSQ{
     @Override
     public double score() {
         double score = 0;
-        // score += pairsFromBranch[0][0] * pairsFromBranch[1][1];
-        // score += pairsFromBranch[0][1] * pairsFromBranch[1][0];
+        score += pairsFromBranch[0][0] * pairsFromBranch[1][1];
+        score += pairsFromBranch[0][1] * pairsFromBranch[1][0];
         
-        // score += pairsFromBranch[0][0] * pairsWithParentBranch[1][1];
-        // score += pairsFromBranch[0][1] * pairsWithParentBranch[1][0];
-        // score += pairsFromBranch[1][0] * pairsWithParentBranch[0][1];
-        // score += pairsFromBranch[1][1] * pairsWithParentBranch[0][0];
+        score += pairsFromBranch[0][0] * pairsWithParentBranch[1][1];
+        score += pairsFromBranch[0][1] * pairsWithParentBranch[1][0];
+        score += pairsFromBranch[1][0] * pairsWithParentBranch[0][1];
+        score += pairsFromBranch[1][1] * pairsWithParentBranch[0][0];
 
         score -= pairsLR[0] * pairsLR[1];
         score -= pairsLR[0] * ( pairsWithParentBranch[0][1] + pairsWithParentBranch[1][1] );
@@ -114,17 +116,17 @@ public class NumSatSQBin implements NumSatSQ{
         // score -= pairsABFromBranch[0] * pairsABWithParentBranch[1];
         // score -= pairsABFromBranch[1] * pairsABWithParentBranch[0];
 
-        System.out.println("node score : " + score);
+        // System.out.println("node score : " + score);
 
-        // // print common and unique branches
-        for(int i = 0; i < 2; ++i){
-            System.out.println("branch " + i + " common total taxon count : " + common[i].totalTaxaCounts[0] + " " + common[i].totalTaxaCounts[1]);
-            System.out.println("branch " + i + " unique total taxon count : " + uniques[i].totalTaxaCounts[0] + " " + uniques[i].totalTaxaCounts[1]);
-            // print pairs
-            System.out.println("pairs from branch " + i + " : " + pairsFromBranch[i][0] + " " + pairsFromBranch[i][1]);
-            System.out.println("pairs with parent branch " + i + " : " + pairsWithParentBranch[i][0] + " " + pairsWithParentBranch[i][1]);
+        // // // print common and unique branches
+        // for(int i = 0; i < 2; ++i){
+        //     System.out.println("branch " + i + " common total taxon count : " + common[i].totalTaxaCounts[0] + " " + common[i].totalTaxaCounts[1]);
+        //     System.out.println("branch " + i + " unique total taxon count : " + uniques[i].totalTaxaCounts[0] + " " + uniques[i].totalTaxaCounts[1]);
+        //     // print pairs
+        //     System.out.println("pairs from branch " + i + " : " + pairsFromBranch[i][0] + " " + pairsFromBranch[i][1]);
+        //     System.out.println("pairs with parent branch " + i + " : " + pairsWithParentBranch[i][0] + " " + pairsWithParentBranch[i][1]);
             
-        }
+        // }
 
         // for(int i = 0; i < 2; ++i){
         //     System.out.println("branch " + i + " total taxon count : " + branches[i].totalTaxaCounts[0] + " " + branches[i].totalTaxaCounts[1]);
@@ -145,8 +147,41 @@ public class NumSatSQBin implements NumSatSQ{
 
     // [branch index][common, disjoints][partition]
     @Override
-    public double[][] gainRealTaxa(double originalScore, double multiplier) {
-        double[][] gains = new double[3][2];
+    public RTGainReturnType gainRealTaxa(double originalScore, double multiplier) {
+        RTGainReturnType gains = new RTGainReturnType();
+        gains.commonGains = new double[2][2];
+        gains.uniqueGains = new double[2][2];
+        gains.uniqueParentGains = new double[2];
+
+        for(int i = 0; i < 2; ++i){
+            for(int p = 0; p < 2; ++p){
+                if(this.common[i].realTaxaCounts[p] > 0){
+                    this.transferCommon(i, p);
+                    this.common[i].swapRealTaxa(p);
+                    gains.commonGains[i][p] = multiplier * (this.score() - originalScore);
+                    this.transferCommon(i, 1-p);
+                    this.common[i].swapRealTaxa(1-p);
+                }
+
+                if(this.uniques[i].realTaxaCounts[p] > 0){
+                    this.transferUnique(i, p);
+                    this.uniques[i].swapRealTaxa(p);
+                    gains.uniqueGains[i][p] = multiplier * (this.score() - originalScore);
+                    this.transferUnique(i, 1-p);
+                    this.uniques[i].swapRealTaxa(1-p);
+                }
+
+            }
+
+            if(this.uniquesParent.realTaxaCounts[i] > 0){
+                this.transferParentUnique(i);
+                this.uniquesParent.swapRealTaxa(i);
+                gains.uniqueParentGains[i] = multiplier * (this.score() - originalScore);
+                this.transferParentUnique(1 - i);
+                this.uniquesParent.swapRealTaxa(1 - i);
+            }
+        }
+
         // for(int i = 0; i < 2; ++i){
         //     for(int p = 0; p < 2; ++p){
         //         if(this.branches[i].realTaxaCounts[p] > 0){
@@ -178,38 +213,168 @@ public class NumSatSQBin implements NumSatSQ{
     }
 
     @Override
-    public void swapRealTaxon(int branchIndex, int currPartition) {
-        // if(branchIndex < 2){
-        //     this.pairsFromBranch[branchIndex][currPartition] -= this.branches[branchIndex].totalTaxaCounts[currPartition] - 1;
-        //     this.pairsFromBranch[branchIndex][1 - currPartition] += this.branches[branchIndex].totalTaxaCounts[1 - currPartition];
-        //     this.pairsABFromBranch[branchIndex] -= this.branches[branchIndex].totalTaxaCounts[1 - currPartition];
-        //     this.pairsABFromBranch[branchIndex] += this.branches[branchIndex].totalTaxaCounts[currPartition] - 1;
-            
-        //     this.pairsWithParentBranch[branchIndex][currPartition] -= this.branches[2].totalTaxaCounts[currPartition];
-        //     this.pairsWithParentBranch[branchIndex][1 - currPartition] += this.branches[2].totalTaxaCounts[1 - currPartition];
-        // }
-        // else{
-        //     for(int i = 0; i < 2; ++i){
-        //         this.pairsWithParentBranch[i][currPartition] -= this.branches[i].totalTaxaCounts[currPartition];
-        //         this.pairsWithParentBranch[i][1 - currPartition] += this.branches[i].totalTaxaCounts[1 - currPartition];
-        //     }
-        // }
+    public void transferCommon(int branchIndex, int currPartition){
+        this.pairsFromBranch[branchIndex][currPartition] -= (
+            this.common[branchIndex].totalTaxaCounts[currPartition] + this.uniques[branchIndex].totalTaxaCounts[currPartition] - 1
+        );
+        this.pairsFromBranch[branchIndex][1 - currPartition] += (
+            this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+        
+
+        this.pairsWithParentBranch[branchIndex][currPartition] -= (
+            this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - 1
+        );
+        
+        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        );
+        
+        this.pairsWithParentBranch[branchIndex][currPartition] -= (
+            this.common[branchIndex].totalTaxaCounts[currPartition] + this.uniques[branchIndex].totalTaxaCounts[currPartition] - 1
+        );
+        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+            this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+        );
 
 
+        this.pairsWithParentBranch[ 1 - branchIndex][currPartition] -= (
+            this.common[ 1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentBranch[1 - branchIndex][1 - currPartition] += (
+            this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+        
 
-        // if(branchIndex < 2){
-        //     this.pairsFromLeftRightBranch[currPartition] -= this.branches[1 - branchIndex].totalTaxaCounts[currPartition];
-        //     this.pairsFromLeftRightBranch[1 - currPartition] += this.branches[1 - branchIndex].totalTaxaCounts[1 - currPartition];
-        //     this.pairsABFromLeftRightBranch = (
-        //         (this.branches[branchIndex].totalTaxaCounts[currPartition] - 1) * this.branches[1 - branchIndex].totalTaxaCounts[1 - currPartition] 
-        //         + (this.branches[branchIndex].totalTaxaCounts[1 - currPartition] + 1 ) * (this.branches[1 - branchIndex].totalTaxaCounts[currPartition])
-        //     );
-            
-        // }
+        this.pairsLR[currPartition] -= (
+            this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsLR[1 - currPartition] += (
+            this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[1 - currPartition]
+        );
     }
 
     @Override
-    public void swapDummyTaxon(int dummyIndex, int currPartition) {
+    public void transferUnique(int branchIndex, int currPartition){
+        this.pairsFromBranch[branchIndex][currPartition] -= (
+            this.common[branchIndex].totalTaxaCounts[currPartition] + this.uniques[branchIndex].totalTaxaCounts[currPartition] - 1
+        );
+        this.pairsFromBranch[branchIndex][1 - currPartition] += (
+            this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+        this.pairsWithParentBranch[branchIndex][currPartition] -= (
+            this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        );
+        this.pairsLR[currPartition] -= (
+            this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsLR[1 - currPartition] += (
+            this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+    }
+
+    @Override
+    public void transferParentUnique(int currPartition){
+        this.pairsWithParentBranch[0][currPartition] -= (
+            this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentBranch[0][1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition]
+        );
+        this.pairsWithParentBranch[1][currPartition] -= (
+            this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentBranch[1][1 - currPartition] += (
+            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
+        );
+    }
+
+
+    // @Override
+    // public void transferRealTaxon(int branchIndex, int currPartition) {
+    //     // if(branchIndex < 2){
+    //     //     this.pairsFromBranch[branchIndex][currPartition] -= this.branches[branchIndex].totalTaxaCounts[currPartition] - 1;
+    //     //     this.pairsFromBranch[branchIndex][1 - currPartition] += this.branches[branchIndex].totalTaxaCounts[1 - currPartition];
+    //     //     this.pairsABFromBranch[branchIndex] -= this.branches[branchIndex].totalTaxaCounts[1 - currPartition];
+    //     //     this.pairsABFromBranch[branchIndex] += this.branches[branchIndex].totalTaxaCounts[currPartition] - 1;
+            
+    //     //     this.pairsWithParentBranch[branchIndex][currPartition] -= this.branches[2].totalTaxaCounts[currPartition];
+    //     //     this.pairsWithParentBranch[branchIndex][1 - currPartition] += this.branches[2].totalTaxaCounts[1 - currPartition];
+    //     // }
+    //     // else{
+    //     //     for(int i = 0; i < 2; ++i){
+    //     //         this.pairsWithParentBranch[i][currPartition] -= this.branches[i].totalTaxaCounts[currPartition];
+    //     //         this.pairsWithParentBranch[i][1 - currPartition] += this.branches[i].totalTaxaCounts[1 - currPartition];
+    //     //     }
+    //     // }
+
+
+
+    //     // if(branchIndex < 2){
+    //     //     this.pairsFromLeftRightBranch[currPartition] -= this.branches[1 - branchIndex].totalTaxaCounts[currPartition];
+    //     //     this.pairsFromLeftRightBranch[1 - currPartition] += this.branches[1 - branchIndex].totalTaxaCounts[1 - currPartition];
+    //     //     this.pairsABFromLeftRightBranch = (
+    //     //         (this.branches[branchIndex].totalTaxaCounts[currPartition] - 1) * this.branches[1 - branchIndex].totalTaxaCounts[1 - currPartition] 
+    //     //         + (this.branches[branchIndex].totalTaxaCounts[1 - currPartition] + 1 ) * (this.branches[1 - branchIndex].totalTaxaCounts[currPartition])
+    //     //     );
+            
+    //     // }
+    // }
+
+    @Override
+    public void transferDummyTaxon(int dummyIndex, int currPartition) {
+        double w0 = this.common[0].dummyTaxaWeightsIndividual[dummyIndex] + this.uniques[0].dummyTaxaWeightsIndividual[dummyIndex];
+        double w1 = this.common[1].dummyTaxaWeightsIndividual[dummyIndex] + this.uniques[1].dummyTaxaWeightsIndividual[dummyIndex];
+        double wp = this.uniquesParent.dummyTaxaWeightsIndividual[dummyIndex] + this.common[0].dummyTaxaWeightsIndividual[dummyIndex] + this.common[1].dummyTaxaWeightsIndividual[dummyIndex];
+
+        this.pairsFromBranch[0][currPartition] -= (
+            this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition] - w0
+        ) * w0;
+        this.pairsFromBranch[0][1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition]
+        ) * w0;
+
+        this.pairsFromBranch[1][currPartition] -= (
+            this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition] - w1
+        ) * w1;
+        this.pairsFromBranch[1][1 - currPartition] += (
+            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
+        ) * w1;
+
+        this.pairsLR[currPartition] -= (
+            w0 * (this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition] - w1) + 
+            w1 * (this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition] - w0)
+        );
+        this.pairsLR[1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition]
+        ) * w1 + (
+            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
+        ) * w0;
+
+        this.pairsWithParentBranch[0][currPartition] -= (
+            w0 * (this.common[0].totalTaxaCounts[currPartition] + this.common[0].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
+            wp * (this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition] - w0)
+        );
+        this.pairsWithParentBranch[0][1 - currPartition] += (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        ) * w0 + (
+            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        ) * wp;
+
+        this.pairsWithParentBranch[1][currPartition] -= (
+            w1 * (this.common[1].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
+            wp * (this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition] - w1)
+        );
+        this.pairsWithParentBranch[1][1 - currPartition] += (
+            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        ) * w1 + (
+            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        ) * wp;
+
+
         // double wp = this.branches[2].dummyTaxaWeightsIndividual[dummyIndex];
         // for(int i = 0; i < this.branches.length - 1; ++i){
         //     double wi = this.branches[i].dummyTaxaWeightsIndividual[dummyIndex];
@@ -236,20 +401,25 @@ public class NumSatSQBin implements NumSatSQ{
 
     @Override
     public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains) {
-        // for(int i = 0; i < this.nDummyTaxa; ++i){
-        //     int currPartition = this.dummyTaxaPartition[i];
-        //     this.swapDummyTaxon(i, currPartition);
-
-        //     for(int j = 0; j < this.branches.length; ++j){
-        //         this.branches[j].swapDummyTaxon(i, currPartition);
-        //     }
-        //     dummyTaxaGains[i] += multiplier * (this.score() - originalScore);
+        for(int i = 0; i < this.nDummyTaxa; ++i){
+            int currPartition = this.dummyTaxaPartition[i];
+            this.transferDummyTaxon(i, currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, currPartition);
+                this.uniques[j].swapDummyTaxon(i, currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, currPartition);
+            dummyTaxaGains[i] += multiplier * (this.score() - originalScore);
             
-        //     this.swapDummyTaxon(i, 1 - currPartition);
-        //     for(int j = 0; j < this.branches.length; ++j){
-        //         this.branches[j].swapDummyTaxon(i, 1 - currPartition);
-        //     }
-        // }
+            this.transferDummyTaxon(i, 1 - currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, 1 - currPartition);
+                this.uniques[j].swapDummyTaxon(i, 1 - currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, 1 - currPartition);
+            
+            
+        }
     }
 
     @Override

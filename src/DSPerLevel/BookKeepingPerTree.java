@@ -261,7 +261,7 @@ public class BookKeepingPerTree {
                         parent.info.branches[i].swapRealTaxa(partition);
                     }
                     else{
-                        parent.info.scoreCalculator.swapRealTaxon(i, partition);
+                        parent.info.scoreCalculator.transferRealTaxon(i, partition);
                     }
                 }
                 else{
