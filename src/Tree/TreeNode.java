@@ -138,6 +138,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
             //     // }
             // }
             buffer.append(index);
+            // buffer.append(" dup: " + dupplicationNode);
         }
             // buffer.append(index);
             // buffer.append(" ");

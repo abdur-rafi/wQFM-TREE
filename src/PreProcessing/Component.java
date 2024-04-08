@@ -36,9 +36,11 @@ public class Component{
 
     public Data data;
 
-    public boolean gainPartition;
-    public boolean onlyGainPartition;
+    // public boolean gainPartition;
+    // public boolean onlyGainPartition;
     public double[] gainsForSubTree;
+
+    public int nodeCount;
 
     // public PartitionNode(ArrayList<PartitionNode> parents, ArrayList<PartitionNode> children, boolean isLeaf, Data data){
     //     this.parents = parents;
@@ -54,8 +56,10 @@ public class Component{
         this.isLeaf = isLeaf;
         this.partOfInternalNodes = new ArrayList<>();
         this.data = null;
-        this.gainPartition = false;
-        this.onlyGainPartition = false;
+        // this.gainPartition = false;
+        // this.onlyGainPartition = false;
+        this.nodeCount = 0;
+        
     }
     
     public void addChild(Component child){

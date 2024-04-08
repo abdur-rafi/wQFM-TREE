@@ -318,11 +318,44 @@ public class GeneTrees {
                 if(node.isLeaf()) continue;
 
                 if(node.parent != tree.root){
+
+                    boolean[] commonInSubtree = componentGraph.realTaxaInComponent.get(node.commonWithParent);
+                    boolean[] distinctInSubtree = componentGraph.realTaxaInComponent.get(node.distinctWithParent);
+                    boolean[] realTaxaInSubTree = new boolean[commonInSubtree.length];
+                    for(int j = 0; j < commonInSubtree.length; ++j){
+                        realTaxaInSubTree[j] = commonInSubtree[j] || distinctInSubtree[j];
+                    }
+                    
+
                     ArrayList<Component> ps = new ArrayList<>();
                     for(TreeNode child : node.parent.childs){
                         if(child == node) continue;
-                        ps.add(child.distinctWithParent);
-                        ps.add(child.commonWithParent);
+                        
+                        ArrayList<Component> childComps = new ArrayList<>();
+                        childComps.add(child.distinctWithParent);
+                        childComps.add(child.commonWithParent);
+
+                        Component merged = componentGraph.addComponent(childComps, true);
+                        
+                        if(node.parent.dupplicationNode){
+                            
+                            boolean[] realTaxaInMerged = componentGraph.realTaxaInComponent.get(merged);
+    
+                            Set<Integer> st = new HashSet<>();
+    
+                            for(int j = 0; j < this.realTaxaCount; ++j){
+                                if(realTaxaInMerged[j] && realTaxaInSubTree[j]){
+                                    st.add(j);
+                                }
+                            }
+
+                            merged = componentGraph.removeTaxa(merged, st);
+                        }
+
+
+                        // ps.add(child.distinctWithParent);
+                        // ps.add(child.commonWithParent);
+                        ps.add(merged);
                     }
 
                     ps.add(node.parent.parentDistinct);

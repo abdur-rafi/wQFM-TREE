@@ -205,7 +205,7 @@ public class QFMDC {
             var x = swapMax(book, rtGains, dtGains, rtLocked,dtLocked);
             
             if(x != null){
-                System.out.println("Swap : " + x.index + " " + x.isDummy + " " + x.gain);
+                // System.out.println("Swap : " + x.index + " " + x.isDummy + " " + x.gain);
                 swaps.add(x);
                 
                 double gain = x.gain;

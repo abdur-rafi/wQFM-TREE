@@ -25,10 +25,11 @@ public class TestSQ {
 
         rtp[0] = pb;
         rtp[1] = pb;
-        // rtp[3] = pb;
-        rtp[4] = pb;
+        rtp[2] = pb;
+        rtp[3] = pb;
+        // rtp[4] = pb;
         // rtp[5] = pb;
-        rtp[6] = pb;
+        // rtp[6] = pb;
 
         int[] dtp = new int[0];
 
@@ -74,7 +75,7 @@ public class TestSQ {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        proTC2();
+        proTC();
         // System.out.println("Hello, World!");
     }
 
@@ -88,14 +89,25 @@ public class TestSQ {
 
         int[] rtp = new int[rts.length];
 
-        int pa = 0;
+        int pa = 1;
         int pb = 1 - pa;
 
+        // for(int i = 0; i < rts.length; ++i){
+        //     System.out.println("Real Taxon " + i + " : " + rts[i].id);
+        // }
+
         rtp[0] = pb;
-        rtp[1] = pa;
+        rtp[1] = pb;
         rtp[2] = pa;
         rtp[3] = pb;
         rtp[4] = pa;
+
+
+        // rtp[0] = pb;
+        // rtp[1] = pa;
+        // rtp[2] = pa;
+        // rtp[3] = pb;
+        // rtp[4] = pa;
         // rtp[4] = pb;
         // // rtp[5] = pb;
         // rtp[6] = pb;
@@ -128,36 +140,36 @@ public class TestSQ {
         // }
 
 
-        double score = book.calculateScoreAndGains(rtGains, dtGains);
-        // double score = book.calculateScore();
+        // double score = book.calculateScoreAndGains(rtGains, dtGains);
+        double score = book.calculateScore();
         // print gains
         
         System.out.println("Score : " + score);
-        for(int i = 0; i < rtGains.length; ++i){
-            System.out.println("Real Taxon " + i + " : " + rtGains[i][rtp[i]]);
-        }
-        for(int i = 0; i < dtGains.length; ++i){
-            System.out.println("Dummy Taxon " + i + " : " + dtGains[i]);
-        }
+        // for(int i = 0; i < rtGains.length; ++i){
+        //     System.out.println("Real Taxon " + i + " : " + rtGains[i][rtp[i]]);
+        // }
+        // for(int i = 0; i < dtGains.length; ++i){
+        //     System.out.println("Dummy Taxon " + i + " : " + dtGains[i]);
+        // }
 
-        book.transferRealTaxon(1);
-        // book.transferRealTaxon(2);
-        // book.transferRealTaxon(3);
-        // book.transferRealTaxon(4);
         // book.transferRealTaxon(1);
+        // // book.transferRealTaxon(2);
+        // // book.transferRealTaxon(3);
+        // // book.transferRealTaxon(4);
+        // // book.transferRealTaxon(1);
 
-        // int trId = 0;
+        // // int trId = 0;
 
-        // book.transferRealTaxon(trId);
+        // // book.transferRealTaxon(trId);
+
+        // // score = book.calculateScoreAndGains(rtGains, dtGains);
+        // // System.out.println("Score After Transfer : " + score);
+
+        // // book.transferRealTaxon(trId);
 
         // score = book.calculateScoreAndGains(rtGains, dtGains);
-        // System.out.println("Score After Transfer : " + score);
 
-        // book.transferRealTaxon(trId);
-
-        score = book.calculateScoreAndGains(rtGains, dtGains);
-
-        System.out.println("Score After Transfer back : " + score);
+        // System.out.println("Score After Transfer back : " + score);
 
     }
     

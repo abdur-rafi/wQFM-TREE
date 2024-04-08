@@ -10,7 +10,8 @@ public class NumSatSQBin implements NumSatSQ{
     int nDummyTaxa;
     int[] dummyTaxaPartition;
     double[][] pairsFromBranch;
-    double[][] pairsWithParentBranch;
+    // double[][] pairsWithParentBranch;
+    double[][] pairsWithParentCommon, pairsWithParentUnique, pairsWithParentCommonAndUnique;
     double[] pairsLR;
 
     // double[] pairsABFromBranch;
@@ -33,7 +34,11 @@ public class NumSatSQBin implements NumSatSQ{
         this.uniquesParent = uniquesParent;
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.pairsFromBranch = new double[2][2];
-        this.pairsWithParentBranch = new double[2][2];
+        // this.pairsWithParentBranch = new double[2][2];
+        this.pairsWithParentCommon = new double[2][2];
+        this.pairsWithParentUnique = new double[2][2];
+        this.pairsWithParentCommonAndUnique = new double[2][2];
+
         this.pairsLR = new double[2];
         // this.pairsABFromBranch = new double[2];
         // this.pairsABWithParentBranch = new double[2];
@@ -50,11 +55,18 @@ public class NumSatSQBin implements NumSatSQ{
             for(int p = 0; p < 2; ++p){
 
                 totalInBranch[p] = common[i].totalTaxaCounts[p] + uniques[i].totalTaxaCounts[p];
-                this.pairsFromBranch[i][p] = totalInBranch[p] * totalInBranch[p] - totalInBranch[p];
-                this.pairsWithParentBranch[i][p] = totalInBranch[p] * totalParent[p] - common[i].realTaxaCounts[p];
-                // this.pairsABFromBranch[i] = totalInBranch[0] * totalInBranch[1];
-                
-                // this.pairsABWithParentBranch[i] = totalInBranch[0] * totalParent[1] + totalInBranch[1] * totalParent[0];
+                this.pairsFromBranch[i][p] = totalInBranch[p] * totalInBranch[p] - (
+                    this.common[i].realTaxaCounts[p] + this.uniques[i].realTaxaCounts[p]
+                );
+                // this.pairsWithParentBranch[i][p] = totalInBranch[p] * totalParent[p] - common[i].realTaxaCounts[p];
+
+                this.pairsWithParentCommon[i][p] = common[i].totalTaxaCounts[p] * common[i].totalTaxaCounts[p] - common[i].realTaxaCounts[p];
+                this.pairsWithParentUnique[i][p] = uniques[i].totalTaxaCounts[p] * (
+                    uniquesParent.totalTaxaCounts[p] + common[1 - i].totalTaxaCounts[p]
+                );
+                this.pairsWithParentCommonAndUnique[i][p] = common[i].totalTaxaCounts[p] * (
+                    uniquesParent.totalTaxaCounts[p] + common[1 - i].totalTaxaCounts[p] + uniques[i].totalTaxaCounts[p]
+                );
 
             }
 
@@ -64,11 +76,25 @@ public class NumSatSQBin implements NumSatSQ{
                 double totalPi = uniquesParent.dummyTaxaWeightsIndividual[j] + common[0].dummyTaxaWeightsIndividual[j] + common[1].dummyTaxaWeightsIndividual[j];
 
                 this.pairsFromBranch[i][partition] -= totalWi * totalWi;
-                this.pairsWithParentBranch[i][partition] -= totalWi * totalPi;
+                // this.pairsWithParentBranch[i][partition] -= totalWi * totalPi;
+
+                this.pairsWithParentCommon[i][partition] -= common[i].dummyTaxaWeightsIndividual[j] * common[i].dummyTaxaWeightsIndividual[j];
+                this.pairsWithParentUnique[i][partition] -= uniques[i].dummyTaxaWeightsIndividual[j] * (
+                    uniquesParent.dummyTaxaWeightsIndividual[j] + common[1 - i].dummyTaxaWeightsIndividual[j]
+                );
+                this.pairsWithParentCommonAndUnique[i][partition] -= common[i].dummyTaxaWeightsIndividual[j] * (
+                    uniquesParent.dummyTaxaWeightsIndividual[j] + common[1 - i].dummyTaxaWeightsIndividual[j] + uniques[i].dummyTaxaWeightsIndividual[j]
+                );
             }
 
             this.pairsFromBranch[i][0] /= 2;
             this.pairsFromBranch[i][1] /= 2;
+
+            this.pairsWithParentCommon[i][0] /= 2;
+            this.pairsWithParentCommon[i][1] /= 2;
+
+            // this.pairsWithParentBranch[i][0] = pairsWithParentCommon[i][0] + pairsWithParentUnique[i][0] + pairsWithParentCommonAndUnique[i][0];
+            // this.pairsWithParentBranch[i][1] = pairsWithParentCommon[i][1] + pairsWithParentUnique[i][1] + pairsWithParentCommonAndUnique[i][1];
 
             // this.pairsABFromBranch[i] = b[i].totalTaxaCounts[0] * b[i].totalTaxaCounts[1];
         }
@@ -97,6 +123,14 @@ public class NumSatSQBin implements NumSatSQ{
     @Override
     public double score() {
         double score = 0;
+        double[][] pairsWithParentBranch = new double[2][2];
+
+        pairsWithParentBranch[0][0] = pairsWithParentCommon[0][0] + pairsWithParentUnique[0][0] + pairsWithParentCommonAndUnique[0][0];
+        pairsWithParentBranch[0][1] = pairsWithParentCommon[0][1] + pairsWithParentUnique[0][1] + pairsWithParentCommonAndUnique[0][1];
+        pairsWithParentBranch[1][0] = pairsWithParentCommon[1][0] + pairsWithParentUnique[1][0] + pairsWithParentCommonAndUnique[1][0];
+        pairsWithParentBranch[1][1] = pairsWithParentCommon[1][1] + pairsWithParentUnique[1][1] + pairsWithParentCommonAndUnique[1][1];
+
+
         score += pairsFromBranch[0][0] * pairsFromBranch[1][1];
         score += pairsFromBranch[0][1] * pairsFromBranch[1][0];
         
@@ -116,17 +150,21 @@ public class NumSatSQBin implements NumSatSQ{
         // score -= pairsABFromBranch[0] * pairsABWithParentBranch[1];
         // score -= pairsABFromBranch[1] * pairsABWithParentBranch[0];
 
+        // print pairs with parent brnahces
+        // for(int i = 0; i < 2; ++i){
+        //     System.out.println("pairs with parent branch " + i + " : " + pairsWithParentBranch[i][0] + " " + pairsWithParentBranch[i][1]);
+        // }
         // System.out.println("node score : " + score);
 
-        // // // print common and unique branches
+        // // // // print common and unique branches
         // for(int i = 0; i < 2; ++i){
         //     System.out.println("branch " + i + " common total taxon count : " + common[i].totalTaxaCounts[0] + " " + common[i].totalTaxaCounts[1]);
         //     System.out.println("branch " + i + " unique total taxon count : " + uniques[i].totalTaxaCounts[0] + " " + uniques[i].totalTaxaCounts[1]);
         //     // print pairs
         //     System.out.println("pairs from branch " + i + " : " + pairsFromBranch[i][0] + " " + pairsFromBranch[i][1]);
         //     System.out.println("pairs with parent branch " + i + " : " + pairsWithParentBranch[i][0] + " " + pairsWithParentBranch[i][1]);
-            
         // }
+        // System.out.println("parents unique total taxon count : " + uniquesParent.totalTaxaCounts[0] + " " + uniquesParent.totalTaxaCounts[1]);
 
         // for(int i = 0; i < 2; ++i){
         //     System.out.println("branch " + i + " total taxon count : " + branches[i].totalTaxaCounts[0] + " " + branches[i].totalTaxaCounts[1]);
@@ -222,29 +260,57 @@ public class NumSatSQBin implements NumSatSQ{
         );
         
 
-        this.pairsWithParentBranch[branchIndex][currPartition] -= (
-            this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - 1
-        );
+        // this.pairsWithParentBranch[branchIndex][currPartition] -= (
+        //     this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - 1
+        // );
         
-        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
-            this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
-        );
+        // this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+        //     this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // );
         
-        this.pairsWithParentBranch[branchIndex][currPartition] -= (
-            this.common[branchIndex].totalTaxaCounts[currPartition] + this.uniques[branchIndex].totalTaxaCounts[currPartition] - 1
-        );
-        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
-            this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
-        );
+        // this.pairsWithParentBranch[branchIndex][currPartition] -= (
+        //     this.common[branchIndex].totalTaxaCounts[currPartition] + this.uniques[branchIndex].totalTaxaCounts[currPartition] - 1
+        // );
+        // this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+        //     this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+        // );
 
 
-        this.pairsWithParentBranch[ 1 - branchIndex][currPartition] -= (
-            this.common[ 1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
+        // this.pairsWithParentBranch[ 1 - branchIndex][currPartition] -= (
+        //     this.common[ 1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
+        // );
+        // this.pairsWithParentBranch[1 - branchIndex][1 - currPartition] += (
+        //     this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[1 - currPartition]
+        // );
+
+        this.pairsWithParentCommon[branchIndex][currPartition] -= (
+            this.common[branchIndex].totalTaxaCounts[currPartition] - 1
         );
-        this.pairsWithParentBranch[1 - branchIndex][1 - currPartition] += (
-            this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[1 - currPartition]
+        this.pairsWithParentCommon[branchIndex][1 - currPartition] += (
+            this.common[branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+
+        this.pairsWithParentCommonAndUnique[branchIndex][currPartition] -= (
+            this.uniques[branchIndex].totalTaxaCounts[currPartition] + this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition]
         );
         
+        this.pairsWithParentCommonAndUnique[branchIndex][1 - currPartition] += (
+            this.uniques[branchIndex].totalTaxaCounts[1 - currPartition] + this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        );
+
+        this.pairsWithParentUnique[1-branchIndex][currPartition] -= (
+            this.uniques[1-branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentUnique[1-branchIndex][1 - currPartition] += (
+            this.uniques[1-branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+        this.pairsWithParentCommonAndUnique[1-branchIndex][currPartition] -= (
+            this.common[1-branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentCommonAndUnique[1-branchIndex][1 - currPartition] += (
+            this.common[1-branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+
 
         this.pairsLR[currPartition] -= (
             this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
@@ -262,12 +328,29 @@ public class NumSatSQBin implements NumSatSQ{
         this.pairsFromBranch[branchIndex][1 - currPartition] += (
             this.common[branchIndex].totalTaxaCounts[1 - currPartition] + this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
         );
-        this.pairsWithParentBranch[branchIndex][currPartition] -= (
-            this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition]
+        // this.pairsWithParentBranch[branchIndex][currPartition] -= (
+        //     this.common[0].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition]
+        // );
+        // this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
+        //     this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // );
+
+        this.pairsWithParentUnique[branchIndex][currPartition] -= (
+            this.common[1-branchIndex].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition]
         );
-        this.pairsWithParentBranch[branchIndex][1 - currPartition] += (
-            this.common[0].totalTaxaCounts[1 - currPartition] + this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        this.pairsWithParentUnique[branchIndex][1 - currPartition] += (
+            this.common[1-branchIndex].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
         );
+
+        this.pairsWithParentCommonAndUnique[branchIndex][currPartition] -= (
+            this.common[branchIndex].totalTaxaCounts[currPartition]
+        );
+        this.pairsWithParentCommonAndUnique[branchIndex][1 - currPartition] += (
+            this.common[branchIndex].totalTaxaCounts[1 - currPartition]
+        );
+
+
+
         this.pairsLR[currPartition] -= (
             this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniques[1 - branchIndex].totalTaxaCounts[currPartition]
         );
@@ -278,18 +361,35 @@ public class NumSatSQBin implements NumSatSQ{
 
     @Override
     public void transferParentUnique(int currPartition){
-        this.pairsWithParentBranch[0][currPartition] -= (
-            this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition]
-        );
-        this.pairsWithParentBranch[0][1 - currPartition] += (
-            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition]
-        );
-        this.pairsWithParentBranch[1][currPartition] -= (
-            this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition]
-        );
-        this.pairsWithParentBranch[1][1 - currPartition] += (
-            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
-        );
+
+        for(int branchIndex = 0; branchIndex < 2; ++branchIndex){
+            this.pairsWithParentUnique[branchIndex][currPartition] -= (
+                this.uniques[branchIndex].totalTaxaCounts[currPartition]
+            );
+            this.pairsWithParentUnique[branchIndex][1 - currPartition] += (
+                this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+            );
+
+            this.pairsWithParentCommonAndUnique[branchIndex][currPartition] -=(
+                this.common[branchIndex].totalTaxaCounts[currPartition]
+            );
+            this.pairsWithParentCommonAndUnique[branchIndex][1 - currPartition] += (
+                this.common[branchIndex].totalTaxaCounts[1 - currPartition]
+            );
+        }
+
+        // this.pairsWithParentBranch[0][currPartition] -= (
+        //     this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition]
+        // );
+        // this.pairsWithParentBranch[0][1 - currPartition] += (
+        //     this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition]
+        // );
+        // this.pairsWithParentBranch[1][currPartition] -= (
+        //     this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition]
+        // );
+        // this.pairsWithParentBranch[1][1 - currPartition] += (
+        //     this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
+        // );
     }
 
 
@@ -354,25 +454,58 @@ public class NumSatSQBin implements NumSatSQ{
             this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition]
         ) * w0;
 
-        this.pairsWithParentBranch[0][currPartition] -= (
-            w0 * (this.common[0].totalTaxaCounts[currPartition] + this.common[0].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
-            wp * (this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition] - w0)
-        );
-        this.pairsWithParentBranch[0][1 - currPartition] += (
-            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
-        ) * w0 + (
-            this.common[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
-        ) * wp;
+        for(int branchIndex = 0; branchIndex < 2; ++branchIndex){
+            double wc = this.common[branchIndex].dummyTaxaWeightsIndividual[dummyIndex];
+            this.pairsWithParentCommon[branchIndex][currPartition] -= (
+                wc * (this.common[branchIndex].totalTaxaCounts[currPartition] - wc)
+            );
+            this.pairsWithParentCommon[branchIndex][1 - currPartition] += (
+                this.common[branchIndex].totalTaxaCounts[1 - currPartition]
+            ) * wc;
+            double wuc = this.uniques[branchIndex].dummyTaxaWeightsIndividual[dummyIndex];
+            double wpc = this.uniquesParent.dummyTaxaWeightsIndividual[dummyIndex] + this.common[1 - branchIndex].dummyTaxaWeightsIndividual[dummyIndex];
+            
+            this.pairsWithParentUnique[branchIndex][currPartition] -= (
+                wuc * (this.common[1-branchIndex].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wpc)+
+                wpc * (this.uniques[branchIndex].totalTaxaCounts[currPartition] - wuc)
+            );
+            this.pairsWithParentUnique[branchIndex][1 - currPartition] += (
+                this.common[1-branchIndex].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+            ) * wuc + (
+                this.uniques[branchIndex].totalTaxaCounts[1 - currPartition]
+            ) * wpc;
 
-        this.pairsWithParentBranch[1][currPartition] -= (
-            w1 * (this.common[1].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
-            wp * (this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition] - w1)
-        );
-        this.pairsWithParentBranch[1][1 - currPartition] += (
-            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
-        ) * w1 + (
-            this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
-        ) * wp;
+
+            this.pairsWithParentCommonAndUnique[branchIndex][currPartition] -= (
+                wc * (this.uniques[branchIndex].totalTaxaCounts[currPartition] + this.common[1 - branchIndex].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wpc - wuc) +
+                (wpc + wuc) * (this.common[branchIndex].totalTaxaCounts[currPartition] - wc)
+            );
+            this.pairsWithParentCommonAndUnique[branchIndex][1 - currPartition] += (
+                this.uniques[branchIndex].totalTaxaCounts[1 - currPartition] + this.common[1 - branchIndex].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+            ) * wc + (
+                this.common[branchIndex].totalTaxaCounts[1 - currPartition]
+            ) * (wpc + wuc);
+        }
+
+        // this.pairsWithParentBranch[0][currPartition] -= (
+        //     w0 * (this.common[0].totalTaxaCounts[currPartition] + this.common[0].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
+        //     wp * (this.common[0].totalTaxaCounts[currPartition] + this.uniques[0].totalTaxaCounts[currPartition] - w0)
+        // );
+        // this.pairsWithParentBranch[0][1 - currPartition] += (
+        //     this.common[0].totalTaxaCounts[1 - currPartition] + this.uniques[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // ) * w0 + (
+        //     this.common[0].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // ) * wp;
+
+        // this.pairsWithParentBranch[1][currPartition] -= (
+        //     w1 * (this.common[1].totalTaxaCounts[currPartition] + this.common[1].totalTaxaCounts[currPartition] + this.uniquesParent.totalTaxaCounts[currPartition] - wp) + 
+        //     wp * (this.common[1].totalTaxaCounts[currPartition] + this.uniques[1].totalTaxaCounts[currPartition] - w1)
+        // );
+        // this.pairsWithParentBranch[1][1 - currPartition] += (
+        //     this.common[1].totalTaxaCounts[1 - currPartition] + this.uniques[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // ) * w1 + (
+        //     this.common[1].totalTaxaCounts[1 - currPartition] + this.uniquesParent.totalTaxaCounts[1 - currPartition]
+        // ) * wp;
 
 
         // double wp = this.branches[2].dummyTaxaWeightsIndividual[dummyIndex];
