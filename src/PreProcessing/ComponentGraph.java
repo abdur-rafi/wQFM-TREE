@@ -110,9 +110,10 @@ public class ComponentGraph {
     }
 
     public Component removeTaxon(Component c, int rtId){
-        if(c.isLeaf){
-            return sentinel;
-        }
+        System.out.println("----------------------------------------------");
+        // if(c.isLeaf){
+        //     return sentinel;
+        // }
 
         boolean[] realTaxaInSubTree = this.realTaxaInComponent.get(c);
         // create deep copy of real taxa in subtree
@@ -143,7 +144,6 @@ public class ComponentGraph {
         for(Component child: childs){
             boolean[] realTaxaInSubTree = this.realTaxaInComponent.get(child);
             for(int i = 0; i < this.taxa.length; ++i){
-
                 b[i] = b[i] || realTaxaInSubTree[i];
             }
         }
@@ -194,14 +194,17 @@ public class ComponentGraph {
                 var childWithoutDup = child;
                 if(child != sentinel){
                     boolean[] realTaxaInSubTree = this.realTaxaInComponent.get(child);
+                    Set<Integer> st = new HashSet<>();
                     for(int i = 0; i < this.taxa.length; ++i){
                         if(realTaxaInSubTree[i]){
                             if(b[i]){
-                                childWithoutDup = removeTaxon(child, i);
+                                // childWithoutDup = removeTaxon(child, i);
+                                st.add(i);
                             }
                             b[i] = true;
                         }
                     }
+                    childWithoutDup = removeTaxa(child, st);
                     component.addChild(childWithoutDup);
                     component.nodeCount += childWithoutDup.nodeCount;
                     childWithoutDup.addParent(component);

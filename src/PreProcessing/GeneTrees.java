@@ -152,8 +152,8 @@ public class GeneTrees {
 
         System.out.println( "taxon count : " + this.taxaMap.size());
         System.out.println("Gene trees count : " + geneTrees.size());
-        System.out.println( "total internal nodes : " + internalNodesCount);
-        System.out.println( "unique partitions : " + triPartitions.size());
+        // System.out.println( "total internal nodes : " + internalNodesCount);
+        // System.out.println( "unique partitions : " + triPartitions.size());
 
 
         // PartitionGraph partitionGraph = createPartitionGraph();
@@ -268,9 +268,8 @@ public class GeneTrees {
 
     public InternalNodes createPartitionsByTreeNode(ComponentGraph componentGraph){
         InternalNodes internalNodes = new InternalNodes(componentGraph.realTaxaInComponent);
-        // int j = 0;
+        int treeIndex = 0;
         for(Tree tree : geneTrees){
-            // j++;
             int[] fre = new int[this.taxaMap.size()];
             for(TreeNode node : tree.nodes){
                 if(node.isLeaf()){
@@ -385,7 +384,7 @@ public class GeneTrees {
                     // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
                 }
 
-                // System.out.println("node index : " + node.index);
+                // System.out.println("node index : " + node.index + " tree index : " + treeIndex);
                 // System.out.println("common with parent: " + node.commonWithParent);
                 // System.out.println( "distict from parent: " + node.distinctWithParent);
                 // System.out.println("parent distincts : " + node.parentDistinct);
@@ -415,7 +414,7 @@ public class GeneTrees {
                 internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel());
                 // partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
             }
-
+            treeIndex++;
 
         }
 
