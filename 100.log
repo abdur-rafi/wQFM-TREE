@@ -1,0 +1,4751 @@
+01
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 231705
+Internal nodes count : 107054
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Real Taxon 26 : 1
+Real Taxon 27 : 1
+Real Taxon 28 : 1
+Real Taxon 29 : 1
+Real Taxon 30 : 1
+Real Taxon 31 : 1
+Real Taxon 32 : 1
+Real Taxon 33 : 1
+Real Taxon 34 : 1
+Real Taxon 35 : 1
+Real Taxon 36 : 0
+Real Taxon 37 : 1
+Real Taxon 38 : 1
+Real Taxon 39 : 1
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 1
+Real Taxon 43 : 1
+Real Taxon 44 : 1
+Real Taxon 45 : 0
+Real Taxon 46 : 1
+Real Taxon 47 : 1
+Real Taxon 48 : 1
+Real Taxon 49 : 0
+Real Taxon 50 : 1
+Real Taxon 51 : 1
+Real Taxon 52 : 1
+Real Taxon 53 : 1
+Real Taxon 54 : 1
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 1
+Real Taxon 58 : 1
+Real Taxon 59 : 0
+Real Taxon 60 : 1
+Real Taxon 61 : 1
+Real Taxon 62 : 1
+Real Taxon 63 : 1
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 0
+Real Taxon 69 : 1
+Real Taxon 70 : 1
+Real Taxon 71 : 1
+Real Taxon 72 : 1
+Real Taxon 73 : 1
+Real Taxon 74 : 0
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 1
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 1
+Real Taxon 81 : 1
+Real Taxon 82 : 1
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 3
+Level: 10
+#iterations: 2
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 2
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 16
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 925019 ms ==> 15 minutes and 25 seconds.
+CPU time used: 14 minutes, 15 seconds
+02
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 229918
+Internal nodes count : 108890
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 1
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 1
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 1
+Real Taxon 44 : 1
+Real Taxon 45 : 1
+Real Taxon 46 : 0
+Real Taxon 47 : 1
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 1
+Real Taxon 55 : 1
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 1
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 1
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 1
+Real Taxon 71 : 0
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 1
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 1
+Real Taxon 83 : 0
+Real Taxon 84 : 1
+Real Taxon 85 : 1
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 1
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 1
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 16
+#iterations: 2
+Level: 17
+#iterations: 1
+Level: 18
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 939737 ms ==> 15 minutes and 39 seconds.
+CPU time used: 14 minutes, 28 seconds
+03
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 208312
+Internal nodes count : 108519
+Real Taxon 0 : 0
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 1
+Real Taxon 35 : 1
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 1
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 1
+Real Taxon 43 : 1
+Real Taxon 44 : 0
+Real Taxon 45 : 1
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 1
+Real Taxon 50 : 0
+Real Taxon 51 : 1
+Real Taxon 52 : 1
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 1
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 1
+Real Taxon 59 : 1
+Real Taxon 60 : 0
+Real Taxon 61 : 1
+Real Taxon 62 : 0
+Real Taxon 63 : 1
+Real Taxon 64 : 1
+Real Taxon 65 : 0
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 1
+Real Taxon 69 : 0
+Real Taxon 70 : 1
+Real Taxon 71 : 1
+Real Taxon 72 : 0
+Real Taxon 73 : 1
+Real Taxon 74 : 0
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 0
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 0
+Real Taxon 81 : 1
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 1
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 1
+Real Taxon 99 : 1
+Real Taxon 100 : 0
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+
+Elapsed Time taken = 961144 ms ==> 16 minutes and 1 seconds.
+CPU time used: 14 minutes, 41 seconds
+04
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 197126
+Internal nodes count : 109452
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 1
+Real Taxon 31 : 0
+Real Taxon 32 : 1
+Real Taxon 33 : 1
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 1
+Real Taxon 37 : 1
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 1
+Real Taxon 43 : 0
+Real Taxon 44 : 1
+Real Taxon 45 : 1
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 1
+Real Taxon 52 : 0
+Real Taxon 53 : 1
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 1
+Real Taxon 60 : 1
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 1
+Real Taxon 69 : 1
+Real Taxon 70 : 1
+Real Taxon 71 : 0
+Real Taxon 72 : 1
+Real Taxon 73 : 0
+Real Taxon 74 : 1
+Real Taxon 75 : 0
+Real Taxon 76 : 1
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 1
+Real Taxon 82 : 1
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 2
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 1193093 ms ==> 19 minutes and 53 seconds.
+CPU time used: 17 minutes, 36 seconds
+05
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 199890
+Internal nodes count : 107962
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Real Taxon 26 : 1
+Real Taxon 27 : 1
+Real Taxon 28 : 1
+Real Taxon 29 : 1
+Real Taxon 30 : 1
+Real Taxon 31 : 1
+Real Taxon 32 : 1
+Real Taxon 33 : 1
+Real Taxon 34 : 1
+Real Taxon 35 : 1
+Real Taxon 36 : 1
+Real Taxon 37 : 1
+Real Taxon 38 : 1
+Real Taxon 39 : 1
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 1
+Real Taxon 43 : 1
+Real Taxon 44 : 1
+Real Taxon 45 : 1
+Real Taxon 46 : 1
+Real Taxon 47 : 1
+Real Taxon 48 : 1
+Real Taxon 49 : 1
+Real Taxon 50 : 1
+Real Taxon 51 : 1
+Real Taxon 52 : 1
+Real Taxon 53 : 1
+Real Taxon 54 : 1
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 1
+Real Taxon 58 : 1
+Real Taxon 59 : 1
+Real Taxon 60 : 1
+Real Taxon 61 : 1
+Real Taxon 62 : 1
+Real Taxon 63 : 1
+Real Taxon 64 : 1
+Real Taxon 65 : 1
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 1
+Real Taxon 69 : 1
+Real Taxon 70 : 1
+Real Taxon 71 : 1
+Real Taxon 72 : 1
+Real Taxon 73 : 1
+Real Taxon 74 : 1
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 1
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 1
+Real Taxon 81 : 1
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 2
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 770743 ms ==> 12 minutes and 50 seconds.
+CPU time used: 11 minutes, 57 seconds
+06
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 222768
+Internal nodes count : 110032
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Real Taxon 26 : 1
+Real Taxon 27 : 1
+Real Taxon 28 : 1
+Real Taxon 29 : 0
+Real Taxon 30 : 1
+Real Taxon 31 : 1
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 1
+Real Taxon 50 : 1
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 1
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 1
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 1
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 1
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 1
+Real Taxon 69 : 1
+Real Taxon 70 : 0
+Real Taxon 71 : 1
+Real Taxon 72 : 1
+Real Taxon 73 : 1
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 1
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 0
+Real Taxon 86 : 1
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 1
+Real Taxon 90 : 1
+Real Taxon 91 : 1
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 1
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+Level: 10
+#iterations: 0
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 16
+#iterations: 1
+Level: 17
+#iterations: 1
+Level: 18
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 916350 ms ==> 15 minutes and 16 seconds.
+CPU time used: 14 minutes, 14 seconds
+07
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 221516
+Internal nodes count : 110846
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 0
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 1
+Real Taxon 94 : 1
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 1
+Real Taxon 100 : 1
+Level: 1
+#iterations: 2
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 2
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 945799 ms ==> 15 minutes and 45 seconds.
+CPU time used: 14 minutes, 36 seconds
+08
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 224385
+Internal nodes count : 108233
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 0
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 1
+Real Taxon 77 : 1
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 1
+Real Taxon 81 : 1
+Real Taxon 82 : 1
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 1
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 1
+Real Taxon 90 : 1
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 1
+Real Taxon 94 : 1
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 1
+Real Taxon 100 : 1
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 2
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 16
+#iterations: 1
+Level: 17
+#iterations: 1
+
+Elapsed Time taken = 898771 ms ==> 14 minutes and 58 seconds.
+CPU time used: 13 minutes, 50 seconds
+09
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 229340
+Internal nodes count : 106017
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 1
+Real Taxon 30 : 0
+Real Taxon 31 : 1
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 1
+Real Taxon 38 : 0
+Real Taxon 39 : 1
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 1
+Real Taxon 49 : 1
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 1
+Real Taxon 53 : 1
+Real Taxon 54 : 0
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 0
+Real Taxon 58 : 1
+Real Taxon 59 : 1
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 1
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 1
+Real Taxon 71 : 0
+Real Taxon 72 : 1
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 1
+Real Taxon 85 : 0
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 0
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 0
+Real Taxon 93 : 1
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 1
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 3
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 2
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 2
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 876977 ms ==> 14 minutes and 36 seconds.
+CPU time used: 13 minutes, 41 seconds
+10
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 185449
+Internal nodes count : 103854
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 1
+Real Taxon 37 : 1
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 1
+Real Taxon 41 : 0
+Real Taxon 42 : 1
+Real Taxon 43 : 0
+Real Taxon 44 : 1
+Real Taxon 45 : 0
+Real Taxon 46 : 1
+Real Taxon 47 : 0
+Real Taxon 48 : 1
+Real Taxon 49 : 1
+Real Taxon 50 : 1
+Real Taxon 51 : 0
+Real Taxon 52 : 1
+Real Taxon 53 : 0
+Real Taxon 54 : 1
+Real Taxon 55 : 0
+Real Taxon 56 : 1
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 1
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 1
+Real Taxon 65 : 0
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 1
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 1
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 1
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 1
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 1
+Real Taxon 90 : 0
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 1
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 1
+Real Taxon 100 : 1
+Level: 1
+#iterations: 2
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 701050 ms ==> 11 minutes and 41 seconds.
+CPU time used: 10 minutes, 55 seconds
+100
+11
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 204129
+Internal nodes count : 104646
+Real Taxon 0 : 1
+Real Taxon 1 : 0
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 0
+Real Taxon 58 : 1
+Real Taxon 59 : 1
+Real Taxon 60 : 1
+Real Taxon 61 : 1
+Real Taxon 62 : 1
+Real Taxon 63 : 1
+Real Taxon 64 : 1
+Real Taxon 65 : 0
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 1
+Real Taxon 69 : 0
+Real Taxon 70 : 1
+Real Taxon 71 : 1
+Real Taxon 72 : 1
+Real Taxon 73 : 1
+Real Taxon 74 : 1
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 1
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 0
+Real Taxon 81 : 1
+Real Taxon 82 : 1
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 1
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 1
+Real Taxon 90 : 1
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 1
+Real Taxon 94 : 1
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 1
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 2
+#iterations: 2
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 0
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 809502 ms ==> 13 minutes and 29 seconds.
+CPU time used: 12 minutes, 33 seconds
+12
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 192145
+Internal nodes count : 116107
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 0
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 1
+Real Taxon 90 : 1
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 1
+Real Taxon 94 : 1
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 1
+Real Taxon 100 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 827956 ms ==> 13 minutes and 47 seconds.
+CPU time used: 12 minutes, 48 seconds
+13
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 204484
+Internal nodes count : 106316
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 1
+Real Taxon 37 : 1
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 1
+Real Taxon 48 : 1
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 1
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 1
+Real Taxon 65 : 1
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 1
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 1
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 1
+Real Taxon 87 : 0
+Real Taxon 88 : 1
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 1
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 0
+Real Taxon 98 : 1
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 15
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 12
+#iterations: 1
+
+Elapsed Time taken = 831204 ms ==> 13 minutes and 51 seconds.
+CPU time used: 12 minutes, 54 seconds
+14
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 184045
+Internal nodes count : 109270
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 0
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 0
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 0
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 0
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 0
+Real Taxon 72 : 0
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 1
+Real Taxon 79 : 1
+Real Taxon 80 : 1
+Real Taxon 81 : 1
+Real Taxon 82 : 1
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 1
+Real Taxon 86 : 1
+Real Taxon 87 : 1
+Real Taxon 88 : 1
+Real Taxon 89 : 1
+Real Taxon 90 : 1
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 1
+Real Taxon 94 : 1
+Real Taxon 95 : 1
+Real Taxon 96 : 1
+Real Taxon 97 : 1
+Real Taxon 98 : 1
+Real Taxon 99 : 1
+Real Taxon 100 : 1
+Level: 1
+#iterations: 1
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+
+Elapsed Time taken = 763300 ms ==> 12 minutes and 43 seconds.
+CPU time used: 11 minutes, 55 seconds
+15
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 217834
+Internal nodes count : 104153
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Real Taxon 26 : 0
+Real Taxon 27 : 0
+Real Taxon 28 : 0
+Real Taxon 29 : 0
+Real Taxon 30 : 0
+Real Taxon 31 : 0
+Real Taxon 32 : 0
+Real Taxon 33 : 0
+Real Taxon 34 : 0
+Real Taxon 35 : 0
+Real Taxon 36 : 0
+Real Taxon 37 : 1
+Real Taxon 38 : 0
+Real Taxon 39 : 0
+Real Taxon 40 : 0
+Real Taxon 41 : 0
+Real Taxon 42 : 0
+Real Taxon 43 : 0
+Real Taxon 44 : 0
+Real Taxon 45 : 0
+Real Taxon 46 : 0
+Real Taxon 47 : 0
+Real Taxon 48 : 0
+Real Taxon 49 : 1
+Real Taxon 50 : 0
+Real Taxon 51 : 0
+Real Taxon 52 : 0
+Real Taxon 53 : 1
+Real Taxon 54 : 0
+Real Taxon 55 : 0
+Real Taxon 56 : 0
+Real Taxon 57 : 0
+Real Taxon 58 : 0
+Real Taxon 59 : 0
+Real Taxon 60 : 0
+Real Taxon 61 : 0
+Real Taxon 62 : 0
+Real Taxon 63 : 0
+Real Taxon 64 : 0
+Real Taxon 65 : 1
+Real Taxon 66 : 0
+Real Taxon 67 : 0
+Real Taxon 68 : 0
+Real Taxon 69 : 0
+Real Taxon 70 : 0
+Real Taxon 71 : 0
+Real Taxon 72 : 1
+Real Taxon 73 : 0
+Real Taxon 74 : 0
+Real Taxon 75 : 0
+Real Taxon 76 : 0
+Real Taxon 77 : 0
+Real Taxon 78 : 1
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 1
+Real Taxon 84 : 1
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 1
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 1
+Real Taxon 92 : 1
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 2
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 3
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+
+Elapsed Time taken = 892204 ms ==> 14 minutes and 52 seconds.
+CPU time used: 13 minutes, 56 seconds
+16
+taxon count : 101
+Gene trees count : 1000
+Comp graph nodes count : 189552
+Internal nodes count : 107200
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Real Taxon 26 : 1
+Real Taxon 27 : 1
+Real Taxon 28 : 1
+Real Taxon 29 : 1
+Real Taxon 30 : 1
+Real Taxon 31 : 1
+Real Taxon 32 : 1
+Real Taxon 33 : 1
+Real Taxon 34 : 1
+Real Taxon 35 : 1
+Real Taxon 36 : 1
+Real Taxon 37 : 1
+Real Taxon 38 : 1
+Real Taxon 39 : 1
+Real Taxon 40 : 1
+Real Taxon 41 : 1
+Real Taxon 42 : 1
+Real Taxon 43 : 1
+Real Taxon 44 : 1
+Real Taxon 45 : 1
+Real Taxon 46 : 1
+Real Taxon 47 : 1
+Real Taxon 48 : 1
+Real Taxon 49 : 1
+Real Taxon 50 : 1
+Real Taxon 51 : 1
+Real Taxon 52 : 1
+Real Taxon 53 : 1
+Real Taxon 54 : 1
+Real Taxon 55 : 1
+Real Taxon 56 : 1
+Real Taxon 57 : 1
+Real Taxon 58 : 1
+Real Taxon 59 : 1
+Real Taxon 60 : 1
+Real Taxon 61 : 1
+Real Taxon 62 : 1
+Real Taxon 63 : 1
+Real Taxon 64 : 1
+Real Taxon 65 : 1
+Real Taxon 66 : 1
+Real Taxon 67 : 1
+Real Taxon 68 : 1
+Real Taxon 69 : 1
+Real Taxon 70 : 1
+Real Taxon 71 : 1
+Real Taxon 72 : 1
+Real Taxon 73 : 1
+Real Taxon 74 : 1
+Real Taxon 75 : 1
+Real Taxon 76 : 1
+Real Taxon 77 : 1
+Real Taxon 78 : 0
+Real Taxon 79 : 0
+Real Taxon 80 : 0
+Real Taxon 81 : 0
+Real Taxon 82 : 0
+Real Taxon 83 : 0
+Real Taxon 84 : 0
+Real Taxon 85 : 0
+Real Taxon 86 : 0
+Real Taxon 87 : 0
+Real Taxon 88 : 0
+Real Taxon 89 : 0
+Real Taxon 90 : 0
+Real Taxon 91 : 0
+Real Taxon 92 : 0
+Real Taxon 93 : 0
+Real Taxon 94 : 0
+Real Taxon 95 : 0
+Real Taxon 96 : 0
+Real Taxon 97 : 0
+Real Taxon 98 : 0
+Real Taxon 99 : 0
+Real Taxon 100 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10

@@ -1,6 +1,9 @@
 # bash ./scripts/cleangt.sh ../astral-pro-10-25/n25/k1000/dup2/loss1/ils70
 # bash ./scripts/cleangt.sh ../astral-pro-10-25/n25/k1000/dup2/loss0.5/ils70
-
+# bash ./scripts/cleangt.sh ../astral-pro-10-25/n25/k1000/dup2/loss0.1/ils70
+# bash ./scripts/cleangt.sh ../AstralPro/n100/k1000/dup5/loss1/ils70
+# bash ./scripts/cleangt.sh ../AstralPro/n250/k1000/dup5/loss1/ils70
+# bash ./scripts/cleangt.sh ../AstralPro/n500/k1000/dup5/loss1/ils70
 
 root=$1
 geneTreeLabel="e100.tre"
@@ -19,13 +22,29 @@ cleanGT(){
         if [ -d $root/$file ]; then
             echo $file
             python ./scripts/treeCleaner.py < $root/$file/$geneTreeLabel > $root/$file/$geneTreeLabelCleaned
+            # python ./scripts/arb_resolve_polytomies.py $root/$file/$geneTreeLabelCleaned
+            # python ./scripts/treeCleaner.py < $root/$file/$geneTreeLabelCleaned.resolved > $root/$file/$resolved
+            # break
+        fi
+
+    done
+}
+
+resolveGT(){
+    for file in $(ls $root); do
+
+    # check if $file is a directory
+        if [ -d $root/$file ]; then
+            echo $file
             python ./scripts/arb_resolve_polytomies.py $root/$file/$geneTreeLabelCleaned
             python ./scripts/treeCleaner.py < $root/$file/$geneTreeLabelCleaned.resolved > $root/$file/$resolved
             # break
         fi
 
     done
+
 }
+
 
 cleanSP(){
     for file in $(ls $root); do
@@ -85,4 +104,5 @@ rfScoreWqfm(){
 # cleanSP
 # cleanApro
 # rfScoreApro
-rfScoreWqfm
+# rfScoreWqfm
+resolveGT

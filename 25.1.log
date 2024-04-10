@@ -1,0 +1,4000 @@
+01
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 27158
+Internal nodes count : 21007
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+
+Elapsed Time taken = 19238 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 18 seconds
+02
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17527
+Internal nodes count : 18531
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 13522 ms ==> 0 minutes and 13 seconds.
+CPU time used: 0 minutes, 13 seconds
+03
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21269
+Internal nodes count : 19031
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 14405 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 14 seconds
+04
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 16887
+Internal nodes count : 18078
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 14345 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 14 seconds
+05
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21251
+Internal nodes count : 19938
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 2
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 20658 ms ==> 0 minutes and 20 seconds.
+CPU time used: 0 minutes, 20 seconds
+06
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 26772
+Internal nodes count : 21598
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 19752 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 19 seconds
+07
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 18446
+Internal nodes count : 21585
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 21373 ms ==> 0 minutes and 21 seconds.
+CPU time used: 0 minutes, 20 seconds
+08
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 23345
+Internal nodes count : 19377
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 1
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 3
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 18837 ms ==> 0 minutes and 18 seconds.
+CPU time used: 0 minutes, 18 seconds
+09
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 16743
+Internal nodes count : 19996
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 16593 ms ==> 0 minutes and 16 seconds.
+CPU time used: 0 minutes, 16 seconds
+10
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 14824
+Internal nodes count : 20061
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 19931 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 19 seconds
+11
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 19883
+Internal nodes count : 17448
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 18818 ms ==> 0 minutes and 18 seconds.
+CPU time used: 0 minutes, 18 seconds
+12
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 31780
+Internal nodes count : 22844
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 26353 ms ==> 0 minutes and 26 seconds.
+CPU time used: 0 minutes, 25 seconds
+13
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 14060
+Internal nodes count : 18008
+Real Taxon 0 : 1
+Real Taxon 1 : 0
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 15916 ms ==> 0 minutes and 15 seconds.
+CPU time used: 0 minutes, 15 seconds
+14
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 38233
+Internal nodes count : 27439
+Real Taxon 0 : 0
+Real Taxon 1 : 1
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+
+Elapsed Time taken = 41935 ms ==> 0 minutes and 41 seconds.
+CPU time used: 0 minutes, 41 seconds
+15
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 16637
+Internal nodes count : 17431
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 15444 ms ==> 0 minutes and 15 seconds.
+CPU time used: 0 minutes, 14 seconds
+16
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 20035
+Internal nodes count : 21715
+Real Taxon 0 : 1
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 2
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 24600 ms ==> 0 minutes and 24 seconds.
+CPU time used: 0 minutes, 23 seconds
+17
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 23246
+Internal nodes count : 20500
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 24283 ms ==> 0 minutes and 24 seconds.
+CPU time used: 0 minutes, 23 seconds
+18
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 14722
+Internal nodes count : 15563
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 13385 ms ==> 0 minutes and 13 seconds.
+CPU time used: 0 minutes, 12 seconds
+19
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17358
+Internal nodes count : 19274
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 18353 ms ==> 0 minutes and 18 seconds.
+CPU time used: 0 minutes, 17 seconds
+20
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 27150
+Internal nodes count : 21731
+Real Taxon 0 : 0
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 23486 ms ==> 0 minutes and 23 seconds.
+CPU time used: 0 minutes, 22 seconds
+21
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 27753
+Internal nodes count : 21041
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 1
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+
+Elapsed Time taken = 27580 ms ==> 0 minutes and 27 seconds.
+CPU time used: 0 minutes, 26 seconds
+22
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 22004
+Internal nodes count : 20721
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 2
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 27110 ms ==> 0 minutes and 27 seconds.
+CPU time used: 0 minutes, 26 seconds
+23
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21246
+Internal nodes count : 19249
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 17764 ms ==> 0 minutes and 17 seconds.
+CPU time used: 0 minutes, 17 seconds
+24
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 25250
+Internal nodes count : 20971
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 24153 ms ==> 0 minutes and 24 seconds.
+CPU time used: 0 minutes, 23 seconds
+25
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 11208
+Internal nodes count : 15467
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 12989 ms ==> 0 minutes and 12 seconds.
+CPU time used: 0 minutes, 12 seconds
+26
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21007
+Internal nodes count : 18837
+Real Taxon 0 : 0
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 1
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 21426 ms ==> 0 minutes and 21 seconds.
+CPU time used: 0 minutes, 20 seconds
+27
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21780
+Internal nodes count : 22900
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 25801 ms ==> 0 minutes and 25 seconds.
+CPU time used: 0 minutes, 25 seconds
+28
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 30410
+Internal nodes count : 21682
+Real Taxon 0 : 0
+Real Taxon 1 : 1
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 25053 ms ==> 0 minutes and 25 seconds.
+CPU time used: 0 minutes, 24 seconds
+29
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 25352
+Internal nodes count : 19742
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 21564 ms ==> 0 minutes and 21 seconds.
+CPU time used: 0 minutes, 20 seconds
+30
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 13607
+Internal nodes count : 17879
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 2
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 16453 ms ==> 0 minutes and 16 seconds.
+CPU time used: 0 minutes, 16 seconds
+31
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17503
+Internal nodes count : 17256
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 16512 ms ==> 0 minutes and 16 seconds.
+CPU time used: 0 minutes, 16 seconds
+32
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17953
+Internal nodes count : 17142
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 0
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 16015 ms ==> 0 minutes and 16 seconds.
+CPU time used: 0 minutes, 15 seconds
+33
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 25902
+Internal nodes count : 21541
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 2
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+
+Elapsed Time taken = 32977 ms ==> 0 minutes and 32 seconds.
+CPU time used: 0 minutes, 32 seconds
+34
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 22277
+Internal nodes count : 21784
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 27338 ms ==> 0 minutes and 27 seconds.
+CPU time used: 0 minutes, 26 seconds
+35
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 14558
+Internal nodes count : 16002
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 0
+Real Taxon 3 : 1
+Real Taxon 4 : 1
+Real Taxon 5 : 0
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 1
+
+Elapsed Time taken = 14179 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 13 seconds
+36
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17903
+Internal nodes count : 19755
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 20474 ms ==> 0 minutes and 20 seconds.
+CPU time used: 0 minutes, 19 seconds
+37
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 19964
+Internal nodes count : 17908
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 1
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 19533 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 18 seconds
+38
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 22354
+Internal nodes count : 20018
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 21263 ms ==> 0 minutes and 21 seconds.
+CPU time used: 0 minutes, 20 seconds
+39
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 13052
+Internal nodes count : 16459
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 2
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 14288 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 13 seconds
+40
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21519
+Internal nodes count : 22738
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 22483 ms ==> 0 minutes and 22 seconds.
+CPU time used: 0 minutes, 21 seconds
+41
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 27875
+Internal nodes count : 25259
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 31890 ms ==> 0 minutes and 31 seconds.
+CPU time used: 0 minutes, 31 seconds
+42
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 21207
+Internal nodes count : 22317
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 25163 ms ==> 0 minutes and 25 seconds.
+CPU time used: 0 minutes, 24 seconds
+43
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 19699
+Internal nodes count : 20093
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 1
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 22182 ms ==> 0 minutes and 22 seconds.
+CPU time used: 0 minutes, 21 seconds
+44
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 19983
+Internal nodes count : 22395
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+
+Elapsed Time taken = 36527 ms ==> 0 minutes and 36 seconds.
+CPU time used: 0 minutes, 35 seconds
+45
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 24142
+Internal nodes count : 26069
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 1
+Real Taxon 5 : 1
+Real Taxon 6 : 1
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 1
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 1
+Real Taxon 22 : 1
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+
+Elapsed Time taken = 46382 ms ==> 0 minutes and 46 seconds.
+CPU time used: 0 minutes, 45 seconds
+46
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 19543
+Internal nodes count : 17419
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 25002 ms ==> 0 minutes and 25 seconds.
+CPU time used: 0 minutes, 24 seconds
+47
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 15461
+Internal nodes count : 18923
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 1
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 2
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+
+Elapsed Time taken = 26945 ms ==> 0 minutes and 26 seconds.
+CPU time used: 0 minutes, 26 seconds
+48
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 44875
+Internal nodes count : 27568
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 0
+Real Taxon 12 : 0
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 0
+Real Taxon 19 : 1
+Real Taxon 20 : 0
+Real Taxon 21 : 1
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 1
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 2
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 47046 ms ==> 0 minutes and 47 seconds.
+CPU time used: 0 minutes, 45 seconds
+49
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17336
+Internal nodes count : 17072
+Real Taxon 0 : 0
+Real Taxon 1 : 0
+Real Taxon 2 : 0
+Real Taxon 3 : 0
+Real Taxon 4 : 0
+Real Taxon 5 : 1
+Real Taxon 6 : 0
+Real Taxon 7 : 1
+Real Taxon 8 : 1
+Real Taxon 9 : 0
+Real Taxon 10 : 0
+Real Taxon 11 : 0
+Real Taxon 12 : 1
+Real Taxon 13 : 0
+Real Taxon 14 : 0
+Real Taxon 15 : 1
+Real Taxon 16 : 0
+Real Taxon 17 : 1
+Real Taxon 18 : 1
+Real Taxon 19 : 1
+Real Taxon 20 : 1
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 1
+Real Taxon 24 : 0
+Real Taxon 25 : 0
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 19690 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 19 seconds
+50
+taxon count : 26
+Gene trees count : 1000
+Comp graph nodes count : 17063
+Internal nodes count : 19289
+Real Taxon 0 : 1
+Real Taxon 1 : 1
+Real Taxon 2 : 1
+Real Taxon 3 : 1
+Real Taxon 4 : 0
+Real Taxon 5 : 0
+Real Taxon 6 : 0
+Real Taxon 7 : 0
+Real Taxon 8 : 0
+Real Taxon 9 : 0
+Real Taxon 10 : 1
+Real Taxon 11 : 1
+Real Taxon 12 : 1
+Real Taxon 13 : 1
+Real Taxon 14 : 1
+Real Taxon 15 : 0
+Real Taxon 16 : 0
+Real Taxon 17 : 0
+Real Taxon 18 : 0
+Real Taxon 19 : 0
+Real Taxon 20 : 0
+Real Taxon 21 : 0
+Real Taxon 22 : 0
+Real Taxon 23 : 0
+Real Taxon 24 : 1
+Real Taxon 25 : 1
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 2
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+
+Elapsed Time taken = 25907 ms ==> 0 minutes and 25 seconds.
+CPU time used: 0 minutes, 25 seconds
