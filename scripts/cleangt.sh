@@ -6,6 +6,7 @@
 # bash ./scripts/cleangt.sh ../AstralPro/n500/k1000/dup5/loss1/ils70
 
 root=$1
+copyTo=$2
 geneTreeLabel="e100.tre"
 geneTreeLabelCleaned="e100-cleaned.tre"
 resolved="e100-resolved.tre"
@@ -99,6 +100,26 @@ rfScoreWqfm(){
     done
 }
 
+
+copyToDir(){
+    for file in $(ls $root); do
+
+    # check if $file is a directory
+        if [ -d $root/$file ]; then
+            # make the dir in copy dir
+            mkdir -p $copyTo/$file
+            echo $file
+            cp $root/$file/$geneTreeLabelCleaned $copyTo/$file/$geneTreeLabelCleaned
+            # cp $root/$file/$resolved $copyTo/$file/$resolved
+            cp $root/$file/$speciesTreeLabelCleaned $copyTo/$file/$speciesTreeLabelCleaned
+            cp $root/$file/$aproCleaned $copyTo/$file/$aproCleaned
+            # cp $root/$file/$wqfm $copyTo/$file/$wqfm
+            # break
+        fi
+
+    done
+
+}
 
 # cleanGT
 # cleanSP
