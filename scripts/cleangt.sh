@@ -5,16 +5,26 @@
 # bash ./scripts/cleangt.sh ../AstralPro/n250/k1000/dup5/loss1/ils70
 # bash ./scripts/cleangt.sh ../AstralPro/n500/k1000/dup5/loss1/ils70
 
+# bash ./scripts/cleangt.sh ../AstralPro/n25/k1000/dup5/loss1/ils70 1
+
 root=$1
-copyTo=$2
-geneTreeLabel="e100.tre"
-geneTreeLabelCleaned="e100-cleaned.tre"
-resolved="e100-resolved.tre"
+n=$2
+# copyTo=$2
+geneTreeLabel="e${n}00.tre"
+geneTreeLabelCleaned="e${n}00-cleaned.tre"
+resolved="e${n}00-resolved.tre"
 speciesTreeLabel="s_tree.trees"
 speciesTreeLabelCleaned="s_tree-cleaned.tre"
-apro="e100_apro.tre"
-aproCleaned="e100_apro-cleaned.tre"
-wqfm="e100-wqfm-tree.tre"
+apro="e${n}00_apro.tre"
+aproCleaned="e${n}00_apro-cleaned.tre"
+wqfm="e${n}00-wqfm-tree.tre"
+wqfm="e${n}00-wqfm-with-astral.tre"
+wqfm="e${n}00-wqfm-with-sp.tre"
+ascores="e${n}00_apro_scores.txt"
+wscores="e${n}00_wqfm_scores_with_sp.txt"
+ascoresAvg="avg-$ascores"
+wscoresAvg="avg-$wscores"
+
 
 cleanGT(){
     for file in $(ls $root); do
@@ -61,6 +71,7 @@ cleanSP(){
 }
 
 cleanApro(){
+
     for file in $(ls $root); do
 
     # check if $file is a directory
@@ -71,33 +82,48 @@ cleanApro(){
         fi
 
     done
+
+    # python ./scripts/averager.py < $root/$ascores > $root/$ascoresAvg
 }
 
 
 rfScoreApro(){
+
+    > $root/$ascores
+    > $root/$avgAscores
+
     for file in $(ls $root); do
 
     # check if $file is a directory
         if [ -d $root/$file ]; then
             # echo $file
-            python ./rfScoreCalculator/getFpFn.py -t $root/$file/$aproCleaned -e $root/$file/$speciesTreeLabelCleaned
+            python ./rfScoreCalculator/getFpFn.py -t $root/$file/$aproCleaned -e $root/$file/$speciesTreeLabelCleaned >> $root/$ascores
             # break
         fi
 
     done
+
+    python ./scripts/rfAverager.py < $root/$ascores > $root/$ascoresAvg
 }
 
 rfScoreWqfm(){
+
+    > $root/$wscores
+    > $root/$avgWscores
+    
+
     for file in $(ls $root); do
 
     # check if $file is a directory
         if [ -d $root/$file ]; then
             # echo $file
-            python ./rfScoreCalculator/getFpFn.py -e $root/$file/$wqfm -t $root/$file/$speciesTreeLabelCleaned
+            python ./rfScoreCalculator/getFpFn.py -e $root/$file/$wqfm -t $root/$file/$speciesTreeLabelCleaned >> $root/$wscores
             # break
         fi
 
     done
+
+    python ./scripts/rfAverager.py < $root/$wscores > $root/$wscoresAvg
 }
 
 
@@ -125,5 +151,5 @@ copyToDir(){
 # cleanSP
 # cleanApro
 # rfScoreApro
-# rfScoreWqfm
-resolveGT
+rfScoreWqfm
+# resolveGT

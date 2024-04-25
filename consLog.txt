@@ -1,0 +1,5 @@
+output at:
+../AstralPro/n25/k1000/dup5/loss1/ils70/50/e100-consensus.strict.tree
+../AstralPro/n25/k1000/dup5/loss1/ils70/50/e100-consensus.majority.tree
+../AstralPro/n25/k1000/dup5/loss1/ils70/50/e100-consensus.greedy.tree
+done.
