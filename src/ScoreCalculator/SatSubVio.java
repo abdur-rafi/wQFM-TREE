@@ -9,7 +9,7 @@ public class SatSubVio implements ScoreEqn {
         }
          
         @Override
-        public double scoreFromVioAndTotal(double sat, double vio) {
+        public double scoreFromSatAndVio(double sat, double vio) {
             // return vio;
             return sat - vio;
         }

@@ -122,7 +122,7 @@ public class BookKeepingPerLevelDC {
             vio += p.scoreCalculator.vio() * p.count;
         }
 
-        return sat - vio;
+        return Config.SCORE_EQN.scoreFromSatAndVio(sat, vio);
 
         // return score;
 
@@ -204,15 +204,15 @@ public class BookKeepingPerLevelDC {
             Utility.addArrayToFirst(rtVio[i], this.dc.realTaxaComponents[rt.id].gainsForSubTreeVio);
             realTaxaGains[i] = new double[2];
             for(int j = 0; j < 2; ++j){
-                realTaxaGains[i][j] = rtSat[i][j] - rtVio[i][j];
+                realTaxaGains[i][j] = Config.SCORE_EQN.scoreFromSatAndVio(rtSat[i][j], rtVio[i][j]);
             }
         }
 
         for(int i = 0; i < dummyTaxaGains.length; ++i){
-            dummyTaxaGains[i] = dtSat[i] - dtVio[i];
+            dummyTaxaGains[i] = Config.SCORE_EQN.scoreFromSatAndVio(dtSat[i], dtVio[i]);
         }
 
-        return sat - vio;
+        return Config.SCORE_EQN.scoreFromSatAndVio(sat, vio);
     }
 
     // public void swapRealTaxon3(int index){
