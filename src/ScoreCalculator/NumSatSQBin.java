@@ -604,7 +604,7 @@ public class NumSatSQBin implements NumSatSQ{
     
     
     @Override
-    public RTGainReturnType gainSatRealTaxa(int fre){
+    public RTGainReturnType gainSatRealTaxa(int fre, double currSat){
         RTGainReturnType gains = new RTGainReturnType();
         gains.commonGains = new double[2][2];
         gains.uniqueGains = new double[2][2];
@@ -615,7 +615,7 @@ public class NumSatSQBin implements NumSatSQ{
                 if(this.common[i].realTaxaCounts[p] > 0){
                     this.transferCommon(i, p);
                     this.common[i].swapRealTaxa(p);
-                    gains.commonGains[i][p] = this.sat() * fre;
+                    gains.commonGains[i][p] = (this.sat() - currSat) * fre;
                     this.transferCommon(i, 1-p);
                     this.common[i].swapRealTaxa(1-p);
                 }
@@ -623,7 +623,7 @@ public class NumSatSQBin implements NumSatSQ{
                 if(this.uniques[i].realTaxaCounts[p] > 0){
                     this.transferUnique(i, p);
                     this.uniques[i].swapRealTaxa(p);
-                    gains.uniqueGains[i][p] = this.sat() * fre;
+                    gains.uniqueGains[i][p] = (this.sat() - currSat) * fre;
                     this.transferUnique(i, 1-p);
                     this.uniques[i].swapRealTaxa(1-p);
                 }
@@ -633,7 +633,7 @@ public class NumSatSQBin implements NumSatSQ{
             if(this.uniquesParent.realTaxaCounts[i] > 0){
                 this.transferParentUnique(i);
                 this.uniquesParent.swapRealTaxa(i);
-                gains.uniqueParentGains[i] = this.sat() * fre;
+                gains.uniqueParentGains[i] = (this.sat() - currSat) * fre;
                 this.transferParentUnique(1 - i);
                 this.uniquesParent.swapRealTaxa(1 - i);
             }
@@ -642,7 +642,7 @@ public class NumSatSQBin implements NumSatSQ{
         return gains;
     }
     @Override
-    public RTGainReturnType gainVioRealTaxa(int fre){
+    public RTGainReturnType gainVioRealTaxa(int fre, double currVio){
         RTGainReturnType gains = new RTGainReturnType();
         gains.commonGains = new double[2][2];
         gains.uniqueGains = new double[2][2];
@@ -653,7 +653,7 @@ public class NumSatSQBin implements NumSatSQ{
                 if(this.common[i].realTaxaCounts[p] > 0){
                     this.transferCommon(i, p);
                     this.common[i].swapRealTaxa(p);
-                    gains.commonGains[i][p] = this.vio() * fre;
+                    gains.commonGains[i][p] = (this.vio() - currVio) * fre;
                     this.transferCommon(i, 1-p);
                     this.common[i].swapRealTaxa(1-p);
                 }
@@ -661,7 +661,7 @@ public class NumSatSQBin implements NumSatSQ{
                 if(this.uniques[i].realTaxaCounts[p] > 0){
                     this.transferUnique(i, p);
                     this.uniques[i].swapRealTaxa(p);
-                    gains.uniqueGains[i][p] = this.vio() * fre;
+                    gains.uniqueGains[i][p] = (this.vio() - currVio) * fre;
                     this.transferUnique(i, 1-p);
                     this.uniques[i].swapRealTaxa(1-p);
                 }
@@ -671,7 +671,7 @@ public class NumSatSQBin implements NumSatSQ{
             if(this.uniquesParent.realTaxaCounts[i] > 0){
                 this.transferParentUnique(i);
                 this.uniquesParent.swapRealTaxa(i);
-                gains.uniqueParentGains[i] = this.vio() * fre;
+                gains.uniqueParentGains[i] = (this.vio() - currVio) * fre;
                 this.transferParentUnique(1 - i);
                 this.uniquesParent.swapRealTaxa(1 - i);
             }
@@ -682,7 +682,7 @@ public class NumSatSQBin implements NumSatSQ{
 
 
     @Override
-    public void gainSatDummyTaxa(double[] dummyTaxaGains, int fre) {
+    public void gainSatDummyTaxa(double[] dummyTaxaGains, int fre, double currSat) {
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
             this.transferDummyTaxon(i, currPartition);
@@ -691,7 +691,7 @@ public class NumSatSQBin implements NumSatSQ{
                 this.uniques[j].swapDummyTaxon(i, currPartition);
             }
             this.uniquesParent.swapDummyTaxon(i, currPartition);
-            dummyTaxaGains[i] += this.sat() * fre;
+            dummyTaxaGains[i] += (this.sat() - currSat) * fre;
             
             this.transferDummyTaxon(i, 1 - currPartition);
             for(int j = 0; j < 2; ++j){
@@ -704,7 +704,7 @@ public class NumSatSQBin implements NumSatSQ{
         }
     }
     @Override
-    public void gainVioDummyTaxa(double[] dummyTaxaGains, int fre) {
+    public void gainVioDummyTaxa(double[] dummyTaxaGains, int fre, double currVio) {
         for(int i = 0; i < this.nDummyTaxa; ++i){
             int currPartition = this.dummyTaxaPartition[i];
             this.transferDummyTaxon(i, currPartition);
@@ -713,7 +713,7 @@ public class NumSatSQBin implements NumSatSQ{
                 this.uniques[j].swapDummyTaxon(i, currPartition);
             }
             this.uniquesParent.swapDummyTaxon(i, currPartition);
-            dummyTaxaGains[i] += this.vio() * fre;
+            dummyTaxaGains[i] += (this.vio() - currVio) * fre;
             
             this.transferDummyTaxon(i, 1 - currPartition);
             for(int j = 0; j < 2; ++j){

@@ -27,10 +27,10 @@ public interface NumSatSQ {
     public double sat();
     public double vio();
 
-    public RTGainReturnType gainSatRealTaxa(int fre);
-    public RTGainReturnType gainVioRealTaxa(int fre);
+    public RTGainReturnType gainSatRealTaxa(int fre, double currSat);
+    public RTGainReturnType gainVioRealTaxa(int fre, double currVio);
 
-    public void gainSatDummyTaxa(double[] a, int fre);
-    public void gainVioDummyTaxa(double[] a, int fre);
+    public void gainSatDummyTaxa(double[] a, int fre, double currSat);
+    public void gainVioDummyTaxa(double[] a, int fre, double currVio);
 
 }
