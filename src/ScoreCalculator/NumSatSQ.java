@@ -23,4 +23,14 @@ public interface NumSatSQ {
         public double[][] commonGains, uniqueGains;
         public double[] uniqueParentGains;
     }
+
+    public double sat();
+    public double vio();
+
+    public RTGainReturnType gainSatRealTaxa(int fre);
+    public RTGainReturnType gainVioRealTaxa(int fre);
+
+    public void gainSatDummyTaxa(double[] a);
+    public void gainVioDummyTaxa(double[] a);
+
 }

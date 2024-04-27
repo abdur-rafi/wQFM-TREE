@@ -119,6 +119,46 @@ public class NumSatSQBin implements NumSatSQ{
         // this.pairsABFromLeftRightBranch = b[0].totalTaxaCounts[0] * b[1].totalTaxaCounts[1] + b[0].totalTaxaCounts[1] * b[1].totalTaxaCounts[0];
 
     }
+    
+    @Override
+    public double sat(){
+        double sat = 0;
+        double[][] pairsWithParentBranch = new double[2][2];
+
+        pairsWithParentBranch[0][0] = pairsWithParentCommon[0][0] + pairsWithParentUnique[0][0] + pairsWithParentCommonAndUnique[0][0];
+        pairsWithParentBranch[0][1] = pairsWithParentCommon[0][1] + pairsWithParentUnique[0][1] + pairsWithParentCommonAndUnique[0][1];
+        pairsWithParentBranch[1][0] = pairsWithParentCommon[1][0] + pairsWithParentUnique[1][0] + pairsWithParentCommonAndUnique[1][0];
+        pairsWithParentBranch[1][1] = pairsWithParentCommon[1][1] + pairsWithParentUnique[1][1] + pairsWithParentCommonAndUnique[1][1];
+
+
+        sat += pairsFromBranch[0][0] * pairsFromBranch[1][1];
+        sat += pairsFromBranch[0][1] * pairsFromBranch[1][0];
+        
+        sat += pairsFromBranch[0][0] * pairsWithParentBranch[1][1];
+        sat += pairsFromBranch[0][1] * pairsWithParentBranch[1][0];
+        sat += pairsFromBranch[1][0] * pairsWithParentBranch[0][1];
+        sat += pairsFromBranch[1][1] * pairsWithParentBranch[0][0];
+
+        return sat;
+
+    }
+
+    @Override
+    public double vio(){
+        double[][] pairsWithParentBranch = new double[2][2];
+
+        pairsWithParentBranch[0][0] = pairsWithParentCommon[0][0] + pairsWithParentUnique[0][0] + pairsWithParentCommonAndUnique[0][0];
+        pairsWithParentBranch[0][1] = pairsWithParentCommon[0][1] + pairsWithParentUnique[0][1] + pairsWithParentCommonAndUnique[0][1];
+        pairsWithParentBranch[1][0] = pairsWithParentCommon[1][0] + pairsWithParentUnique[1][0] + pairsWithParentCommonAndUnique[1][0];
+        pairsWithParentBranch[1][1] = pairsWithParentCommon[1][1] + pairsWithParentUnique[1][1] + pairsWithParentCommonAndUnique[1][1];
+
+        double vio = 0;
+        vio += pairsLR[0] * pairsLR[1];
+        vio += pairsLR[0] * ( pairsWithParentBranch[0][1] + pairsWithParentBranch[1][1] );
+        vio += pairsLR[1] * ( pairsWithParentBranch[0][0] + pairsWithParentBranch[1][0] );
+
+        return vio;
+    }
 
     @Override
     public double score() {
@@ -563,4 +603,126 @@ public class NumSatSQBin implements NumSatSQ{
 
     
     
+    @Override
+    public RTGainReturnType gainSatRealTaxa(int fre){
+        RTGainReturnType gains = new RTGainReturnType();
+        gains.commonGains = new double[2][2];
+        gains.uniqueGains = new double[2][2];
+        gains.uniqueParentGains = new double[2];
+
+        for(int i = 0; i < 2; ++i){
+            for(int p = 0; p < 2; ++p){
+                if(this.common[i].realTaxaCounts[p] > 0){
+                    this.transferCommon(i, p);
+                    this.common[i].swapRealTaxa(p);
+                    gains.commonGains[i][p] = this.sat() * fre;
+                    this.transferCommon(i, 1-p);
+                    this.common[i].swapRealTaxa(1-p);
+                }
+
+                if(this.uniques[i].realTaxaCounts[p] > 0){
+                    this.transferUnique(i, p);
+                    this.uniques[i].swapRealTaxa(p);
+                    gains.uniqueGains[i][p] = this.sat() * fre;
+                    this.transferUnique(i, 1-p);
+                    this.uniques[i].swapRealTaxa(1-p);
+                }
+
+            }
+
+            if(this.uniquesParent.realTaxaCounts[i] > 0){
+                this.transferParentUnique(i);
+                this.uniquesParent.swapRealTaxa(i);
+                gains.uniqueParentGains[i] = this.sat() * fre;
+                this.transferParentUnique(1 - i);
+                this.uniquesParent.swapRealTaxa(1 - i);
+            }
+        }
+
+        return gains;
+    }
+    @Override
+    public RTGainReturnType gainVioRealTaxa(int fre){
+        RTGainReturnType gains = new RTGainReturnType();
+        gains.commonGains = new double[2][2];
+        gains.uniqueGains = new double[2][2];
+        gains.uniqueParentGains = new double[2];
+
+        for(int i = 0; i < 2; ++i){
+            for(int p = 0; p < 2; ++p){
+                if(this.common[i].realTaxaCounts[p] > 0){
+                    this.transferCommon(i, p);
+                    this.common[i].swapRealTaxa(p);
+                    gains.commonGains[i][p] = this.vio() * fre;
+                    this.transferCommon(i, 1-p);
+                    this.common[i].swapRealTaxa(1-p);
+                }
+
+                if(this.uniques[i].realTaxaCounts[p] > 0){
+                    this.transferUnique(i, p);
+                    this.uniques[i].swapRealTaxa(p);
+                    gains.uniqueGains[i][p] = this.vio() * fre;
+                    this.transferUnique(i, 1-p);
+                    this.uniques[i].swapRealTaxa(1-p);
+                }
+
+            }
+
+            if(this.uniquesParent.realTaxaCounts[i] > 0){
+                this.transferParentUnique(i);
+                this.uniquesParent.swapRealTaxa(i);
+                gains.uniqueParentGains[i] = this.vio() * fre;
+                this.transferParentUnique(1 - i);
+                this.uniquesParent.swapRealTaxa(1 - i);
+            }
+        }
+
+        return gains;
+    }
+
+
+    @Override
+    public void gainSatDummyTaxa(double[] dummyTaxaGains) {
+        for(int i = 0; i < this.nDummyTaxa; ++i){
+            int currPartition = this.dummyTaxaPartition[i];
+            this.transferDummyTaxon(i, currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, currPartition);
+                this.uniques[j].swapDummyTaxon(i, currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, currPartition);
+            dummyTaxaGains[i] += this.sat();
+            
+            this.transferDummyTaxon(i, 1 - currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, 1 - currPartition);
+                this.uniques[j].swapDummyTaxon(i, 1 - currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, 1 - currPartition);
+            
+            
+        }
+    }
+    @Override
+    public void gainVioDummyTaxa(double[] dummyTaxaGains) {
+        for(int i = 0; i < this.nDummyTaxa; ++i){
+            int currPartition = this.dummyTaxaPartition[i];
+            this.transferDummyTaxon(i, currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, currPartition);
+                this.uniques[j].swapDummyTaxon(i, currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, currPartition);
+            dummyTaxaGains[i] += this.vio();
+            
+            this.transferDummyTaxon(i, 1 - currPartition);
+            for(int j = 0; j < 2; ++j){
+                this.common[j].swapDummyTaxon(i, 1 - currPartition);
+                this.uniques[j].swapDummyTaxon(i, 1 - currPartition);
+            }
+            this.uniquesParent.swapDummyTaxon(i, 1 - currPartition);
+            
+            
+        }
+    }
 }

@@ -7,5 +7,11 @@ public class FractionSat implements ScoreEqn{
         if(total == 0) return 0;
         return sat / total;
     }
+
+    @Override
+    public double scoreFromVioAndTotal(double sat, double vio) {
+        if(sat + vio == 0) return 0;
+        return sat / (sat + vio);
+    }
     
 }

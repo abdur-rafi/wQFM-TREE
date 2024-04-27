@@ -112,47 +112,69 @@ public class BookKeepingPerLevelDC {
 
     public double calculateScore(){
         double score = 0;
-        double totalQuartets = 0;
+
+        double sat = 0;
+        double vio = 0;
+        
         for(InternalNode p : this.dc.internalNodes){
-            score += p.scoreCalculator.score() * p.count;
+            // score += p.scoreCalculator.score() * p.count;
+            sat += p.scoreCalculator.sat() * p.count;
+            vio += p.scoreCalculator.vio() * p.count;
         }
 
-        return score;
-        // for(BookKeepingPerTreeDC bt : this.bookKeepingPerTreeDCs){
-        //     totalQuartets += bt.totalQuartets();
-        // }
-        
+        return sat - vio;
 
-        // return Config.SCORE_EQN.scoreFromSatAndTotal(totalQuartets, score);
+        // return score;
+
+
+
     }
 
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
-        double totalScore = 0;
+        // double totalScore = 0;
         
+        double[] dtSat = new double[dummyTaxaGains.length];
+        double[] dtVio = new double[dummyTaxaGains.length];
+
+        double[][] rtSat = new double[realTaxaGains.length][2];
+        double[][] rtVio = new double[realTaxaGains.length][2];
+
         for(Component p : this.dc.topSortedComponents){
-            p.gainsForSubTree = new double[2];
+            p.gainsForSubTreeSat = new double[2];
+            p.gainsForSubTreeVio = new double[2];
         }
 
-        this.dc.sentinel.gainsForSubTree = new double[2];
+        this.dc.sentinel.gainsForSubTreeSat = new double[2];
+        this.dc.sentinel.gainsForSubTreeVio = new double[2];
+
+        double sat = 0;
+        double vio = 0;
 
         for(InternalNode p : this.dc.internalNodes){
-            double score = p.scoreCalculator.score();
-            NumSatSQ.RTGainReturnType gains = p.scoreCalculator.gainRealTaxa(score, p.count);
+
+            sat += p.scoreCalculator.score() * p.count;
+            vio += p.scoreCalculator.vio() * p.count;
+
+            NumSatSQ.RTGainReturnType satGain = p.scoreCalculator.gainSatRealTaxa(p.count);
+            NumSatSQ.RTGainReturnType vioGain = p.scoreCalculator.gainVioRealTaxa(p.count);
+
             
-            p.scoreCalculator.gainDummyTaxa(score, p.count, dummyTaxaGains);
-            score *= p.count;
+            p.scoreCalculator.gainSatDummyTaxa(dtSat);
+            p.scoreCalculator.gainVioDummyTaxa(dtVio);
 
-            totalScore += score;
-
-            // for(int i = 0; i < p.partitionNodes.length; ++i){
-            //     Utility.addArrayToFirst(p.partitionNodes[i].data.gainsForSubTree, branchGainsForRealTaxa[i]);
-            // }
 
             for(int i = 0; i < p.childCompsCommon.length; ++i){
-                Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTree, gains.commonGains[i]);
-                Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTree, gains.uniqueGains[i]);
+                // Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTree, gains.commonGains[i]);
+                // Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTree, gains.uniqueGains[i]);
+
+                Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTreeSat, satGain.commonGains[i]);
+                Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTreeVio, vioGain.commonGains[i]);
+                Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTreeSat, satGain.uniqueGains[i]);
+                Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTreeVio, vioGain.uniqueGains[i]);
+                
             }
-            Utility.addArrayToFirst(p.parentUniques.gainsForSubTree, gains.uniqueParentGains);
+            Utility.addArrayToFirst(p.parentUniques.gainsForSubTreeSat, satGain.uniqueParentGains);
+            Utility.addArrayToFirst(p.parentUniques.gainsForSubTreeVio, vioGain.uniqueParentGains);
 
             // for(int i = 0; i < p.partitionNodes.length - 1; ++i){
             //     for(int j = 0; j < 2; ++j){
@@ -170,61 +192,27 @@ public class BookKeepingPerLevelDC {
 
         for(Component p : this.dc.topSortedComponents){
             for(Component childs : p.children){
-                Utility.addArrayToFirst(childs.gainsForSubTree, p.gainsForSubTree);
+                Utility.addArrayToFirst(childs.gainsForSubTreeSat, p.gainsForSubTreeSat);
+                Utility.addArrayToFirst(childs.gainsForSubTreeVio, p.gainsForSubTreeVio);
             }
         }
 
-        // double currTotalQuartets = 0;
-        // double[] dtTotals = new double[this.taxaPerLevel.dummyTaxonCount];
-        
-        // for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-        //     currTotalQuartets += bkpt.totalQuartets();
-        //     for(int i = 0;i < this.taxaPerLevel.dummyTaxonCount; ++i){
-        //         dtTotals[i] += bkpt.totalQuartetsAfterDummySwap(i, 1 - this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i));
-        //     }
-        // }
-
-        // double totalScore = Config.SCORE_EQN.scoreFromSatAndTotal(currTotalQuartets, totalSat);
-
-        // for(int i = 0; i < this.dc.realTaxaPartitionNodes.length; ++i){
-        //     PartitionNode p = this.dc.realTaxaPartitionNodes[i];
-        //     Utility.addArrayToFirst(realTaxaGains[i], p.data.gainsForSubTree);
-        //     double totalQuartetsAfterTransferringi = 0;
-        //     int partition = this.taxaPerLevel.inWhichPartition(i);
-        //     for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-        //         totalQuartetsAfterTransferringi += bkpt.totalQuartetsAfterSwap(i, 1 - partition);
-        //     }
-        //     realTaxaGains[i][partition] += totalSat;
-        //     realTaxaGains[i][partition] = Config.SCORE_EQN.scoreFromSatAndTotal(totalQuartetsAfterTransferringi, realTaxaGains[i][partition]);
-        //     realTaxaGains[i][partition] -= totalScore;   
-        // }
 
         for(int i = 0; i < this.taxaPerLevel.realTaxonCount; ++i){
             RealTaxon rt = this.taxaPerLevel.realTaxa[i];
-            // int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i);
-            Utility.addArrayToFirst(realTaxaGains[i], this.dc.realTaxaComponents[rt.id].gainsForSubTree);
-            // double totalQuartetsAfterTransferringi = 0;
-            // for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            //     totalQuartetsAfterTransferringi += bkpt.totalQuartetsAfterSwap(i, 1 - partition);
-            // }
-            // realTaxaGains[i][partition] += totalScore;
-            // realTaxaGains[i][partition] = Config.SCORE_EQN.scoreFromSatAndTotal(totalQuartetsAfterTransferringi, realTaxaGains[i][partition]);
-            // realTaxaGains[i][partition] -= totalScore;   
+            Utility.addArrayToFirst(rtSat[i], this.dc.realTaxaComponents[rt.id].gainsForSubTreeSat);
+            Utility.addArrayToFirst(rtVio[i], this.dc.realTaxaComponents[rt.id].gainsForSubTreeVio);
+            realTaxaGains[i] = new double[2];
+            for(int j = 0; j < 2; ++j){
+                realTaxaGains[i][j] = rtSat[i][j] - rtVio[i][j];
+            }
         }
 
-        // for(int i = 0; i < this.taxaPerLevel.dummyTaxonCount; ++i){
-            
-        //     dummyTaxaGains[i] = Config.SCORE_EQN.scoreFromSatAndTotal(
-        //         dtTotals[i],
-        //         dummyTaxaGains[i] + totalScore
-        //     ) - totalScore;
+        for(int i = 0; i < dummyTaxaGains.length; ++i){
+            dummyTaxaGains[i] = dtSat[i] - dtVio[i];
+        }
 
-
-        // }
-
-
-
-        return totalScore;
+        return sat - vio;
     }
 
     // public void swapRealTaxon3(int index){

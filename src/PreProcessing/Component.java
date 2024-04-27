@@ -38,7 +38,7 @@ public class Component{
 
     // public boolean gainPartition;
     // public boolean onlyGainPartition;
-    public double[] gainsForSubTree;
+    public double[] gainsForSubTreeSat, gainsForSubTreeVio;
 
     public int nodeCount;
 
