@@ -1,10 +1,10 @@
 
-filePrefix="ewqfm-score-testing"
+filePrefix="wqfm-sp"
 
 
 rootPath=$1
 modelCond=$2
-nonQuartType="B"
+nonQuartType="A"
 gtFolderPath=$rootPath/estimated-gene-trees/$modelCond
 spFolderPath=$rootPath/true-specis-trees/$modelCond
 consFolderPath=$rootPath/estimated-consensus-trees/$modelCond
@@ -100,7 +100,11 @@ runOne() {
 
     echo $file
 
-    /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin src.Main $gtPath $consPath $outPath $nonQuartType
+    # /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages -cp \
+    # /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin \
+    # src.Main $gtPath $spPath $outPath $nonQuartType
+
+    java -jar wQFM-Tree.jar $gtPath $spPath $outPath $nonQuartType
 
     python ./rfScoreCalculator/getFpFn.py -t $spPath -e $outPath >> $scoresFolderPath/$filePrefix-score.txt
 
