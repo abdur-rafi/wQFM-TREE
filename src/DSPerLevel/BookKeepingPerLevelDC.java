@@ -104,9 +104,9 @@ public class BookKeepingPerLevelDC {
             else{
                 // p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
                 // p.scoreCalculator = new NumSatSQBin(b, this.taxaPerLevel.dummyTaxonPartition);
-                if(p.count != p.parentSpeciationCount){
-                    System.out.println("=================");
-                }
+                // if(p.count != p.parentSpeciationCount){
+                //     System.out.println("=================");
+                // }
                 p.scoreCalculator = new NumSatSQBin(comm, uniq, p.parentUniques.data.branch, this.taxaPerLevel.dummyTaxonPartition, p.count, p.parentSpeciationCount);
             }
         }

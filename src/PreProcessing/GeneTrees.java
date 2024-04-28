@@ -122,9 +122,14 @@ public class GeneTrees {
             // }
 
             tree.calculateFrequencies(triPartitions);
-            tree.tag();
-            geneTrees.add(tree);
 
+            // System.out.println(tree.root);
+
+            // tree.tag();
+            tree.rootAndTag();
+            geneTrees.add(tree);
+            
+            // System.out.println(tree.root);
 
             if(tree.checkIfNonBinary()){
                 System.out.println("============ Non binary gt ===================");

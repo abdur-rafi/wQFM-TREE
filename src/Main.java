@@ -15,13 +15,24 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        String inputFilePath = "";
+        String consensusFilePath = "";
+        String outputFilePath = "";
+
+
+
         if(args.length < 3){
             System.out.println("Specify all file paths and non quartet type");
             System.exit(-1);
         }
-        String inputFilePath = args[0];
-        String consensusFilePath = args[1];
-        String outputFilePath = args[2];
+
+        inputFilePath = args[0];
+        consensusFilePath = args[1];
+        outputFilePath = args[2];
+
+        // inputFilePath = "./input/rootingTest.txt";
+        // consensusFilePath = "./input/rootingTest.txt";
+        // outputFilePath = "./output.tre";
 
         // String nonQuartetType = args[3];
         

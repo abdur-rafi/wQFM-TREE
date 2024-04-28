@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import src.Utility;
 import src.Taxon.RealTaxon;
 
 // Leafs are real taxon
@@ -335,7 +336,11 @@ public class Tree {
         // System.out.println(root.toString());
 
     }
+
     
+
+
+
     
     private String newickFormatUitl(TreeNode node){
         if(node.isLeaf()){
@@ -465,18 +470,25 @@ public class Tree {
         return false;
     }
 
-    public boolean[] tagUtil(TreeNode node){
+
+    public Utility.Pair<boolean[], Double> tagUtil(TreeNode node){
         
         boolean[] taxaInSubtree = new boolean[this.taxaMap.size()];
 
         if(node.isLeaf()){
             taxaInSubtree[node.taxon.id] = true;
-            return taxaInSubtree;
+            return new Utility.Pair<>(taxaInSubtree, 0.0);
         }
+        double score = 0;
+
+        ArrayList<boolean[]> inChilds = new ArrayList<>();
+
         for(var child : node.childs){
             var childTaxa = tagUtil(child);
+            inChilds.add(childTaxa.first);
+            score += childTaxa.second;
             for(int i = 0; i < this.taxaMap.size(); ++i){
-                if(childTaxa[i]){
+                if(childTaxa.first[i]){
                     if(taxaInSubtree[i]){
                         node.dupplicationNode = true;
                     }
@@ -484,12 +496,159 @@ public class Tree {
                 }
             }
         }
-        return taxaInSubtree;
+
+        ArrayList<Boolean> isSameAsParent = new ArrayList<>();
+        boolean isAnySame = true;
+
+        for(var x : inChilds){
+            boolean isSame = true;
+            for(int i = 0; i < this.taxaMap.size(); ++i){
+                if(x[i] != taxaInSubtree[i]){
+                    isSame = false;
+                    break;
+                }
+            }
+            isSameAsParent.add(isSame);
+            isAnySame = isAnySame || isSame;
+        }
+
+        if(!isAnySame){
+            score += 3;
+        }
+        else{
+            boolean areAllSame = true;
+            var f = inChilds.get(0);
+            for(int i = 1; i < inChilds.size(); ++i){
+                var s = inChilds.get(i);
+                for(int j = 0; j < this.taxaMap.size(); ++j){
+                    if(f[j] != s[j]){
+                        areAllSame = false;
+                        break;
+                    }
+                }
+            }
+            if(areAllSame){
+                score += 1;
+            }
+            else{
+                score += 2;
+            }
+        }
+        
+
+
+        return new Utility.Pair<>(taxaInSubtree, score);
+
+    }
+    
+
+    public void rootAndTag(){
+        double s = tag();
+
+        ArrayList<Utility.Pair<TreeNode, TreeNode>> edges = new ArrayList<>();
+
+        for(var x : topSortedNodes){
+            if(!x.isRoot() && !x.isLeaf() && x.parent != root){
+                edges.add(new Utility.Pair<>(x, x.parent));
+            }
+        }
+        if(edges.size() == 0){
+            tag();
+            return;
+        }
+
+
+        Utility.Pair<TreeNode, TreeNode> minEdge = null;
+
+        for(var edge : edges){
+            TreeNode child = edge.first;
+            if(edge.second.parent == edge.first){
+                child = edge.second;
+            }
+
+            rerootAlongEdge(child);
+            double curr = tag();
+            if(curr < s){
+                s = curr;
+                minEdge = edge;
+            }
+        }
+
+        if(minEdge == null){
+            System.out.println("Error: minEdge is null");
+            System.exit(-1);
+        }
+        TreeNode child = minEdge.first;
+        
+        if(minEdge.second.parent == minEdge.first){
+            child = minEdge.second;
+        }
+
+        rerootAlongEdge(child);
+        topSort();
+        tag();
+
+        
+    }
+
+    public double tag(){
+        
+        return tagUtil(root).second;
+    }
+
+
+    private void rerootAlongEdge(TreeNode child){
+
+        if(root != null){
+            if(root.childs.size() == 2){
+                var c0 = root.childs.get(0);
+                var c1 = root.childs.get(1);
+
+                c1.parent = c0;
+                c0.parent = null;
+
+                c0.childs.add(c1);
+                nodes.remove(nodes.size() - 1);
+            }
+            else if(root.childs.size() == 1){
+                System.out.println("Root has only one child");
+                System.exit(-1);
+            }
+            else if(root.childs.size() > 2){
+                System.out.println("Root has more than 2 children when rerootAlongEdge is called");
+                System.exit(-1);
+            }
+        }
+        
+        TreeNode closestP = child.parent;
+        closestP.childs.remove(child);
+
+        TreeNode curr = closestP;
+        TreeNode currP, temp;
+        currP = curr.parent;
+        while(curr != null && currP != null){
+            curr.childs.add(currP);
+            currP.childs.remove(curr);
+            temp = currP;
+            currP = currP.parent;
+            temp.parent = curr;
+            curr = temp;
+        }
+
+        ArrayList<TreeNode> arr = new ArrayList<>();
+        arr.add(child);
+        arr.add(closestP);
+
+        // root.parent.childs.remove(root);
+        // root.parent.childs.add(root.childs.get(0));
+        // root.childs.get(0).parent = root.parent;
+
+        // nodes.remove(nodes.size() - 1);
+
+        root = addInternalNode(arr) ;
 
     }
 
-    public void tag(){
-        tagUtil(root);
-    }
+
 
 }

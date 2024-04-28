@@ -11,7 +11,7 @@ public class FractionSat implements ScoreEqn{
     @Override
     public double scoreFromSatAndVio(double sat, double vio) {
         if(sat + vio == 0) return 0;
-        return (sat - vio) / (sat + vio);
+        return (sat) / (sat + vio);
     }
     
 }
