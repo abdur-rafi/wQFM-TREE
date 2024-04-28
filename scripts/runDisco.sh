@@ -12,10 +12,10 @@ discoNoDecomp="e${n}00-disco-rooted.tre"
 discoNoDecompCleaned="e${n}00-disco-rooted-cleaned.tre"
 consensusTreePrefix="e${n}00-consensus"
 consensusTree=$consensusTreePrefix.greedy.tree
-consensusTree=$astralOutputFile
-consensusTree=$speciesTreeLabelCleaned
-outputFile="e${n}00-wqfm.tre"
-outputFile="e${n}00-wqfm-with-sp.tre"
+# consensusTree=$astralOutputFile
+# consensusTree=$speciesTreeLabelCleaned
+outputFile="e${n}00-wqfm-3.tre"
+# outputFile="e${n}00-wqfm-with-sp.tre"
 
 
 # create a function
@@ -46,9 +46,9 @@ runWqfmTree(){
         if [ -d $root/$file ]; then
             echo $file
             
-            # if [ $file -lt 31 ]; then
-            #     continue
-            # fi
+            if [ $file -lt 20 ]; then
+                continue
+            fi
             /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages \
             -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin \
             src.Main $root/$file/$discoNoDecompCleaned \

@@ -104,7 +104,10 @@ public class BookKeepingPerLevelDC {
             else{
                 // p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
                 // p.scoreCalculator = new NumSatSQBin(b, this.taxaPerLevel.dummyTaxonPartition);
-                p.scoreCalculator = new NumSatSQBin(comm, uniq, p.parentUniques.data.branch, this.taxaPerLevel.dummyTaxonPartition);
+                if(p.count != p.parentSpeciationCount){
+                    System.out.println("=================");
+                }
+                p.scoreCalculator = new NumSatSQBin(comm, uniq, p.parentUniques.data.branch, this.taxaPerLevel.dummyTaxonPartition, p.count, p.parentSpeciationCount);
             }
         }
     }
@@ -118,8 +121,8 @@ public class BookKeepingPerLevelDC {
         
         for(InternalNode p : this.dc.internalNodes){
             // score += p.scoreCalculator.score() * p.count;
-            sat += p.scoreCalculator.sat() * p.count;
-            vio += p.scoreCalculator.vio() * p.count;
+            sat += p.scoreCalculator.sat();
+            vio += p.scoreCalculator.vio();
         }
 
         return Config.SCORE_EQN.scoreFromSatAndVio(sat, vio);
@@ -155,15 +158,15 @@ public class BookKeepingPerLevelDC {
             double csat = p.scoreCalculator.sat();
             double cvio = p.scoreCalculator.vio();
 
-            sat += csat * p.count;
-            vio += cvio * p.count;
+            sat += csat;
+            vio += cvio;
 
-            NumSatSQ.RTGainReturnType satGain = p.scoreCalculator.gainSatRealTaxa(p.count, csat);
-            NumSatSQ.RTGainReturnType vioGain = p.scoreCalculator.gainVioRealTaxa(p.count, cvio);
+            NumSatSQ.RTGainReturnType satGain = p.scoreCalculator.gainSatRealTaxa(csat);
+            NumSatSQ.RTGainReturnType vioGain = p.scoreCalculator.gainVioRealTaxa(cvio);
 
             
-            p.scoreCalculator.gainSatDummyTaxa(dtSat, p.count, csat);
-            p.scoreCalculator.gainVioDummyTaxa(dtVio, p.count, cvio);
+            p.scoreCalculator.gainSatDummyTaxa(dtSat, csat);
+            p.scoreCalculator.gainVioDummyTaxa(dtVio, cvio);
 
 
             for(int i = 0; i < p.childCompsCommon.length; ++i){

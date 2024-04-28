@@ -379,8 +379,9 @@ public class GeneTrees {
                         childCompsUniques[j] = node.childs.get(j).distinctWithParent;
                     }
                     
+
                     
-                    internalNodes.addInternalNode(childCompsCommon, childCompsUniques, node.parentDistinct);
+                    internalNodes.addInternalNode(childCompsCommon, childCompsUniques, node.parentDistinct, !node.parent.dupplicationNode);
                     // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
                 }
 
@@ -411,7 +412,7 @@ public class GeneTrees {
                     childCompsCommon[j] = node.childs.get(j).commonWithParent;
                     childCompsUniques[j] = node.childs.get(j).distinctWithParent;
                 }
-                internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel());
+                internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel(), false);
                 // partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
             }
             treeIndex++;

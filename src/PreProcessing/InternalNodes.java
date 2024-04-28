@@ -16,15 +16,15 @@ public class InternalNodes {
         this.stringIdToInternalNode = new HashMap<>();
     }
 
-    public void addInternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques){
+    public void addInternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques, boolean isParentSpeciationNode){
         String internalNodeString = InternalNode.convertToString(childCompsCommon, childCompsUniques, parentUniques);
 
         if(this.stringIdToInternalNode.containsKey(internalNodeString)){
             InternalNode internalNode = this.stringIdToInternalNode.get(internalNodeString);
-            internalNode.increaseCount();
+            internalNode.increaseCount(isParentSpeciationNode);
         }
         else{
-            InternalNode internalNode = new InternalNode(childCompsCommon, childCompsUniques, parentUniques);
+            InternalNode internalNode = new InternalNode(childCompsCommon, childCompsUniques, parentUniques, isParentSpeciationNode);
             this.nodes.add(internalNode);
             this.stringIdToInternalNode.put(internalNodeString, internalNode);
         }

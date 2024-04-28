@@ -2,9 +2,9 @@ package src.ScoreCalculator;
 
 public interface NumSatSQ {
 
-    public double score();
+    // public double score();
 
-    public RTGainReturnType gainRealTaxa(double originalScore, double multiplier);
+    public RTGainReturnType gainRealTaxa(double originalScore);
 
     // public void transferRealTaxon(int branchIndex, int currPartition);
     public void transferCommon(int branchIndex, int currPartition);
@@ -15,7 +15,7 @@ public interface NumSatSQ {
 
     public void transferDummyTaxon(int dummyIndex, int currPartition);
 
-    public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains);
+    public void gainDummyTaxa(double originalScore, double[] dummyTaxaGains);
 
     public void batchTransferRealTaxon(int branchIndex, int netTranser);    
 
@@ -27,10 +27,10 @@ public interface NumSatSQ {
     public double sat();
     public double vio();
 
-    public RTGainReturnType gainSatRealTaxa(int fre, double currSat);
-    public RTGainReturnType gainVioRealTaxa(int fre, double currVio);
+    public RTGainReturnType gainSatRealTaxa(double currSat);
+    public RTGainReturnType gainVioRealTaxa(double currVio);
 
-    public void gainSatDummyTaxa(double[] a, int fre, double currSat);
-    public void gainVioDummyTaxa(double[] a, int fre, double currVio);
+    public void gainSatDummyTaxa(double[] a, double currSat);
+    public void gainVioDummyTaxa(double[] a, double currVio);
 
 }

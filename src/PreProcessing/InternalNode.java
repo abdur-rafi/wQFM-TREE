@@ -14,15 +14,22 @@ public class InternalNode {
     public int[] netTranser;
 
     public int count;
+    public int parentSpeciationCount;
     public NumSatSQ scoreCalculator;
 
-    public InternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques){
+    public InternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques, boolean isParentSpeciationNode){
         this.childCompsCommon = childCompsCommon;
         this.childCompsUniques = childCompsUniques;
         this.parentUniques = parentUniques;
 
         this.count = 1;
+        this.parentSpeciationCount = 0;
         this.scoreCalculator = null;
+
+
+        if(isParentSpeciationNode){
+            this.parentSpeciationCount = 1;
+        }
 
         if(childCompsCommon.length > 2){
             System.out.println("polytomy");
@@ -38,7 +45,10 @@ public class InternalNode {
 
     }
 
-    public void increaseCount(){
+    public void increaseCount(boolean isParentSpeciationNode){
+        if(isParentSpeciationNode){
+            this.parentSpeciationCount++;
+        }
         this.count++;
     }
     

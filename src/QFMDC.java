@@ -31,9 +31,9 @@ public class QFMDC {
 
         var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
-        for(int i = 0; i < realTaxa.length; ++i){
-            System.out.println("Real Taxon " + i + " : " + y.realTaxonPartition[i]);
-        }
+        // for(int i = 0; i < realTaxa.length; ++i){
+        //     System.out.println("Real Taxon " + i + " : " + y.realTaxonPartition[i]);
+        // }
         BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
 
         return recurse(initialBook);
