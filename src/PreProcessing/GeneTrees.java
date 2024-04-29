@@ -10,6 +10,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 import src.Config;
+import src.Quartets.QuartestsList;
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
@@ -99,7 +100,7 @@ public class GeneTrees {
 
     public void readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
         int internalNodesCount = 0;
-        
+        QuartestsList quartestsList = new QuartestsList(this.taxaMap.size());
 
         Scanner scanner = new Scanner(new File(path));
 
@@ -125,6 +126,8 @@ public class GeneTrees {
             tree.tag();
             geneTrees.add(tree);
 
+            tree.generateQuartets(quartestsList);
+
 
             if(tree.checkIfNonBinary()){
                 System.out.println("============ Non binary gt ===================");
@@ -145,13 +148,16 @@ public class GeneTrees {
 
         }
         
+        
         scanner.close();
         
         
 
 
-        System.out.println( "taxon count : " + this.taxaMap.size());
-        System.out.println("Gene trees count : " + geneTrees.size());
+        // System.out.println( "taxon count : " + this.taxaMap.size());
+        // System.out.println("Gene trees count : " + geneTrees.size());
+
+        quartestsList.printQuartets(taxa);
         // System.out.println( "total internal nodes : " + internalNodesCount);
         // System.out.println( "unique partitions : " + triPartitions.size());
 
@@ -186,6 +192,8 @@ public class GeneTrees {
         //     System.out.println("No polytomy, skipping");
         //     System.exit(-1);
         // }
+
+        System.exit(-1);
 
     }
 

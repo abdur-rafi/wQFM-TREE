@@ -51,6 +51,8 @@ public class Utility {
             this.first = first;
             this.second = second;
         }
+
+        
     }
     
 

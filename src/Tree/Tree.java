@@ -8,7 +8,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import src.Quartets.QuartestsList;
+import src.Quartets.Quartet;
 import src.Taxon.RealTaxon;
+import src.Utility.Pair;
 
 // Leafs are real taxon
 
@@ -490,6 +493,139 @@ public class Tree {
 
     public void tag(){
         tagUtil(root);
+    }
+
+
+    private ArrayList<Pair<Integer, Integer>> getPairs(int[] c){
+        ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
+        for(int i = 0; i < c.length; ++i){
+            for(int j = i + 1; j < c.length; ++j){
+                if(c[i] > 0 && c[j] > 0){
+                    pairs.add(new Pair<>(i, j));
+                }
+            }
+        }
+        return pairs;
+    }
+
+    private ArrayList<Pair<Integer, Integer>> getCrossPairs(int[] c1, int[] c2){
+        ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
+        boolean[][] pairSet = new boolean[c1.length][c2.length];
+
+        for(int i = 0; i < c1.length; ++i){
+            for(int j = 0; j < c2.length; ++j){
+                if(c1[i] == 0 || c2[j] == 0 || i == j)
+                    continue;
+
+                int mn = Math.min(i, j);
+                int mx = Math.max(i, j);
+
+                if(!pairSet[mn][mx]){
+                    pairs.add(new Pair<>(mn, mx));
+                    pairSet[mn][mx] = true;
+                }
+                
+            }
+        }
+        return pairs;
+    }
+
+    public QuartestsList qList;
+    
+    private void generateQuartetsFromPairs(ArrayList<Pair<Integer, Integer>> pairs0,ArrayList<Pair<Integer, Integer>> pairs1, Set<String> qSet){
+        for(var p0 : pairs0){
+            for(var p1 : pairs1){
+
+                Set<Integer> s = new HashSet<>();
+                s.add(p0.first);
+                s.add(p0.second);
+                s.add(p1.first);
+                s.add(p1.second);
+                if(s.size() == 4){
+                    Quartet q = new Quartet(p0.first, p0.second, p1.first, p1.second);
+                    if(!qSet.contains(q.toString())){
+                        qSet.add(q.toString());
+                        qList.addQuartet(p0.first, p0.second, p1.first, p1.second);
+                    }
+                }
+            }
+        }
+    }
+
+    private int[] generateQuartetsUtil(TreeNode node, int[] taxaInTree){
+
+        int[] taxaInSubtree = new int[this.taxaMap.size()];
+
+        if(node.isLeaf()){
+            taxaInSubtree[node.taxon.id] = 1;
+            return taxaInSubtree;
+        }
+        
+        int[] c0 = generateQuartetsUtil(node.childs.get(0), taxaInTree);
+        int[] c1 = generateQuartetsUtil(node.childs.get(1), taxaInTree);
+        int[] parent = new int[this.taxaMap.size()];
+
+        for(int i = 0; i < this.taxaMap.size(); ++i){
+            taxaInSubtree[i] = c0[i] + c1[i];
+            parent[i] = taxaInTree[i] - c0[i] - c1[i];
+        }
+
+        if(node.dupplicationNode){
+            return taxaInSubtree;
+        }
+
+        // boolean[][][][] qMap = new boolean[this.taxaMap.size()][this.taxaMap.size()][this.taxaMap.size()][this.taxaMap.size()];
+
+        Set<String> qSet = new HashSet<>();
+
+        var pairsc0 = getPairs(c0);
+        var pairsc1 = getPairs(c1);
+        
+        generateQuartetsFromPairs(pairsc0, pairsc1, qSet);
+        
+
+        if(node.parent != null && !node.parent.dupplicationNode){
+            var pairsparentc0 = getCrossPairs(parent, c0);
+            var pairsparentc1 = getCrossPairs(parent, c1);
+    
+            generateQuartetsFromPairs(pairsc0, pairsparentc1, qSet);
+    
+            generateQuartetsFromPairs(pairsc1, pairsparentc0, qSet);
+
+        }
+
+
+        // for(var child : node.childs){
+
+        //     var childTaxa = generateQuartetsUtil(child);
+        //     for(int i = 0; i < this.taxaMap.size(); ++i){
+        //         if(childTaxa[i]){
+        //             taxaInSubtree[i] = true;
+        //         }
+        //     }
+        // }
+        return taxaInSubtree;
+    } 
+
+    public void generateQuartets(QuartestsList quartestsList){
+
+        int[] taxaInTree = new int[this.taxaMap.size()];
+        for(var node : topSortedNodes){
+            if(node.isLeaf()){
+                taxaInTree[node.taxon.id] += 1;
+            }
+        }
+
+        // for(int i = 0; i < this.taxaMap.size(); ++i){
+        //     System.out.println(i + " : " + taxaInTree[i]);
+        // }
+
+        this.qList = quartestsList;
+
+        generateQuartetsUtil(root, taxaInTree);
+
+
+
     }
 
 }

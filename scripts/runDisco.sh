@@ -14,7 +14,7 @@ consensusTreePrefix="e${n}00-consensus"
 consensusTree=$consensusTreePrefix.greedy.tree
 # consensusTree=$astralOutputFile
 # consensusTree=$speciesTreeLabelCleaned
-outputFile="e${n}00-wqfm-3.tre"
+outputFile="e${n}00-wqfm-rn.tre"
 # outputFile="e${n}00-wqfm-with-sp.tre"
 
 
@@ -44,9 +44,9 @@ runDiscoAndCreateCons() {
 runWqfmTree(){
     for file in $(ls $root); do
         if [ -d $root/$file ]; then
-            echo $file
+            # echo $file
             
-            if [ $file -lt 20 ]; then
+            if [ $file -lt 21 ]; then
                 continue
             fi
             /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages \
@@ -55,7 +55,7 @@ runWqfmTree(){
             $root/$file/$consensusTree \
             $root/$file/$outputFile 
 
-            # break;
+            break;
         fi
     done
 }
