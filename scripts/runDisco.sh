@@ -61,6 +61,32 @@ runWqfmTree(){
 }
 
 
+runWQFM(){
 
-runWqfmTree
+    wqfmOut="wqfm-old.tree"
+    for file in $(ls $root); do
+
+        if [ -d $root/$file ]; then
+            echo $file
+            
+            if [ $file -gt 19 ]; then
+                break
+            fi
+
+            # /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages \
+            # -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin \
+            # src.Main $root/$file/$discoNoDecompCleaned \
+            # $root/$file/$consensusTree \
+            # $root/$file/$outputFile
+
+            java -jar genSQ.jar $root/$file/$discoNoDecompCleaned > q.txt
+            java -jar wQFM-v1.4.jar -i q.txt -o "$root/$file/$wqfmOut"
+
+            break;
+        fi
+    done
+}
+
+runWQFM
+# runWqfmTree
 
