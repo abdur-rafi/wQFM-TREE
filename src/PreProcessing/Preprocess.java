@@ -8,7 +8,7 @@ import src.Taxon.RealTaxon;
 public class Preprocess {
 
     public static class PreprocessReturnType{
-        public DataContainer dc;
+        // public DataContainer dc;
         public Map<String, RealTaxon> taxaMap;
         public RealTaxon[] realTaxa;
         
@@ -19,8 +19,8 @@ public class Preprocess {
         PreprocessReturnType ret = new PreprocessReturnType();
         ret.taxaMap = geneTrees.readTaxaNames();
         geneTrees.readGeneTrees(null);
-        ret.dc = geneTrees.createDateContainer();
-        ret.realTaxa = geneTrees.taxa;
+        // ret.dc = geneTrees.createDateContainer();
+        // ret.realTaxa = geneTrees.taxa;
 
 
         // System.out.println("-------------------");

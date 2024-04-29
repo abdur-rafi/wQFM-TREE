@@ -1,6 +1,6 @@
 package src.Taxon;
 
-import src.PreProcessing.Component;
+// import src.PreProcessing.Component;
 
 public class RealTaxon {
 
@@ -25,7 +25,7 @@ public class RealTaxon {
         return label;
     }
 
-    public Component component;
+    // public Component component;
 
     
 }

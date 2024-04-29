@@ -3,14 +3,13 @@ package src.Tree;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import src.PreProcessing.InternalNode;
-import src.PreProcessing.ComponentGraph;
-import src.PreProcessing.Component;
+// import src.PreProcessing.InternalNode;
+// import src.PreProcessing.ComponentGraph;
+// import src.PreProcessing.Component;
 import src.Taxon.RealTaxon;
-import src.Tree.TreePrinter.PrintableNode;
 
 
-public class TreeNode implements TreePrinter.PrintableNode {
+public class TreeNode  {
     
     public int index;
     public ArrayList<TreeNode> childs;
@@ -18,7 +17,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
 
     public RealTaxon taxon;
     
-    public Info info;
+    // public Info info;
     
     public double weight;
 
@@ -30,8 +29,8 @@ public class TreeNode implements TreePrinter.PrintableNode {
     // 0 -> Common with parent
     // 1 -> Uniques
     // public Component[] childComponents;
-    public Component commonWithParent, distinctWithParent;
-    public Component parentDistinct;
+    // public Component commonWithParent, distinctWithParent;
+    // public Component parentDistinct;
 
     public boolean dupplicationNode;
 
@@ -70,10 +69,10 @@ public class TreeNode implements TreePrinter.PrintableNode {
         return this;
     }
 
-    public TreeNode setInfo(Info inf){
-        this.info = inf;
-        return this;
-    }
+    // public TreeNode setInfo(Info inf){
+    //     this.info = inf;
+    //     return this;
+    // }
 
     public TreeNode setWeight(double w){
         this.weight = w;
@@ -93,23 +92,23 @@ public class TreeNode implements TreePrinter.PrintableNode {
 
 
     
-    @Override
-    public PrintableNode getLeft() {
-        if (childs == null) return null;
-        return childs.get(0);
-    }
-    @Override
-    public PrintableNode getRight() {
-        if(childs == null) return null;
-        return childs.get(1);
-    }
-    @Override
-    public String getText() {
-        // if(label != null){
-        //     return label;
-        // }
-        return Integer.toString(index);
-    }
+    // @Override
+    // public PrintableNode getLeft() {
+    //     if (childs == null) return null;
+    //     return childs.get(0);
+    // }
+    // @Override
+    // public PrintableNode getRight() {
+    //     if(childs == null) return null;
+    //     return childs.get(1);
+    // }
+    // @Override
+    // public String getText() {
+    //     // if(label != null){
+    //     //     return label;
+    //     // }
+    //     return Integer.toString(index);
+    // }
 
 
     public String toString() {

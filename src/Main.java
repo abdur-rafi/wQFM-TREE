@@ -3,8 +3,6 @@ package src;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import src.InitialPartition.ConsensusTreePartitionDC;
-import src.InitialPartition.IMakePartition;
 import src.PreProcessing.Preprocess;
 
 import java.lang.management.ManagementFactory;
@@ -21,14 +19,14 @@ public class Main {
 
 
 
-        if(args.length < 3){
-            System.out.println("Specify all file paths and non quartet type");
-            System.exit(-1);
-        }
+        // if(args.length < 3){
+        //     System.out.println("Specify all file paths and non quartet type");
+        //     System.exit(-1);
+        // }
 
         inputFilePath = args[0];
-        consensusFilePath = args[1];
-        outputFilePath = args[2];
+        // consensusFilePath = args[1];
+        // outputFilePath = args[2];
 
         // inputFilePath = "./input/rootingTest.txt";
         // consensusFilePath = "./input/rootingTest.txt";
@@ -110,8 +108,8 @@ public class Main {
         
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
-        ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
-        IMakePartition  partitionMakerDC = consensusTreePartitionDC;
+        // ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
+        // IMakePartition  partitionMakerDC = consensusTreePartitionDC;
 
 
 
@@ -122,32 +120,32 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
         // var qfm = new QFM(trees, trees.taxa, partitionMaker);
-        QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
-        // var qfm = new QFMTest(trees, trees.taxa, partitionMaker, ret.dc);
+        // QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
+        // // var qfm = new QFMTest(trees, trees.taxa, partitionMaker, ret.dc);
 
-        var spTree = qfm.runWQFM();
+        // var spTree = qfm.runWQFM();
 
-        FileWriter writer = new FileWriter(outputFilePath);
+        // FileWriter writer = new FileWriter(outputFilePath);
 
-        writer.write(spTree.getNewickFormat());
+        // writer.write(spTree.getNewickFormat());
 
-        writer.close();
+        // writer.close();
 
-        long cpuTimeAfter = threadMXBean.getCurrentThreadCpuTime();
+        // long cpuTimeAfter = threadMXBean.getCurrentThreadCpuTime();
 
-        long time_del = System.currentTimeMillis() - time_1;
-        long minutes = (time_del / 1000) / 60;
-        long seconds = (time_del / 1000) % 60;
-        System.out.format("\nElapsed Time taken = %d ms ==> %d minutes and %d seconds.\n", time_del, minutes, seconds);
+        // long time_del = System.currentTimeMillis() - time_1;
+        // long minutes = (time_del / 1000) / 60;
+        // long seconds = (time_del / 1000) % 60;
+        // System.out.format("\nElapsed Time taken = %d ms ==> %d minutes and %d seconds.\n", time_del, minutes, seconds);
 
-        long cpuTimeUsed = cpuTimeAfter - cpuTimeBefore;
+        // long cpuTimeUsed = cpuTimeAfter - cpuTimeBefore;
 
-        seconds = cpuTimeUsed / 1_000_000_000;
+        // seconds = cpuTimeUsed / 1_000_000_000;
         
-        minutes = seconds / 60;
-        seconds = seconds % 60;
+        // minutes = seconds / 60;
+        // seconds = seconds % 60;
 
-        System.out.println("CPU time used: " + minutes + " minutes, " + seconds + " seconds");
+        // System.out.println("CPU time used: " + minutes + " minutes, " + seconds + " seconds");
     
     }
 
