@@ -496,11 +496,11 @@ public class Tree {
     }
 
 
-    private ArrayList<Pair<Integer, Integer>> getPairs(int[] c){
+    private ArrayList<Pair<Integer, Integer>> getPairs(boolean[] c){
         ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
         for(int i = 0; i < c.length; ++i){
             for(int j = i + 1; j < c.length; ++j){
-                if(c[i] > 0 && c[j] > 0){
+                if(c[i] && c[j]){
                     pairs.add(new Pair<>(i, j));
                 }
             }
@@ -508,13 +508,13 @@ public class Tree {
         return pairs;
     }
 
-    private ArrayList<Pair<Integer, Integer>> getCrossPairs(int[] c1, int[] c2){
+    private ArrayList<Pair<Integer, Integer>> getCrossPairs(boolean[] c1, boolean[] c2){
         ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
         boolean[][] pairSet = new boolean[c1.length][c2.length];
 
         for(int i = 0; i < c1.length; ++i){
             for(int j = 0; j < c2.length; ++j){
-                if(c1[i] == 0 || c2[j] == 0 || i == j)
+                if(!c1[i] || !c2[j]  || i == j)
                     continue;
 
                 int mn = Math.min(i, j);
@@ -552,59 +552,57 @@ public class Tree {
         }
     }
 
-    private int[] generateQuartetsUtil(TreeNode node, int[] taxaInTree){
 
-        int[] taxaInSubtree = new int[this.taxaMap.size()];
+    private boolean[] getParents(TreeNode node){
+        boolean[] parents = new boolean[this.taxaMap.size()];
+        while(node.parent != null){
+            if(!node.dupplicationNode){
+                var otherChild = node.parent.childs.get(0) == node ? node.parent.childs.get(1) : node.parent.childs.get(0);
+                for(int i = 0; i < this.taxaMap.size(); ++i){
+                    parents[i] |= otherChild.realTaxaInSubtree[i];
+                }
+            }
+            node = node.parent;
+        }
+        return parents;
+    }
+
+    private void generateQuartetsUtil(TreeNode node){
+
 
         if(node.isLeaf()){
-            taxaInSubtree[node.taxon.id] = 1;
-            return taxaInSubtree;
-        }
-        
-        int[] c0 = generateQuartetsUtil(node.childs.get(0), taxaInTree);
-        int[] c1 = generateQuartetsUtil(node.childs.get(1), taxaInTree);
-        int[] parent = new int[this.taxaMap.size()];
-
-        for(int i = 0; i < this.taxaMap.size(); ++i){
-            taxaInSubtree[i] = c0[i] + c1[i];
-            parent[i] = taxaInTree[i] - c0[i] - c1[i];
+            return;
         }
 
-        if(node.dupplicationNode){
-            return taxaInSubtree;
-        }
+        if(!node.dupplicationNode){
 
-        // boolean[][][][] qMap = new boolean[this.taxaMap.size()][this.taxaMap.size()][this.taxaMap.size()][this.taxaMap.size()];
+            Set<String> qSet = new HashSet<>();
 
-        Set<String> qSet = new HashSet<>();
-
-        var pairsc0 = getPairs(c0);
-        var pairsc1 = getPairs(c1);
-        
-        generateQuartetsFromPairs(pairsc0, pairsc1, qSet);
-        
-
-        if(node.parent != null && !node.parent.dupplicationNode){
-            var pairsparentc0 = getCrossPairs(parent, c0);
-            var pairsparentc1 = getCrossPairs(parent, c1);
+            var c0 = node.childs.get(0).realTaxaInSubtree;
+            var c1 = node.childs.get(1).realTaxaInSubtree;
     
-            generateQuartetsFromPairs(pairsc0, pairsparentc1, qSet);
     
-            generateQuartetsFromPairs(pairsc1, pairsparentc0, qSet);
-
+            var pairsc0 = getPairs(c0);
+            var pairsc1 = getPairs(c1);
+            
+            generateQuartetsFromPairs(pairsc0, pairsc1, qSet);
+            
+    
+            if(node.parent != null ){
+                var parent = getParents(node);
+                var pairsparentc0 = getCrossPairs(parent, c0);
+                var pairsparentc1 = getCrossPairs(parent, c1);
+        
+                generateQuartetsFromPairs(pairsc0, pairsparentc1, qSet);
+        
+                generateQuartetsFromPairs(pairsc1, pairsparentc0, qSet);
+    
+            }
         }
 
-
-        // for(var child : node.childs){
-
-        //     var childTaxa = generateQuartetsUtil(child);
-        //     for(int i = 0; i < this.taxaMap.size(); ++i){
-        //         if(childTaxa[i]){
-        //             taxaInSubtree[i] = true;
-        //         }
-        //     }
-        // }
-        return taxaInSubtree;
+        for(var x : node.childs){
+            generateQuartetsUtil(x);
+        }
     } 
 
     public void generateQuartets(QuartestsList quartestsList){
@@ -622,10 +620,34 @@ public class Tree {
 
         this.qList = quartestsList;
 
-        generateQuartetsUtil(root, taxaInTree);
+        calcRealTaxaInSubTree(root);
+
+        generateQuartetsUtil(root);
 
 
 
     }
+
+    private boolean[] calcRealTaxaInSubTree(TreeNode node){
+
+        boolean[] taxaInSubtree = new boolean[this.taxaMap.size()];
+
+        if(node.isLeaf()){
+            taxaInSubtree[node.taxon.id] = true;
+            return taxaInSubtree;
+        }
+        
+        boolean[] c0 = calcRealTaxaInSubTree(node.childs.get(0));
+        boolean[] c1 = calcRealTaxaInSubTree(node.childs.get(1));
+
+        for(int i = 0; i < this.taxaMap.size(); ++i){
+            taxaInSubtree[i] = c0[i] || c1[i];
+        }
+
+        node.realTaxaInSubtree = taxaInSubtree;
+
+        return taxaInSubtree;
+    } 
+    
 
 }

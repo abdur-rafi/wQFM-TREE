@@ -17,6 +17,7 @@ public class TreeNode  {
 
     public RealTaxon taxon;
     
+    public boolean[] realTaxaInSubtree;
     // public Info info;
     
     public double weight;
