@@ -634,6 +634,7 @@ public class Tree {
 
         if(node.isLeaf()){
             taxaInSubtree[node.taxon.id] = true;
+            node.realTaxaInSubtree = taxaInSubtree;
             return taxaInSubtree;
         }
         
