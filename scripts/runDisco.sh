@@ -60,5 +60,7 @@ runWqfmTree(){
     done
 }
 
+
+
 runWqfmTree
 
