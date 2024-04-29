@@ -82,7 +82,7 @@ runWQFM(){
             java -jar genSQ.jar $root/$file/$discoNoDecompCleaned > q.txt
             java -jar wQFM-v1.4.jar -i q.txt -o "$root/$file/$wqfmOut"
 
-            break;
+            # break;
         fi
     done
 }
