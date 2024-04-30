@@ -16,18 +16,19 @@ public class InternalNodes {
         this.stringIdToInternalNode = new HashMap<>();
     }
 
-    public void addInternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques, boolean isParentSpeciationNode){
-        String internalNodeString = InternalNode.convertToString(childCompsCommon, childCompsUniques, parentUniques);
-
+    public InternalNode addInternalNode(Component[] childs, Component parent){
+        String internalNodeString = InternalNode.convertToString(childs, parent);
+        InternalNode internalNode;
         if(this.stringIdToInternalNode.containsKey(internalNodeString)){
-            InternalNode internalNode = this.stringIdToInternalNode.get(internalNodeString);
-            internalNode.increaseCount(isParentSpeciationNode);
+            internalNode = this.stringIdToInternalNode.get(internalNodeString);
+            internalNode.increaseCount();
         }
         else{
-            InternalNode internalNode = new InternalNode(childCompsCommon, childCompsUniques, parentUniques, isParentSpeciationNode);
+            internalNode = new InternalNode(childs, parent);
             this.nodes.add(internalNode);
             this.stringIdToInternalNode.put(internalNodeString, internalNode);
         }
+        return internalNode;
     }
 
     public int getPartitionCount(){

@@ -105,7 +105,7 @@ public class ComponentGraph {
                 childs.add(child);
             }
         }
-        return addComponent(childs, false);
+        return addComponent(childs);
 
     }
 
@@ -136,10 +136,10 @@ public class ComponentGraph {
                 childs.add(child);
             }
         }
-        return addComponent(childs, false);
+        return addComponent(childs);
     }
 
-    public Component addComponent(ArrayList<Component> childs, boolean forGain){
+    public Component addComponent(ArrayList<Component> childs){
         boolean[] b = new boolean[this.taxa.length];
         for(Component child: childs){
             boolean[] realTaxaInSubTree = this.realTaxaInComponent.get(child);

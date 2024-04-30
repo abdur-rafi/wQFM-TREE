@@ -238,9 +238,9 @@ public class QFMDC {
             
         }
 
-        // System.out.println("swaps size : " + swaps.size());
-        // System.out.println("Total taxon count : " + (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount));
-        // System.out.println("Cg : " + cg);
+        System.out.println("swaps size : " + swaps.size());
+        System.out.println("Total taxon count : " + (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount));
+        System.out.println("Cg : " + cg);
         
 
         if(maxCgIndex == -1){

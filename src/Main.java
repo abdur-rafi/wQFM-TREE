@@ -21,19 +21,26 @@ public class Main {
 
 
 
-        if(args.length < 3){
-            System.out.println("Specify all file paths and non quartet type");
-            System.exit(-1);
-        }
+        // if(args.length < 3){
+        //     System.out.println("Specify all file paths and non quartet type");
+        //     System.exit(-1);
+        // }
 
-        inputFilePath = args[0];
-        consensusFilePath = args[1];
-        outputFilePath = args[2];
+        // inputFilePath = args[0];
+        // consensusFilePath = args[1];
+        // outputFilePath = args[2];
 
         // inputFilePath = "./input/rootingTest.txt";
         // consensusFilePath = "./input/rootingTest.txt";
         // outputFilePath = "./output.tre";
 
+        // inputFilePath = "./input/exa.txt";
+        // consensusFilePath = "./input/exaCons.txt";
+        // outputFilePath = "./output.tre";
+
+        inputFilePath = args[0];
+        consensusFilePath = args[1];
+        outputFilePath = args[2];
         // String nonQuartetType = args[3];
         
         // if(nonQuartetType.equals("A")){

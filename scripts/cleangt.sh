@@ -6,6 +6,7 @@
 # bash ./scripts/cleangt.sh ../AstralPro/n500/k1000/dup5/loss1/ils70
 
 # bash ./scripts/cleangt.sh ../AstralPro/n25/k1000/dup5/loss1/ils70 1
+# bash ./scripts/cleangt.sh ../AstralPro/n10/k1000/dup5/loss1/ils70 1
 
 root=$1
 n=$2
@@ -19,9 +20,9 @@ apro="e${n}00_apro.tre"
 aproCleaned="e${n}00_apro-cleaned.tre"
 wqfm="e${n}00-wqfm-tree.tre"
 wqfm="e${n}00-wqfm-with-astral.tre"
-wqfm="e${n}00-wqfm-rn.tre"
+wqfm="e${n}00-updated.tre"
 ascores="e${n}00_apro_scores.txt"
-wscores="e${n}00_wqfm_scores_rn.txt"
+wscores="e${n}00_wqfm_scores_updated.txt"
 ascoresAvg="avg-$ascores"
 wscoresAvg="avg-$wscores"
 
@@ -150,6 +151,6 @@ copyToDir(){
 # cleanGT
 # cleanSP
 # cleanApro
-# rfScoreApro
-rfScoreWqfm
+rfScoreApro
+# rfScoreWqfm
 # resolveGT

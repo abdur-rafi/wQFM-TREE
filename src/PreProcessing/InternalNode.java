@@ -7,48 +7,37 @@ import src.ScoreCalculator.NumSatSQ;
 
 public class InternalNode {
 
-    public Component[] childCompsCommon;
-    public Component[] childCompsUniques;
-    public Component parentUniques;
+    public Component[] childs;
+    public Component parent;
 
     public int[] netTranser;
 
     public int count;
-    public int parentSpeciationCount;
     public NumSatSQ scoreCalculator;
 
-    public InternalNode(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques, boolean isParentSpeciationNode){
-        this.childCompsCommon = childCompsCommon;
-        this.childCompsUniques = childCompsUniques;
-        this.parentUniques = parentUniques;
+    public InternalNode(Component[] childs, Component parent){
+        this.childs = childs;
+        this.parent = parent;
 
         this.count = 1;
-        this.parentSpeciationCount = 0;
         this.scoreCalculator = null;
 
 
-        if(isParentSpeciationNode){
-            this.parentSpeciationCount = 1;
-        }
 
-        if(childCompsCommon.length > 2){
+        if(childs.length > 2){
             System.out.println("polytomy");
         }
-        for(int i = 0; i < childCompsCommon.length; ++i){
-            childCompsCommon[i].addInternalNode(this, i, Component.InternalNodeWithIndex.Method.COMMON);
-            childCompsUniques[i].addInternalNode(this, i, Component.InternalNodeWithIndex.Method.UNIQUE);
+        for(int i = 0; i < childs.length; ++i){
+            childs[i].addInternalNode(this, i);
         }
 
-        parentUniques.addInternalNode(this, 0, Component.InternalNodeWithIndex.Method.PARENT);
+        parent.addInternalNode(this, 2);
 
-        this.netTranser = new int[childCompsCommon.length];
+        // this.netTranser = new int[childCompsCommon.length];
 
     }
 
-    public void increaseCount(boolean isParentSpeciationNode){
-        if(isParentSpeciationNode){
-            this.parentSpeciationCount++;
-        }
+    public void increaseCount(){
         this.count++;
     }
     
@@ -66,7 +55,7 @@ public class InternalNode {
 
     @Override
     public String toString(){
-        return convertToString(childCompsCommon, childCompsUniques, parentUniques);
+        return convertToString(childs, parent);
     }
 
 
@@ -77,16 +66,13 @@ public class InternalNode {
 
     }
 
-    public static String convertToString(Component[] childCompsCommon, Component[] childCompsUniques, Component parentUniques){
+    public static String convertToString(Component[] childs, Component parent){
         ArrayList<String> componentStrings = new ArrayList<>();
-        for(Component p : childCompsCommon){
+        for(Component p : childs){
             componentStrings.add(p.toString());
         }
-        for(Component p : childCompsUniques){
-            componentStrings.add(p.toString());
-        }
-        componentStrings.add(parentUniques.toString());
+        componentStrings.add(parent.toString());
         Collections.sort(componentStrings);
-        return String.join("", componentStrings);
+        return String.join("|", componentStrings);
     }
 }

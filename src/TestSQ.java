@@ -59,7 +59,7 @@ public class TestSQ {
             System.out.println("Dummy Taxon " + i + " : " + dtGains[i]);
         }
 
-        int trId = 4;
+        int trId = 5;
 
         book.transferRealTaxon(trId);
 

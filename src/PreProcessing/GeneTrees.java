@@ -100,7 +100,7 @@ public class GeneTrees {
 
     public void readGeneTrees(double[][] distanceMatrix) throws FileNotFoundException{
         int internalNodesCount = 0;
-        QuartestsList quartestsList = new QuartestsList(this.taxaMap.size());
+        // QuartestsList quartestsList = new QuartestsList(this.taxaMap.size());
 
         Scanner scanner = new Scanner(new File(path));
 
@@ -126,7 +126,7 @@ public class GeneTrees {
             tree.tag();
             geneTrees.add(tree);
 
-            tree.generateQuartets(quartestsList);
+            // tree.generateQuartets(quartestsList);
 
 
             if(tree.checkIfNonBinary()){
@@ -157,7 +157,7 @@ public class GeneTrees {
         // System.out.println( "taxon count : " + this.taxaMap.size());
         // System.out.println("Gene trees count : " + geneTrees.size());
 
-        quartestsList.printQuartets(taxa);
+        // quartestsList.printQuartets(taxa);
         // System.out.println( "total internal nodes : " + internalNodesCount);
         // System.out.println( "unique partitions : " + triPartitions.size());
 
@@ -193,7 +193,7 @@ public class GeneTrees {
         //     System.exit(-1);
         // }
 
-        System.exit(-1);
+        // System.exit(-1);
 
     }
 
@@ -274,123 +274,70 @@ public class GeneTrees {
 
     // }
 
+    void calculateSpeciationParentComponents(TreeNode node, Component last, ComponentGraph componentGraph){
+        if(node.isLeaf()) return;
+        
+        Component lastc0 = last;
+        Component lastc1 = last;
+
+
+        var c0 = node.childs.get(0);
+        var c1 = node.childs.get(1);
+
+
+        if(!node.dupplicationNode){
+
+            node.speciationParentComponent = last;
+            ArrayList<Component> compsc0 = new ArrayList<>();
+            compsc0.add(last);
+            compsc0.add(c1.childComponent);
+
+            ArrayList<Component> compsc1 = new ArrayList<>();
+            compsc1.add(last);
+            compsc1.add(c0.childComponent);
+
+            lastc0 = componentGraph.addComponent(compsc0);
+            lastc1 = componentGraph.addComponent(compsc1);
+        }
+
+        calculateSpeciationParentComponents(c0, lastc0, componentGraph);
+        calculateSpeciationParentComponents(c1, lastc1, componentGraph);
+
+    }
+
     public InternalNodes createPartitionsByTreeNode(ComponentGraph componentGraph){
         InternalNodes internalNodes = new InternalNodes(componentGraph.realTaxaInComponent);
-        int treeIndex = 0;
+
         for(Tree tree : geneTrees){
-            int[] fre = new int[this.taxaMap.size()];
-            for(TreeNode node : tree.nodes){
-                if(node.isLeaf()){
-                    fre[node.taxon.id]++;
-                }
-            }
             for(TreeNode node : tree.topSortedNodes){
                 if(node.isLeaf()){
-                    node.commonWithParent = componentGraph.getSentinel();
-                    node.distinctWithParent = componentGraph.getSentinel();
-
-                    // node.childComponents = new Component[2];
-                    // node.childComponents[0] = componentGraph.getSentinel();
-                    // node.childComponents[1] = componentGraph.getSentinel();
-                    // int index = 0;
-                    if(fre[node.taxon.id] == 1){
-                        // index = 1;
-                        node.distinctWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
-                    }
-                    else{
-                        node.commonWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
-                    }
-                    // node.childComponents[index] = componentGraph.taxaPartitionNodes[node.taxon.id];
+                    node.childComponent = componentGraph.taxaPartitionNodes[node.taxon.id];
                 }
                 else{
-                    // node.childComponents = new Component[2];
-                    ArrayList<Component> gainNodesCommon = new ArrayList<>();
-                    ArrayList<Component> gainNodesDistinct = new ArrayList<>();
+                    ArrayList<Component> childs = new ArrayList<>();
                     for(TreeNode child : node.childs){
-                        gainNodesCommon.add(child.commonWithParent);
-                        gainNodesDistinct.add(child.distinctWithParent);
+                        childs.add(child.childComponent);
                     }
-                    node.commonWithParent = componentGraph.addComponent(gainNodesCommon, true);
-                    node.distinctWithParent = componentGraph.addComponent(gainNodesDistinct, true);
-                
+                    node.childComponent = componentGraph.addComponent(childs);
                 }
             }
-            tree.root.childs.get(0).parentDistinct = tree.root.childs.get(1).distinctWithParent;
-            tree.root.childs.get(1).parentDistinct = tree.root.childs.get(0).distinctWithParent;
 
-            for(int i = tree.topSortedNodes.size() - 2; i > -1; --i){
+            calculateSpeciationParentComponents(tree.root, componentGraph.getSentinel(), componentGraph);
+
+
+            for(int i = tree.topSortedNodes.size() - 1; i > -1; --i){
                 TreeNode node = tree.topSortedNodes.get(i);
-                // node.parentDistinct = componentGraph.getSentinel();
                 
                 if(node.isLeaf()) continue;
 
-                if(node.parent != tree.root){
-
-                    boolean[] commonInSubtree = componentGraph.realTaxaInComponent.get(node.commonWithParent);
-                    boolean[] distinctInSubtree = componentGraph.realTaxaInComponent.get(node.distinctWithParent);
-                    boolean[] realTaxaInSubTree = new boolean[commonInSubtree.length];
-                    for(int j = 0; j < commonInSubtree.length; ++j){
-                        realTaxaInSubTree[j] = commonInSubtree[j] || distinctInSubtree[j];
-                    }
-                    
-
-                    ArrayList<Component> ps = new ArrayList<>();
-                    for(TreeNode child : node.parent.childs){
-                        if(child == node) continue;
-                        
-                        ArrayList<Component> childComps = new ArrayList<>();
-                        childComps.add(child.distinctWithParent);
-                        childComps.add(child.commonWithParent);
-
-                        Component merged = componentGraph.addComponent(childComps, true);
-                        
-                        if(node.parent.dupplicationNode){
-                            
-                            boolean[] realTaxaInMerged = componentGraph.realTaxaInComponent.get(merged);
-    
-                            Set<Integer> st = new HashSet<>();
-    
-                            for(int j = 0; j < this.realTaxaCount; ++j){
-                                if(realTaxaInMerged[j] && realTaxaInSubTree[j]){
-                                    st.add(j);
-                                }
-                            }
-
-                            merged = componentGraph.removeTaxa(merged, st);
-                        }
-
-
-                        // ps.add(child.distinctWithParent);
-                        // ps.add(child.commonWithParent);
-                        ps.add(merged);
-                    }
-
-                    ps.add(node.parent.parentDistinct);
-                    node.parentDistinct = componentGraph.addComponent(ps, true);
-                }
-
                 if(!node.dupplicationNode){
-                    
-                    // Component[][] gainNodes = new Component[node.childs.size()][];
-                    // Component[] p = new Component[node.childs.size() + 1];
-                    // int k = 0;
-                    // for(TreeNode child : node.childs){
-                    //     p[k] = child.subTreeComponent;
-                    //     gainNodes[k++] = child.childComponents;
-                    // }
-                    // p[k] = node.parentComponent;
-
-                    Component[] childCompsCommon = new Component[node.childs.size()];
-                    Component[] childCompsUniques = new Component[node.childs.size()];
+                    Component[] childComps = new Component[node.childs.size()];
                     for(int j = 0; j < node.childs.size(); ++j){
-                        childCompsCommon[j] = node.childs.get(j).commonWithParent;
-                        childCompsUniques[j] = node.childs.get(j).distinctWithParent;
+                        childComps[j] = node.childs.get(j).childComponent;
                     }
+                    var x = internalNodes.addInternalNode(childComps, node.speciationParentComponent);
                     
-
-                    
-                    internalNodes.addInternalNode(childCompsCommon, childCompsUniques, node.parentDistinct, !node.parent.dupplicationNode);
-                    // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
+                    // System.out.println( "node : " + node.index + " partition: " + x);
                 }
 
                 // System.out.println("node index : " + node.index + " tree index : " + treeIndex);
@@ -401,29 +348,6 @@ public class GeneTrees {
 
 
             }
-
-            if(!tree.root.dupplicationNode){
-                
-                TreeNode node = tree.root;
-                // Component[] ps = new Component[rootNode.childs.size() + 1];
-                // Component[][] gainNodes = new Component[rootNode.childs.size()][];
-                // int k = 0;
-                // for(TreeNode child : rootNode.childs){
-                //     ps[k] = child.subTreeComponent;
-                //     gainNodes[k++] = child.childComponents;
-                // }
-                // ps[k] = componentGraph.getSentinel();
-
-                Component[] childCompsCommon = new Component[node.childs.size()];
-                Component[] childCompsUniques = new Component[node.childs.size()];
-                for(int j = 0; j < node.childs.size(); ++j){
-                    childCompsCommon[j] = node.childs.get(j).commonWithParent;
-                    childCompsUniques[j] = node.childs.get(j).distinctWithParent;
-                }
-                internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel(), false);
-                // partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
-            }
-            treeIndex++;
 
         }
 

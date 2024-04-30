@@ -19,6 +19,7 @@ import src.ScoreCalculator.NumSatCalculatorBinaryNodeDC;
 import src.ScoreCalculator.NumSatCalculatorNodeEDC;
 import src.ScoreCalculator.NumSatSQ;
 import src.ScoreCalculator.NumSatSQBin;
+import src.ScoreCalculator.NumSatSQBin2;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.Branch;
@@ -83,20 +84,12 @@ public class BookKeepingPerLevelDC {
         }
 
         for(InternalNode p : this.dc.internalNodes){
-            Branch[] comm = new Branch[p.childCompsCommon.length];
-            Branch[] uniq = new Branch[p.childCompsUniques.length];
-            for(int i = 0; i < p.childCompsCommon.length; ++i){
-                comm[i] = p.childCompsCommon[i].data.branch;
-            }
-            for(int i = 0; i < p.childCompsUniques.length; ++i){
-                uniq[i] = p.childCompsUniques[i].data.branch;
+            Branch[] childs = new Branch[p.childs.length];
+            for(int i = 0; i < p.childs.length; ++i){
+                childs[i] = p.childs[i].data.branch;
             }
 
-            // Branch[] b = new Branch[p.partitionNodes.length];
-            // for(int i = 0; i < p.partitionNodes.length; ++i){
-            //     b[i] = p.partitionNodes[i].data.branch;
-            // }
-            if(p.childCompsCommon.length > 2){
+            if(p.childs.length > 2){
                 // p.scoreCalculator = new NumSatCalculatorNodeEDC(b,this.taxaPerLevel.dummyTaxonPartition);
                 System.out.println("======================= polytomy ============================");
                 System.exit(-1);
@@ -107,7 +100,7 @@ public class BookKeepingPerLevelDC {
                 // if(p.count != p.parentSpeciationCount){
                 //     System.out.println("=================");
                 // }
-                p.scoreCalculator = new NumSatSQBin(comm, uniq, p.parentUniques.data.branch, this.taxaPerLevel.dummyTaxonPartition, p.count, p.parentSpeciationCount);
+                p.scoreCalculator = new NumSatSQBin2(childs, p.parent.data.branch, this.taxaPerLevel.dummyTaxonPartition, p.count);
             }
         }
     }
@@ -169,18 +162,16 @@ public class BookKeepingPerLevelDC {
             p.scoreCalculator.gainVioDummyTaxa(dtVio, cvio);
 
 
-            for(int i = 0; i < p.childCompsCommon.length; ++i){
+            for(int i = 0; i < p.childs.length; ++i){
                 // Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTree, gains.commonGains[i]);
                 // Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTree, gains.uniqueGains[i]);
 
-                Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTreeSat, satGain.commonGains[i]);
-                Utility.addArrayToFirst(p.childCompsCommon[i].gainsForSubTreeVio, vioGain.commonGains[i]);
-                Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTreeSat, satGain.uniqueGains[i]);
-                Utility.addArrayToFirst(p.childCompsUniques[i].gainsForSubTreeVio, vioGain.uniqueGains[i]);
+                Utility.addArrayToFirst(p.childs[i].gainsForSubTreeSat, satGain.childGains[i]);
+                Utility.addArrayToFirst(p.childs[i].gainsForSubTreeVio, vioGain.childGains[i]);
                 
             }
-            Utility.addArrayToFirst(p.parentUniques.gainsForSubTreeSat, satGain.uniqueParentGains);
-            Utility.addArrayToFirst(p.parentUniques.gainsForSubTreeVio, vioGain.uniqueParentGains);
+            Utility.addArrayToFirst(p.parent.gainsForSubTreeSat, satGain.parentGain);
+            Utility.addArrayToFirst(p.parent.gainsForSubTreeVio, vioGain.parentGain);
 
             // for(int i = 0; i < p.partitionNodes.length - 1; ++i){
             //     for(int j = 0; j < 2; ++j){
@@ -372,25 +363,25 @@ public class BookKeepingPerLevelDC {
                 // if(p.partitionByTreeNode.partitionNodes[p.index] != f){
                 //     System.out.println("------------------");
                 // }
-                // p.internalNode.scoreCalculator.transferRealTaxon(
-                //     p.index,
-                //     partition
-                // );
-                if(p.method == InternalNodeWithIndex.Method.COMMON){
-                    p.internalNode.scoreCalculator.transferCommon(
-                        p.index,
-                        partition
-                    );
-                }
-                else if(p.method == InternalNodeWithIndex.Method.UNIQUE){
-                    p.internalNode.scoreCalculator.transferUnique(
-                        p.index,
-                        partition
-                    );
-                }
-                else{
-                    p.internalNode.scoreCalculator.transferParentUnique(partition);
-                }
+                p.internalNode.scoreCalculator.transferRealTaxon(
+                    p.index,
+                    partition
+                );
+                // if(p.method == InternalNodeWithIndex.Method.COMMON){
+                //     p.internalNode.scoreCalculator.transferCommon(
+                //         p.index,
+                //         partition
+                //     );
+                // }
+                // else if(p.method == InternalNodeWithIndex.Method.UNIQUE){
+                //     p.internalNode.scoreCalculator.transferUnique(
+                //         p.index,
+                //         partition
+                //     );
+                // }
+                // else{
+                //     p.internalNode.scoreCalculator.transferParentUnique(partition);
+                // }
 
             }
             // for(PartitionNode p : f.parents){

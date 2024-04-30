@@ -30,8 +30,11 @@ public class TreeNode implements TreePrinter.PrintableNode {
     // 0 -> Common with parent
     // 1 -> Uniques
     // public Component[] childComponents;
-    public Component commonWithParent, distinctWithParent;
-    public Component parentDistinct;
+    // public Component commonWithParent, distinctWithParent;
+    // public Component parentDistinct;
+
+    public Component childComponent;
+    public Component speciationParentComponent;
 
     public boolean dupplicationNode;
 
@@ -137,7 +140,7 @@ public class TreeNode implements TreePrinter.PrintableNode {
             //     //     buffer.append(i + " : " + info.dummyTaxaCountIndividual[i] + " ");
             //     // }
             // }
-            buffer.append(index);
+            buffer.append(index + " d?" + dupplicationNode);
             // buffer.append(" dup: " + dupplicationNode);
         }
             // buffer.append(index);

@@ -1,5 +1,6 @@
 # bash ./scripts/runDisco.sh ../astral-pro-10-25/n25/k1000/dup2/loss1/ils70
 # bash ./scripts/runDisco.sh ../AstralPro/n25/k1000/dup5/loss1/ils70 1
+# bash ./scripts/runDisco.sh ../AstralPro/n10/k1000/dup5/loss1/ils70 1
 
 root=$1
 n=$2
@@ -14,7 +15,7 @@ consensusTreePrefix="e${n}00-consensus"
 consensusTree=$consensusTreePrefix.greedy.tree
 # consensusTree=$astralOutputFile
 # consensusTree=$speciesTreeLabelCleaned
-outputFile="e${n}00-wqfm-rn.tre"
+outputFile="e${n}00-updated.tre"
 # outputFile="e${n}00-wqfm-with-sp.tre"
 
 
@@ -46,16 +47,16 @@ runWqfmTree(){
         if [ -d $root/$file ]; then
             # echo $file
             
-            if [ $file -lt 21 ]; then
-                continue
-            fi
+            # if [ $file -lt 21 ]; then
+            #     continue
+            # fi
             /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java -XX:+ShowCodeDetailsInExceptionMessages \
             -cp /home/abdur-rafi/.config/Code/User/workspaceStorage/da91ba3e148e5727246c82da7f9911d2/redhat.java/jdt_ws/E-WQFM_731a4073/bin \
             src.Main $root/$file/$discoNoDecompCleaned \
             $root/$file/$consensusTree \
             $root/$file/$outputFile 
 
-            break;
+            # break;
         fi
     done
 }
