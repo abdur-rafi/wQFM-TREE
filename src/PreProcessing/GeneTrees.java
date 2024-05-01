@@ -155,7 +155,7 @@ public class GeneTrees {
 
         // System.out.println( "taxon count : " + this.taxaMap.size());
         // System.out.println("Gene trees count : " + geneTrees.size());
-
+        quartestsList.normalize();
         quartestsList.printQuartets(taxa);
         // System.out.println( "total internal nodes : " + internalNodesCount);
         // System.out.println( "unique partitions : " + triPartitions.size());
