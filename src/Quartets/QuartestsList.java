@@ -50,21 +50,24 @@ public class QuartestsList {
         }
     }
 
-    public void normlaizeCurrTreeQuartets(){
+    public void normlaizeCurrTreeQuartets(int[] fre){
         for (int i = 0; i < currTreeQuartets.length; i++) {
             for (int j = 0; j < currTreeQuartets.length; j++) {
                 for (int k = 0; k < currTreeQuartets.length; k++) {
                     for (int l = 0; l < currTreeQuartets.length; l++) {
-                        Quartet q1 = new Quartet(i, j, k, l);
-                        Quartet q2 = new Quartet(i, k, j, l);
-                        Quartet q3 = new Quartet(i, l, j, k);
+                        if(fre[i] == 0 || fre[j] == 0 || fre[k] == 0 || fre[l] == 0)
+                            continue;
+                        currTreeQuartets[i][j][k][l] = currTreeQuartets[i][j][k][l] / (fre[i] * fre[j] * fre[k] * fre[l]);
+                        // Quartet q1 = new Quartet(i, j, k, l);
+                        // Quartet q2 = new Quartet(i, k, j, l);
+                        // Quartet q3 = new Quartet(i, l, j, k);
 
-                        double sum = currTreeQuartets[q1.a][q1.b][q1.c][q1.d] + currTreeQuartets[q2.a][q2.b][q2.c][q2.d] + currTreeQuartets[q3.a][q3.b][q3.c][q3.d];
-                        if(sum > 0){
-                            currTreeQuartets[q1.a][q1.b][q1.c][q1.d] = currTreeQuartets[q1.a][q1.b][q1.c][q1.d] / sum;
-                            currTreeQuartets[q2.a][q2.b][q2.c][q2.d] = currTreeQuartets[q2.a][q2.b][q2.c][q2.d] / sum;
-                            currTreeQuartets[q3.a][q3.b][q3.c][q3.d] = currTreeQuartets[q3.a][q3.b][q3.c][q3.d] / sum;
-                        }
+                        // double sum = currTreeQuartets[q1.a][q1.b][q1.c][q1.d] + currTreeQuartets[q2.a][q2.b][q2.c][q2.d] + currTreeQuartets[q3.a][q3.b][q3.c][q3.d];
+                        // if(sum > 0){
+                        //     currTreeQuartets[q1.a][q1.b][q1.c][q1.d] = currTreeQuartets[q1.a][q1.b][q1.c][q1.d] / sum;
+                        //     currTreeQuartets[q2.a][q2.b][q2.c][q2.d] = currTreeQuartets[q2.a][q2.b][q2.c][q2.d] / sum;
+                        //     currTreeQuartets[q3.a][q3.b][q3.c][q3.d] = currTreeQuartets[q3.a][q3.b][q3.c][q3.d] / sum;
+                        // }
                     }
                 }
             }
@@ -78,9 +81,9 @@ public class QuartestsList {
 
 
 
-    public void addQuartetToCurr(int a, int b, int c, int d){
+    public void addQuartetToCurr(int a, int b, int c, int d, double fre){
         Quartet q = new Quartet(a, b, c, d);
-        currTreeQuartets[q.a][q.b][q.c][q.d] += 1;
+        currTreeQuartets[q.a][q.b][q.c][q.d] += fre;
         // quartets[a][b][c][d] += 1;
         // quartets.add(new Quartet(a, b, c, d));
     }

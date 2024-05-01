@@ -63,7 +63,7 @@ runWqfmTree(){
 
 runWQFM(){
 
-    wqfmOut="wqfm-old-norm-pt.tree"
+    wqfmOut="wqfm-old-2.tree"
     for file in $(ls $root); do
 
         if [ -d $root/$file ]; then

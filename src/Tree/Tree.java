@@ -496,11 +496,11 @@ public class Tree {
     }
 
 
-    private ArrayList<Pair<Integer, Integer>> getPairs(boolean[] c){
+    private ArrayList<Pair<Integer, Integer>> getPairs(int[] c){
         ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
         for(int i = 0; i < c.length; ++i){
             for(int j = i + 1; j < c.length; ++j){
-                if(c[i] && c[j]){
+                if(c[i] > 0 && c[j] > 0){
                     pairs.add(new Pair<>(i, j));
                 }
             }
@@ -508,20 +508,20 @@ public class Tree {
         return pairs;
     }
 
-    private ArrayList<Pair<Integer, Integer>> getCrossPairs(boolean[] c1, boolean[] c2){
+    private ArrayList<Pair<Integer, Integer>> getCrossPairs(int[] c1, int[] c2){
         ArrayList<Pair<Integer, Integer>> pairs = new ArrayList<>();
         boolean[][] pairSet = new boolean[c1.length][c2.length];
 
         for(int i = 0; i < c1.length; ++i){
             for(int j = 0; j < c2.length; ++j){
-                if(!c1[i] || !c2[j]  || i == j)
+                if(c1[i] == 0 || c2[j] == 0  || i == j)
                     continue;
 
                 int mn = Math.min(i, j);
                 int mx = Math.max(i, j);
 
                 if(!pairSet[mn][mx]){
-                    pairs.add(new Pair<>(mn, mx));
+                    pairs.add(new Pair<>(i, j));
                     pairSet[mn][mx] = true;
                 }
                 
@@ -532,7 +532,10 @@ public class Tree {
 
     public QuartestsList qList;
     
-    private void generateQuartetsFromPairs(ArrayList<Pair<Integer, Integer>> pairs0,ArrayList<Pair<Integer, Integer>> pairs1, Set<String> qSet){
+    
+    private void generateQuartetsFromPairs(ArrayList<Pair<Integer, Integer>> pairs0,ArrayList<Pair<Integer, Integer>> pairs1, Set<String> qSet,
+        Pair<int[],int[]> fpairs0, Pair<int[],int[]> fpairs1 
+    ){
         for(var p0 : pairs0){
             for(var p1 : pairs1){
 
@@ -543,9 +546,10 @@ public class Tree {
                 s.add(p1.second);
                 if(s.size() == 4){
                     Quartet q = new Quartet(p0.first, p0.second, p1.first, p1.second);
+                    double w = fpairs0.first[p0.first] * fpairs0.second[p0.second] * fpairs1.first[p1.first] * fpairs1.second[p1.second];
                     if(!qSet.contains(q.toString())){
                         qSet.add(q.toString());
-                        qList.addQuartetToCurr(p0.first, p0.second, p1.first, p1.second);
+                        qList.addQuartetToCurr(p0.first, p0.second, p1.first, p1.second, w);
                     }
                 }
             }
@@ -553,13 +557,13 @@ public class Tree {
     }
 
 
-    private boolean[] getParents(TreeNode node){
-        boolean[] parents = new boolean[this.taxaMap.size()];
+    private int[] getParents(TreeNode node){
+        int[] parents = new int[this.taxaMap.size()];
         while(node.parent != null){
             if(!node.dupplicationNode){
                 var otherChild = node.parent.childs.get(0) == node ? node.parent.childs.get(1) : node.parent.childs.get(0);
                 for(int i = 0; i < this.taxaMap.size(); ++i){
-                    parents[i] |= otherChild.realTaxaInSubtree[i];
+                    parents[i] += otherChild.realTaxaInSubtree[i];
                 }
             }
             node = node.parent;
@@ -585,17 +589,17 @@ public class Tree {
             var pairsc0 = getPairs(c0);
             var pairsc1 = getPairs(c1);
             
-            generateQuartetsFromPairs(pairsc0, pairsc1, qSet);
+            generateQuartetsFromPairs(pairsc0, pairsc1, qSet, new Pair<int[],int[]>(c0, c0), new Pair<int[],int[]>(c1, c1));
             
     
             if(node.parent != null ){
                 var parent = getParents(node);
-                var pairsparentc0 = getCrossPairs(parent, c0);
-                var pairsparentc1 = getCrossPairs(parent, c1);
+                var pairsparentc0 = getCrossPairs(c0, parent);
+                var pairsparentc1 = getCrossPairs(c1, parent);
         
-                generateQuartetsFromPairs(pairsc0, pairsparentc1, qSet);
+                generateQuartetsFromPairs(pairsc0, pairsparentc1, qSet, new Pair<>(c0, c0), new Pair<>(c1, parent));
         
-                generateQuartetsFromPairs(pairsc1, pairsparentc0, qSet);
+                generateQuartetsFromPairs(pairsc1, pairsparentc0, qSet, new Pair<>(c1, c1), new Pair<>(c0, parent));
     
             }
         }
@@ -607,12 +611,12 @@ public class Tree {
 
     public void generateQuartets(QuartestsList quartestsList){
 
-        int[] taxaInTree = new int[this.taxaMap.size()];
-        for(var node : topSortedNodes){
-            if(node.isLeaf()){
-                taxaInTree[node.taxon.id] += 1;
-            }
-        }
+        // int[] taxaInTree = new int[this.taxaMap.size()];
+        // for(var node : topSortedNodes){
+        //     if(node.isLeaf()){
+        //         taxaInTree[node.taxon.id] += 1;
+        //     }
+        // }
 
         // for(int i = 0; i < this.taxaMap.size(); ++i){
         //     System.out.println(i + " : " + taxaInTree[i]);
@@ -626,27 +630,27 @@ public class Tree {
 
         generateQuartetsUtil(root);
 
-        quartestsList.normlaizeCurrTreeQuartets();
+        quartestsList.normlaizeCurrTreeQuartets(root.realTaxaInSubtree);
         quartestsList.mergeCurrTreeQuartets();
         quartestsList.resetCurrTreeQuartets();
 
     }
 
-    private boolean[] calcRealTaxaInSubTree(TreeNode node){
+    private int[] calcRealTaxaInSubTree(TreeNode node){
 
-        boolean[] taxaInSubtree = new boolean[this.taxaMap.size()];
+        int[] taxaInSubtree = new int[this.taxaMap.size()];
 
         if(node.isLeaf()){
-            taxaInSubtree[node.taxon.id] = true;
+            taxaInSubtree[node.taxon.id] = 1;
             node.realTaxaInSubtree = taxaInSubtree;
             return taxaInSubtree;
         }
         
-        boolean[] c0 = calcRealTaxaInSubTree(node.childs.get(0));
-        boolean[] c1 = calcRealTaxaInSubTree(node.childs.get(1));
+        int[] c0 = calcRealTaxaInSubTree(node.childs.get(0));
+        int[] c1 = calcRealTaxaInSubTree(node.childs.get(1));
 
         for(int i = 0; i < this.taxaMap.size(); ++i){
-            taxaInSubtree[i] = c0[i] || c1[i];
+            taxaInSubtree[i] = c0[i] + c1[i];
         }
 
         node.realTaxaInSubtree = taxaInSubtree;
