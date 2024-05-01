@@ -63,7 +63,7 @@ runWqfmTree(){
 
 runWQFM(){
 
-    wqfmOut="wqfm-old.tree"
+    wqfmOut="wqfm-old-norm-pt.tree"
     for file in $(ls $root); do
 
         if [ -d $root/$file ]; then
@@ -78,8 +78,11 @@ runWQFM(){
             # src.Main $root/$file/$discoNoDecompCleaned \
             # $root/$file/$consensusTree \
             # $root/$file/$outputFile
+            /usr/bin/env /usr/lib/jvm/java-17-openjdk-amd64/bin/java @/tmp/cp_4v2d8xyer89w02514l6p0b18b.argfile src.Main\
+            $root/$file/$discoNoDecompCleaned > q.txt
 
-            java -jar genSQ.jar $root/$file/$discoNoDecompCleaned > q.txt
+
+            # java -jar genSQ.jar $root/$file/$discoNoDecompCleaned > q.txt
             java -jar wQFM-v1.4.jar -i q.txt -o "$root/$file/$wqfmOut"
 
             # break;

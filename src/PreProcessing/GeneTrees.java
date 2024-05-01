@@ -9,7 +9,6 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
-import src.Config;
 import src.Quartets.QuartestsList;
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
@@ -112,9 +111,9 @@ public class GeneTrees {
             
             var tree = new Tree(line, this.taxaMap);
             
-            if(Config.RESOLVE_POLYTOMY){
-                tree.resolveNonBinary(distanceMatrix);
-            }
+            // if(Config.RESOLVE_POLYTOMY){
+            //     tree.resolveNonBinary(distanceMatrix);
+            // }
 
             // System.out.println(tree.root);
             
@@ -156,7 +155,7 @@ public class GeneTrees {
 
         // System.out.println( "taxon count : " + this.taxaMap.size());
         // System.out.println("Gene trees count : " + geneTrees.size());
-
+        // quartestsList.normalize();
         quartestsList.printQuartets(taxa);
         // System.out.println( "total internal nodes : " + internalNodesCount);
         // System.out.println( "unique partitions : " + triPartitions.size());
@@ -197,66 +196,66 @@ public class GeneTrees {
 
     }
 
-    public DataContainer createDateContainer(){
-        ComponentGraph compGraph = createPartitionGraph();
-        InternalNodes internalNodes = createPartitionsByTreeNode(compGraph);
+    // public DataContainer createDateContainer(){
+    //     ComponentGraph compGraph = createPartitionGraph();
+    //     InternalNodes internalNodes = createPartitionsByTreeNode(compGraph);
 
 
-        // System.out.println("Partition graph created");
-        // System.out.println("Partition graph nodes count : " + partitionGraph.count);
+    //     // System.out.println("Partition graph created");
+    //     // System.out.println("Partition graph nodes count : " + partitionGraph.count);
 
-        // System.out.println("Partitions created");
-        // System.out.println("Partitions count : " + partitions.getPartitionCount());
+    //     // System.out.println("Partitions created");
+    //     // System.out.println("Partitions count : " + partitions.getPartitionCount());
         
-        DataContainer dataContainer = new DataContainer();
+    //     DataContainer dataContainer = new DataContainer();
         
-        dataContainer.internalNodes = internalNodes.nodes;
-        dataContainer.topSortedComponents = compGraph.getTopSortedNodes();
+    //     dataContainer.internalNodes = internalNodes.nodes;
+    //     dataContainer.topSortedComponents = compGraph.getTopSortedNodes();
 
-        // System.out.println("================ comps ===================");
-        // for(var x : compGraph.components){
-        //     System.out.println(x);
-        // }
-        // System.out.println("================ top sorted comps ===================");
-        // for(var x : dataContainer.topSortedComponents){
-        //     System.out.println(x);
-        // }
+    //     // System.out.println("================ comps ===================");
+    //     // for(var x : compGraph.components){
+    //     //     System.out.println(x);
+    //     // }
+    //     // System.out.println("================ top sorted comps ===================");
+    //     // for(var x : dataContainer.topSortedComponents){
+    //     //     System.out.println(x);
+    //     // }
 
-        // ArrayList<PartitionNode> topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
-        // partitionGraph.removeOnlyGainPartitionsFromParent();
+    //     // ArrayList<PartitionNode> topSortedPartitionNodes = partitionGraph.getTopSortedNodes();
+    //     // partitionGraph.removeOnlyGainPartitionsFromParent();
         
-        // dataContainer.topSortedForBranch = new ArrayList<>();
-        // dataContainer.topSortedForGain = new ArrayList<>();
+    //     // dataContainer.topSortedForBranch = new ArrayList<>();
+    //     // dataContainer.topSortedForGain = new ArrayList<>();
 
-        // for(PartitionNode node : topSortedPartitionNodes){
-        //     if(node.gainPartition){
-        //         dataContainer.topSortedForGain.add(node);
-        //     }
-        //     if(!node.onlyGainPartition){
-        //         dataContainer.topSortedForBranch.add(node);
-        //     }
-        // }
+    //     // for(PartitionNode node : topSortedPartitionNodes){
+    //     //     if(node.gainPartition){
+    //     //         dataContainer.topSortedForGain.add(node);
+    //     //     }
+    //     //     if(!node.onlyGainPartition){
+    //     //         dataContainer.topSortedForBranch.add(node);
+    //     //     }
+    //     // }
 
-        dataContainer.realTaxaComponents = compGraph.taxaPartitionNodes;
-        dataContainer.realTaxaInTrees = new boolean[geneTrees.size()][];
-        for(int i = 0; i < geneTrees.size(); ++i){
-            dataContainer.realTaxaInTrees[i] = new boolean[this.realTaxaCount];
-            for(int j = 0; j < this.realTaxaCount; ++j){
-                dataContainer.realTaxaInTrees[i][j] = geneTrees.get(i).isTaxonPresent(i);
-            }
-        }
-        dataContainer.taxa = this.taxa;
-        dataContainer.sentinel = compGraph.getSentinel();
+    //     dataContainer.realTaxaComponents = compGraph.taxaPartitionNodes;
+    //     dataContainer.realTaxaInTrees = new boolean[geneTrees.size()][];
+    //     for(int i = 0; i < geneTrees.size(); ++i){
+    //         dataContainer.realTaxaInTrees[i] = new boolean[this.realTaxaCount];
+    //         for(int j = 0; j < this.realTaxaCount; ++j){
+    //             dataContainer.realTaxaInTrees[i][j] = geneTrees.get(i).isTaxonPresent(i);
+    //         }
+    //     }
+    //     dataContainer.taxa = this.taxa;
+    //     dataContainer.sentinel = compGraph.getSentinel();
 
-        System.out.println("Comp graph nodes count : " + compGraph.count);
-        System.out.println("Internal nodes count : " + internalNodes.nodes.size());
-        // System.out.println("Partition Graph Branch nodes : " + dataContainer.topSortedForBranch.size());
-        // System.out.println("Partition Graph Gain nodes : " + dataContainer.topSortedForGain.size());
+    //     System.out.println("Comp graph nodes count : " + compGraph.count);
+    //     System.out.println("Internal nodes count : " + internalNodes.nodes.size());
+    //     // System.out.println("Partition Graph Branch nodes : " + dataContainer.topSortedForBranch.size());
+    //     // System.out.println("Partition Graph Gain nodes : " + dataContainer.topSortedForGain.size());
 
-        // dataContainer.partitionGraph = partitionGraph;
+    //     // dataContainer.partitionGraph = partitionGraph;
 
-        return dataContainer;
-    }
+    //     return dataContainer;
+    // }
 
     void printPartition(boolean[] b){
         StringBuffer sb = new StringBuffer();
@@ -274,200 +273,200 @@ public class GeneTrees {
 
     // }
 
-    public InternalNodes createPartitionsByTreeNode(ComponentGraph componentGraph){
-        InternalNodes internalNodes = new InternalNodes(componentGraph.realTaxaInComponent);
-        int treeIndex = 0;
-        for(Tree tree : geneTrees){
-            int[] fre = new int[this.taxaMap.size()];
-            for(TreeNode node : tree.nodes){
-                if(node.isLeaf()){
-                    fre[node.taxon.id]++;
-                }
-            }
-            for(TreeNode node : tree.topSortedNodes){
-                if(node.isLeaf()){
-                    node.commonWithParent = componentGraph.getSentinel();
-                    node.distinctWithParent = componentGraph.getSentinel();
+    // public InternalNodes createPartitionsByTreeNode(ComponentGraph componentGraph){
+    //     InternalNodes internalNodes = new InternalNodes(componentGraph.realTaxaInComponent);
+    //     int treeIndex = 0;
+    //     for(Tree tree : geneTrees){
+    //         int[] fre = new int[this.taxaMap.size()];
+    //         for(TreeNode node : tree.nodes){
+    //             if(node.isLeaf()){
+    //                 fre[node.taxon.id]++;
+    //             }
+    //         }
+    //         for(TreeNode node : tree.topSortedNodes){
+    //             if(node.isLeaf()){
+    //                 node.commonWithParent = componentGraph.getSentinel();
+    //                 node.distinctWithParent = componentGraph.getSentinel();
 
-                    // node.childComponents = new Component[2];
-                    // node.childComponents[0] = componentGraph.getSentinel();
-                    // node.childComponents[1] = componentGraph.getSentinel();
-                    // int index = 0;
-                    if(fre[node.taxon.id] == 1){
-                        // index = 1;
-                        node.distinctWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
-                    }
-                    else{
-                        node.commonWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
-                    }
-                    // node.childComponents[index] = componentGraph.taxaPartitionNodes[node.taxon.id];
-                }
-                else{
-                    // node.childComponents = new Component[2];
-                    ArrayList<Component> gainNodesCommon = new ArrayList<>();
-                    ArrayList<Component> gainNodesDistinct = new ArrayList<>();
-                    for(TreeNode child : node.childs){
-                        gainNodesCommon.add(child.commonWithParent);
-                        gainNodesDistinct.add(child.distinctWithParent);
-                    }
-                    node.commonWithParent = componentGraph.addComponent(gainNodesCommon, true);
-                    node.distinctWithParent = componentGraph.addComponent(gainNodesDistinct, true);
+    //                 // node.childComponents = new Component[2];
+    //                 // node.childComponents[0] = componentGraph.getSentinel();
+    //                 // node.childComponents[1] = componentGraph.getSentinel();
+    //                 // int index = 0;
+    //                 if(fre[node.taxon.id] == 1){
+    //                     // index = 1;
+    //                     node.distinctWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
+    //                 }
+    //                 else{
+    //                     node.commonWithParent = componentGraph.taxaPartitionNodes[node.taxon.id];
+    //                 }
+    //                 // node.childComponents[index] = componentGraph.taxaPartitionNodes[node.taxon.id];
+    //             }
+    //             else{
+    //                 // node.childComponents = new Component[2];
+    //                 ArrayList<Component> gainNodesCommon = new ArrayList<>();
+    //                 ArrayList<Component> gainNodesDistinct = new ArrayList<>();
+    //                 for(TreeNode child : node.childs){
+    //                     gainNodesCommon.add(child.commonWithParent);
+    //                     gainNodesDistinct.add(child.distinctWithParent);
+    //                 }
+    //                 node.commonWithParent = componentGraph.addComponent(gainNodesCommon, true);
+    //                 node.distinctWithParent = componentGraph.addComponent(gainNodesDistinct, true);
                 
-                }
-            }
-            tree.root.childs.get(0).parentDistinct = tree.root.childs.get(1).distinctWithParent;
-            tree.root.childs.get(1).parentDistinct = tree.root.childs.get(0).distinctWithParent;
+    //             }
+    //         }
+    //         tree.root.childs.get(0).parentDistinct = tree.root.childs.get(1).distinctWithParent;
+    //         tree.root.childs.get(1).parentDistinct = tree.root.childs.get(0).distinctWithParent;
 
-            for(int i = tree.topSortedNodes.size() - 2; i > -1; --i){
-                TreeNode node = tree.topSortedNodes.get(i);
-                // node.parentDistinct = componentGraph.getSentinel();
+    //         for(int i = tree.topSortedNodes.size() - 2; i > -1; --i){
+    //             TreeNode node = tree.topSortedNodes.get(i);
+    //             // node.parentDistinct = componentGraph.getSentinel();
                 
-                if(node.isLeaf()) continue;
+    //             if(node.isLeaf()) continue;
 
-                if(node.parent != tree.root){
+    //             if(node.parent != tree.root){
 
-                    boolean[] commonInSubtree = componentGraph.realTaxaInComponent.get(node.commonWithParent);
-                    boolean[] distinctInSubtree = componentGraph.realTaxaInComponent.get(node.distinctWithParent);
-                    boolean[] realTaxaInSubTree = new boolean[commonInSubtree.length];
-                    for(int j = 0; j < commonInSubtree.length; ++j){
-                        realTaxaInSubTree[j] = commonInSubtree[j] || distinctInSubtree[j];
-                    }
+    //                 boolean[] commonInSubtree = componentGraph.realTaxaInComponent.get(node.commonWithParent);
+    //                 boolean[] distinctInSubtree = componentGraph.realTaxaInComponent.get(node.distinctWithParent);
+    //                 boolean[] realTaxaInSubTree = new boolean[commonInSubtree.length];
+    //                 for(int j = 0; j < commonInSubtree.length; ++j){
+    //                     realTaxaInSubTree[j] = commonInSubtree[j] || distinctInSubtree[j];
+    //                 }
                     
 
-                    ArrayList<Component> ps = new ArrayList<>();
-                    for(TreeNode child : node.parent.childs){
-                        if(child == node) continue;
+    //                 ArrayList<Component> ps = new ArrayList<>();
+    //                 for(TreeNode child : node.parent.childs){
+    //                     if(child == node) continue;
                         
-                        ArrayList<Component> childComps = new ArrayList<>();
-                        childComps.add(child.distinctWithParent);
-                        childComps.add(child.commonWithParent);
+    //                     ArrayList<Component> childComps = new ArrayList<>();
+    //                     childComps.add(child.distinctWithParent);
+    //                     childComps.add(child.commonWithParent);
 
-                        Component merged = componentGraph.addComponent(childComps, true);
+    //                     Component merged = componentGraph.addComponent(childComps, true);
                         
-                        if(node.parent.dupplicationNode){
+    //                     if(node.parent.dupplicationNode){
                             
-                            boolean[] realTaxaInMerged = componentGraph.realTaxaInComponent.get(merged);
+    //                         boolean[] realTaxaInMerged = componentGraph.realTaxaInComponent.get(merged);
     
-                            Set<Integer> st = new HashSet<>();
+    //                         Set<Integer> st = new HashSet<>();
     
-                            for(int j = 0; j < this.realTaxaCount; ++j){
-                                if(realTaxaInMerged[j] && realTaxaInSubTree[j]){
-                                    st.add(j);
-                                }
-                            }
+    //                         for(int j = 0; j < this.realTaxaCount; ++j){
+    //                             if(realTaxaInMerged[j] && realTaxaInSubTree[j]){
+    //                                 st.add(j);
+    //                             }
+    //                         }
 
-                            merged = componentGraph.removeTaxa(merged, st);
-                        }
+    //                         merged = componentGraph.removeTaxa(merged, st);
+    //                     }
 
 
-                        // ps.add(child.distinctWithParent);
-                        // ps.add(child.commonWithParent);
-                        ps.add(merged);
-                    }
+    //                     // ps.add(child.distinctWithParent);
+    //                     // ps.add(child.commonWithParent);
+    //                     ps.add(merged);
+    //                 }
 
-                    ps.add(node.parent.parentDistinct);
-                    node.parentDistinct = componentGraph.addComponent(ps, true);
-                }
+    //                 ps.add(node.parent.parentDistinct);
+    //                 node.parentDistinct = componentGraph.addComponent(ps, true);
+    //             }
 
-                if(!node.dupplicationNode){
+    //             if(!node.dupplicationNode){
                     
-                    // Component[][] gainNodes = new Component[node.childs.size()][];
-                    // Component[] p = new Component[node.childs.size() + 1];
-                    // int k = 0;
-                    // for(TreeNode child : node.childs){
-                    //     p[k] = child.subTreeComponent;
-                    //     gainNodes[k++] = child.childComponents;
-                    // }
-                    // p[k] = node.parentComponent;
+    //                 // Component[][] gainNodes = new Component[node.childs.size()][];
+    //                 // Component[] p = new Component[node.childs.size() + 1];
+    //                 // int k = 0;
+    //                 // for(TreeNode child : node.childs){
+    //                 //     p[k] = child.subTreeComponent;
+    //                 //     gainNodes[k++] = child.childComponents;
+    //                 // }
+    //                 // p[k] = node.parentComponent;
 
-                    Component[] childCompsCommon = new Component[node.childs.size()];
-                    Component[] childCompsUniques = new Component[node.childs.size()];
-                    for(int j = 0; j < node.childs.size(); ++j){
-                        childCompsCommon[j] = node.childs.get(j).commonWithParent;
-                        childCompsUniques[j] = node.childs.get(j).distinctWithParent;
-                    }
+    //                 Component[] childCompsCommon = new Component[node.childs.size()];
+    //                 Component[] childCompsUniques = new Component[node.childs.size()];
+    //                 for(int j = 0; j < node.childs.size(); ++j){
+    //                     childCompsCommon[j] = node.childs.get(j).commonWithParent;
+    //                     childCompsUniques[j] = node.childs.get(j).distinctWithParent;
+    //                 }
                     
 
                     
-                    internalNodes.addInternalNode(childCompsCommon, childCompsUniques, node.parentDistinct, !node.parent.dupplicationNode);
-                    // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
-                }
+    //                 internalNodes.addInternalNode(childCompsCommon, childCompsUniques, node.parentDistinct, !node.parent.dupplicationNode);
+    //                 // internalNodes.addPartitionByTreeNode(p, gainNodes, node.gainParentNode);
+    //             }
 
-                // System.out.println("node index : " + node.index + " tree index : " + treeIndex);
-                // System.out.println("common with parent: " + node.commonWithParent);
-                // System.out.println( "distict from parent: " + node.distinctWithParent);
-                // System.out.println("parent distincts : " + node.parentDistinct);
+    //             // System.out.println("node index : " + node.index + " tree index : " + treeIndex);
+    //             // System.out.println("common with parent: " + node.commonWithParent);
+    //             // System.out.println( "distict from parent: " + node.distinctWithParent);
+    //             // System.out.println("parent distincts : " + node.parentDistinct);
 
 
 
-            }
+    //         }
 
-            if(!tree.root.dupplicationNode){
+    //         if(!tree.root.dupplicationNode){
                 
-                TreeNode node = tree.root;
-                // Component[] ps = new Component[rootNode.childs.size() + 1];
-                // Component[][] gainNodes = new Component[rootNode.childs.size()][];
-                // int k = 0;
-                // for(TreeNode child : rootNode.childs){
-                //     ps[k] = child.subTreeComponent;
-                //     gainNodes[k++] = child.childComponents;
-                // }
-                // ps[k] = componentGraph.getSentinel();
+    //             TreeNode node = tree.root;
+    //             // Component[] ps = new Component[rootNode.childs.size() + 1];
+    //             // Component[][] gainNodes = new Component[rootNode.childs.size()][];
+    //             // int k = 0;
+    //             // for(TreeNode child : rootNode.childs){
+    //             //     ps[k] = child.subTreeComponent;
+    //             //     gainNodes[k++] = child.childComponents;
+    //             // }
+    //             // ps[k] = componentGraph.getSentinel();
 
-                Component[] childCompsCommon = new Component[node.childs.size()];
-                Component[] childCompsUniques = new Component[node.childs.size()];
-                for(int j = 0; j < node.childs.size(); ++j){
-                    childCompsCommon[j] = node.childs.get(j).commonWithParent;
-                    childCompsUniques[j] = node.childs.get(j).distinctWithParent;
-                }
-                internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel(), false);
-                // partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
-            }
-            treeIndex++;
+    //             Component[] childCompsCommon = new Component[node.childs.size()];
+    //             Component[] childCompsUniques = new Component[node.childs.size()];
+    //             for(int j = 0; j < node.childs.size(); ++j){
+    //                 childCompsCommon[j] = node.childs.get(j).commonWithParent;
+    //                 childCompsUniques[j] = node.childs.get(j).distinctWithParent;
+    //             }
+    //             internalNodes.addInternalNode(childCompsCommon, childCompsUniques,componentGraph.getSentinel(), false);
+    //             // partitions.addPartitionByTreeNode(ps, gainNodes,partitionGraph.getSentinel());
+    //         }
+    //         treeIndex++;
 
-        }
+    //     }
 
-        return internalNodes;
-    }
+    //     return internalNodes;
+    // }
 
-    public ComponentGraph createPartitionGraph(){
-        ComponentGraph partitionGraph = new ComponentGraph(this.taxa);
-        for(Tree tree : geneTrees){
-            // for(TreeNode node : tree.nodes){
-            //     if(node.isLeaf()){
-            //         node.subTreeComponent = partitionGraph.getPartitionNode(node.taxon);
-            //     }
-            // }
+    // public ComponentGraph createPartitionGraph(){
+    //     ComponentGraph partitionGraph = new ComponentGraph(this.taxa);
+    //     for(Tree tree : geneTrees){
+    //         // for(TreeNode node : tree.nodes){
+    //         //     if(node.isLeaf()){
+    //         //         node.subTreeComponent = partitionGraph.getPartitionNode(node.taxon);
+    //         //     }
+    //         // }
 
-            // for (TreeNode node : tree.topSortedNodes) {
-            //     if(node.isRoot() || node.isLeaf()) continue;
-            //     ArrayList<PartitionNode> childs = new ArrayList<>();
-            //     for(TreeNode child : node.childs){
-            //         childs.add(child.partitionNode);
-            //     }
-            //     node.partitionNode = partitionGraph.addPartition(childs, false);
-            // }
-            // tree.root.childs.get(0).parentPartitionNode = tree.root.childs.get(1).partitionNode;
-            // tree.root.childs.get(1).parentPartitionNode = tree.root.childs.get(0).partitionNode;
+    //         // for (TreeNode node : tree.topSortedNodes) {
+    //         //     if(node.isRoot() || node.isLeaf()) continue;
+    //         //     ArrayList<PartitionNode> childs = new ArrayList<>();
+    //         //     for(TreeNode child : node.childs){
+    //         //         childs.add(child.partitionNode);
+    //         //     }
+    //         //     node.partitionNode = partitionGraph.addPartition(childs, false);
+    //         // }
+    //         // tree.root.childs.get(0).parentPartitionNode = tree.root.childs.get(1).partitionNode;
+    //         // tree.root.childs.get(1).parentPartitionNode = tree.root.childs.get(0).partitionNode;
             
-            // int sz = tree.topSortedNodes.size();
-            // for(int i = sz - 2; i > -1; --i){
-            //     TreeNode node = tree.topSortedNodes.get(i);
-            //     if(node.isLeaf() || node.parent == tree.root) continue;
+    //         // int sz = tree.topSortedNodes.size();
+    //         // for(int i = sz - 2; i > -1; --i){
+    //         //     TreeNode node = tree.topSortedNodes.get(i);
+    //         //     if(node.isLeaf() || node.parent == tree.root) continue;
 
-            //     ArrayList<PartitionNode> childs = new ArrayList<>();
-            //     for(TreeNode child : node.parent.childs){
-            //         if(child == node) continue;
-            //         childs.add(child.partitionNode);
-            //     }
-            //     childs.add(node.parent.parentPartitionNode);
-            //     node.parentPartitionNode = partitionGraph.addPartition(childs, false);
-            // }
-        }
+    //         //     ArrayList<PartitionNode> childs = new ArrayList<>();
+    //         //     for(TreeNode child : node.parent.childs){
+    //         //         if(child == node) continue;
+    //         //         childs.add(child.partitionNode);
+    //         //     }
+    //         //     childs.add(node.parent.parentPartitionNode);
+    //         //     node.parentPartitionNode = partitionGraph.addPartition(childs, false);
+    //         // }
+    //     }
 
-        return partitionGraph;
+    //     return partitionGraph;
         
-    }
+    // }
 
     public GeneTrees(String path) throws FileNotFoundException{
 
