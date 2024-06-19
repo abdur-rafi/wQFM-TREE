@@ -295,6 +295,8 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
         this.totalTaxa[currPartition] -= netTranser;
         this.totalTaxa[1 - currPartition] += netTranser;
         this.nonQuartets += changeAmount(branchIndex);
+
+        // this.branches[branchIndex].batchTransferRealTaxon(netTranser);
         
     }
 

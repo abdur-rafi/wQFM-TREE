@@ -105,6 +105,8 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
         else{
             this.subs[branchIndex][1] += netTranser;
         }
+
+        // this.branches[branchIndex].batchTransferRealTaxon(netTranser);
     }
 
     @Override

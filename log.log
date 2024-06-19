@@ -1,0 +1,12 @@
+01
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/41/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/41/cons-paup.tre
+output path: ./output.tre
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 21674
+unique partitions : 10796
+Partition graph created
+Partition graph nodes count : 15146
+Partitions created
+Partitions count : 9858

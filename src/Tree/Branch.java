@@ -6,6 +6,7 @@ public class Branch {
     public double[] dummyTaxaWeightsIndividual;
     public double[] totalTaxaCounts;
 
+    public int netTranser;
 
     // public Branch(int[] rtc, double[] dtci, double[] dtct) {
     //     this.realTaxaCounts = rtc;
@@ -22,9 +23,21 @@ public class Branch {
         this.dummyTaxaWeightsIndividual = new double[dummyTaxaCount];
         // this.dummyTaxaWeightSums = dtct;
         this.totalTaxaCounts = new double[2];
+        this.netTranser = 0;
         // for(int i = 0; i < 2; ++i){
         //     this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
         // }
+    }
+
+    public void batchTransferRealTaxon(){
+        int currPartition = netTranser > 0 ? 0 : 1;
+        netTranser = Math.abs(netTranser);
+        this.realTaxaCounts[currPartition] -= netTranser;
+        this.realTaxaCounts[1 - currPartition] += netTranser;
+        this.totalTaxaCounts[currPartition] -= netTranser;
+        this.totalTaxaCounts[1 - currPartition] += netTranser;
+
+        netTranser = 0;
     }
 
     public void swapRealTaxa(int currPartition){
@@ -72,4 +85,10 @@ public class Branch {
             this.dummyTaxaWeightsIndividual[i] += b.dummyTaxaWeightsIndividual[i];
         }
     }
+
+
+    public void cumulateTransfer(int currPartition){
+        netTranser += currPartition == 0 ? 1 : -1;
+    }
+    
 }

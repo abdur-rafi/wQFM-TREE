@@ -256,6 +256,7 @@ public class BookKeepingPerLevelDC {
 
 
     public void batchTrasferRealTaxon(ArrayList<Integer> realTaxonIndices){
+        // System.out.println("In batch transfer");
         ArrayList<Integer> currPartitions = new ArrayList<>();
         ArrayList<Integer> realTaxonIds = new ArrayList<>();
 
@@ -271,29 +272,85 @@ public class BookKeepingPerLevelDC {
             bkpt.batchTranserRealTaxon(realTaxonIds, currPartitions);
         }
 
-        Queue<Utility.Pair<PartitionNode, Integer>> q = new ArrayDeque<>();
 
-        for(Integer rtId : realTaxonIds){
-            q.add(new Utility.Pair<PartitionNode,Integer>(this.dc.realTaxaPartitionNodes[rtId], this.taxaPerLevel.inWhichPartition(rtId)));
-        }
+        // Set<PartitionByTreeNode> stp = new HashSet<>();
 
-        Set<PartitionByTreeNode> st = new HashSet<>();
+        // {
+        //     Queue<PartitionNode> q = new ArrayDeque<>();
+        //     q.add(this.dc.realTaxaPartitionNodes[realTaxonIds.get(0)]);
+            
+        //     while(!q.isEmpty()){
+        //         PartitionNode f = q.poll();
 
-        while(!q.isEmpty()){
-            var f = q.poll();
-            for(PartitionByTreeNodeWithIndex p : f.first.nodePartitions){
-                p.partitionByTreeNode.cumulateTransfer(p.index, f.second);
-                st.add(p.partitionByTreeNode);
+        //         for(PartitionByTreeNodeWithIndex p : f.nodePartitions){
+        //             // p.partitionByTreeNode.scoreCalculator.batchTransferRealTaxon(p.index, currPartitions.get(0) == 0 ? 1 : -1);
+        //             stp.add(p.partitionByTreeNode);
+        //             // p.partitionByTreeNode.scoreCalculator.swapRealTaxon(
+        //             //     p.index,
+        //             //     currPartitions.get(0)
+        //             // );
+
+        //         }
+        //         q.addAll(f.parents);
+        //         // f.data.branch.swapRealTaxa(currPartitions.get(0));
+        //         // f.data.branch.batchTransferRealTaxon( 1, currPartitions.get(0));
+        //     }
+        //     // for(var x : st){
+                
+        //     // }
+        // }
+
+
+
+        {   
+
+            Queue<Utility.Pair<PartitionNode, Integer>> q = new ArrayDeque<>();
+
+            for(Integer rtId : realTaxonIds){
+                q.add(new Utility.Pair<PartitionNode,Integer>(this.dc.realTaxaPartitionNodes[rtId], this.taxaPerLevel.inWhichPartition(rtId)));
             }
-            for(var x : f.first.parents){
-                q.add(new Utility.Pair<PartitionNode, Integer>(x, f.second));
-            }
-            // q.addAll(f.parents);
-        }
 
-        for(var x : st){
-            x.batchTransfer();
+            // System.out.println("queue size: " + q.size());
+
+            Set<PartitionByTreeNode> st = new HashSet<>();
+            Set<PartitionNode> pst = new HashSet<>();
+
+            while(!q.isEmpty()){
+                var f = q.poll();
+                // for(PartitionByTreeNodeWithIndex p : f.first.nodePartitions){
+                //     // p.partitionByTreeNode.cumulateTransfer(p.index, f.second);
+                //     // p.partitionByTreeNode.scoreCalculator.swapRealTaxon(p.index, f.second);
+                //     // p.partitionByTreeNode.scoreCalculator.batchTransferRealTaxon(p.index, f.second == 0 ? 1 : -1);
+                //     // st.add(p.partitionByTreeNode);
+                // }
+                for(var x : f.first.parents){
+                    q.add(new Utility.Pair<PartitionNode, Integer>(x, f.second));
+                }
+                f.first.data.branch.cumulateTransfer(f.second);
+                pst.add(f.first);
+                // f.first.data.branch.swapRealTaxa(f.second);
+
+                // q.addAll(f.parents);
+            }
+
+            // System.out.println(stp.containsAll(st));
+            // System.out.println(st.containsAll(stp));
+
+            Set<PartitionNode> updatedBranches = new HashSet<>();
+            // for(var x : st){
+            //     x.batchTransfer(updatedBranches);
+            // }
+
+            for(var x : pst){
+                for(var y : x.nodePartitions){
+                    y.partitionByTreeNode.batchTransfer(y.index, x.data.branch.netTranser);
+                }
+                x.data.branch.batchTransferRealTaxon();
+            }
+
         }
+        // System.out.println(st.size());
+
 
         this.taxaPerLevel.batchTransferRealTaxon(realTaxonIndices);
 

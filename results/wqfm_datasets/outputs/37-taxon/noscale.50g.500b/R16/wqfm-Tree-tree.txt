@@ -1,1 +1,0 @@
-((((CHO,DAS),(ECH,(PRO,LOX))),((ORN,GAL),(MON,MAC))),(((PTE,MYO),((EQU,(FEL,CAN)),(VIC,(SUS,(BOS,TUR))))),(SOR,ERI)),((TUP,((TAR,(CAL,(NEW,(PON,(GOR,(HOM,PAN)))))),(OTO,MIC))),((ORY,OCH),((CAV,(RAT,MUS)),(SPE,DIP)))));

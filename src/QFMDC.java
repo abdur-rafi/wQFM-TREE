@@ -252,6 +252,38 @@ public class QFMDC {
             }
             return false;
         }
+        // ArrayList<Integer> rtIds = new ArrayList<Integer>();
+        // ArrayList<Integer> dtIds = new ArrayList<Integer>();
+
+        // for(int i = swaps.size() - 1; i > maxCgIndex; --i){
+        //     Swap s = swaps.get(i);
+        //     if(s.isDummy){
+        //         dtIds.add(s.index);
+        //     }
+        //     else{
+        //         rtIds.add(s.index);
+        //     }
+        // }
+
+        // if(rtIds.size() > 0){
+        //     // if(rtIds.size() > 1){
+        //     //     book.batchTrasferRealTaxon(rtIds);
+        //     // }
+        //     // else{
+        //     //     book.swapRealTaxon(rtIds.get(0));
+        //     // }
+
+        //     for(Integer i : rtIds){
+        //         ArrayList<Integer> x = new ArrayList<Integer>();
+        //         x.add(i);
+        //         // book.batchTrasferRealTaxon(x);
+        //         book.swapRealTaxon(i);
+        //     }
+        // }
+        // for(Integer i : dtIds){
+        //     book.swapDummyTaxon(i);
+        // }
+
         for(int i = swaps.size() - 1; i > maxCgIndex; --i){
             var x = swaps.get(i);
             book.swapTaxon(x.index, x.isDummy);

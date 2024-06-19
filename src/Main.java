@@ -18,15 +18,17 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-        if(args.length < 4){
-            System.out.println("Specify all file paths and non quartet type");
-            System.exit(-1);
-        }
-        String inputFilePath = args[0];
-        String consensusFilePath = args[1];
-        String outputFilePath = args[2];
+        String inputFilePath, consensusFilePath, outputFilePath;
 
-        String nonQuartetType = args[3];
+        // if(args.length < 4){
+        //     System.out.println("Specify all file paths and non quartet type");
+        //     System.exit(-1);
+        // }
+        // inputFilePath = args[0];
+        // consensusFilePath = args[1];
+        // outputFilePath = args[2];
+
+        // String nonQuartetType = args[3];
         
         // if(nonQuartetType.equals("A")){
         //     Config.NON_QUARTET_TYPE = Config.NonQuartetType.A;
@@ -68,12 +70,12 @@ public class Main {
         // inputFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
         // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
         // outputFilePath = "./output.tre";
-        // String modelCond = "model.50.2000000.0.000001";
-        // inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/03/gt-cleaned";
-        // consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/03/cons.tre";
+        String modelCond = "model.50.2000000.0.000001";
+        inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/41/gt-cleaned";
+        consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/41/cons-paup.tre";
         
         // // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
-        // outputFilePath = "./output.tre";        
+        outputFilePath = "./output.tre";        
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
@@ -92,6 +94,10 @@ public class Main {
         
         
         // RealTaxon.count = 0;
+
+        System.out.println("Input Gene trees file : " + inputFilePath);
+        System.out.println("Consensus path : " + consensusFilePath);
+        System.out.println("output path: " + outputFilePath);
         
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);

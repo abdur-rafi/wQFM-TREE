@@ -1,5 +1,6 @@
+#  bash ./scripts/runAstral2DatasetsEstPaup.sh ../run/astral2 model.50.2000000.0.000001
 
-filePrefix="ewqfm-score-testing"
+filePrefix="batch-testing"
 
 
 rootPath=$1

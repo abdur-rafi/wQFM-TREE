@@ -2,6 +2,7 @@ package src.InitialPartition;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -85,11 +86,16 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         else{
             int rtCount = 0;
             int dtCount = 0;
+            ArrayList<Integer> rtIndices = new ArrayList<>();
+            ArrayList<Integer> dtIndices = new ArrayList<>();
+
+            
             boolean changed = false;
             for(i = 0; i < rts.length; ++i){
                 if(rtsP[i] != this.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
                     changed = true;
                     rtCount++;
+                    rtIndices.add(i);
                     // book.swapTaxon(i, false);
                 }
             }
@@ -98,6 +104,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                 if(dtsp[i] != this.book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
                     changed = true;
                     dtCount++;
+                    dtIndices.add(i);
                     // book.swapTaxon(i, true);
                 }
             }
@@ -106,24 +113,28 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                 return this.score;
             }
             else{
-                if(rtCount + 9 * dtCount + 5 > dts.length){
-                    TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-                    this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+                // if(rtCount + 9 * dtCount + 5 > dts.length){
+                //     TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
+                //     this.book = new BookKeepingPerLevelDC(this.dc, taxas);
 
-                }
-                else{
-                    for(i = 0; i < rts.length; ++i){
-                        if(rtsP[i] != this.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
-                            book.swapTaxon(i, false);
+                // }
+                // else{
+                    // for(i = 0; i < rts.length; ++i){
+                    //     if(rtsP[i] != this.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
+                    //         book.swapTaxon(i, false);
+                    //     }
+                    // }
+                    if(rtIndices.size() > 0){
+                        // book.batchTrasferRealTaxon(rtIndices);
+                        for(Integer j : rtIndices){
+                            book.swapTaxon(j, false);
                         }
                     }
 
-                    for(i = 0; i < dts.length; ++i){
-                        if(dtsp[i] != this.book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
-                            book.swapTaxon(i, true);
-                        }
+                    for(Integer j : dtIndices){
+                        book.swapTaxon(j, true);
                     }
-                }
+                // }
             }
             
         }

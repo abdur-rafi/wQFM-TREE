@@ -1,0 +1,5550 @@
+01
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/01/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/01/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/01/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49999
+unique partitions : 4882
+Partition graph created
+Partition graph nodes count : 4847
+Partitions created
+Partitions count : 4707
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 12460 ms ==> 0 minutes and 12 seconds.
+CPU time used: 0 minutes, 7 seconds
+02
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/02/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/02/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/02/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49993
+unique partitions : 3816
+Partition graph created
+Partition graph nodes count : 3077
+Partitions created
+Partitions count : 3679
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 7395 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+03
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/03/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/03/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/03/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 48272
+unique partitions : 11191
+Partition graph created
+Partition graph nodes count : 12933
+Partitions created
+Partitions count : 10942
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+
+Elapsed Time taken = 20374 ms ==> 0 minutes and 20 seconds.
+CPU time used: 0 minutes, 18 seconds
+04
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/04/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/04/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/04/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 4075
+Partition graph created
+Partition graph nodes count : 3899
+Partitions created
+Partitions count : 3809
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+
+Elapsed Time taken = 7551 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 6 seconds
+05
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/05/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/05/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/05/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 48843
+unique partitions : 6576
+Partition graph created
+Partition graph nodes count : 6465
+Partitions created
+Partitions count : 6348
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 14612 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 13 seconds
+06
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/06/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/06/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/06/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49998
+unique partitions : 6240
+Partition graph created
+Partition graph nodes count : 5977
+Partitions created
+Partitions count : 5815
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 8957 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 8 seconds
+07
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/07/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/07/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/07/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 48989
+unique partitions : 10959
+Partition graph created
+Partition graph nodes count : 13522
+Partitions created
+Partitions count : 10412
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 66165 ms ==> 1 minutes and 6 seconds.
+CPU time used: 0 minutes, 19 seconds
+08
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/08/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/08/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/08/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49981
+unique partitions : 4492
+Partition graph created
+Partition graph nodes count : 4203
+Partitions created
+Partitions count : 4371
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 8193 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 5 seconds
+09
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/09/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/09/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/09/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49999
+unique partitions : 5616
+Partition graph created
+Partition graph nodes count : 5013
+Partitions created
+Partitions count : 5286
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 6357 ms ==> 0 minutes and 6 seconds.
+CPU time used: 0 minutes, 6 seconds
+10
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/10/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/10/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/10/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49993
+unique partitions : 3603
+Partition graph created
+Partition graph nodes count : 2939
+Partitions created
+Partitions count : 3368
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 5386 ms ==> 0 minutes and 5 seconds.
+CPU time used: 0 minutes, 4 seconds
+11
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/11/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/11/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/11/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49963
+unique partitions : 7971
+Partition graph created
+Partition graph nodes count : 7883
+Partitions created
+Partitions count : 7344
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 10697 ms ==> 0 minutes and 10 seconds.
+CPU time used: 0 minutes, 9 seconds
+12
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/12/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/12/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/12/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49989
+unique partitions : 5117
+Partition graph created
+Partition graph nodes count : 4631
+Partitions created
+Partitions count : 5014
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+
+Elapsed Time taken = 9378 ms ==> 0 minutes and 9 seconds.
+CPU time used: 0 minutes, 7 seconds
+13
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/13/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/13/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/13/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 5656
+Partition graph created
+Partition graph nodes count : 5681
+Partitions created
+Partitions count : 5305
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 7891 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+14
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/14/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/14/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/14/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49411
+unique partitions : 9234
+Partition graph created
+Partition graph nodes count : 10391
+Partitions created
+Partitions count : 8640
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 14514 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 14 seconds
+15
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/15/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/15/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/15/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 5402
+Partition graph created
+Partition graph nodes count : 5219
+Partitions created
+Partitions count : 5126
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 7698 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+16
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/16/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/16/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/16/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49996
+unique partitions : 6797
+Partition graph created
+Partition graph nodes count : 6123
+Partitions created
+Partitions count : 6507
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 8927 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 8 seconds
+17
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/17/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/17/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/17/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49213
+unique partitions : 10717
+Partition graph created
+Partition graph nodes count : 11797
+Partitions created
+Partitions count : 10238
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 15718 ms ==> 0 minutes and 15 seconds.
+CPU time used: 0 minutes, 15 seconds
+18
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/18/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/18/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/18/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49780
+unique partitions : 8984
+Partition graph created
+Partition graph nodes count : 9599
+Partitions created
+Partitions count : 8361
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+
+Elapsed Time taken = 13002 ms ==> 0 minutes and 13 seconds.
+CPU time used: 0 minutes, 12 seconds
+19
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/19/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/19/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/19/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 3342
+Partition graph created
+Partition graph nodes count : 3087
+Partitions created
+Partitions count : 3109
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 5264 ms ==> 0 minutes and 5 seconds.
+CPU time used: 0 minutes, 5 seconds
+20
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/20/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/20/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/20/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49678
+unique partitions : 11232
+Partition graph created
+Partition graph nodes count : 12705
+Partitions created
+Partitions count : 10662
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 17021 ms ==> 0 minutes and 17 seconds.
+CPU time used: 0 minutes, 15 seconds
+21
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/21/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/21/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/21/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 17863
+unique partitions : 10346
+Partition graph created
+Partition graph nodes count : 14544
+Partitions created
+Partitions count : 9390
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 2
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+
+Elapsed Time taken = 144254 ms ==> 2 minutes and 24 seconds.
+CPU time used: 2 minutes, 21 seconds
+22
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/22/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/22/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/22/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49967
+unique partitions : 3097
+Partition graph created
+Partition graph nodes count : 2607
+Partitions created
+Partitions count : 2978
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 5317 ms ==> 0 minutes and 5 seconds.
+CPU time used: 0 minutes, 5 seconds
+23
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/23/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/23/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/23/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49431
+unique partitions : 9072
+Partition graph created
+Partition graph nodes count : 8453
+Partitions created
+Partitions count : 8866
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 14037 ms ==> 0 minutes and 14 seconds.
+CPU time used: 0 minutes, 12 seconds
+24
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/24/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/24/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/24/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 4610
+Partition graph created
+Partition graph nodes count : 4337
+Partitions created
+Partitions count : 4346
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 7102 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 6 seconds
+25
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/25/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/25/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/25/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 4906
+Partition graph created
+Partition graph nodes count : 4493
+Partitions created
+Partitions count : 4621
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 7194 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 6 seconds
+26
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/26/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/26/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/26/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49889
+unique partitions : 7762
+Partition graph created
+Partition graph nodes count : 7819
+Partitions created
+Partitions count : 7502
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 11480 ms ==> 0 minutes and 11 seconds.
+CPU time used: 0 minutes, 11 seconds
+27
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/27/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/27/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/27/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 28542
+unique partitions : 12069
+Partition graph created
+Partition graph nodes count : 16578
+Partitions created
+Partitions count : 11111
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 0
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+
+Elapsed Time taken = 87779 ms ==> 1 minutes and 27 seconds.
+CPU time used: 1 minutes, 25 seconds
+28
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/28/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/28/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/28/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49958
+unique partitions : 10863
+Partition graph created
+Partition graph nodes count : 11857
+Partitions created
+Partitions count : 10423
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 15281 ms ==> 0 minutes and 15 seconds.
+CPU time used: 0 minutes, 14 seconds
+29
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/29/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/29/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/29/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 39979
+unique partitions : 14628
+Partition graph created
+Partition graph nodes count : 18325
+Partitions created
+Partitions count : 13896
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+
+Elapsed Time taken = 42767 ms ==> 0 minutes and 42 seconds.
+CPU time used: 0 minutes, 42 seconds
+30
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/30/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/30/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/30/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49980
+unique partitions : 6503
+Partition graph created
+Partition graph nodes count : 6327
+Partitions created
+Partitions count : 6295
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 8904 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 8 seconds
+31
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/31/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/31/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/31/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49227
+unique partitions : 6958
+Partition graph created
+Partition graph nodes count : 6683
+Partitions created
+Partitions count : 6620
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 10598 ms ==> 0 minutes and 10 seconds.
+CPU time used: 0 minutes, 10 seconds
+32
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/32/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/32/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/32/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49932
+unique partitions : 5701
+Partition graph created
+Partition graph nodes count : 5489
+Partitions created
+Partitions count : 5398
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+
+Elapsed Time taken = 8475 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 8 seconds
+33
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/33/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/33/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/33/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 3640
+Partition graph created
+Partition graph nodes count : 3395
+Partitions created
+Partitions count : 3513
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+
+Elapsed Time taken = 6316 ms ==> 0 minutes and 6 seconds.
+CPU time used: 0 minutes, 6 seconds
+34
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/34/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/34/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/34/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 44712
+unique partitions : 12654
+Partition graph created
+Partition graph nodes count : 14339
+Partitions created
+Partitions count : 12252
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 2
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+
+Elapsed Time taken = 34047 ms ==> 0 minutes and 34 seconds.
+CPU time used: 0 minutes, 33 seconds
+35
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/35/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/35/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/35/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 46597
+unique partitions : 13547
+Partition graph created
+Partition graph nodes count : 16657
+Partitions created
+Partitions count : 12721
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+
+Elapsed Time taken = 28446 ms ==> 0 minutes and 28 seconds.
+CPU time used: 0 minutes, 27 seconds
+36
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/36/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/36/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/36/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49954
+unique partitions : 5425
+Partition graph created
+Partition graph nodes count : 4783
+Partitions created
+Partitions count : 5270
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 7947 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+37
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/37/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/37/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/37/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 5425
+Partition graph created
+Partition graph nodes count : 5349
+Partitions created
+Partitions count : 5108
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+
+Elapsed Time taken = 7822 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+38
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/38/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/38/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/38/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49924
+unique partitions : 4831
+Partition graph created
+Partition graph nodes count : 4553
+Partitions created
+Partitions count : 4605
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+
+Elapsed Time taken = 7538 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+39
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/39/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/39/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/39/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49845
+unique partitions : 6747
+Partition graph created
+Partition graph nodes count : 6641
+Partitions created
+Partitions count : 6436
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 9865 ms ==> 0 minutes and 9 seconds.
+CPU time used: 0 minutes, 9 seconds
+40
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/40/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/40/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/40/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 36921
+unique partitions : 6760
+Partition graph created
+Partition graph nodes count : 7841
+Partitions created
+Partitions count : 6343
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 32820 ms ==> 0 minutes and 32 seconds.
+CPU time used: 0 minutes, 31 seconds
+41
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/41/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/41/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/41/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 21674
+unique partitions : 10796
+Partition graph created
+Partition graph nodes count : 15146
+Partitions created
+Partitions count : 9858
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 2
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 12
+#iterations: 1
+Level: 13
+#iterations: 1
+Level: 14
+#iterations: 1
+
+Elapsed Time taken = 118805 ms ==> 1 minutes and 58 seconds.
+CPU time used: 1 minutes, 56 seconds
+42
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/42/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/42/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/42/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49860
+unique partitions : 5367
+Partition graph created
+Partition graph nodes count : 4929
+Partitions created
+Partitions count : 5125
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 8253 ms ==> 0 minutes and 8 seconds.
+CPU time used: 0 minutes, 7 seconds
+43
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/43/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/43/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/43/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 3726
+Partition graph created
+Partition graph nodes count : 2987
+Partitions created
+Partitions count : 3690
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+
+Elapsed Time taken = 5961 ms ==> 0 minutes and 5 seconds.
+CPU time used: 0 minutes, 5 seconds
+44
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/44/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/44/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/44/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49990
+unique partitions : 8545
+Partition graph created
+Partition graph nodes count : 8263
+Partitions created
+Partitions count : 8364
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 12532 ms ==> 0 minutes and 12 seconds.
+CPU time used: 0 minutes, 12 seconds
+45
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/45/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/45/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/45/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49996
+unique partitions : 5197
+Partition graph created
+Partition graph nodes count : 4789
+Partitions created
+Partitions count : 5069
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 7767 ms ==> 0 minutes and 7 seconds.
+CPU time used: 0 minutes, 7 seconds
+46
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/46/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/46/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/46/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 6901
+Partition graph created
+Partition graph nodes count : 6593
+Partitions created
+Partitions count : 6489
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 8
+#iterations: 0
+Level: 9
+#iterations: 1
+Level: 9
+#iterations: 1
+Level: 10
+#iterations: 1
+Level: 11
+#iterations: 1
+
+Elapsed Time taken = 9621 ms ==> 0 minutes and 9 seconds.
+CPU time used: 0 minutes, 9 seconds
+47
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/47/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/47/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/47/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 49998
+unique partitions : 3822
+Partition graph created
+Partition graph nodes count : 3273
+Partitions created
+Partitions count : 3612
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 6
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 7
+#iterations: 1
+
+Elapsed Time taken = 6157 ms ==> 0 minutes and 6 seconds.
+CPU time used: 0 minutes, 5 seconds
+48
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/48/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/48/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/48/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 46325
+unique partitions : 6998
+Partition graph created
+Partition graph nodes count : 7589
+Partitions created
+Partitions count : 6569
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 8
+#iterations: 1
+
+Elapsed Time taken = 19054 ms ==> 0 minutes and 19 seconds.
+CPU time used: 0 minutes, 18 seconds
+49
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/49/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/49/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/49/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 50000
+unique partitions : 4177
+Partition graph created
+Partition graph nodes count : 3763
+Partitions created
+Partitions count : 3983
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 8
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 5
+#iterations: 0
+
+Elapsed Time taken = 5806 ms ==> 0 minutes and 5 seconds.
+CPU time used: 0 minutes, 5 seconds
+50
+Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/50/gt-cleaned
+Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/50/cons-paup.tre
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/50/wqfm-tree-correct-tree.txt
+taxon count : 51
+Gene trees count : 1000
+total internal nodes : 42441
+unique partitions : 5645
+Partition graph created
+Partition graph nodes count : 5623
+Partitions created
+Partitions count : 5335
+Level: 1
+#iterations: 0
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 2
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 3
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 0
+Level: 4
+#iterations: 0
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 0
+Level: 7
+#iterations: 1
+Level: 5
+#iterations: 0
+Level: 6
+#iterations: 1
+
+Elapsed Time taken = 24764 ms ==> 0 minutes and 24 seconds.
+CPU time used: 0 minutes, 24 seconds
