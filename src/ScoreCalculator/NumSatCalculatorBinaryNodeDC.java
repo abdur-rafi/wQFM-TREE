@@ -59,6 +59,67 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
 
     }
 
+    double scoreAfterRTSwap(int branchIndex, int currPartition){
+        double res = 0;
+
+        double[][] adjust = new double[3][2];
+        adjust[branchIndex][currPartition] = -1;
+        adjust[branchIndex][1 - currPartition] = 1;
+
+        for(int i = 0; i < 3; ++i){
+            int j = (i + 1) % 3;
+            int k = (i + 2) % 3;
+
+            double[] csubs = new double[2];
+            csubs[0] = subs[i][0];
+            csubs[1] = subs[k][1];
+
+            res += satisfiedEqn(
+                branches[i].totalTaxaCounts[0] + adjust[i][0], 
+                branches[j].totalTaxaCounts[0] + adjust[j][0],
+                branches[k].totalTaxaCounts[1] + adjust[k][1], 
+                csubs
+            );
+
+        }
+
+        return res;
+    }
+
+
+    double scoreAfterDTSwap(int dummyIndex, int currPartition){
+        double res = 0;
+
+        double[][] adjust = new double[3][2];
+        for(int i = 0; i < 3; ++i){
+            adjust[i][currPartition] = -branches[i].dummyTaxaWeightsIndividual[dummyIndex];
+            adjust[i][1 - currPartition] = branches[i].dummyTaxaWeightsIndividual[dummyIndex];
+        }
+
+        for(int i = 0; i < 3; ++i){
+            int j = (i + 1) % 3;
+            int k = (i + 2) % 3;
+
+            double[] csubs = new double[2];
+            csubs[0] = subs[i][0];
+            csubs[1] = subs[k][1];
+
+            res += satisfiedEqn(
+                branches[i].totalTaxaCounts[0] + adjust[i][0], 
+                branches[j].totalTaxaCounts[0] + adjust[j][0],
+                branches[k].totalTaxaCounts[1] + adjust[k][1], 
+                csubs
+            );
+
+        }
+
+        return res;
+    }
+
+
+    
+
+
     @Override
     public double score() {
         double res = 0;
@@ -69,6 +130,7 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
 
         return res;
     }
+
 
     
     @Override
@@ -94,6 +156,7 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
         }
 
     }
+    
 
     @Override
     public void batchTransferRealTaxon(int branchIndex, int netTranser){
@@ -142,10 +205,10 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
         for(int p = 0; p < 2; ++p){
             if(curr.realTaxaCounts[p] > 0){
                 this.swapRealTaxon(i, p);
-                curr.swapRealTaxa(p);
-                gainsOfBranches[i][p] = multiplier * (score() - originalScore);
+                // curr.swapRealTaxa(p);
+                gainsOfBranches[i][p] = multiplier * (scoreAfterRTSwap(i, p) - originalScore);
                 this.swapRealTaxon(i, 1 - p);
-                curr.swapRealTaxa(1 - p);
+                // curr.swapRealTaxa(1 - p);
             }
         }
     }
@@ -158,18 +221,18 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
             int switchedPartition = 1 - currPartition;
 
             this.swapDummyTaxon(i, currPartition);
-            for(Branch b : this.branches){
-                b.swapDummyTaxon(i, currPartition);
-            }
+            // for(Branch b : this.branches){
+            //     b.swapDummyTaxon(i, currPartition);
+            // }
 
-            double newScore = score();
+            double newScore = scoreAfterDTSwap(i, currPartition);
 
             dummyTaxaGains[i] +=  multiplier * (newScore - originalScore);
             
             this.swapDummyTaxon(i, switchedPartition);
-            for(Branch b : this.branches){
-                b.swapDummyTaxon(i, switchedPartition);
-            }
+            // for(Branch b : this.branches){
+            //     b.swapDummyTaxon(i, switchedPartition);
+            // }
         }
     }
 

@@ -9,6 +9,8 @@ import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
 import src.PreProcessing.Preprocess;
 import src.Taxon.RealTaxon;
+import src.Threads.ScoreCalculatorInitiators;
+import src.Threads.ThreadPool;
 
 import java.lang.management.ManagementFactory;
 import java.lang.management.ThreadMXBean;
@@ -17,6 +19,12 @@ import java.lang.management.ThreadMXBean;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+
+
+        int cores = Runtime.getRuntime().availableProcessors();
+        System.out.println("Cores : " + cores);
+
+        ThreadPool.setInstance(4);
 
         String inputFilePath, consensusFilePath, outputFilePath;
 
@@ -101,6 +109,9 @@ public class Main {
         
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
+
+        ScoreCalculatorInitiators.setInstance(ret.dc.partitionsByTreeNodes, ThreadPool.getInstance().getNThreads());
+
         ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
         IMakePartition  partitionMakerDC = consensusTreePartitionDC;
 
@@ -138,7 +149,8 @@ public class Main {
         minutes = seconds / 60;
         seconds = seconds % 60;
 
-        System.out.println("CPU time used: " + minutes + " minutes, " + seconds + " seconds");
+        System.out.println("CPU time used (Main thread): " + minutes + " minutes, " + seconds + " seconds");
+        ThreadPool.getInstance().shutdown();
     
     }
 

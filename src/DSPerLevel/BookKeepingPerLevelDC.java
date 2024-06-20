@@ -4,6 +4,7 @@ package src.DSPerLevel;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ import src.ScoreCalculator.NumSatCalculatorBinaryNodeDC;
 import src.ScoreCalculator.NumSatCalculatorNodeEDC;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
+import src.Threads.ScoreCalculatorInitiators;
+import src.Threads.ScoreInitiatorRunnable;
+import src.Threads.ThreadPool;
 import src.Tree.Branch;
 
 public class BookKeepingPerLevelDC {
@@ -78,27 +82,53 @@ public class BookKeepingPerLevelDC {
             }
         }
 
-        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
-            Branch[] b = new Branch[p.partitionNodes.length];
-            for(int i = 0; i < p.partitionNodes.length; ++i){
-                b[i] = p.partitionNodes[i].data.branch;
-            }
-            if(p.partitionNodes.length > 3){
-                p.scoreCalculator = new NumSatCalculatorNodeEDC(b,this.taxaPerLevel.dummyTaxonPartition);
-            }
-            else{
-                p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
-            }
-        }
+        ScoreCalculatorInitiators.getInstance().setDummyTaxaToPartitionMap(this.taxaPerLevel.dummyTaxonPartition);
+        ScoreCalculatorInitiators.getInstance().runInit();
+
+        // int partitionByTreeNodeCount = this.dc.partitionsByTreeNodes.size();
+
+        // int nThreads = ThreadPool.getInstance().getNThreads();
+
+        // int partitionByTreeNodePerThread = partitionByTreeNodeCount / nThreads;
+
+        // List<Runnable> tasks = new ArrayList<>();
+
+        // for(int i = 0; i < nThreads; ++i){
+        //     int start = i * partitionByTreeNodePerThread;
+        //     int end = (i + 1) * partitionByTreeNodePerThread;
+        //     if(i == nThreads - 1){
+        //         end = partitionByTreeNodeCount;
+        //     }
+        //     tasks.add(new ScoreCalculatorRunnable(this.dc.partitionsByTreeNodes, this.taxaPerLevel.dummyTaxonPartition, start, end));
+        //     // ThreadPool.getInstance().execute(new ScoreCalculatorInitiators(this.dc.partitionsByTreeNodes, this.taxaPerLevel.dummyTaxonPartition, start, end));
+            
+        // }
+        // ThreadPool.getInstance().execute(tasks);
+
+
+        // for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+        //     Branch[] b = new Branch[p.partitionNodes.length];
+        //     for(int i = 0; i < p.partitionNodes.length; ++i){
+        //         b[i] = p.partitionNodes[i].data.branch;
+        //     }
+        //     if(p.partitionNodes.length > 3){
+        //         p.scoreCalculator = new NumSatCalculatorNodeEDC(b,this.taxaPerLevel.dummyTaxonPartition);
+        //     }
+        //     else{
+        //         p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
+        //     }
+        // }
     }
 
 
     public double calculateScore(){
         double score = 0;
         double totalQuartets = 0;
-        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
-            score += p.scoreCalculator.score() * p.count;
-        }
+        // for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+        //     score += p.scoreCalculator.score() * p.count;
+        // }
+
+        score = ScoreCalculatorInitiators.getInstance().runScore();
 
         for(BookKeepingPerTreeDC bt : this.bookKeepingPerTreeDCs){
             totalQuartets += bt.totalQuartets();
@@ -115,19 +145,23 @@ public class BookKeepingPerLevelDC {
             p.data.gainsForSubTree = new double[2];
         }
 
-        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
-            double score = p.scoreCalculator.score();
-            double[][] branchGainsForRealTaxa = p.scoreCalculator.gainRealTaxa(score, p.count);
+        // for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+        //     double score = p.scoreCalculator.score();
+        //     double[][] branchGainsForRealTaxa = p.scoreCalculator.gainRealTaxa(score, p.count);
             
-            p.scoreCalculator.gainDummyTaxa(score, p.count, dummyTaxaGains);
-            score *= p.count;
+        //     p.scoreCalculator.gainDummyTaxa(score, p.count, dummyTaxaGains);
+        //     score *= p.count;
 
-            totalSat += score;
+        //     totalSat += score;
 
-            for(int i = 0; i < p.partitionNodes.length; ++i){
-                Utility.addArrayToFirst(p.partitionNodes[i].data.gainsForSubTree, branchGainsForRealTaxa[i]);
-            }
-        }
+        //     for(int i = 0; i < p.partitionNodes.length; ++i){
+        //         Utility.addArrayToFirst(p.partitionNodes[i].data.gainsForSubTree, branchGainsForRealTaxa[i]);
+        //     }
+        // }
+
+        var x = ScoreCalculatorInitiators.getInstance().runGain(this.taxaPerLevel.dummyTaxonCount);
+        totalSat = x.first;
+        Utility.addArrayToFirst(dummyTaxaGains, x.second);
 
         for(PartitionNode p : this.dc.topSortedPartitionNodes){
             for(PartitionNode childs : p.children){
@@ -187,72 +221,6 @@ public class BookKeepingPerLevelDC {
 
         return totalScore;
     }
-
-    public void swapRealTaxon3(int index){
-        int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
-        this.taxaPerLevel.swapPartitionRealTaxon(index);
-        int rtId = this.taxaPerLevel.realTaxa[index].id;
-
-        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            bkpt.swapRealTaxon(rtId, partition);
-        }
-
-        
-
-        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
-            boolean f = false;
-            for(int i = 0; i < p.partitionNodes.length; ++i){
-                if(this.dc.partitionGraph.realTaxaInPartition.get(p.partitionNodes[i])[rtId]){
-                    p.scoreCalculator.swapRealTaxon(i, partition);
-                    if(f){
-                        System.out.println("----------------------------");
-                        System.exit(-1);
-                    }
-                    f = true;
-                }
-            }
-            // p.scoreCalculator.swapRealTaxon(index, partition);
-        }
-
-        for(PartitionNode p : this.dc.partitionGraph.partitionNodes){
-            boolean[] b = this.dc.partitionGraph.realTaxaInPartition.get(p);
-            if(b[rtId]){
-                p.data.branch.swapRealTaxa(partition);
-            }
-        }
-    }
-
-
-    public void swapRealTaxon2(int index){
-        int partition = this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(index);
-        this.taxaPerLevel.swapPartitionRealTaxon(index);
-        int rtId = this.taxaPerLevel.realTaxa[index].id;
-
-        for(BookKeepingPerTreeDC bkpt : this.bookKeepingPerTreeDCs){
-            bkpt.swapRealTaxon(rtId, partition);
-        }
-
-        for(PartitionNode p : this.dc.topSortedPartitionNodes){
-            boolean[] b = this.dc.partitionGraph.realTaxaInPartition.get(p);
-            if(b[rtId]){
-                for(PartitionByTreeNodeWithIndex pbt : p.nodePartitions){
-                    if(pbt.partitionByTreeNode.partitionNodes[pbt.index].data.branch != p.data.branch){
-                        System.out.println("------------------");
-                        System.exit(-1);
-                    }
-                    pbt.partitionByTreeNode.scoreCalculator.swapRealTaxon(
-                        pbt.index,
-                        partition
-                        );
-                }
-                p.data.branch.swapRealTaxa(partition);
-
-            }
-        }
-        
-    }
-
-
 
 
     public void batchTrasferRealTaxon(ArrayList<Integer> realTaxonIndices){
@@ -421,9 +389,10 @@ public class BookKeepingPerLevelDC {
             bkpt.swapDummyTaxon(index, partition);
         }
 
-        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
-            p.scoreCalculator.swapDummyTaxon(index, partition);
-        }
+        ScoreCalculatorInitiators.getInstance().runSwapDT(index, partition);
+        // for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+        //     p.scoreCalculator.swapDummyTaxon(index, partition);
+        // }
 
         Set<PartitionNode> st = new HashSet<>();
         

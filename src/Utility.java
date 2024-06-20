@@ -52,6 +52,14 @@ public class Utility {
             this.second = second;
         }
     }
+
+    // public static synchronized void syncAddArrayToFirst(double[] a, double[] b){
+    //     int n = a.length;
+
+    //     for (int i = 0; i < n; ++i) {
+    //         a[i] += b[i];
+    //     }
+    // }
     
 
 
