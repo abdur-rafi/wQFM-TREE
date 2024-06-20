@@ -6,6 +6,8 @@ import src.DSPerLevel.BookKeepingPerLevelDC;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.DataContainer;
+import src.SolutionTree.SolutionNode;
+import src.SolutionTree.SolutionTree;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Tree.Tree;
@@ -18,7 +20,7 @@ public class QFMDC {
     public DataContainer dc;
     private int level;
 
-    static double EPS = 1e-5;
+    static double EPS = 1e-3;
 
     public QFMDC(DataContainer dc, RealTaxon[] realTaxa, IMakePartition initPartition){
         this.dc = dc;
@@ -33,12 +35,17 @@ public class QFMDC {
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
         BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
 
-        return recurse(initialBook);
+        SolutionNode root = new SolutionNode();
+
+        recurse(initialBook, root);
+
+        return new SolutionTree(root).createTree();
 
     }
 
-    private Tree recurse(
-        BookKeepingPerLevelDC book
+    private void recurse(
+        BookKeepingPerLevelDC book,
+        SolutionNode solnNode
     ){
 
         this.level++;
@@ -57,54 +64,68 @@ public class QFMDC {
 
         System.out.println( "#iterations: " + itrCount);
 
-        Tree[] trees = new Tree[2];
+        SolutionNode[] children = new SolutionNode[2];
+        
+        // Tree[] trees = new Tree[2];
 
         var x = book.divide(initPartition);
         int i = 0;
         int[] dummyIds = new int[2];
         
-        for(var taxaWPart : x){
+        for(i = 0; i < 2; ++i){
+            var taxaWPart = x[i];
             var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
+            children[i] = new SolutionNode();
+
             if(childBooks.taxaPerLevel.smallestUnit){
-                trees[i] = childBooks.taxaPerLevel.createStar();
+                // trees[i] = childBooks.taxaPerLevel.createStar();
+                children[i].tree = childBooks.taxaPerLevel.createStar();
             }
             else{
-                trees[i] = recurse(childBooks);
+                // trees[i] = recurse(childBooks, children[i]);
+                recurse(childBooks, children[i]);
             }
-            dummyIds[i++] = childBooks.taxaPerLevel.dummyTaxa[childBooks.taxaPerLevel.dummyTaxonCount - 1].id;
+            dummyIds[i] = childBooks.taxaPerLevel.dummyTaxa[childBooks.taxaPerLevel.dummyTaxonCount - 1].id;
         }
+
+        solnNode.leftDTid = dummyIds[0];
+        solnNode.rightDTid = dummyIds[1];
+        solnNode.left = children[0];
+        solnNode.right = children[1];
+
+
 
         this.level--;
 
-        TreeNode[] dtNodes = new TreeNode[2];
+        // TreeNode[] dtNodes = new TreeNode[2];
 
-        for(i = 0; i < 2; ++i){
-            for(var node : trees[i].nodes){
-                if(node.info.dummyTaxonId == dummyIds[i]){
-                    dtNodes[i] = node;
-                }
-            }
-            if(dtNodes[i] == null){
-                System.out.println("Error: Dummy node not found");
-                System.exit(-1);
-            }
-            if(dtNodes[i].childs != null){
-                System.out.println("Error: Dummy node should be leaf");
-                System.exit(-1);
-            }
-        }
+        // for(i = 0; i < 2; ++i){
+        //     for(var node : trees[i].nodes){
+        //         if(node.info.dummyTaxonId == dummyIds[i]){
+        //             dtNodes[i] = node;
+        //         }
+        //     }
+        //     if(dtNodes[i] == null){
+        //         System.out.println("Error: Dummy node not found");
+        //         System.exit(-1);
+        //     }
+        //     if(dtNodes[i].childs != null){
+        //         System.out.println("Error: Dummy node should be leaf");
+        //         System.exit(-1);
+        //     }
+        // }
         
-        trees[0].reRootTree(dtNodes[0]);
-        if(dtNodes[0].childs.size() > 1){
-            System.out.println("Error: Dummy node should have only one child after reroot");
-            System.exit(-1);
-        }
-        dtNodes[0].childs.get(0).setParent(dtNodes[1].parent);
-        dtNodes[1].parent.childs.remove(dtNodes[1]);
-        dtNodes[1].parent.childs.add(dtNodes[0].childs.get(0));
-        trees[1].nodes.addAll(trees[0].nodes);
+        // trees[0].reRootTree(dtNodes[0]);
+        // if(dtNodes[0].childs.size() > 1){
+        //     System.out.println("Error: Dummy node should have only one child after reroot");
+        //     System.exit(-1);
+        // }
+        // dtNodes[0].childs.get(0).setParent(dtNodes[1].parent);
+        // dtNodes[1].parent.childs.remove(dtNodes[1]);
+        // dtNodes[1].parent.childs.add(dtNodes[0].childs.get(0));
+        // trees[1].nodes.addAll(trees[0].nodes);
 
-        return trees[1];
+        // return trees[1];
     }
 
     static class Swap{

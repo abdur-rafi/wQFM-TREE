@@ -13,7 +13,7 @@ public class DataContainer {
     public boolean[][] realTaxaInTrees;
     public RealTaxon[] taxa;
 
-    public PartitionGraph partitionGraph;
+    // public PartitionGraph partitionGraph;
 
     // public DataContainer(
     //     ArrayList<PartitionsByTreeNode> partitionsByTreeNodes, 

@@ -21,10 +21,10 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
 
-        int cores = Runtime.getRuntime().availableProcessors();
-        System.out.println("Cores : " + cores);
+        // int cores = Runtime.getRuntime().availableProcessors();
+        // System.out.println("Cores : " + cores);
 
-        ThreadPool.setInstance(4);
+        // ThreadPool.setInstance(4);
 
         String inputFilePath, consensusFilePath, outputFilePath;
 
@@ -110,7 +110,7 @@ public class Main {
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
 
-        ScoreCalculatorInitiators.setInstance(ret.dc.partitionsByTreeNodes, ThreadPool.getInstance().getNThreads());
+        // ScoreCalculatorInitiators.setInstance(ret.dc.partitionsByTreeNodes, ThreadPool.getInstance().getNThreads());
 
         ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
         IMakePartition  partitionMakerDC = consensusTreePartitionDC;
@@ -150,7 +150,7 @@ public class Main {
         seconds = seconds % 60;
 
         System.out.println("CPU time used (Main thread): " + minutes + " minutes, " + seconds + " seconds");
-        ThreadPool.getInstance().shutdown();
+        // ThreadPool.getInstance().shutdown();
     
     }
 
