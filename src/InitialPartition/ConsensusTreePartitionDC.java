@@ -125,10 +125,10 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                     //     }
                     // }
                     if(rtIndices.size() > 0){
-                        // book.batchTrasferRealTaxon(rtIndices);
-                        for(Integer j : rtIndices){
-                            book.swapTaxon(j, false);
-                        }
+                        book.batchTrasferRealTaxon(rtIndices);
+                        // for(Integer j : rtIndices){
+                        //     book.swapTaxon(j, false);
+                        // }
                     }
 
                     for(Integer j : dtIndices){
