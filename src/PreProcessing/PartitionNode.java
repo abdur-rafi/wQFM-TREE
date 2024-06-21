@@ -3,6 +3,9 @@ package src.PreProcessing;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+import src.Config;
+
 public class PartitionNode{
 
     public static class PartitionByTreeNodeWithIndex{
@@ -23,7 +26,7 @@ public class PartitionNode{
     public boolean isLeaf;
     public String label;
 
-    public Data data;
+    public Data[] data;
 
 
     // public PartitionNode(ArrayList<PartitionNode> parents, ArrayList<PartitionNode> children, boolean isLeaf, Data data){
@@ -39,7 +42,7 @@ public class PartitionNode{
         this.children = new ArrayList<PartitionNode>();
         this.isLeaf = isLeaf;
         this.nodePartitions = new ArrayList<>();
-        this.data = null;
+        this.data = new Data[Config.N_THREADS];
     }
     
     public void addChild(PartitionNode child){

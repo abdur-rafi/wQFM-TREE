@@ -18,13 +18,15 @@ import src.Tree.Info;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
 
+import src.Utility.Pair;
+
 public class ConsensusTreePartitionDC implements IMakePartition {
 
     Tree consTree;
     RandPartition randPartition;
     int taxonCount;
-    BookKeepingPerLevelDC book;
-    double score;
+    // BookKeepingPerLevelDC book;
+    // double score;
     DataContainer dc;
 
     Map<String, RealTaxon> taxaMap;
@@ -60,28 +62,28 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     }
 
 
-    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts){
+    double scoreForPartitionByNode(TreeNode node,CarryInfo carryInfo, double[] nodeDummyTaxaWeights){
 
-        int[] rtsP = new int[rts.length];
-        int[] dtsp = new int[dts.length];
+        int[] rtsP = new int[carryInfo.rts.length];
+        int[] dtsp = new int[carryInfo.dts.length];
 
         Map<Integer, Integer> idToIndex = new HashMap<>();
         int i = 0;
-        for(var x : rts){
+        for(var x : carryInfo.rts){
             idToIndex.put(x.id, i++);
         }
     
         assignSubTreeToPartition(node, rtsP, idToIndex);
 
-        for(i = 0; i < dts.length; ++i){
-            if(node.info.branches[0].dummyTaxaWeightsIndividual[i] >= .5){
+        for(i = 0; i < carryInfo.dts.length; ++i){
+            if(nodeDummyTaxaWeights[i] >= .5){
                 dtsp[i] = 1;
             }
         }
 
-        if(this.book == null){
-            TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-            this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+        if(carryInfo.book == null){
+            TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(carryInfo.rts, carryInfo.dts, rtsP, dtsp, this.taxonCount);
+            carryInfo.book = new BookKeepingPerLevelDC(this.dc, taxas, carryInfo.tid);
         }
         else{
             int rtCount = 0;
@@ -91,8 +93,8 @@ public class ConsensusTreePartitionDC implements IMakePartition {
 
             
             boolean changed = false;
-            for(i = 0; i < rts.length; ++i){
-                if(rtsP[i] != this.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
+            for(i = 0; i < carryInfo.rts.length; ++i){
+                if(rtsP[i] != carryInfo.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
                     changed = true;
                     rtCount++;
                     rtIndices.add(i);
@@ -100,8 +102,8 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                 }
             }
 
-            for(i = 0; i < dts.length; ++i){
-                if(dtsp[i] != this.book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
+            for(i = 0; i < carryInfo.dts.length; ++i){
+                if(dtsp[i] != carryInfo.book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
                     changed = true;
                     dtCount++;
                     dtIndices.add(i);
@@ -110,7 +112,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             }
             if(!changed){
                 // System.out.println("Not changed");
-                return this.score;
+                return carryInfo.score;
             }
             else{
                 // if(rtCount + 9 * dtCount + 5 > dts.length){
@@ -125,35 +127,116 @@ public class ConsensusTreePartitionDC implements IMakePartition {
                     //     }
                     // }
                     if(rtIndices.size() > 0){
-                        book.batchTrasferRealTaxon(rtIndices);
+                        carryInfo.book.batchTrasferRealTaxon(rtIndices);
                         // for(Integer j : rtIndices){
                         //     book.swapTaxon(j, false);
                         // }
                     }
 
                     for(Integer j : dtIndices){
-                        book.swapTaxon(j, true);
+                        carryInfo.book.swapTaxon(j, true);
                     }
                 // }
             }
             
         }
-        this.score = this.book.calculateScore();
+        carryInfo.score = carryInfo.book.calculateScore();
 
-        return this.score;
+        return carryInfo.score;
+    }
+
+
+    class CarryInfo{
+
+        double[] weight;
+        boolean[] isRealTaxon;
+        int[] inWhichDummyTaxa;
+        RealTaxon[] rts;
+        DummyTaxon[] dts;
+        BookKeepingPerLevelDC book;
+        TaxaPerLevelWithPartition taxas;
+        TreeNode minNode;
+        double maxScore;
+        double minDiff;
+        double score;
+        
+        double[] minNodeDummyTaxaWeights;
+
+        int tid;
+    }
+
+    public Pair<Integer, double[]> dfs(
+        TreeNode node,
+        CarryInfo carryInfo
+    ){
+        if(node.isLeaf()){
+            Pair<Integer, double[]> p = new Pair<>(0, new double[carryInfo.dts.length]);
+            if(carryInfo.isRealTaxon[node.taxon.id]){
+                p.first = 1;
+            }
+            else{
+                p.second[carryInfo.inWhichDummyTaxa[node.taxon.id]] = carryInfo.weight[node.taxon.id];
+            }
+            return p;
+        }
+
+        Pair<Integer, double[]> p = new Pair<>(0, new double[carryInfo.dts.length]);
+
+        for(var child : node.childs){
+
+            var childPair = dfs(child,carryInfo);
+
+            int partASize = childPair.first;
+            int partBSize = carryInfo.rts.length - partASize;
+
+
+            for(int j = 0; j < carryInfo.dts.length; ++j){
+                p.second[j] += childPair.second[j];
+                if(childPair.second[j] >= .5){
+                    partASize++;
+                }
+                else{
+                    partBSize++;
+                }
+            }
+            p.first += childPair.first;
+
+            if(partASize >= 1 && partBSize >= 1){
+                if(Config.USE_SCORING_IN_CONSENSUS){
+                    double score = scoreForPartitionByNode(child, carryInfo, childPair.second);
+                    if( carryInfo.minNode == null || score > carryInfo.maxScore){
+                        carryInfo.maxScore = score;
+                        carryInfo.minNode = child;
+                        carryInfo.minNodeDummyTaxaWeights = childPair.second;
+                    }
+                }
+                else{
+                    double childTotalTaxaCounts = childPair.first;
+                    for(var x : childPair.second){
+                        childTotalTaxaCounts += x;
+                    }
+                    double diff = Math.abs(carryInfo.rts.length + carryInfo.dts.length - childTotalTaxaCounts);
+                    if(carryInfo.minNode == null || diff < carryInfo.minDiff){
+                        carryInfo.minNode = child;
+                        carryInfo.minDiff = diff;
+                        carryInfo.minNodeDummyTaxaWeights = childPair.second;
+                    }
+                }
+            }
+        }
+        return p;
+        
     }
 
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean a_) {
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, int tid) {
         
-        this.book = null;
-
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
 
-        TreeNode minNode = null;
-        double minDiff = 0;
-        double maxScore = 0;
+        // TreeNode minNode = null;
+        // double minDiff = 0;
+        // double maxScore = 0;
 
         boolean[] isRealTaxon = new boolean[consTree.leavesCount];
 
@@ -186,81 +269,99 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             ++i;
         }
 
+        CarryInfo carryInfo = new CarryInfo();
+        carryInfo.weight = weight;
+        carryInfo.isRealTaxon = isRealTaxon;
+        carryInfo.inWhichDummyTaxa = inWhichDummyTaxa;
+        carryInfo.rts = rts;
+        carryInfo.dts = dts;
+        carryInfo.minNode = null;
+        carryInfo.maxScore = Double.MIN_VALUE;
+        carryInfo.minDiff = Double.MAX_VALUE;
+        carryInfo.score = 0;
+        carryInfo.book = null;
+        carryInfo.taxas = null;
+        carryInfo.tid = tid;
+
+        dfs(consTree.root, carryInfo);
+
         // if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
         //     // for(i = 0; i < dts.length; ++i){
         //     //     if(weight[i] > 1) weight[i] = 1. / weight[i];
         //     // }
         // }        
 
-        for(var node : this.consTree.topSortedNodes){
-            node.info = new Info();
-            node.info.branches = new Branch[1];
-            node.info.branches[0] = new Branch(dts.length);
+        // for(var node : this.consTree.topSortedNodes){
+        //     node.info = new Info();
+        //     node.info.branches = new Branch[1];
+        //     node.info.branches[0] = new Branch(dts.length);
 
-            var branch = node.info.branches[0];
+        //     var branch = node.info.branches[0];
 
-            if(node.isLeaf()){
-                double w = weight[node.taxon.id];
-                if(isRealTaxon[node.taxon.id]){
-                    branch.realTaxaCounts[0] = 1;
-                    branch.totalTaxaCounts[0] = 1;
-                }
-                else if(w != 0) {
-                    branch.totalTaxaCounts[0] = w;
-                    branch.dummyTaxaWeightsIndividual[inWhichDummyTaxa[node.taxon.id]] = w;
-                }
-            }
-            else{
-                for(var child : node.childs){
+        //     if(node.isLeaf()){
+        //         double w = weight[node.taxon.id];
+        //         if(isRealTaxon[node.taxon.id]){
+        //             branch.realTaxaCounts[0] = 1;
+        //             branch.totalTaxaCounts[0] = 1;
+        //         }
+        //         else if(w != 0) {
+        //             branch.totalTaxaCounts[0] = w;
+        //             branch.dummyTaxaWeightsIndividual[inWhichDummyTaxa[node.taxon.id]] = w;
+        //         }
+        //     }
+        //     else{
+        //         for(var child : node.childs){
 
-                    int partASize = child.info.branches[0].realTaxaCounts[0];
-                    int partBSize = rts.length - partASize;
+        //             int partASize = child.info.branches[0].realTaxaCounts[0];
+        //             int partBSize = rts.length - partASize;
 
 
-                    for(int j = 0; j < dts.length; ++j){
-                        branch.dummyTaxaWeightsIndividual[j] += child.info.branches[0].dummyTaxaWeightsIndividual[j];
-                        if(child.info.branches[0].dummyTaxaWeightsIndividual[j] >= .5){
-                            partASize++;
-                        }
-                        else{
-                            partBSize++;
-                        }
-                    }
-                    branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
-                    branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
+        //             for(int j = 0; j < dts.length; ++j){
+        //                 branch.dummyTaxaWeightsIndividual[j] += child.info.branches[0].dummyTaxaWeightsIndividual[j];
+        //                 if(child.info.branches[0].dummyTaxaWeightsIndividual[j] >= .5){
+        //                     partASize++;
+        //                 }
+        //                 else{
+        //                     partBSize++;
+        //                 }
+        //             }
+        //             branch.totalTaxaCounts[0] += child.info.branches[0].totalTaxaCounts[0];
+        //             branch.realTaxaCounts[0] += child.info.branches[0].realTaxaCounts[0];
 
-                    if(partASize >= 1 && partBSize >= 1){
-                        if(Config.USE_SCORING_IN_CONSENSUS){
-                            double score = scoreForPartitionByNode(child, rts, dts);
-                            if( minNode == null || score > maxScore){
-                                maxScore = score;
-                                minNode = child;
-                            }
-                        }
-                        else{
-                            double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
-                            if(minNode == null || diff < minDiff){
-                                minNode = child;
-                                minDiff = diff;
-                            }
-                        }
-                        // double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
-                        // if(minNode == null || diff < minDiff){
-                        //     minNode = child;
-                        //     minDiff = diff;
-                        // }
-                        // else if(diff < minDiff){
-                        //     minNode = child;
-                        //     minDiff = diff;
-                        // }
-                    }
+        //             if(partASize >= 1 && partBSize >= 1){
+        //                 if(Config.USE_SCORING_IN_CONSENSUS){
+        //                     double score = scoreForPartitionByNode(child, rts, dts);
+        //                     if( minNode == null || score > maxScore){
+        //                         maxScore = score;
+        //                         minNode = child;
+        //                     }
+        //                 }
+        //                 else{
+        //                     double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
+        //                     if(minNode == null || diff < minDiff){
+        //                         minNode = child;
+        //                         minDiff = diff;
+        //                     }
+        //                 }
+        //                 // double diff = Math.abs(rts.length + dts.length - child.info.branches[0].totalTaxaCounts[0]);
+        //                 // if(minNode == null || diff < minDiff){
+        //                 //     minNode = child;
+        //                 //     minDiff = diff;
+        //                 // }
+        //                 // else if(diff < minDiff){
+        //                 //     minNode = child;
+        //                 //     minDiff = diff;
+        //                 // }
+        //             }
 
-                }
-            }
-        }
-        if(minNode == null){
+        //         }
+        //     }
+        // }
+        
+        
+        if(carryInfo.minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts, true);
+            return randPartition.makePartition(rts, dts, carryInfo.tid);
             // System.exit(-1);
         }
         // System.out.println("partition");
@@ -273,10 +374,10 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             idToIndex.put(x.id, i++);
         }
     
-        assignSubTreeToPartition(minNode, rtsP, idToIndex);
+        assignSubTreeToPartition(carryInfo.minNode, rtsP, idToIndex);
 
         for(i = 0; i < dts.length; ++i){
-            if(minNode.info.branches[0].dummyTaxaWeightsIndividual[i] >= .5){
+            if(carryInfo.minNodeDummyTaxaWeights[i] >= .5){
                 dtsp[i] = 1;
             }
         }

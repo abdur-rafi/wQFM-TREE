@@ -44,4 +44,7 @@ public class Config {
     }
 
     public static NonQuartetType NON_QUARTET_TYPE = NonQuartetType.A;
+
+    public static int N_THREADS = 4;
+
 }

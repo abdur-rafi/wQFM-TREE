@@ -1,6 +1,6 @@
 #  bash ./scripts/runAstral2DatasetsEstPaup.sh ../run/astral2 model.50.2000000.0.000001
 
-filePrefix="batch-testing"
+filePrefix="multi-testing"
 
 
 rootPath=$1

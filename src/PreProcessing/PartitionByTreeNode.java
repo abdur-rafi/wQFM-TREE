@@ -2,6 +2,7 @@ package src.PreProcessing;
 
 import java.util.Set;
 
+import src.Config;
 import src.ScoreCalculator.NumSatCalculatorNode;
 
 public class PartitionByTreeNode {
@@ -10,7 +11,7 @@ public class PartitionByTreeNode {
     // public int[] netTranser;
 
     public int count;
-    public NumSatCalculatorNode scoreCalculator;
+    public NumSatCalculatorNode[] scoreCalculator;
 
     public PartitionByTreeNode(PartitionNode[] partitionNodes){
         this.partitionNodes = partitionNodes;
@@ -22,6 +23,7 @@ public class PartitionByTreeNode {
             p.addNodePartitions(this, i);
         }
 
+        this.scoreCalculator = new NumSatCalculatorNode[Config.N_THREADS];
         // this.netTranser = new int[partitionNodes.length];
     }
 
@@ -29,11 +31,11 @@ public class PartitionByTreeNode {
         this.count++;
     }
     
-    public void batchTransfer(int i, int netTransfer){
+    public void batchTransfer(int i, int netTransfer, int tid){
         // int cnt = 0;
         if(netTransfer != 0){
             // ++cnt;
-            this.scoreCalculator.batchTransferRealTaxon(i, netTransfer);
+            this.scoreCalculator[tid].batchTransferRealTaxon(i, netTransfer);
             // this.scoreCalculator.swapRealTaxon(i, this.netTranser[i] > 0 ? 0 : 1);
             // this.partitionNodes[i].data.branch.swapRealTaxa(this.netTranser[i] > 0 ? 0 : 1);
             // System.out.println("net transfer: " + this.netTranser[i]);

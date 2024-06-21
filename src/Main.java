@@ -3,11 +3,17 @@ package src;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import src.DSPerLevel.TaxaPerLevelWithPartition;
 import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.ConsensusTreePartitionDC;
 import src.InitialPartition.IMakePartition;
 import src.PreProcessing.GeneTrees;
 import src.PreProcessing.Preprocess;
+import src.Queue.Item;
+import src.Queue.SubProblemsQueue;
+import src.SolutionTree.SolutionNode;
+import src.SolutionTree.SolutionTree;
+import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 import src.Threads.ScoreCalculatorInitiators;
 import src.Threads.ThreadPool;
@@ -28,13 +34,13 @@ public class Main {
 
         String inputFilePath, consensusFilePath, outputFilePath;
 
-        // if(args.length < 4){
-        //     System.out.println("Specify all file paths and non quartet type");
-        //     System.exit(-1);
-        // }
-        // inputFilePath = args[0];
-        // consensusFilePath = args[1];
-        // outputFilePath = args[2];
+        if(args.length < 4){
+            System.out.println("Specify all file paths and non quartet type");
+            System.exit(-1);
+        }
+        inputFilePath = args[0];
+        consensusFilePath = args[1];
+        outputFilePath = args[2];
 
         // String nonQuartetType = args[3];
         
@@ -78,12 +84,12 @@ public class Main {
         // inputFilePath = "./input/gtree_11tax_est_5genes_R1.tre";
         // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
         // outputFilePath = "./output.tre";
-        String modelCond = "model.50.2000000.0.000001";
-        inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/41/gt-cleaned";
-        consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/41/cons-paup.tre";
+        // String modelCond = "model.50.2000000.0.000001";
+        // inputFilePath = "../run/astral2/estimated-gene-trees/" + modelCond + "/41/gt-cleaned";
+        // consensusFilePath = "../run/astral2/estimated-consensus-trees/" + modelCond + "/41/cons-paup.tre";
         
-        // // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
-        outputFilePath = "./output.tre";        
+        // // // consensusFilePath = "./input/5genes.raxml.consensusTreeMRE.cleaned";
+        // outputFilePath = "./output.tre";        
 
         // GeneTrees trees = new GeneTrees("../run/15-taxon/100gene-100bp/R1/all_gt_cleaned.tre");
         // GeneTrees trees = new GeneTrees("../run/07.trueGT.cleaned");
@@ -124,10 +130,21 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
         // var qfm = new QFM(trees, trees.taxa, partitionMaker);
-        QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
+        // QFMDC qfm = new QFMDC(ret.dc, ret.realTaxa , partitionMakerDC);
         // var qfm = new QFMTest(trees, trees.taxa, partitionMaker, ret.dc);
 
-        var spTree = qfm.runWQFM();
+
+        var y = partitionMakerDC.makePartition(ret.realTaxa, new DummyTaxon[0], 0);
+        var x = new TaxaPerLevelWithPartition(ret.realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, ret.realTaxa.length);
+
+        SolutionNode root = new SolutionNode();
+
+        SubProblemsQueue.setInstance(ret.dc, Config.N_THREADS, partitionMakerDC);
+        SubProblemsQueue.instance.addItem(new Item(x, root, 0));
+
+        SubProblemsQueue.instance.consumeItems();
+
+        var spTree = new SolutionTree(root).createTree();
 
         FileWriter writer = new FileWriter(outputFilePath);
 
