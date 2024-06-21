@@ -2,6 +2,7 @@ package src.Queue;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
@@ -14,7 +15,7 @@ public class SubProblemsQueue {
     
     public DataContainer dataContainer;
 
-    public Queue<Item> items;
+    public PriorityQueue<Item> items;
 
     public Queue<Integer> free;
 
@@ -34,7 +35,7 @@ public class SubProblemsQueue {
 
     public SubProblemsQueue(DataContainer dataContainer, int nFree, IMakePartition makePartition){
         this.dataContainer = dataContainer;
-        this.items = new LinkedList<>();
+        this.items = new PriorityQueue<>();
         this.free = new LinkedList<>();
         // this.itemsLock = new ReentrantLock();
         // this.freeLock = new ReentrantLock();
@@ -59,6 +60,10 @@ public class SubProblemsQueue {
         // System.out.println("got lock");
         try{
             this.items.add(item);
+            // System.out.println("item size : " + item.taxaPerLevelWithPartition.realTaxonCount + item.taxaPerLevelWithPartition.dummyTaxonCount);
+
+            
+
             if(free.size() > 0){
                 // System.out.println("signaling");
                 this.freeAndItemsAv.signal();
@@ -115,16 +120,29 @@ public class SubProblemsQueue {
                     break;
                 }
 
-                Item item = this.items.poll();
-                int freeId = this.free.poll();
+                while(!this.items.isEmpty() && !this.free.isEmpty()){
 
-                // launch thread
-                new Thread(new Runnable(){
-                    @Override
-                    public void run(){
-                        QFMDC.recurse(dataContainer, item.taxaPerLevelWithPartition, freeId, item.solutionNode, item.level, makePartition);
-                    }
-                }).start();
+                    Item item = this.items.poll();
+                    int freeId = this.free.poll();
+    
+                    // int itemsz = item.taxaPerLevelWithPartition.realTaxonCount + item.taxaPerLevelWithPartition.dummyTaxonCount;
+    
+                    // for(Item i: this.items){
+                    //     int csz = i.taxaPerLevelWithPartition.realTaxonCount + i.taxaPerLevelWithPartition.dummyTaxonCount;
+                    //     if(csz > itemsz){
+                    //         System.out.println("Error");
+                    //     }
+                    // }
+    
+                    // launch thread
+                    new Thread(new Runnable(){
+                        @Override
+                        public void run(){
+                            QFMDC.recurse(dataContainer, item.taxaPerLevelWithPartition, freeId, item.solutionNode, item.level, makePartition);
+                        }
+                    }).start();
+                }                
+
 
                 // this.dataContainer.subProblems.get(freeId).set(item);
 

@@ -23,7 +23,7 @@ public class Config {
 
     public static boolean ALLOW_SINGLETON = false;
     public static boolean USE_LEVEL_BASED_SINGLETON_THRESHOLD = true;
-    public static boolean USE_SCORING_IN_CONSENSUS = true;
+    public static boolean USE_SCORING_IN_CONSENSUS = false;
 
 
     public static double SINGLETON_THRESHOLD = .5; 

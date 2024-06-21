@@ -1,6 +1,6 @@
 #  bash ./scripts/runAstral2DatasetsEstPaup.sh ../run/astral2 model.50.2000000.0.000001
 
-filePrefix="multi-testing"
+filePrefix="multi-testing-init-diff"
 
 
 rootPath=$1
