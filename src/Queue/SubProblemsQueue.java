@@ -124,6 +124,7 @@ public class SubProblemsQueue {
 
                     Item item = this.items.poll();
                     int freeId = this.free.poll();
+
     
                     // int itemsz = item.taxaPerLevelWithPartition.realTaxonCount + item.taxaPerLevelWithPartition.dummyTaxonCount;
     
@@ -133,6 +134,8 @@ public class SubProblemsQueue {
                     //         System.out.println("Error");
                     //     }
                     // }
+
+                    // System.out.println("launching thread");
     
                     // launch thread
                     new Thread(new Runnable(){
@@ -162,4 +165,19 @@ public class SubProblemsQueue {
         instance = new SubProblemsQueue(dataContainer, nFree, makePartition);
     }
 
+
+    public boolean isOnlyOneThreadWorking(){
+        this.lock.lock();
+        try{
+            
+            boolean b = this.items.size() == 0 && this.free.size() >= this.nFree - 1;
+            // b = false;
+            // System.out.println("isOnlyOneThreadWorking: " + b);
+            // return false;
+            // return (this.free.size() >= this.nFree - 1) && this.items.size() == 0;
+            return b;
+        }finally{
+            this.lock.unlock();
+        }
+    }
 }

@@ -45,9 +45,10 @@ public class ScoreCalculatorInitiators {
         }
     }
 
-    public void runInit(){
+    public void runInit(int tid){
         ArrayList<Runnable> tasks = new ArrayList<>();
         for(ScoreInitiatorRunnable task : this.initTasks){
+            task.setTid(tid);
             tasks.add(task);
         }
         ThreadPool.getInstance().execute(tasks);
@@ -61,9 +62,10 @@ public class ScoreCalculatorInitiators {
         return instance;
     }
 
-    public double runScore(){
+    public double runScore(int tid){
         ArrayList<Runnable> tasks = new ArrayList<>();
         for(ScoreCalculatorRunnable task : this.scoreTasks){
+            task.setTid(tid);
             tasks.add(task);
         }
         ThreadPool.getInstance().execute(tasks);
@@ -77,10 +79,11 @@ public class ScoreCalculatorInitiators {
         return score;
     }
 
-    public Utility.Pair<Double, double[]> runGain(int nDummyTaxa){
+    public Utility.Pair<Double, double[]> runGain(int nDummyTaxa, int tid){
         ArrayList<Runnable> tasks = new ArrayList<>();
         for(GainRunnable task : this.gainTasks){
             task.initDummyTaxaGains(nDummyTaxa);
+            task.setTid(tid);
             tasks.add(task);
         }
         ThreadPool.getInstance().execute(tasks);
@@ -99,10 +102,11 @@ public class ScoreCalculatorInitiators {
     }
 
 
-    public void runSwapDT(int index, int partition){
+    public void runSwapDT(int index, int partition, int tid){
         ArrayList<Runnable> tasks = new ArrayList<>();
         for(SwapDTRunnable task : this.swapTasks){
             task.setIndexAndPartition(index, partition);
+            task.setTid(tid);
             tasks.add(task);
         }
         ThreadPool.getInstance().execute(tasks);

@@ -1,7 +1,7 @@
 01
 Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/01/gt-cleaned
 Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/01/cons-paup.tre
-output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/01/multi-testing-init-diff-tree.txt
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/01/multi-testing-tree.txt
 taxon count : 51
 Gene trees count : 1000
 total internal nodes : 49999
@@ -11,108 +11,109 @@ Partition graph nodes count : 4847
 Partitions created
 Partitions count : 4707
 Level: 0
-#iterations: 1
+#iterations: 0
 Level: 1
 Level: 1
+#iterations: 1
+Level: 2
+Level: 2
+#iterations: 0
+Level: 3
+Level: 3
+#iterations: 0
+#iterations: 0
+Level: 4
+#iterations: 1
+#iterations: 1
+Level: 3
+Level: 3
+Level: 4
+#iterations: 0
+#iterations: 0
+Max iteration reached
+#iterations: 6
+Level: 4
+#iterations: 1
+Level: 4
+Level: 4
+#iterations: 0
+Level: 5
 #iterations: 2
 Level: 2
+#iterations: 1
 Level: 2
-#iterations: 2
-Level: 2
-Level: 2
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 3
-#iterations: 1
 Level: 4
 #iterations: 1
-Level: 4
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 3
-#iterations: 1
-#iterations: 2
-Level: 4
-Level: 4
-#iterations: 1
-Level: 4
-#iterations: 1
-Level: 4
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 4
-#iterations: 1
-Level: 4
-#iterations: 1
+#iterations: 0
 Level: 5
+#iterations: 0
+Level: 6
+Level: 3
+#iterations: 0
 #iterations: 1
-Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 5
 #iterations: 1
 Level: 5
 #iterations: 1
 Level: 4
-#iterations: 1
+#iterations: 0
 Level: 5
+Level: 6
 #iterations: 1
 #iterations: 1
 Level: 3
+Level: 3
+#iterations: 1
+Level: 3
+#iterations: 0
+#iterations: 0
+Level: 5
+Level: 7
+#iterations: 1
+Level: 4
+#iterations: 1
+Level: 6
 Level: 4
 #iterations: 1
 Level: 6
 #iterations: 1
-Level: 6
-#iterations: 1
-#iterations: 1
 Level: 4
-Level: 6
 #iterations: 1
 Level: 5
 #iterations: 1
 Level: 5
 #iterations: 1
-Level: 4
 #iterations: 1
 Level: 4
 #iterations: 1
 Level: 7
 #iterations: 1
 #iterations: 1
+Level: 6
+#iterations: 1
+#iterations: 1
+Level: 5
 Level: 5
 Level: 4
+Level: 4
+#iterations: 1
+#iterations: 1
+#iterations: 1
 #iterations: 1
 Level: 6
-#iterations: 0
-Level: 6
-#iterations: 1
-#iterations: 1
 Level: 5
 Level: 5
 #iterations: 1
-Level: 5
+#iterations: 1
 #iterations: 1
 Level: 6
-#iterations: 1
-#iterations: 1
-#iterations: 1
 #iterations: 1
 
-Elapsed Time taken = 6591 ms ==> 0 minutes and 6 seconds.
-CPU time used (Main thread): 0 minutes, 1 seconds
+Elapsed Time taken = 7785 ms ==> 0 minutes and 7 seconds.
+CPU time used (Main thread): 0 minutes, 3 seconds
 02
 Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/02/gt-cleaned
 Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/02/cons-paup.tre
-output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/02/multi-testing-init-diff-tree.txt
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/02/multi-testing-tree.txt
 taxon count : 51
 Gene trees count : 1000
 total internal nodes : 49993
@@ -122,108 +123,109 @@ Partition graph nodes count : 3077
 Partitions created
 Partitions count : 3679
 Level: 0
-#iterations: 1
+#iterations: 0
 Level: 1
 Level: 1
 #iterations: 1
+#iterations: 0
 Level: 2
 Level: 2
-#iterations: 1
+#iterations: 0
+#iterations: 0
 Level: 3
 Level: 3
-#iterations: 1
-Level: 4
-#iterations: 1
-#iterations: 1
-Level: 2
 Level: 2
 #iterations: 1
+Level: 2
+Level: 3
 #iterations: 1
 Level: 3
-Level: 3
 #iterations: 1
-Level: 4
-#iterations: 1
-Level: 4
-#iterations: 1
-Level: 4
-#iterations: 1
+#iterations: 0
 Level: 4
 #iterations: 1
 Level: 3
-#iterations: 1
 Level: 3
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 3
-#iterations: 1
-Level: 3
-#iterations: 1
+#iterations: 0
+#iterations: 3
 Level: 4
+Level: 4
+#iterations: 0
+Level: 4
+#iterations: 1
 #iterations: 2
-Level: 4
+Level: 5
 #iterations: 1
 Level: 4
-#iterations: 1
 Level: 4
 #iterations: 1
-Level: 4
-#iterations: 1
-Level: 4
 #iterations: 1
 Level: 4
 #iterations: 1
 Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 4
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
 Level: 6
 #iterations: 1
 Level: 5
-#iterations: 3
+#iterations: 1
+#iterations: 1
+Level: 6
 Level: 5
+#iterations: 1
 #iterations: 0
 Level: 5
 #iterations: 1
-Level: 6
-#iterations: 1
 Level: 5
-#iterations: 1
-Level: 5
-#iterations: 1
 #iterations: 1
 Level: 5
 Level: 5
 #iterations: 1
 Level: 6
+#iterations: 0
+Level: 5
+#iterations: 1
+Level: 4
 #iterations: 1
 #iterations: 1
 #iterations: 1
+Max iteration reached
+#iterations: 6
+Level: 3
+Level: 3
+#iterations: 0
+Level: 4
+Level: 4
+#iterations: 2
+#iterations: 0
+Level: 4
+Level: 4
+#iterations: 1
+Level: 5
+Level: 5
+#iterations: 1
+#iterations: 1
+#iterations: 0
+Level: 5
+Level: 6
+#iterations: 1
+#iterations: 1
+Level: 5
 #iterations: 1
 Level: 6
-Level: 6
 #iterations: 1
+#iterations: 3
+Level: 6
 #iterations: 1
 Level: 7
 #iterations: 1
+Level: 8
+#iterations: 1
 
-Elapsed Time taken = 5590 ms ==> 0 minutes and 5 seconds.
+Elapsed Time taken = 6308 ms ==> 0 minutes and 6 seconds.
 CPU time used (Main thread): 0 minutes, 2 seconds
 03
 Input Gene trees file : ../run/astral2/estimated-gene-trees/model.50.2000000.0.000001/03/gt-cleaned
 Consensus path : ../run/astral2/estimated-consensus-trees/model.50.2000000.0.000001/03/cons-paup.tre
-output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/03/multi-testing-init-diff-tree.txt
+output path: ../run/astral2/output-estimated-gt/model.50.2000000.0.000001/03/multi-testing-tree.txt
 taxon count : 51
 Gene trees count : 1000
 total internal nodes : 48272
@@ -232,4 +234,3 @@ Partition graph created
 Partition graph nodes count : 12933
 Partitions created
 Partitions count : 10942
-Level: 0

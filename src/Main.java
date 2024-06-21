@@ -30,7 +30,7 @@ public class Main {
         // int cores = Runtime.getRuntime().availableProcessors();
         // System.out.println("Cores : " + cores);
 
-        // ThreadPool.setInstance(4);
+        ThreadPool.setInstance(Config.N_THREADS);
 
         String inputFilePath, consensusFilePath, outputFilePath;
 
@@ -116,12 +116,13 @@ public class Main {
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
 
-        // ScoreCalculatorInitiators.setInstance(ret.dc.partitionsByTreeNodes, ThreadPool.getInstance().getNThreads());
-
+        ScoreCalculatorInitiators.setInstance(ret.dc.partitionsByTreeNodes, Config.N_THREADS);
+        
         ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
         IMakePartition  partitionMakerDC = consensusTreePartitionDC;
-
-
+        
+        
+        SubProblemsQueue.setInstance(ret.dc, Config.N_THREADS, partitionMakerDC);
 
 
 
@@ -139,7 +140,6 @@ public class Main {
 
         SolutionNode root = new SolutionNode();
 
-        SubProblemsQueue.setInstance(ret.dc, Config.N_THREADS, partitionMakerDC);
         SubProblemsQueue.instance.addItem(new Item(x, root, 0));
 
         SubProblemsQueue.instance.consumeItems();
@@ -167,7 +167,7 @@ public class Main {
         seconds = seconds % 60;
 
         System.out.println("CPU time used (Main thread): " + minutes + " minutes, " + seconds + " seconds");
-        // ThreadPool.getInstance().shutdown();
+        ThreadPool.getInstance().shutdown();
     
     }
 

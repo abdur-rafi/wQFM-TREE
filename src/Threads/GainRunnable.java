@@ -52,7 +52,7 @@ public class GainRunnable implements Runnable {
                 }
                 // Utility.addArrayToFirst(p.partitionNodes[i].data.gainsForSubTree, branchGainsForRealTaxa[i]);
             }
-            this.tid = -1;
         }
+        this.tid = -1;
     }
 }
