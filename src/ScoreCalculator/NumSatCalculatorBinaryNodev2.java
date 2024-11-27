@@ -2,7 +2,7 @@ package src.ScoreCalculator;
 
 import src.Tree.Branch;
 
-public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
+public class NumSatCalculatorBinaryNodev2 implements NumSatCalculatorNode {
 
     Branch[] branches;
     double[][] subs;
@@ -16,17 +16,25 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
     // TestNodeE test;
 
 
-    public NumSatCalculatorBinaryNode(
-        Branch[] b, 
+    public NumSatCalculatorBinaryNodev2(
+        Branch[] b
+    ) {
+        this.branches = b;
+        subs = new double[3][2];
+        this.gainsOfBranches = new double[3][2];
+    }
+
+    public void initBookkeeping(
         int[] dummyTaxaToPartitionMap, 
         double totalTaxaA, 
         double totalTaxaB, 
-        double[] dummyTaxaWeightsIndividual
-    ) {
+        double[] dummyTaxaWeightsIndividual,
+        int nDummyTaxa
+    ){
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
-        this.branches = b;
-        subs = new double[3][2];
-        this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
+        this.nDummyTaxa = nDummyTaxa;
+        var b = this.branches;
+
         for(int i = 0; i < 3; ++i){
             subs[i][0] = 0;
             subs[i][1] = 0;
@@ -42,13 +50,16 @@ public class NumSatCalculatorBinaryNode implements NumSatCalculatorNode {
                 }
             }
             subs[i][1] += b[i].realTaxaCounts[1];
+            gainsOfBranches[i][0] = 0;
+            gainsOfBranches[i][1] = 0;
+
         }
-        gainsOfBranches = new double[3][2];
+        // gainsOfBranches = new double[3][2];
+        
 
         // if(testE){
         //     this.test = new TestNodeE(b, dummyTaxaToPartitionMap, totalTaxaA, totalTaxaB, dummyTaxaWeightsIndividual);
         // }
-
     }
 
     private double scoreOf2Branch(int i) {

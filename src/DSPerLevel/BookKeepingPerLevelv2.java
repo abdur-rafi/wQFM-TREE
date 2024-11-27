@@ -7,24 +7,14 @@ import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 
-public class BookKeepingPerLevel {
+public class BookKeepingPerLevelv2 {
 
     public final GeneTrees geneTrees;
-
-
     public TaxaPerLevelWithPartition taxas;
+
     public boolean allowSingleton;
 
-    // public double[][] realTaxaGains;
-    // public double[] dummyTaxaGains;
-
-
-    // public ArrayList<TreeNode> nodesForScore;
-    // public ArrayList<TreeNode> nodesForGains;
-
-    // public static ArrayList<BookKeepingPerTree> bookKeepingPerTrees;
-    
-    public static BookKeepingPerTree[] bookKeepingPerTrees;
+    public static BookKeepingPerTreev2[] bookKeepingPerTrees;
 
     public int getTotalTaxon(int p){
         if(Config.SCORE_NORMALIZATION_TYPE == Config.ScoreNormalizationType.NO_NORMALIZATION){
@@ -40,35 +30,27 @@ public class BookKeepingPerLevel {
         return 1;
     }
 
-    public BookKeepingPerLevel(GeneTrees geneTrees, TaxaPerLevelWithPartition taxaPerLevelWithPartition, boolean allowSingleton){
+    public BookKeepingPerLevelv2(GeneTrees geneTrees){
 
-        this.taxas = taxaPerLevelWithPartition;
         this.geneTrees = geneTrees;
-
-
-        this.allowSingleton = allowSingleton;
-
-        if(taxaPerLevelWithPartition.smallestUnit)
-            return;
-
-        // this.nodesForScore = new ArrayList<>();
-        // this.nodesForGains = new ArrayList<>();
-        // BookKeepingPerLevel.bookKeepingPerTrees = new ArrayList<>();
-        BookKeepingPerLevel.bookKeepingPerTrees = new BookKeepingPerTree[geneTrees.geneTrees.size()];
+        BookKeepingPerLevelv2.bookKeepingPerTrees = new BookKeepingPerTreev2[geneTrees.geneTrees.size()];
 
         initialBookKeeping();
     }
 
-    
+    public void resetBookKeeping(TaxaPerLevelWithPartition taxas){
+        this.taxas = taxas;
+        if(taxas.smallestUnit) return;
+        for(int i = 0; i < geneTrees.geneTrees.size(); ++i){
+            BookKeepingPerLevelv2.bookKeepingPerTrees[i].resetBookkeeping(taxas);
+        }
+    }
 
 
     private void initialBookKeeping(){
         for(int i = 0; i < geneTrees.geneTrees.size(); ++i){
-            BookKeepingPerLevel.bookKeepingPerTrees[i] = new BookKeepingPerTree(geneTrees.geneTrees.get(i), taxas);
+            BookKeepingPerLevelv2.bookKeepingPerTrees[i] = new BookKeepingPerTreev2(geneTrees.geneTrees.get(i));
         }
-        // for(var gt : geneTrees.geneTrees){
-        //     BookKeepingPerLevel.bookKeepingPerTrees.add(new BookKeepingPerTree(gt, taxas));
-        // }
     }
 
 
@@ -77,7 +59,7 @@ public class BookKeepingPerLevel {
         double[] dtTotals = new double[this.taxas.dummyTaxonCount];
         double currTotals = 0;
         
-        for(var x : BookKeepingPerLevel.bookKeepingPerTrees){
+        for(var x : BookKeepingPerLevelv2.bookKeepingPerTrees){
             // totals[0] += x.totalQuartetsAfterSwap(1);
             // totals[1] += x.totalQuartetsAfterSwap(0);
             for(int i = 0;i < this.taxas.dummyTaxonCount; ++i){
@@ -92,7 +74,7 @@ public class BookKeepingPerLevel {
             double total = 0;
             int partition = taxas.inWhichPartitionRealTaxonByIndex(i);
 
-            for(var bookTree : BookKeepingPerLevel.bookKeepingPerTrees){
+            for(var bookTree : BookKeepingPerLevelv2.bookKeepingPerTrees){
                 total += bookTree.totalQuartetsAfterSwap(taxas.realTaxa[i].id, 1 - partition);
             }
             
@@ -131,7 +113,7 @@ public class BookKeepingPerLevel {
         double totalScore = 0;
         double currTotals = 0;
 
-        for(var bookTree : BookKeepingPerLevel.bookKeepingPerTrees){
+        for(var bookTree : BookKeepingPerLevelv2.bookKeepingPerTrees){
             for(var node : bookTree.nodesForScore){
                 // System.out.println(node.index);
                 // if(node.index == 11) {
@@ -152,7 +134,7 @@ public class BookKeepingPerLevel {
     public double calculateScoreAndGains(double[][] realTaxaGains, double[] dummyTaxaGains){
         double totalScore = 0;
         
-        for(var bookTree : BookKeepingPerLevel.bookKeepingPerTrees){
+        for(var bookTree : BookKeepingPerLevelv2.bookKeepingPerTrees){
             double[] gainsToAll = new double[2];
 
             for(var node : bookTree.nodesForScore){
@@ -176,8 +158,8 @@ public class BookKeepingPerLevel {
                 Utility.addArrayToFirst(gainsToAll, branchGains[childs.size()]);
             }
 
-            for(int i = bookTree.nodesForGains.size() - 1; i > -1; --i){
-                var node = bookTree.nodesForGains.get(i);
+            for(int i = bookTree.nodesForGains.length - 1; i > -1; --i){
+                var node = bookTree.nodesForGains[i];
                 for (int j = 0; j < node.childs.size(); j++) {
                     var child = node.childs.get(j);
                     Utility.addArrayToFirst(child.info.gainsForSubTree, node.info.gainsForSubTree);
@@ -231,7 +213,7 @@ public class BookKeepingPerLevel {
         taxas.swapPartitionRealTaxon(index);
 
         // System.out.println("swapping : " + taxas.realTaxa[index].label + " " + partition);
-        for(var x : BookKeepingPerLevel.bookKeepingPerTrees){
+        for(var x : BookKeepingPerLevelv2.bookKeepingPerTrees){
             x.swapRealTaxon(taxas.realTaxa[index], partition);
         }
         
@@ -246,7 +228,7 @@ public class BookKeepingPerLevel {
         int partition = taxas.inWhichPartitionDummyTaxonByIndex(index);
         taxas.swapPartitionDummyTaxon(index);
 
-        for(var x : BookKeepingPerLevel.bookKeepingPerTrees){
+        for(var x : BookKeepingPerLevelv2.bookKeepingPerTrees){
             x.swapDummyTaxon(index, partition);
         }
 
