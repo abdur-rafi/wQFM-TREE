@@ -5,6 +5,7 @@ public class Branch {
     // public double[] dummyTaxaWeightSums;
     public double[] dummyTaxaWeightsIndividual;
     public double[] totalTaxaCounts;
+    public int dummyTaxonCount;
 
 
     // public Branch(int[] rtc, double[] dtci, double[] dtct) {
@@ -17,14 +18,11 @@ public class Branch {
     //     }
     // }
 
-    public Branch(int dummyTaxaCount) {
+    public Branch(int dummyTaxaCount, int allocateForDummy) {
+        this.dummyTaxonCount = dummyTaxaCount;
         this.realTaxaCounts = new int[2];
-        this.dummyTaxaWeightsIndividual = new double[dummyTaxaCount];
-        // this.dummyTaxaWeightSums = dtct;
+        this.dummyTaxaWeightsIndividual = new double[allocateForDummy];
         this.totalTaxaCounts = new double[2];
-        // for(int i = 0; i < 2; ++i){
-        //     this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
-        // }
     }
 
     public void swapRealTaxa(int currPartition){
@@ -46,29 +44,18 @@ public class Branch {
         
     }
 
-    public Branch(Branch b){
-        this.realTaxaCounts = new int[b.realTaxaCounts.length];
-        this.totalTaxaCounts = new double[b.totalTaxaCounts.length];
-        for(int i = 0; i < this.totalTaxaCounts.length; ++i){
-            this.totalTaxaCounts[i] = b.totalTaxaCounts[i];
-            this.realTaxaCounts[i] = b.realTaxaCounts[i];
-        }
-        this.dummyTaxaWeightsIndividual = new double[b.dummyTaxaWeightsIndividual.length];
-        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
-            this.dummyTaxaWeightsIndividual[i] = b.dummyTaxaWeightsIndividual[i];
-        }
-        // this.realTaxaCounts = b.realTaxaCounts.clone();
-        // this.dummyTaxaWeightsIndividual = b.dummyTaxaWeightsIndividual.clone();
-        // // this.dummyTaxaWeightSums = b.dummyTaxaWeightSums.clone();
-        // this.totalTaxaCounts = b.totalTaxaCounts.clone();
-    }
+    public void reset(int dummyTaxonCount, int allocateForDummy){
+        this.dummyTaxonCount = dummyTaxonCount;
 
-    public void reset(){
         for(int i = 0; i < 2; ++i){
             this.realTaxaCounts[i] = 0;
             this.totalTaxaCounts[i] = 0;
         }
-        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
+        
+        if(this.dummyTaxaWeightsIndividual.length < allocateForDummy){
+            this.dummyTaxaWeightsIndividual = new double[allocateForDummy];
+        }
+        for(int i = 0; i < this.dummyTaxonCount; ++i){
             this.dummyTaxaWeightsIndividual[i] = 0;
         }
     }

@@ -54,6 +54,10 @@ public class BookKeepingPerTreev2 {
             this.realTaxaCountsInPartitions[i] = 0;
             this.dummyTaxonCountsInPartitions[i] = 0;
         }
+        if(taxas.dummyTaxonCount > this.allocateForDummy){
+            this.allocateForDummy *= 2;
+            this.dummyTaxonWeightsIndividual = new double[this.allocateForDummy];
+        }
         for(int i = 0; i < this.dummyTaxonWeightsIndividual.length; ++i){
             this.dummyTaxonWeightsIndividual[i] = 0;
         }
@@ -80,7 +84,7 @@ public class BookKeepingPerTreev2 {
                 taxas.dummyTaxonPartition, 
                 getTotalTaxon(0), 
                 getTotalTaxon(1), 
-                dummyTaxonWeightsIndividual,
+                this.dummyTaxonWeightsIndividual,
                 taxas.dummyTaxonCount
             );
         }
@@ -113,7 +117,7 @@ public class BookKeepingPerTreev2 {
         var branches = node.info.branches;
 
         for(int i = 0; i <= childCount; ++i){
-            branches[i].reset();
+            branches[i].reset(taxas.dummyTaxonCount, this.allocateForDummy);
         }
 
         for(int i = 0; i < childCount; ++i){
@@ -187,7 +191,7 @@ public class BookKeepingPerTreev2 {
             else if(node.isRoot()){
                 continue;
             }
-            if(!initMemoryAtNode(node)){
+            if(!initMemoryAtNode(node, 0)){
                 nodesForScore.add(node);
                 NumSatCalculatorNode sCalculatorNode = null;
                 if(node.childs.size() == 2){
@@ -210,14 +214,16 @@ public class BookKeepingPerTreev2 {
 
 
     private boolean initMemoryAtNode(
-            TreeNode node
+            TreeNode node, 
+            int dummyTaxonCount
         ){
 
         int childCount = node.childs.size();
         Branch[] branches = new Branch[childCount + 1];
         for(int i = 0; i <= childCount; ++i){
-            branches[i] = new Branch(this.allocateForDummy);
+            branches[i] = new Branch(dummyTaxonCount, this.allocateForDummy);
         }
+        node.info = new Info(branches);
         return node.frequency == 0;
     }
 
