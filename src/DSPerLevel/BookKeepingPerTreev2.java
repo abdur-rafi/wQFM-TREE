@@ -58,7 +58,7 @@ public class BookKeepingPerTreev2 {
             this.allocateForDummy *= 2;
             this.dummyTaxonWeightsIndividual = new double[this.allocateForDummy];
         }
-        for(int i = 0; i < this.dummyTaxonWeightsIndividual.length; ++i){
+        for(int i = 0; i < taxas.dummyTaxonCount; ++i){
             this.dummyTaxonWeightsIndividual[i] = 0;
         }
 
@@ -80,6 +80,9 @@ public class BookKeepingPerTreev2 {
 
         for(var node : this.nodesForGains){
             resetBookKeepingAtNode(node, taxas);
+            if(node.frequency == 0){
+                continue;
+            }
             node.info.scoreCalculator.initBookkeeping(
                 taxas.dummyTaxonPartition, 
                 getTotalTaxon(0), 
