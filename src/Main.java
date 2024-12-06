@@ -84,7 +84,7 @@ public class Main {
         // var qfm = new QFM(trees, trees.taxa, new ConsensusTreePartition("((11,(10,((9,(8,7)),(6,5)))),4,(3,(1,2)));", trees.taxaMap));
         // var qfm = new QFM(trees, trees.taxa, new RandPartition());
 
-        var qfm = new QFM(trees, trees.taxa, partitionMaker);
+        var qfm = new QFM2(trees, trees.taxa, partitionMaker);
         
         var spTree = qfm.runWQFM();
 

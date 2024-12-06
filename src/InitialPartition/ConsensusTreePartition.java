@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 import src.Config;
-import src.DSPerLevel.BookKeepingPerLevel;
+import src.DSPerLevel.BookKeepingPerLevelv2;
 import src.DSPerLevel.TaxaPerLevelWithPartition;
 import src.PreProcessing.GeneTrees;
 import src.Taxon.DummyTaxon;
@@ -25,7 +25,7 @@ public class ConsensusTreePartition implements IMakePartition {
 
     int taxonCount;
     GeneTrees trees;
-    BookKeepingPerLevel book;
+    BookKeepingPerLevelv2 book;
     double score;
 
     public double[][] dist;
@@ -119,6 +119,7 @@ public class ConsensusTreePartition implements IMakePartition {
 
         int[] rtsP = new int[rts.length];
         int[] dtsp = new int[dts.length];
+        
 
         Map<Integer, Integer> idToIndex = new HashMap<>();
         int i = 0;
@@ -136,7 +137,8 @@ public class ConsensusTreePartition implements IMakePartition {
 
         if(this.book == null){
             TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-            this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+            this.book = new BookKeepingPerLevelv2(trees);
+            this.book.resetBookKeeping(taxas);
         }
         else{
             int rtCount = 0;
@@ -164,7 +166,8 @@ public class ConsensusTreePartition implements IMakePartition {
             else{
                 if(rtCount + 9 * dtCount + 5 > dts.length){
                     TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-                    this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+                    // this.book = new BookKeepingPerLevel(trees, taxas, allowSingleton);
+                    this.book.resetBookKeeping(taxas);
 
                 }
                 else{
@@ -240,7 +243,7 @@ public class ConsensusTreePartition implements IMakePartition {
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
             node.info.branches = new Branch[1];
-            node.info.branches[0] = new Branch(dts.length);
+            node.info.branches[0] = new Branch(dts.length, dts.length);
 
             var branch = node.info.branches[0];
 
