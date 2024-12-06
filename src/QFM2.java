@@ -96,7 +96,7 @@ public class QFM2 {
             else{
                 trees[i] = recurse(book);
             }
-            dummyIds[i++] = book.taxas.dummyTaxa[book.taxas.dummyTaxonCount - 1].id;
+            dummyIds[i++] = taxaWPart.dummyTaxa[taxaWPart.dummyTaxonCount - 1].id;
         }
 
         this.level--;
