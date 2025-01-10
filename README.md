@@ -34,7 +34,7 @@ Output file contains the estimated species tree in newick format.
 ## Running the application
 
 Steps
-1. Download [this](https://github.com/abdur-rafi/wQFM-TREE/releases/download/v1.0.0/wQFM-TREE.zip) zip file.
+1. Download [this](https://github.com/abdur-rafi/wQFM-TREE/releases/download/v1.0.1/wQFM-TREE.zip) zip file.
 2. Unzip, this will create a wQFM-TREE folder.
 3. Open a terminal inside the wQFM-TREE folder.
 4. Execute the following command to run wQFM-TREE. The input gene trees **can contain polytomy** and they **will not be resolved**. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
