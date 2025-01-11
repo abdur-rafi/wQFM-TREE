@@ -56,5 +56,6 @@ bash run.sh ./test-data/11Tax5Genes.tre out.txt
 The [results](./results/) folder contain all the outputs and results of the experiments reported in the paper.
 The [plant](./plant/) folder contains outputs, scripts and files used to analyze the [1kp plant dataset](https://academic.oup.com/gigascience/article/8/10/giz126/5602476). 
 The [scripts](./scripts/) folder contain various scripts used to conduct all the experiments. 
+The [memoryLogs](./memoryLogs/) folder contain the log files of memory tracing. 
 
 More details can be found the README.md files inside these folders. 
