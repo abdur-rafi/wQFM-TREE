@@ -28,9 +28,9 @@ Input file containing gene trees in [newick](https://en.wikipedia.org/wiki/Newic
 ### Output
 
 Output file contains the estimated species tree in newick format.
-<!-- ```
-(((((1,2),3),4),((((5,6),(7,8)),9),10)),11);
-``` -->
+```
+((10,(11,((3,4),(1,2)))),(5,6),(9,(7,8)));
+``` 
 ## Running the application
 
 Steps
