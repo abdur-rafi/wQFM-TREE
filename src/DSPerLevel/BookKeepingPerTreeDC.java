@@ -2,7 +2,6 @@ package src.DSPerLevel;
 
 import java.util.ArrayList;
 
-import src.Taxon.RealTaxon;
 
 public class BookKeepingPerTreeDC {
     boolean[] realTaxaInTree;
@@ -12,17 +11,23 @@ public class BookKeepingPerTreeDC {
     private double[] dummyTaxonWeightsIndividual;
     public double[] dummyTaxonCountsInPartitions;
 
-    public BookKeepingPerTreeDC(boolean[] realTaxaInTree, TaxaPerLevelWithPartition taxaPerLevel){
-        this.realTaxaInTree = realTaxaInTree;
+    public void reset(TaxaPerLevelWithPartition taxaPerLevel, int allocateMemorySize){
         this.taxaPerLevel = taxaPerLevel;
-        this.pairsFromPart = new double[2];
+        this.pairsFromPart[0] = 0;
+        this.pairsFromPart[1] = 0;
         double[] totalTaxon = new double[2];
-        this.realTaxaCountsInPartitions = new double[2];
-        this.dummyTaxonWeightsIndividual = new double[taxaPerLevel.dummyTaxonCount];
-        this.dummyTaxonCountsInPartitions = new double[2];
-        
+        this.realTaxaCountsInPartitions[0] = 0;
+        this.realTaxaCountsInPartitions[1] = 0;
+        this.dummyTaxonCountsInPartitions[0] = 0;
+        this.dummyTaxonCountsInPartitions[1] = 0;
 
-        
+        if(this.dummyTaxonWeightsIndividual.length < allocateMemorySize){
+            this.dummyTaxonWeightsIndividual = new double[allocateMemorySize];
+        }
+        for(int i = 0; i < this.taxaPerLevel.dummyTaxonCount; ++i){
+            this.dummyTaxonWeightsIndividual[i] = 0;
+        }
+
         for(int i = 0; i < this.realTaxaInTree.length; ++i){
             if(this.realTaxaInTree[i]){
                 int partition = this.taxaPerLevel.inWhichPartition(i);
@@ -45,12 +50,23 @@ public class BookKeepingPerTreeDC {
             this.dummyTaxonCountsInPartitions[partition] += this.dummyTaxonWeightsIndividual[i];
             
         }
+
         this.pairsFromPart[0] -= this.realTaxaCountsInPartitions[0];
         this.pairsFromPart[1] -= this.realTaxaCountsInPartitions[1];
 
         this.pairsFromPart[0] /= 2;
-        this.pairsFromPart[1] /= 2;        
+        this.pairsFromPart[1] /= 2;
+        
+    }
 
+    public BookKeepingPerTreeDC(boolean[] realTaxaInTree, TaxaPerLevelWithPartition taxaPerLevel, int allocateSpaceSize){
+        this.realTaxaInTree = realTaxaInTree;
+        this.taxaPerLevel = taxaPerLevel;
+        this.pairsFromPart = new double[2];
+        this.realTaxaCountsInPartitions = new double[2];
+        this.dummyTaxonWeightsIndividual = new double[allocateSpaceSize];
+        this.dummyTaxonCountsInPartitions = new double[2];
+        this.reset(taxaPerLevel, allocateSpaceSize);      
     }
 
 

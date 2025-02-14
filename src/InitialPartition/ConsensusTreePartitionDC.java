@@ -23,11 +23,12 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     Tree consTree;
     RandPartition randPartition;
     int taxonCount;
-    BookKeepingPerLevelDC book;
     double score;
     DataContainer dc;
 
     Map<String, RealTaxon> taxaMap;
+    TaxaPerLevelWithPartition taxaPerLevel;
+    BookKeepingPerLevelDC book;
     
 
     public ConsensusTreePartitionDC(String filePath, Map<String, RealTaxon> taxaMap, DataContainer dc) throws FileNotFoundException{
@@ -36,12 +37,9 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         this.consTree = new Tree(line, taxaMap);
         this.taxonCount = taxaMap.size();
         scanner.close();
-
         randPartition = new RandPartition();
         this.taxaMap = taxaMap;
-
         this.dc = dc;
-        
     }
 
 
@@ -79,31 +77,36 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             }
         }
 
-        if(this.book == null){
-            TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-            this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+        if(this.taxaPerLevel == null){
+            this.taxaPerLevel = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
+            if(book == null){
+                book = new BookKeepingPerLevelDC(dc, this.taxaPerLevel);
+            }
+            else{
+                book.reset(this.taxaPerLevel);
+            }
         }
         else{
-            int rtCount = 0;
-            int dtCount = 0;
+            // int rtCount = 0;
+            // int dtCount = 0;
             ArrayList<Integer> rtIndices = new ArrayList<>();
             ArrayList<Integer> dtIndices = new ArrayList<>();
 
             
             boolean changed = false;
             for(i = 0; i < rts.length; ++i){
-                if(rtsP[i] != this.book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
+                if(rtsP[i] != this.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i)){
                     changed = true;
-                    rtCount++;
+                    // rtCount++;
                     rtIndices.add(i);
                     // book.swapTaxon(i, false);
                 }
             }
 
             for(i = 0; i < dts.length; ++i){
-                if(dtsp[i] != this.book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
+                if(dtsp[i] != this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i)){
                     changed = true;
-                    dtCount++;
+                    // dtCount++;
                     dtIndices.add(i);
                     // book.swapTaxon(i, true);
                 }
@@ -138,15 +141,13 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             }
             
         }
-        this.score = this.book.calculateScore();
+        this.score = book.calculateScore();
 
         return this.score;
     }
 
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean a_) {
-        
-        this.book = null;
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts) {
 
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
@@ -155,9 +156,10 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         double minDiff = 0;
         double maxScore = 0;
 
+        this.taxaPerLevel = null;
+
         boolean[] isRealTaxon = new boolean[consTree.leavesCount];
 
-        // boolean allowSingleton = Config.ALLOW_SINGLETON;
 
         for(var x : rts){
             weight[x.id] = 1;
@@ -186,16 +188,11 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             ++i;
         }
 
-        // if(Config.CONSENSUS_WEIGHT_TYPE == Config.ConsensusWeightType.NESTED){
-        //     // for(i = 0; i < dts.length; ++i){
-        //     //     if(weight[i] > 1) weight[i] = 1. / weight[i];
-        //     // }
-        // }        
 
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
             node.info.branches = new Branch[1];
-            node.info.branches[0] = new Branch(dts.length);
+            node.info.branches[0] = new Branch(dts.length, dts.length);
 
             var branch = node.info.branches[0];
 
@@ -281,7 +278,9 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             }
         }
 
-        return new MakePartitionReturnType(rtsP, dtsp);
+        MakePartitionReturnType rt = new MakePartitionReturnType(rtsP, dtsp);
+        rt.book = book;
+        return rt;
 
     }
     

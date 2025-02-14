@@ -12,29 +12,40 @@ public class NumSatCalculatorBinaryNodeDC implements NumSatCalculatorNode {
 
     double EPS = 0.000001;
 
-
-    public NumSatCalculatorBinaryNodeDC(Branch[] b, int[] dummyTaxaToPartitionMap) {
+    @Override
+    public void reset(int dummyTaxaCount, int __, int[] dummyTaxaToPartitionMap){
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
-        this.branches = b;
-        subs = new double[3][2];
-        this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
+        this.nDummyTaxa = dummyTaxaCount;
         for(int i = 0; i < 3; ++i){
             subs[i][0] = 0;
             subs[i][1] = 0;
             for(int j = 0; j < this.nDummyTaxa; ++j){
                 int pIndex = this.dummyTaxaPartition[j];
                 if(pIndex == 0)
-                    subs[i][0] += b[i].dummyTaxaWeightsIndividual[j] * b[(i+1) % 3].dummyTaxaWeightsIndividual[j];
+                    subs[i][0] += branches[i].dummyTaxaWeightsIndividual[j] * branches[(i+1) % 3].dummyTaxaWeightsIndividual[j];
                 else if(pIndex == 1){
-                    subs[i][1] += (b[i].dummyTaxaWeightsIndividual[j] * (b[i].dummyTaxaWeightsIndividual[j]) ); 
+                    subs[i][1] += (branches[i].dummyTaxaWeightsIndividual[j] * (branches[i].dummyTaxaWeightsIndividual[j]) ); 
                 }
                 else{
                     System.out.println("error");
                 }
             }
-            subs[i][1] += b[i].realTaxaCounts[1];
+            subs[i][1] += branches[i].realTaxaCounts[1];
+            gainsOfBranches[i][0] = 0;
+            gainsOfBranches[i][1] = 0;
+
         }
+        
+    }
+
+
+    public NumSatCalculatorBinaryNodeDC(Branch[] b, int dummyTaxonCount, int[] dummyTaxaToPartitionMap) {
+        this.dummyTaxaPartition = dummyTaxaToPartitionMap;
+        this.branches = b;
+        subs = new double[3][2];
+        this.nDummyTaxa = dummyTaxonCount;
         gainsOfBranches = new double[3][2];
+        this.reset(dummyTaxonCount, 0, dummyTaxaToPartitionMap);
 
     }
 

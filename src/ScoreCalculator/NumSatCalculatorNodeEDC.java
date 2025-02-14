@@ -48,67 +48,84 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
 
     int[] dummyTaxaPartition;
 
-    public NumSatCalculatorNodeEDC(Branch[] b, int[] dummyTaxaToPartitionMap) {
+    @Override
+    public void reset(int dummyTaxaCount, int allocateSpaceSize, int[] dummyTaxaToPartitionMap){
+        // reset without allocating new memory if allocateSpaceSize equals to the current size
+        this.dummyTaxaPartition = dummyTaxaToPartitionMap;
+        if(this.dummyTaxaWeightsIndividual.length < allocateSpaceSize){
+            this.dummyTaxaWeightsIndividual = new double[allocateSpaceSize];
+        }
+        this.totalTaxa[0] = 0;
+        this.totalTaxa[1] = 0;
+
+        this.nDummyTaxa = dummyTaxaCount;
+        this.sumPairs[0] = 0;
+        this.sumPairs[1] = 0;
+        this.sumPairsBSingleBranch = 0;
+
+        for(int i = 0; i < this.branches.length; ++i){
+            this.sumPairsBranch[i][0] = 0;
+            this.sumPairsBranch[i][1] = 0;
+        }
+
+        for(int i = 0; i < this.branches.length; ++i){
+            for(int j = i + 1; j < this.branches.length; ++j){
+                this.pairs[i][j][0] = this.branches[i].totalTaxaCounts[0] * this.branches[j].totalTaxaCounts[0];
+                this.pairs[i][j][1] = this.branches[i].totalTaxaCounts[1] * this.branches[j].totalTaxaCounts[1];
+
+                for(int k = 0; k < this.nDummyTaxa; ++k){
+                    int partition = this.dummyTaxaPartition[k];
+                    this.pairs[i][j][partition] -= this.branches[i].dummyTaxaWeightsIndividual[k] * this.branches[j].dummyTaxaWeightsIndividual[k];
+                }
+
+                this.sumPairsBranch[i][0] += this.pairs[i][j][0];
+                this.sumPairsBranch[j][0] += this.pairs[i][j][0];
+                this.sumPairsBranch[i][1] += this.pairs[i][j][1];
+                this.sumPairsBranch[j][1] += this.pairs[i][j][1];
+
+                this.sumPairs[0] += this.pairs[i][j][0];
+                this.sumPairs[1] += this.pairs[i][j][1];
+            }
+
+            this.pairsBFromSingleBranch[i] = this.branches[i].totalTaxaCounts[1] * this.branches[i].totalTaxaCounts[1];
+            for(int k = 0; k < this.nDummyTaxa; ++k){
+                int partition = this.dummyTaxaPartition[k];
+                this.dummyTaxaWeightsIndividual[k] += this.branches[i].dummyTaxaWeightsIndividual[k];
+                if(partition == 1){
+                    this.pairsBFromSingleBranch[i] -= this.branches[i].dummyTaxaWeightsIndividual[k] * this.branches[i].dummyTaxaWeightsIndividual[k];
+                }
+            }
+            pairsBFromSingleBranch[i] -= this.branches[i].realTaxaCounts[1];
+            pairsBFromSingleBranch[i] /= 2;
+            this.sumPairsBSingleBranch += pairsBFromSingleBranch[i];
+
+            this.totalTaxa[0] += this.branches[i].totalTaxaCounts[0];
+            this.totalTaxa[1] += this.branches[i].totalTaxaCounts[1];
+        }
+
+        this.nonQuartets = this.calcNonQuartets();
+        
+    }
+
+    public NumSatCalculatorNodeEDC(Branch[] b, int dummyTaxaCount, int allocateSpaceSize, int[] dummyTaxaToPartitionMap) {
 
         // System.out.println("kjasdfj");
 
         this.dummyTaxaPartition = dummyTaxaToPartitionMap;
         this.branches = b;
-        this.dummyTaxaWeightsIndividual = new double[b[0].dummyTaxaWeightsIndividual.length];
+        this.dummyTaxaWeightsIndividual = new double[allocateSpaceSize];
         this.totalTaxa = new double[2];
 
-        this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
+        this.nDummyTaxa = dummyTaxaCount;
 
-        pairsBFromSingleBranch = new double[b.length];
-        sumPairsBranch = new double[b.length][2];
+        this.pairsBFromSingleBranch = new double[b.length];
+        this.sumPairsBranch = new double[b.length][2];
         this.sumPairs = new double[2];
         this.sumPairsBSingleBranch = 0;
         this.pairs = new double[b.length][b.length][2];
-        // this.subs = new double[b.length][b.length][2];
         this.nonQuartets = 0;
 
-        for(int i = 0; i < b.length; ++i){
-            for(int j = i + 1; j < b.length; ++j){
-                this.pairs[i][j][0] = b[i].totalTaxaCounts[0] * b[j].totalTaxaCounts[0];
-                this.pairs[i][j][1] = b[i].totalTaxaCounts[1] * b[j].totalTaxaCounts[1];
-
-                for(int k = 0; k < this.nDummyTaxa; ++k){
-                    int partition = this.dummyTaxaPartition[k];
-                    // subs[i][j][partition] += b[i].dummyTaxaWeightsIndividual[k] * b[j].dummyTaxaWeightsIndividual[k];
-                    this.pairs[i][j][partition] -= b[i].dummyTaxaWeightsIndividual[k] * b[j].dummyTaxaWeightsIndividual[k];
-                }
-                // this.pairs[i][j][0] -= subs[i][j][0];
-                // this.pairs[i][j][1] -= subs[i][j][1];
-
-                sumPairsBranch[i][0] += this.pairs[i][j][0];
-                sumPairsBranch[j][0] += this.pairs[i][j][0];
-                sumPairsBranch[i][1] += this.pairs[i][j][1];
-                sumPairsBranch[j][1] += this.pairs[i][j][1];
-
-                this.sumPairs[0] += this.pairs[i][j][0];
-                this.sumPairs[1] += this.pairs[i][j][1];
-                
-            }
-
-            pairsBFromSingleBranch[i] = b[i].totalTaxaCounts[1] * b[i].totalTaxaCounts[1];
-            for(int k = 0; k < this.nDummyTaxa; ++k){
-                int partition = this.dummyTaxaPartition[k];
-                this.dummyTaxaWeightsIndividual[k] += b[i].dummyTaxaWeightsIndividual[k];
-                if(partition == 1){
-                    pairsBFromSingleBranch[i] -= b[i].dummyTaxaWeightsIndividual[k] * b[i].dummyTaxaWeightsIndividual[k];
-                }
-            }
-            pairsBFromSingleBranch[i] -= b[i].realTaxaCounts[1];
-            pairsBFromSingleBranch[i] /= 2;
-            this.sumPairsBSingleBranch += pairsBFromSingleBranch[i];
-
-            this.totalTaxa[0] += b[i].totalTaxaCounts[0];
-            this.totalTaxa[1] += b[i].totalTaxaCounts[1];
-            
-        }
-
-        this.nonQuartets = this.calcNonQuartets();
-
+        this.reset(dummyTaxaCount, allocateSpaceSize, dummyTaxaToPartitionMap);
     }
 
     @Override

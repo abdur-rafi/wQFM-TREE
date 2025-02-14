@@ -14,5 +14,7 @@ public interface NumSatCalculatorNode {
 
     public void batchTransferRealTaxon(int branchIndex, int netTranser);    
 
+    public void reset(int dummyTaxonCount, int allocateSpaceSize, int[] dummyTaxaToPartitionMap);
+
 }
 

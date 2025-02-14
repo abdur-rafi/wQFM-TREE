@@ -44,4 +44,7 @@ public class Config {
     }
 
     public static NonQuartetType NON_QUARTET_TYPE = NonQuartetType.A;
+
+    public static double DUMMY_TAXA_PREALLOCATE_MULTIPLIER = 1.5;
+    public static int DUMMY_TAXA_INCREMENT = 10;
 }

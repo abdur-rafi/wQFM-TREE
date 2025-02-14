@@ -17,6 +17,7 @@ public class QFMDC {
     public IMakePartition initPartition;
     public DataContainer dc;
     private int level;
+    BookKeepingPerLevelDC book;
 
     static double EPS = 1e-5;
 
@@ -29,16 +30,16 @@ public class QFMDC {
     public Tree runWQFM(){
         this.level = 0;
 
-        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
+        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0]);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
-        BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
-
-        return recurse(initialBook);
-
+        // BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
+        this.book = y.book;
+        this.book.reset(x);
+        return recurse(x);
     }
 
     private Tree recurse(
-        BookKeepingPerLevelDC book
+        TaxaPerLevelWithPartition taxaPerLevel
     ){
 
         this.level++;
@@ -46,6 +47,7 @@ public class QFMDC {
 
         System.out.println("Level: " + this.level);
         
+
         while(oneInteration(book) ){
             itrCount++;
             if(itrCount > Config.MAX_ITERATION){
@@ -64,14 +66,15 @@ public class QFMDC {
         int[] dummyIds = new int[2];
         
         for(var taxaWPart : x){
-            var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
-            if(childBooks.taxaPerLevel.smallestUnit){
-                trees[i] = childBooks.taxaPerLevel.createStar();
+            // var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
+            if(taxaWPart.smallestUnit){
+                trees[i] = taxaWPart.createStar();
             }
             else{
-                trees[i] = recurse(childBooks);
+                book.reset(taxaWPart);
+                trees[i] = recurse(taxaWPart);
             }
-            dummyIds[i++] = childBooks.taxaPerLevel.dummyTaxa[childBooks.taxaPerLevel.dummyTaxonCount - 1].id;
+            dummyIds[i++] = taxaWPart.dummyTaxa[taxaWPart.dummyTaxonCount - 1].id;
         }
 
         this.level--;

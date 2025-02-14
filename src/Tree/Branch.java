@@ -6,27 +6,34 @@ public class Branch {
     public double[] dummyTaxaWeightsIndividual;
     public double[] totalTaxaCounts;
 
+    public int dummyTaxaCount;
+
     public int netTranser;
 
-    // public Branch(int[] rtc, double[] dtci, double[] dtct) {
-    //     this.realTaxaCounts = rtc;
-    //     this.dummyTaxaWeightsIndividual = dtci;
-    //     this.dummyTaxaWeightSums = dtct;
-    //     this.totalTaxaCounts = new double[2];
-    //     for(int i = 0; i < 2; ++i){
-    //         this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
-    //     }
-    // }
 
-    public Branch(int dummyTaxaCount) {
+    public void reset(int dummyTaxonCount, int allocateSpaceSize){
+        // reset without allocating new memory if allocateSpaceSize equals to the current size
+        this.realTaxaCounts[0] = 0;
+        this.realTaxaCounts[1] = 0;
+        this.totalTaxaCounts[0] = 0;
+        this.totalTaxaCounts[1] = 0;
+        this.netTranser = 0;
+        this.dummyTaxaCount = dummyTaxonCount;
+        if(this.dummyTaxaWeightsIndividual.length < allocateSpaceSize){
+            this.dummyTaxaWeightsIndividual = new double[allocateSpaceSize];
+        }
+        
+        for(int i = 0; i < this.dummyTaxaCount; ++i){
+            this.dummyTaxaWeightsIndividual[i] = 0;
+        }
+    }
+
+    public Branch(int dummyTaxaCount, int allocateSpaceSize) {
         this.realTaxaCounts = new int[2];
-        this.dummyTaxaWeightsIndividual = new double[dummyTaxaCount];
-        // this.dummyTaxaWeightSums = dtct;
+        this.dummyTaxaWeightsIndividual = new double[allocateSpaceSize];
         this.totalTaxaCounts = new double[2];
         this.netTranser = 0;
-        // for(int i = 0; i < 2; ++i){
-        //     this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
-        // }
+        this.dummyTaxaCount = dummyTaxaCount;
     }
 
     public void batchTransferRealTaxon(){
@@ -59,29 +66,13 @@ public class Branch {
         
     }
 
-    public Branch(Branch b){
-        this.realTaxaCounts = new int[b.realTaxaCounts.length];
-        this.totalTaxaCounts = new double[b.totalTaxaCounts.length];
-        for(int i = 0; i < this.totalTaxaCounts.length; ++i){
-            this.totalTaxaCounts[i] = b.totalTaxaCounts[i];
-            this.realTaxaCounts[i] = b.realTaxaCounts[i];
-        }
-        this.dummyTaxaWeightsIndividual = new double[b.dummyTaxaWeightsIndividual.length];
-        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
-            this.dummyTaxaWeightsIndividual[i] = b.dummyTaxaWeightsIndividual[i];
-        }
-        // this.realTaxaCounts = b.realTaxaCounts.clone();
-        // this.dummyTaxaWeightsIndividual = b.dummyTaxaWeightsIndividual.clone();
-        // // this.dummyTaxaWeightSums = b.dummyTaxaWeightSums.clone();
-        // this.totalTaxaCounts = b.totalTaxaCounts.clone();
-    }
 
     public void addToSelf(Branch b){
         for(int i = 0; i < this.totalTaxaCounts.length; ++i){
             this.totalTaxaCounts[i] += b.totalTaxaCounts[i];
             this.realTaxaCounts[i] += b.realTaxaCounts[i];
         }
-        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
+        for(int i = 0; i < this.dummyTaxaCount; ++i){
             this.dummyTaxaWeightsIndividual[i] += b.dummyTaxaWeightsIndividual[i];
         }
     }
