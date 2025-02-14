@@ -1,46 +1,70 @@
 #!/bin/bash
+set -e  # Exit on any error
 
-geneTreesInputPath=$1
-speciesTreeOutputPath=$2
+function check_inputs() {
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "Usage: $0 <gene_trees_input_path> <species_tree_output_path>"
+        exit 1
+    fi
 
-# check if any of the above paths are empty
-if [ -z "$geneTreesInputPath" ]
-then
-    echo "Please provide input path"
-    exit 1
-fi
+    if [ ! -f "$1" ]; then
+        echo "Input file $1 does not exist"
+        exit 1
+    fi
+}
 
-# check if the output path is empty
-if [ -z "$speciesTreeOutputPath" ]
-then
-    echo "Please provide output path"
-    exit 1
-fi
+function clean_trees() {
+    local input=$1
+    local output=$2
+    
+    echo "Cleaning input file"
+    python3 ./treeCleaner.py < "$input" > "$output"
+    if [ $? -ne 0 ]; then
+        echo "Error: Tree cleaning failed"
+        exit 1
+    fi
+    echo "Cleaned input file written to $output"
+}
 
-# check if the input file exists
-if [ ! -f "$geneTreesInputPath" ]
-then
-    echo "Input file $geneTreesInputPath does not exist"
-    exit 1
-fi
+function generate_consensus() {
+    local input=$1
+    local output=$2
 
+    echo "Generating consensus tree using paup"
+    perl run_paup_consensus.pl -i "$input" -o "$output"
+    if [ $? -ne 0 ]; then
+        echo "Error: Consensus generation failed"
+        exit 1
+    fi
+}
 
-gtCleaned=$geneTreesInputPath-cleaned
-consensusTreePath=$gtCleaned-cons
+function run_wqfm() {
+    local cleaned_trees=$1
+    local consensus_tree=$2
+    local output=$3
 
-echo "Gene Trees path: $geneTreesInputPath, output path: $speciesTreeOutputPath"
+    echo " ===================== Running wQFM-TREE ===================== "
+    java -jar wQFM-TREE.jar "$cleaned_trees" "$consensus_tree.greedy.tree" "$output" "A"
+    if [ $? -ne 0 ]; then
+        echo "Error: wQFM-TREE execution failed"
+        exit 1
+    fi
+}
 
-echo "Cleaning input file"
+function main() {
+    local geneTreesInputPath=$1
+    local speciesTreeOutputPath=$2
 
-python3 ./treeCleaner.py < $geneTreesInputPath > $gtCleaned
+    check_inputs "$geneTreesInputPath" "$speciesTreeOutputPath"
 
-echo "Cleaned input file written to $gtCleaned"
+    local gtCleaned="$geneTreesInputPath-cleaned"
+    local consensusTreePath="$gtCleaned-cons"
 
-echo "Generating consensus tree using paup"
+    echo "Gene Trees path: $geneTreesInputPath, output path: $speciesTreeOutputPath"
 
-perl run_paup_consensus.pl -i $gtCleaned -o $consensusTreePath 
+    clean_trees "$geneTreesInputPath" "$gtCleaned"
+    generate_consensus "$gtCleaned" "$consensusTreePath"
+    run_wqfm "$gtCleaned" "$consensusTreePath" "$speciesTreeOutputPath"
+}
 
-echo " ===================== Running wQFM-TREE ===================== "
-
-java -jar wQFM-TREE.jar $gtCleaned $consensusTreePath.greedy.tree $speciesTreeOutputPath "A"
-
+main "$1" "$2"
