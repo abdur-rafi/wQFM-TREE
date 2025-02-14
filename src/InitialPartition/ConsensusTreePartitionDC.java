@@ -257,7 +257,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts, true);
+            return randPartition.makePartition(rts, dts);
             // System.exit(-1);
         }
         // System.out.println("partition");
