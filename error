@@ -1,0 +1,822 @@
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Error: could not open `/tmp/cp_8ydn8rvu0b5v0bzf1np8e9l5p.argfile'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/01/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/01/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/02/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/02/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/03/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/03/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/04/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/04/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/05/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/05/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/06/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/06/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/07/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/07/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/08/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/08/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/09/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/09/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/10/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/10/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/11/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/11/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/12/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/12/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/13/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/13/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/14/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/14/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/15/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/15/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/16/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/16/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/17/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/17/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/18/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/18/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/19/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/19/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/20/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/20/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/21/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/21/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/22/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/22/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/23/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/23/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/24/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/24/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/25/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/25/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/26/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/26/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/27/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/27/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/28/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/28/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/29/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/29/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/30/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/30/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/31/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/31/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/32/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/32/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/33/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/33/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/34/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/34/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/35/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/35/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/36/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/36/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/37/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/37/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/38/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/38/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/39/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/39/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/40/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/40/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/41/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/41/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/42/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/42/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/43/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/43/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/44/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/44/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/45/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/45/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/46/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/46/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/47/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/47/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/48/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/48/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/49/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/49/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 46, in <module>
+    estimateTree = readNewickFile(options.estimate_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/50/e500-updated.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 48, in <module>
+    estimateTree = parse_tree(readTreesFromRatchet(options.estimate_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/50/e500-updated.tre'
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 41, in <module>
+    trueTree = readNewickFile(options.true_tree)
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/unrooted.py", line 28, in readNewickFile
+    f = open(file)
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/500/s_tree-cleaned.tre'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./rfScoreCalculator/getFpFn.py", line 43, in <module>
+    trueTree = parse_tree(readTreesFromRatchet(options.true_tree)[0])
+  File "/home/bayzid/anaconda3/lib/python3.7/site-packages/spruce/mrp.py", line 424, in readTreesFromRatchet
+    f = open (file, 'r')
+FileNotFoundError: [Errno 2] No such file or directory: '../AstralPro/n500/k1000/dup5/loss1/ils70/500/s_tree-cleaned.tre'
+Traceback (most recent call last):
+  File "./scripts/rfAverager.py", line 17, in <module>
+    print('({})'.format(','.join(map(str, [sm[i] / count for i in range(len(sm))]))))
+  File "./scripts/rfAverager.py", line 17, in <listcomp>
+    print('({})'.format(','.join(map(str, [sm[i] / count for i in range(len(sm))]))))
+ZeroDivisionError: division by zero

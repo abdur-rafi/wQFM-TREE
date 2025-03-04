@@ -148,9 +148,11 @@ copyToDir(){
 
 }
 
+
+
 # cleanGT
 # cleanSP
 # cleanApro
-rfScoreApro
+# rfScoreApro
 # rfScoreWqfm
 # resolveGT
