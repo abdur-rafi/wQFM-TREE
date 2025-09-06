@@ -11,7 +11,7 @@ This repository contains the official implementation of
 - Java (required to run the main wQFM-TREE application). The jar file was created using **openjdk 11.0.14.1 2022-02-08 LTS**.
 - Linux O.S. required to generate consensus tree using paup and run bash scripts.
 - Python 3 required to remove branch information from gene trees.
-- (Only to run on resolved gene trees) Python, [DendroPy](https://jeetsukumaran.github.io/DendroPy/) are required to generate resolved gene trees.
+- wQFM-TREE is capable of handling polytomies, but this comes with increased runtime. If your input gene trees contain polytomies and you prefer to resolve them prior to running wQFM-TREE, Python, [DendroPy](https://jeetsukumaran.github.io/DendroPy/) are required to generate resolved gene trees.
 
 ## Input and output formats
 
@@ -37,11 +37,12 @@ Steps
 1. Download [this](https://github.com/abdur-rafi/wQFM-TREE/releases/download/v1.0.1/wQFM-TREE.zip) zip file.
 2. Unzip, this will create a wQFM-TREE folder.
 3. Open a terminal inside the wQFM-TREE folder.
-4. Execute the following command to run wQFM-TREE. The input gene trees **can contain polytomy** and they **will not be resolved**. Replace geneTreesFilePath with input gene trees file path and similarly, replace outputFilePath with desired path of the output file.
+4. Execute the following command to run wQFM-TREE. 
 ```
 bash run.sh geneTreesFilePath outputFilePath
 ```
-5. Execute the following command to run wQFM-TREE. In this case, polytomies present in the gene trees **will be resolved** before running wQFM-TREE.
+5. If you want to run wQFM-TREE on **resolved gene trees**, execute the following command. In this case, polytomies present in the gene trees will be resolved arbitrarily before running wQFM-TREE.
+   wQFM-TREE can handle multifurcating trees, which may increase accuracy slightly but with increased running time. 
 ```
 bash runResolvingPolytomy.sh geneTreesFilePath outputFilePath
 ```
@@ -62,6 +63,7 @@ More details can be found the README.md files inside these folders.
 
 ## License
 The contents of this repository are licensed under the Apache License, Version 2.0.
+
 See [LICENSE.md](./LICENSE.md) for the full license text.
 
 ## Citation (BibTeX)
@@ -81,5 +83,7 @@ If you use our algorithm or wish to use any part of this repository, please do c
 
 ## Bug Report
 We are always looking to improve our codebase.
+
 For any issues, please post on [wQFM-TREE issues page](https://github.com/abdur-rafi/wQFM-TREE/issues).
+
 Alternatively, you can email at ```amsrumi@gmail.com``` or ```rafi08236@gmail.com```.
