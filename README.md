@@ -2,7 +2,7 @@
 
 This repository contains the official implementation of 
 
-[**wQFM-TREE: highly accurate and scalable quartet-based species tree inference from gene trees**](https://www.biorxiv.org/content/10.1101/2024.07.30.605630v1)
+[**wQFM-TREE: highly accurate and scalable quartet-based species tree inference from gene trees**](https://academic.oup.com/bioinformaticsadvances/article/5/1/vbaf053/8075148)
 
 ## Execution dependencies
 
@@ -59,3 +59,27 @@ The [scripts](./scripts/) folder contain various scripts used to conduct all the
 The [memoryLogs](./memoryLogs/) folder contain the log files of memory tracing. 
 
 More details can be found the README.md files inside these folders. 
+
+## License
+The contents of this repository are licensed under the Apache License, Version 2.0.
+See [LICENSE.md](./LICENSE.md) for the full license text.
+
+## Citation (BibTeX)
+If you use our algorithm or wish to use any part of this repository, please do cite our paper.
+```
+@article{rafi2025wqfm,
+  title={wQFM-TREE: highly accurate and scalable quartet-based species tree inference from gene trees},
+  author={Rafi, Abdur and Rumi, Ahmed Mahir Sultan and Hakim, Sheikh Azizul and Sohaib and Tahmid, Md Toki and Momin, Rabib Jahin Ibn and Zaman, Tanjeem Azwad and Reaz, Rezwana and Bayzid, Md Shamsuzzoha},
+  journal={Bioinformatics Advances},
+  volume={5},
+  number={1},
+  pages={vbaf053},
+  year={2025},
+  publisher={Oxford University Press}
+}
+```
+
+## Bug Report
+We are always looking to improve our codebase.
+For any issues, please post on [wQFM-TREE issues page](https://github.com/abdur-rafi/wQFM-TREE/issues).
+Alternatively, you can email at ```amsrumi@gmail.com``` or ```rafi08236@gmail.com```.
