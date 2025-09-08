@@ -556,7 +556,7 @@ public class Tree {
     private boolean[] getParents(TreeNode node){
         boolean[] parents = new boolean[this.taxaMap.size()];
         while(node.parent != null){
-            if(!node.dupplicationNode){
+            if(!node.parent.dupplicationNode){
                 var otherChild = node.parent.childs.get(0) == node ? node.parent.childs.get(1) : node.parent.childs.get(0);
                 for(int i = 0; i < this.taxaMap.size(); ++i){
                     parents[i] |= otherChild.realTaxaInSubtree[i];
