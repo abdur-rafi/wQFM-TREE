@@ -274,7 +274,7 @@ public class QFMDC {
         }
 
         if(rtCount + 9 * dtCount + 5 > book.taxaPerLevel.dummyTaxonCount){
-            for(int i = swaps.size() - 1; i >= 0; --i){
+            for(int i = swaps.size() - 1; i > maxCgIndex; --i){
                 var x = swaps.get(i);
                 if(x.isDummy){
                     book.taxaPerLevel.swapPartitionDummyTaxon(x.index);
