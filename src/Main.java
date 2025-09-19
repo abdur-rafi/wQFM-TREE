@@ -92,7 +92,10 @@ public class Main {
         
         
         // RealTaxon.count = 0;
-        
+
+        System.out.println("Input file: " + inputFilePath);
+        System.out.println("Consensus file: " + consensusFilePath);
+        System.out.println("Output file: " + outputFilePath);
 
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
         ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);

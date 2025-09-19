@@ -12,7 +12,7 @@ import src.Tree.Tree;
 import src.Tree.TreeNode;
 
 public class QFMDC {
-    
+
     public RealTaxon[] realTaxa;
     public IMakePartition initPartition;
     public DataContainer dc;
@@ -20,17 +20,18 @@ public class QFMDC {
 
     static double EPS = 1e-5;
 
-    public QFMDC(DataContainer dc, RealTaxon[] realTaxa, IMakePartition initPartition){
+    public QFMDC(DataContainer dc, RealTaxon[] realTaxa, IMakePartition initPartition) {
         this.dc = dc;
         this.realTaxa = realTaxa;
         this.initPartition = initPartition;
     }
 
-    public Tree runWQFM(){
+    public Tree runWQFM() {
         this.level = 0;
 
         var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
-        var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition, realTaxa.length);
+        var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition,
+                realTaxa.length);
         BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
 
         return recurse(initialBook);
@@ -38,37 +39,35 @@ public class QFMDC {
     }
 
     private Tree recurse(
-        BookKeepingPerLevelDC book
-    ){
+            BookKeepingPerLevelDC book) {
 
         this.level++;
         int itrCount = 0;
 
         System.out.println("Level: " + this.level);
-        
-        while(oneInteration(book) ){
+
+        while (oneInteration(book)) {
             itrCount++;
-            if(itrCount > Config.MAX_ITERATION){
+            if (itrCount > Config.MAX_ITERATION) {
                 System.out.println("Max iteration reached");
                 break;
             }
-            
+
         }
 
-        System.out.println( "#iterations: " + itrCount);
+        System.out.println("#iterations: " + itrCount);
 
         Tree[] trees = new Tree[2];
 
         var x = book.divide(initPartition);
         int i = 0;
         int[] dummyIds = new int[2];
-        
-        for(var taxaWPart : x){
+
+        for (var taxaWPart : x) {
             var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
-            if(childBooks.taxaPerLevel.smallestUnit){
+            if (childBooks.taxaPerLevel.smallestUnit) {
                 trees[i] = childBooks.taxaPerLevel.createStar();
-            }
-            else{
+            } else {
                 trees[i] = recurse(childBooks);
             }
             dummyIds[i++] = childBooks.taxaPerLevel.dummyTaxa[childBooks.taxaPerLevel.dummyTaxonCount - 1].id;
@@ -78,24 +77,24 @@ public class QFMDC {
 
         TreeNode[] dtNodes = new TreeNode[2];
 
-        for(i = 0; i < 2; ++i){
-            for(var node : trees[i].nodes){
-                if(node.info.dummyTaxonId == dummyIds[i]){
+        for (i = 0; i < 2; ++i) {
+            for (var node : trees[i].nodes) {
+                if (node.info.dummyTaxonId == dummyIds[i]) {
                     dtNodes[i] = node;
                 }
             }
-            if(dtNodes[i] == null){
+            if (dtNodes[i] == null) {
                 System.out.println("Error: Dummy node not found");
                 System.exit(-1);
             }
-            if(dtNodes[i].childs != null){
+            if (dtNodes[i].childs != null) {
                 System.out.println("Error: Dummy node should be leaf");
                 System.exit(-1);
             }
         }
-        
+
         trees[0].reRootTree(dtNodes[0]);
-        if(dtNodes[0].childs.size() > 1){
+        if (dtNodes[0].childs.size() > 1) {
             System.out.println("Error: Dummy node should have only one child after reroot");
             System.exit(-1);
         }
@@ -107,33 +106,33 @@ public class QFMDC {
         return trees[1];
     }
 
-    static class Swap{
+    static class Swap {
         public int index;
         public boolean isDummy;
         public double gain;
 
-        public Swap(int i, boolean id, double g){
+        public Swap(int i, boolean id, double g) {
             this.index = i;
             this.isDummy = id;
             this.gain = g;
         }
     }
-    
 
-    public static Swap swapMax(BookKeepingPerLevelDC book, double[][] rtGains, double[] dtGains, boolean[] rtLocked, boolean[] dtLocked){
+    public static Swap swapMax(BookKeepingPerLevelDC book, double[][] rtGains, double[] dtGains, boolean[] rtLocked,
+            boolean[] dtLocked) {
 
         int maxGainIndex = -1;
         double maxGain = 0;
 
-        for(int i = 0; i < book.taxaPerLevel.realTaxonCount; ++i){
-            if(rtLocked[i]) continue;
+        for (int i = 0; i < book.taxaPerLevel.realTaxonCount; ++i) {
+            if (rtLocked[i])
+                continue;
             int partition = book.taxaPerLevel.inWhichPartitionRealTaxonByIndex(i);
-            if((book.taxaPerLevel.getTaxonCountInPartition(partition) > 2) ){
-                if(maxGainIndex == -1){
+            if ((book.taxaPerLevel.getTaxonCountInPartition(partition) > 2)) {
+                if (maxGainIndex == -1) {
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
-                }
-                else if(maxGain < rtGains[i][partition]){
+                } else if (maxGain < rtGains[i][partition]) {
                     maxGain = rtGains[i][partition];
                     maxGainIndex = i;
                 }
@@ -142,16 +141,16 @@ public class QFMDC {
 
         boolean dummyChosen = false;
 
-        for(int i = 0; i < book.taxaPerLevel.dummyTaxonCount; ++i){
-            if(dtLocked[i]) continue;
+        for (int i = 0; i < book.taxaPerLevel.dummyTaxonCount; ++i) {
+            if (dtLocked[i])
+                continue;
             int partition = book.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i);
-            if(book.taxaPerLevel.getTaxonCountInPartition(partition) > 2 ){
-                if(maxGainIndex == -1){
+            if (book.taxaPerLevel.getTaxonCountInPartition(partition) > 2) {
+                if (maxGainIndex == -1) {
                     maxGain = dtGains[i];
                     maxGainIndex = i;
                     dummyChosen = true;
-                }
-                else if(maxGain < dtGains[i]){
+                } else if (maxGain < dtGains[i]) {
                     maxGain = dtGains[i];
                     maxGainIndex = i;
                     dummyChosen = true;
@@ -159,19 +158,17 @@ public class QFMDC {
             }
         }
 
-        if(maxGainIndex == -1) return null;
+        if (maxGainIndex == -1)
+            return null;
 
         book.swapTaxon(maxGainIndex, dummyChosen);
-        if(dummyChosen){
+        if (dummyChosen) {
             dtLocked[maxGainIndex] = true;
-        }
-        else{
+        } else {
             rtLocked[maxGainIndex] = true;
         }
 
-        
         return new Swap(maxGainIndex, dummyChosen, maxGain);
-
 
     }
 
@@ -251,10 +248,39 @@ public class QFMDC {
             }
             return false;
         }
+        int rtCount = 0;
+        int dtCount = 0;
+
         for(int i = swaps.size() - 1; i > maxCgIndex; --i){
             var x = swaps.get(i);
-            book.swapTaxon(x.index, x.isDummy);
+            if(x.isDummy){
+                dtCount++;
+            }
+            else{
+                rtCount++;
+            }
         }
+
+        if(rtCount + 9 * dtCount + 5 > book.taxaPerLevel.dummyTaxonCount){
+            for(int i = swaps.size() - 1; i >= 0; --i){
+                var x = swaps.get(i);
+                if(x.isDummy){
+                    book.taxaPerLevel.swapPartitionDummyTaxon(x.index);
+                }
+                else{
+                    book.taxaPerLevel.swapPartitionRealTaxon(x.index);
+                }
+            }
+
+            book = new BookKeepingPerLevelDC(book.dc, book.taxaPerLevel);
+        }
+        else{
+            for(int i = swaps.size() - 1; i > maxCgIndex; --i){
+                var x = swaps.get(i);
+                book.swapTaxon(x.index, x.isDummy);
+            }
+        }
+        
 
         return true;
 
