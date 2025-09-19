@@ -20,6 +20,15 @@ public class QFMDC {
 
     static double EPS = 1e-5;
 
+
+    static class BookHolder{
+        public BookKeepingPerLevelDC book;
+
+        public BookHolder(BookKeepingPerLevelDC b){
+            this.book = b;
+        }
+    }
+
     public QFMDC(DataContainer dc, RealTaxon[] realTaxa, IMakePartition initPartition) {
         this.dc = dc;
         this.realTaxa = realTaxa;
@@ -38,15 +47,16 @@ public class QFMDC {
 
     }
 
-    private Tree recurse(
-            BookKeepingPerLevelDC book) {
+    private Tree recurse(BookKeepingPerLevelDC book) {
 
         this.level++;
         int itrCount = 0;
 
         System.out.println("Level: " + this.level);
 
-        while (oneInteration(book)) {
+        BookHolder bh = new BookHolder(book);
+
+        while (oneInteration(bh)) {
             itrCount++;
             if (itrCount > Config.MAX_ITERATION) {
                 System.out.println("Max iteration reached");
@@ -59,7 +69,7 @@ public class QFMDC {
 
         Tree[] trees = new Tree[2];
 
-        var x = book.divide(initPartition);
+        var x = bh.book.divide(initPartition);
         int i = 0;
         int[] dummyIds = new int[2];
 
@@ -172,7 +182,9 @@ public class QFMDC {
 
     }
 
-    public static boolean oneInteration(BookKeepingPerLevelDC book){
+    public static boolean oneInteration(BookHolder bh){
+
+        BookKeepingPerLevelDC book = bh.book;
         
         double cg = 0;
         int maxCgIndex = -1;
@@ -273,6 +285,7 @@ public class QFMDC {
             }
 
             book = new BookKeepingPerLevelDC(book.dc, book.taxaPerLevel);
+            bh.book = book;
         }
         else{
             for(int i = swaps.size() - 1; i > maxCgIndex; --i){
