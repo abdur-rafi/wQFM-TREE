@@ -12,5 +12,9 @@ public interface NumSatCalculatorNode {
 
     public void gainDummyTaxa(double originalScore, double multiplier, double[] dummyTaxaGains);
 
+    public void resetBookkeeping(int[] dummyTaxaToPartitionMap, int nDummyTaxa);
+
+    public void reallocateForDummyTaxa(int reallocAmountForDummyTaxa);
+
 }
 

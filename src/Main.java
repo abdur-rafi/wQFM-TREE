@@ -6,6 +6,7 @@ import java.io.IOException;
 import src.InitialPartition.ConsensusTreePartition;
 import src.InitialPartition.ConsensusTreePartitionDC;
 import src.InitialPartition.IMakePartition;
+import src.InitialPartition.RandPartition;
 import src.PreProcessing.GeneTrees;
 import src.PreProcessing.Preprocess;
 import src.Taxon.RealTaxon;
@@ -100,7 +101,7 @@ public class Main {
         Preprocess.PreprocessReturnType ret = Preprocess.preprocess(inputFilePath);
         ConsensusTreePartitionDC consensusTreePartitionDC = new ConsensusTreePartitionDC(consensusFilePath, ret.taxaMap, ret.dc);
         IMakePartition  partitionMakerDC = consensusTreePartitionDC;
-
+        // IMakePartition randPartition = new RandPartition();
 
 
 

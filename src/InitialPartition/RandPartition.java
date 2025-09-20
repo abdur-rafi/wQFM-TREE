@@ -1,11 +1,12 @@
 package src.InitialPartition;
 
+import src.DSPerLevel.BookKeepingPerLevelDC;
 import src.Taxon.DummyTaxon;
 import src.Taxon.RealTaxon;
 
 public class RandPartition implements IMakePartition {
-    
-    public MakePartitionReturnType makePartition( RealTaxon[] rts, DummyTaxon[] dts, boolean allowSingleton ){
+
+    public MakePartitionReturnType makePartition( RealTaxon[] rts, DummyTaxon[] dts, BookKeepingPerLevelDC book, boolean allowSingleton ){
         int pa = (rts.length + dts.length) / 2;
 
         int[] rtPart = new int[rts.length];

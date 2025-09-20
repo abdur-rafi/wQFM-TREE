@@ -1,6 +1,5 @@
 package src.DSPerLevel;
 
-import src.Taxon.RealTaxon;
 
 public class BookKeepingPerTreeDC {
     boolean[] realTaxaInTree;
@@ -9,22 +8,46 @@ public class BookKeepingPerTreeDC {
     private double[] realTaxaCountsInPartitions;
     private double[] dummyTaxonWeightsIndividual;
     public double[] dummyTaxonCountsInPartitions;
+    public double[] totalTaxon;
 
-    public BookKeepingPerTreeDC(boolean[] realTaxaInTree, TaxaPerLevelWithPartition taxaPerLevel){
+
+
+    // it is expected that this function is called at first level of the FM algorithm only, when all taxa are real
+    public void initMemory(int allocatedMemoryForDummyTaxa){
+        this.pairsFromPart = new double[2];
+        this.realTaxaCountsInPartitions = new double[2];
+        this.dummyTaxonWeightsIndividual = new double[allocatedMemoryForDummyTaxa];
+        this.dummyTaxonCountsInPartitions = new double[2];
+        this.totalTaxon = new double[2];
+
+    }
+
+    public void reallocateForDummyTaxa(int reallocAmountForDummyTaxa){
+        this.dummyTaxonWeightsIndividual = new double[reallocAmountForDummyTaxa];
+    }
+
+    public void resetBookkeeping(boolean[] realTaxaInTree, TaxaPerLevelWithPartition taxaPerLevel){
         this.realTaxaInTree = realTaxaInTree;
         this.taxaPerLevel = taxaPerLevel;
-        this.pairsFromPart = new double[2];
-        double[] totalTaxon = new double[2];
-        this.realTaxaCountsInPartitions = new double[2];
-        this.dummyTaxonWeightsIndividual = new double[taxaPerLevel.dummyTaxonCount];
-        this.dummyTaxonCountsInPartitions = new double[2];
         
+        this.pairsFromPart[0] = 0;
+        this.pairsFromPart[1] = 0;
+        this.realTaxaCountsInPartitions[0] = 0;
+        this.realTaxaCountsInPartitions[1] = 0;
+        this.dummyTaxonCountsInPartitions[0] = 0;
+        this.dummyTaxonCountsInPartitions[1] = 0;
+        this.totalTaxon[0] = 0;
+        this.totalTaxon[1] = 0;
 
-        
+        for(int i = 0; i < this.taxaPerLevel.dummyTaxonCount; ++i){
+            this.dummyTaxonWeightsIndividual[i] = 0;
+        }
+
+
         for(int i = 0; i < this.realTaxaInTree.length; ++i){
             if(this.realTaxaInTree[i]){
                 int partition = this.taxaPerLevel.inWhichPartition(i);
-                totalTaxon[partition] += this.taxaPerLevel.getWeight(i);
+                this.totalTaxon[partition] += this.taxaPerLevel.getWeight(i);
                 if(this.taxaPerLevel.isInDummyTaxa(i)){
                     this.dummyTaxonWeightsIndividual[this.taxaPerLevel.inWhichDummyTaxa(i)] += this.taxaPerLevel.getWeight(i);
                 }
@@ -34,8 +57,8 @@ public class BookKeepingPerTreeDC {
             }
         }
 
-        this.pairsFromPart[0] = totalTaxon[0] * totalTaxon[0];
-        this.pairsFromPart[1] = totalTaxon[1] * totalTaxon[1];
+        this.pairsFromPart[0] = this.totalTaxon[0] * this.totalTaxon[0];
+        this.pairsFromPart[1] = this.totalTaxon[1] * this.totalTaxon[1];
 
         for(int i = 0; i < this.taxaPerLevel.dummyTaxonCount; ++i){
             int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(i);
@@ -47,9 +70,14 @@ public class BookKeepingPerTreeDC {
         this.pairsFromPart[1] -= this.realTaxaCountsInPartitions[1];
 
         this.pairsFromPart[0] /= 2;
-        this.pairsFromPart[1] /= 2;        
-
+        this.pairsFromPart[1] /= 2;
     }
+
+    public BookKeepingPerTreeDC(int realTaxaCount){
+        initMemory(realTaxaCount);
+    }
+
+    
 
 
     public double totalQuartets(){

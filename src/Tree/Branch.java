@@ -2,29 +2,35 @@ package src.Tree;
 
 public class Branch {
     public int[] realTaxaCounts;
-    // public double[] dummyTaxaWeightSums;
     public double[] dummyTaxaWeightsIndividual;
     public double[] totalTaxaCounts;
+    int nDummyTaxa;
 
-
-    // public Branch(int[] rtc, double[] dtci, double[] dtct) {
-    //     this.realTaxaCounts = rtc;
-    //     this.dummyTaxaWeightsIndividual = dtci;
-    //     this.dummyTaxaWeightSums = dtct;
-    //     this.totalTaxaCounts = new double[2];
-    //     for(int i = 0; i < 2; ++i){
-    //         this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
-    //     }
-    // }
-
-    public Branch(int dummyTaxaCount) {
+    public void initMemory(int allocatedMemoryForDummyTaxa){
         this.realTaxaCounts = new int[2];
-        this.dummyTaxaWeightsIndividual = new double[dummyTaxaCount];
-        // this.dummyTaxaWeightSums = dtct;
         this.totalTaxaCounts = new double[2];
-        // for(int i = 0; i < 2; ++i){
-        //     this.totalTaxaCounts[i] = this.realTaxaCounts[i] + this.dummyTaxaWeightSums[i];
-        // }
+        this.dummyTaxaWeightsIndividual = new double[allocatedMemoryForDummyTaxa];
+        this.nDummyTaxa = 11000000;
+    }
+
+    public void resetBookkeeping(int dummyTaxaCount){
+        this.realTaxaCounts[0] = 0;
+        this.realTaxaCounts[1] = 0;
+        this.totalTaxaCounts[0] = 0;
+        this.totalTaxaCounts[1] = 0;
+        for(int i = 0; i < dummyTaxaCount; ++i){
+            this.dummyTaxaWeightsIndividual[i] = 0;
+        }
+        this.nDummyTaxa = dummyTaxaCount;
+    }
+
+    public void reallocMemoryForDummyTaxa(int newAllocatedMemoryForDummyTaxa){
+        this.dummyTaxaWeightsIndividual = new double[newAllocatedMemoryForDummyTaxa];
+    }
+
+
+    public Branch(int allocatedMemoryForDummyTaxa) {
+        initMemory(allocatedMemoryForDummyTaxa);
     }
 
     public void swapRealTaxa(int currPartition){
@@ -41,8 +47,6 @@ public class Branch {
 
         this.totalTaxaCounts[currPartition] -= weight;
         this.totalTaxaCounts[switchedPartition] += weight;
-        // this.dummyTaxaWeightSums[currPartition] -= weight;
-        // this.dummyTaxaWeightSums[switchedPartition] += weight;
         
     }
 
@@ -57,10 +61,6 @@ public class Branch {
         for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
             this.dummyTaxaWeightsIndividual[i] = b.dummyTaxaWeightsIndividual[i];
         }
-        // this.realTaxaCounts = b.realTaxaCounts.clone();
-        // this.dummyTaxaWeightsIndividual = b.dummyTaxaWeightsIndividual.clone();
-        // // this.dummyTaxaWeightSums = b.dummyTaxaWeightSums.clone();
-        // this.totalTaxaCounts = b.totalTaxaCounts.clone();
     }
 
     public void addToSelf(Branch b){
@@ -68,7 +68,7 @@ public class Branch {
             this.totalTaxaCounts[i] += b.totalTaxaCounts[i];
             this.realTaxaCounts[i] += b.realTaxaCounts[i];
         }
-        for(int i = 0; i < this.dummyTaxaWeightsIndividual.length; ++i){
+        for(int i = 0; i < this.nDummyTaxa; ++i){
             this.dummyTaxaWeightsIndividual[i] += b.dummyTaxaWeightsIndividual[i];
         }
     }

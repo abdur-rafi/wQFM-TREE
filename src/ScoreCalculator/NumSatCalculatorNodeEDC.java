@@ -47,23 +47,46 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
 
     int[] dummyTaxaPartition;
 
-    public NumSatCalculatorNodeEDC(Branch[] b, int[] dummyTaxaToPartitionMap) {
 
-        // System.out.println("kjasdfj");
-
-        this.dummyTaxaPartition = dummyTaxaToPartitionMap;
-        this.branches = b;
+    void initMemory(Branch[] b){
         this.dummyTaxaWeightsIndividual = new double[b[0].dummyTaxaWeightsIndividual.length];
         this.totalTaxa = new double[2];
-
-        this.nDummyTaxa = b[0].dummyTaxaWeightsIndividual.length;
-
+        
         pairsBFromSingleBranch = new double[b.length];
         sumPairsBranch = new double[b.length][2];
         this.sumPairs = new double[2];
         this.sumPairsBSingleBranch = 0;
         this.pairs = new double[b.length][b.length][2];
         this.nonQuartets = 0;
+
+    }
+
+    @Override
+    public void reallocateForDummyTaxa(int reallocAmountForDummyTaxa){
+        this.dummyTaxaWeightsIndividual = new double[reallocAmountForDummyTaxa];
+    }
+
+    @Override
+    public void resetBookkeeping(int[] dummyTaxaToPartitionMap, int nDummyTaxa){
+        this.dummyTaxaPartition = dummyTaxaToPartitionMap;
+        this.nDummyTaxa = nDummyTaxa;
+        for(int i = 0; i < this.nDummyTaxa; ++i){
+            this.dummyTaxaWeightsIndividual[i] = 0;
+        }
+        this.totalTaxa[0] = 0;
+        this.totalTaxa[1] = 0;
+        
+        for(int i = 0; i < this.branches.length; ++i){
+            pairsBFromSingleBranch[i] = 0;
+            sumPairsBranch[i][0] = 0;
+            sumPairsBranch[i][1] = 0;
+        }
+        this.sumPairs[0] = 0;
+        this.sumPairs[1] = 0;
+        this.sumPairsBSingleBranch = 0;
+        this.nonQuartets = 0;
+
+        var b = this.branches;
 
         for(int i = 0; i < b.length; ++i){
             for(int j = i + 1; j < b.length; ++j){
@@ -100,8 +123,12 @@ public class NumSatCalculatorNodeEDC implements NumSatCalculatorNode {
             this.totalTaxa[1] += b[i].totalTaxaCounts[1];
             
         }
-
         this.nonQuartets = this.calcNonQuartets();
+    }
+
+    public NumSatCalculatorNodeEDC(Branch[] b) {
+        this.branches = b;
+        initMemory(b);
 
     }
 

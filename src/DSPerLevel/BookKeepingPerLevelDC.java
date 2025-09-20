@@ -25,41 +25,16 @@ public class BookKeepingPerLevelDC {
     public DataContainer dc;
     public TaxaPerLevelWithPartition taxaPerLevel;
     BookKeepingPerTreeDC[] bookKeepingPerTreeDCs;
+    public int allocatedMemoryForDummyTaxa = 0;
 
-    public BookKeepingPerLevelDC(DataContainer dc, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
-        this.dc = dc;
-        this.taxaPerLevel = taxaPerLevelWithPartition;
-        if(this.taxaPerLevel.smallestUnit)
-            return;
 
-        this.initialBookKeeping();
-        this.bookKeepingPerTreeDCs = new BookKeepingPerTreeDC[dc.realTaxaInTrees.length];
-        for(int i = 0; i < dc.realTaxaInTrees.length; ++i){
-            this.bookKeepingPerTreeDCs[i] = new BookKeepingPerTreeDC(dc.realTaxaInTrees[i], this.taxaPerLevel);
-        }
-
-    }
-
-    public void initialBookKeeping(){
-
+    void initMemory(DataContainer dc, int realTaxonCount){
+        this.allocatedMemoryForDummyTaxa = (int) Math.round(((Math.log(realTaxonCount) / Math.log(2)) + 1) * Config.MEMORY_PRE_ALLOCATION_FACTOR);
+        
         for(int i = 0; i < this.dc.realTaxaPartitionNodes.length; ++i){
             PartitionNode p = this.dc.realTaxaPartitionNodes[i];
-            p.data = new Data();
-            p.data.branch = new Branch(this.taxaPerLevel.dummyTaxonCount);
-
-            if(this.taxaPerLevel.isInDummyTaxa(i)){
-                int dtid = this.taxaPerLevel.inWhichDummyTaxa(i);
-                int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(dtid);
-                p.data.branch.dummyTaxaWeightsIndividual[dtid] = this.taxaPerLevel.getWeight(i);
-                p.data.branch.totalTaxaCounts[partition] += this.taxaPerLevel.getWeight(i);
-
-            }
-            else{
-                int partition = this.taxaPerLevel.inWhichPartition(i);
-                p.data.branch.realTaxaCounts[partition] = 1;
-                p.data.branch.totalTaxaCounts[partition] = 1;
-            }
-
+            var branch = new Branch(this.allocatedMemoryForDummyTaxa);
+            p.data = new Data(branch);
         }
 
         int sz = this.dc.topSortedPartitionNodes.size();
@@ -69,11 +44,8 @@ public class BookKeepingPerLevelDC {
                 continue;
             }
             else{
-                p.data = new Data();
-                p.data.branch = new Branch(this.taxaPerLevel.dummyTaxonCount);
-                for(PartitionNode child : p.children){
-                    p.data.branch.addToSelf(child.data.branch);
-                }
+                var branch = new Branch(this.allocatedMemoryForDummyTaxa);
+                p.data = new Data(branch);
             }
         }
 
@@ -83,12 +55,93 @@ public class BookKeepingPerLevelDC {
                 b[i] = p.partitionNodes[i].data.branch;
             }
             if(p.partitionNodes.length > 3){
-                p.scoreCalculator = new NumSatCalculatorNodeEDC(b,this.taxaPerLevel.dummyTaxonPartition);
+                p.scoreCalculator = new NumSatCalculatorNodeEDC(b);
             }
             else{
-                p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b, this.taxaPerLevel.dummyTaxonPartition);
+                p.scoreCalculator = new NumSatCalculatorBinaryNodeDC(b);
             }
         }
+
+        this.bookKeepingPerTreeDCs = new BookKeepingPerTreeDC[dc.realTaxaInTrees.length];
+        for(int i = 0; i < dc.realTaxaInTrees.length; ++i){
+            this.bookKeepingPerTreeDCs[i] = new BookKeepingPerTreeDC(allocatedMemoryForDummyTaxa);
+        }
+
+    }
+
+    public void resetBookkeeping(TaxaPerLevelWithPartition taxaPerLevelWithPartition){
+        this.taxaPerLevel = taxaPerLevelWithPartition;
+        if(this.taxaPerLevel.smallestUnit)
+            return;
+        boolean reallocRequired = false;
+        if(this.allocatedMemoryForDummyTaxa < this.taxaPerLevel.dummyTaxonCount){
+            reallocRequired = true;
+            this.allocatedMemoryForDummyTaxa = (int) Math.round(this.taxaPerLevel.dummyTaxonCount * Config.MEMORY_PRE_ALLOCATION_FACTOR);
+        }
+
+        for(int i = 0; i < this.dc.realTaxaPartitionNodes.length; ++i){
+            PartitionNode p = this.dc.realTaxaPartitionNodes[i];
+            if(reallocRequired){
+                p.data.branch.reallocMemoryForDummyTaxa(this.allocatedMemoryForDummyTaxa);
+            }
+            p.data.branch.resetBookkeeping(this.taxaPerLevel.dummyTaxonCount);
+            p.data.resetBookkeeping();
+
+
+            if(this.taxaPerLevel.isInDummyTaxa(i)){
+                int dtid = this.taxaPerLevel.inWhichDummyTaxa(i);
+                int partition = this.taxaPerLevel.inWhichPartitionDummyTaxonByIndex(dtid);
+                p.data.branch.dummyTaxaWeightsIndividual[dtid] = this.taxaPerLevel.getWeight(i);
+                p.data.branch.totalTaxaCounts[partition] += this.taxaPerLevel.getWeight(i);
+            }
+            else{
+                int partition = this.taxaPerLevel.inWhichPartition(i);
+                p.data.branch.realTaxaCounts[partition] = 1;
+                p.data.branch.totalTaxaCounts[partition] = 1;
+            }
+        }
+
+        int sz = this.dc.topSortedPartitionNodes.size();
+        for(int i = sz - 1; i >  -1; --i){
+            PartitionNode p = this.dc.topSortedPartitionNodes.get(i);
+            if(p.isLeaf){
+                continue;
+            }
+            else{
+                if(reallocRequired){
+                    p.data.branch.reallocMemoryForDummyTaxa(this.allocatedMemoryForDummyTaxa);
+                }
+                p.data.branch.resetBookkeeping(this.taxaPerLevel.dummyTaxonCount);
+                p.data.resetBookkeeping();
+                for(PartitionNode child : p.children){
+                    p.data.branch.addToSelf(child.data.branch);
+                }
+            }
+        }
+
+        for(PartitionByTreeNode p : this.dc.partitionsByTreeNodes){
+            if(reallocRequired){
+                p.scoreCalculator.reallocateForDummyTaxa(this.allocatedMemoryForDummyTaxa);
+            }
+            p.scoreCalculator.resetBookkeeping(this.taxaPerLevel.dummyTaxonPartition, this.taxaPerLevel.dummyTaxonCount);
+        }
+
+        for(int i = 0; i < this.dc.realTaxaInTrees.length; ++i){
+            if(reallocRequired){
+                this.bookKeepingPerTreeDCs[i].reallocateForDummyTaxa(this.allocatedMemoryForDummyTaxa);
+            }
+            this.bookKeepingPerTreeDCs[i].resetBookkeeping(this.dc.realTaxaInTrees[i], this.taxaPerLevel);
+        }
+    }
+
+
+    public BookKeepingPerLevelDC(DataContainer dc, TaxaPerLevelWithPartition taxaPerLevelWithPartition){
+        this.dc = dc;
+        this.taxaPerLevel = taxaPerLevelWithPartition;
+        if(this.taxaPerLevel.smallestUnit)
+            return;
+        this.initMemory(dc, this.taxaPerLevel.allRealTaxaCount);
+
     }
 
 
@@ -399,7 +452,7 @@ public class BookKeepingPerLevelDC {
 
             if(rts[i].length + dtsWithNewDt.length > 3){
 
-                var y = makePartition.makePartition(rts[i], dtsWithNewDt, true);
+                var y = makePartition.makePartition(rts[i], dtsWithNewDt, this, true);
                 taxaPerLevelWithPartitions[i] = new TaxaPerLevelWithPartition(
                     rts[i], dtsWithNewDt, 
                     y.realTaxonPartition, 

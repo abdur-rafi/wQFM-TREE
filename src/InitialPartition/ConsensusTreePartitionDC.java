@@ -40,6 +40,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         this.taxaMap = taxaMap;
 
         this.dc = dc;
+
         
     }
 
@@ -59,7 +60,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     }
 
 
-    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts){
+    double scoreForPartitionByNode(TreeNode node, RealTaxon[] rts, DummyTaxon[] dts, boolean firstScoreCalculation){
 
         int[] rtsP = new int[rts.length];
         int[] dtsp = new int[dts.length];
@@ -78,9 +79,9 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             }
         }
 
-        if(this.book == null){
+        if(firstScoreCalculation){
             TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-            this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+            this.book.resetBookkeeping(taxas);
         }
         else{
             int rtCount = 0;
@@ -108,7 +109,8 @@ public class ConsensusTreePartitionDC implements IMakePartition {
             else{
                 if(rtCount + 9 * dtCount + 5 > dts.length){
                     TaxaPerLevelWithPartition taxas = new TaxaPerLevelWithPartition(rts, dts, rtsP, dtsp, this.taxonCount);
-                    this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+                    // this.book = new BookKeepingPerLevelDC(this.dc, taxas);
+                    this.book.resetBookkeeping(taxas);
 
                 }
                 else{
@@ -133,9 +135,9 @@ public class ConsensusTreePartitionDC implements IMakePartition {
     }
 
     @Override
-    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, boolean a_) {
+    public MakePartitionReturnType makePartition(RealTaxon[] rts, DummyTaxon[] dts, BookKeepingPerLevelDC book, boolean a_) {
         
-        this.book = null;
+        this.book = book;
 
         double[] weight = new double[consTree.leavesCount];
         int[] inWhichDummyTaxa = new int[consTree.leavesCount];
@@ -181,10 +183,13 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         //     // }
         // }        
 
+        boolean firstScoreCalculation = true;
+
         for(var node : this.consTree.topSortedNodes){
             node.info = new Info();
             node.info.branches = new Branch[1];
             node.info.branches[0] = new Branch(dts.length);
+            node.info.branches[0].resetBookkeeping(dts.length);
 
             var branch = node.info.branches[0];
 
@@ -220,7 +225,8 @@ public class ConsensusTreePartitionDC implements IMakePartition {
 
                     if(partASize >= 1 && partBSize >= 1){
                         if(Config.USE_SCORING_IN_CONSENSUS){
-                            double score = scoreForPartitionByNode(child, rts, dts);
+                            double score = scoreForPartitionByNode(child, rts, dts, firstScoreCalculation);
+                            firstScoreCalculation = false;
                             if( minNode == null || score > maxScore){
                                 maxScore = score;
                                 minNode = child;
@@ -249,7 +255,7 @@ public class ConsensusTreePartitionDC implements IMakePartition {
         }
         if(minNode == null){
             System.out.println("Min Node null");
-            return randPartition.makePartition(rts, dts, true);
+            return randPartition.makePartition(rts, dts,book, true);
             // System.exit(-1);
         }
         // System.out.println("partition");

@@ -38,12 +38,27 @@ public class QFMDC {
     public Tree runWQFM() {
         this.level = 0;
 
-        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], true);
+
+        int[] realTaxonPartition = new int[realTaxa.length];
+        int[] dummyTaxonPartition = new int[0];
+        for(int i = 0; i < realTaxa.length / 2; ++i){
+            realTaxonPartition[i] = 1;
+        }
+
+        TaxaPerLevelWithPartition init = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], realTaxonPartition, dummyTaxonPartition,
+                realTaxa.length);
+        
+        BookKeepingPerLevelDC book = new BookKeepingPerLevelDC(this.dc, init);
+        book.resetBookkeeping(init);
+
+        var y = initPartition.makePartition(realTaxa, new DummyTaxon[0], book, true);
         var x = new TaxaPerLevelWithPartition(realTaxa, new DummyTaxon[0], y.realTaxonPartition, y.dummyTaxonPartition,
                 realTaxa.length);
-        BookKeepingPerLevelDC initialBook = new BookKeepingPerLevelDC(this.dc, x);
+        
+        
+        book.resetBookkeeping(x);
 
-        return recurse(initialBook);
+        return recurse(book);
 
     }
 
@@ -74,13 +89,14 @@ public class QFMDC {
         int[] dummyIds = new int[2];
 
         for (var taxaWPart : x) {
-            var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
-            if (childBooks.taxaPerLevel.smallestUnit) {
-                trees[i] = childBooks.taxaPerLevel.createStar();
+            // var childBooks = new BookKeepingPerLevelDC(this.dc, taxaWPart);
+            book.resetBookkeeping(taxaWPart);
+            if (book.taxaPerLevel.smallestUnit) {
+                trees[i] = book.taxaPerLevel.createStar();
             } else {
-                trees[i] = recurse(childBooks);
+                trees[i] = recurse(book);
             }
-            dummyIds[i++] = childBooks.taxaPerLevel.dummyTaxa[childBooks.taxaPerLevel.dummyTaxonCount - 1].id;
+            dummyIds[i++] = taxaWPart.dummyTaxa[taxaWPart.dummyTaxonCount - 1].id;
         }
 
         this.level--;
@@ -244,6 +260,9 @@ public class QFMDC {
         }
 
         // System.out.println("Cg : " + cg);
+        // System.out.println("Max Cg : " + maxCg + " at index: " + maxCgIndex);
+        // System.out.println("swap size: " + swaps.size());
+        // System.out.println("total taxon count: " + (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount));
 
         if(maxCgIndex == -1){
             if(swaps.size() != (book.taxaPerLevel.realTaxonCount + book.taxaPerLevel.dummyTaxonCount)){
@@ -284,8 +303,9 @@ public class QFMDC {
                 }
             }
 
-            book = new BookKeepingPerLevelDC(book.dc, book.taxaPerLevel);
-            bh.book = book;
+            // book = new BookKeepingPerLevelDC(book.dc, book.taxaPerLevel);
+            bh.book.resetBookkeeping(book.taxaPerLevel);
+            // bh.book = book;
         }
         else{
             for(int i = swaps.size() - 1; i > maxCgIndex; --i){
@@ -293,7 +313,6 @@ public class QFMDC {
                 book.swapTaxon(x.index, x.isDummy);
             }
         }
-        
 
         return true;
 

@@ -44,4 +44,6 @@ public class Config {
     }
 
     public static NonQuartetType NON_QUARTET_TYPE = NonQuartetType.A;
+
+    public static double MEMORY_PRE_ALLOCATION_FACTOR = 1.2;
 }
