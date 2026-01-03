@@ -7,6 +7,7 @@ import src.Tree.Branch;
 import src.Tree.Info;
 import src.Tree.Tree;
 import src.Tree.TreeNode;
+import src.Config;
 import src.ScoreCalculator.NumSatCalculatorBinaryNodev2;
 import src.ScoreCalculator.NumSatCalculatorNode;
 import src.ScoreCalculator.NumSatCalculatorNodeEv2;
@@ -50,6 +51,20 @@ public class BookKeepingPerTreev2 {
 
     public void resetBookkeeping(TaxaPerLevelWithPartition taxas){
 
+        double[] coeffs = new double[taxas.allRealTaxaCount];
+
+        boolean realTaxaPresent[] = new boolean[taxas.allRealTaxaCount];
+
+        for (int i = 0; i < taxas.allRealTaxaCount; i++) {
+            coeffs[i] = 0.0;
+            if(this.geneTree.isTaxonPresent(i)){
+                realTaxaPresent[i] = true;
+            }
+            else{
+                realTaxaPresent[i] = false;
+            }
+        }
+
         for(int i = 0; i < 2; ++i){
             this.realTaxaCountsInPartitions[i] = 0;
             this.dummyTaxonCountsInPartitions[i] = 0;
@@ -65,21 +80,33 @@ public class BookKeepingPerTreev2 {
         for(var x : taxas.realTaxa){
             if(geneTree.isTaxonPresent(x.id)){
                 this.realTaxaCountsInPartitions[taxas.inWhichPartition(x.id)]++;
+                coeffs[x.id] = 1.0;
             }
         }
         int i = 0;
         for(var x : taxas.dummyTaxa){
+            // for(var y : x.flattenedRealTaxa){
+            //     if(geneTree.isTaxonPresent(y.id)){
+            //         this.dummyTaxonWeightsIndividual[i] += taxas.getWeight(y.id);
+            //     }
+            // }
+            x.calcDivCoeffsWithAbsentTaxa(
+                Config.SCORE_NORMALIZATION_TYPE, coeffs, 1.0, realTaxaPresent
+            );
+
             for(var y : x.flattenedRealTaxa){
                 if(geneTree.isTaxonPresent(y.id)){
-                    this.dummyTaxonWeightsIndividual[i] += taxas.getWeight(y.id);
+                    this.dummyTaxonWeightsIndividual[i] += 1 / coeffs[y.id];
                 }
             }
+
+
             this.dummyTaxonCountsInPartitions[taxas.inWhichPartitionDummyTaxonByIndex(i)] += this.dummyTaxonWeightsIndividual[i];
             i++;
         }
 
         for(var node : this.nodesForGains){
-            resetBookKeepingAtNode(node, taxas);
+            resetBookKeepingAtNode(node, taxas, coeffs);
             if(node.frequency == 0){
                 continue;
             }
@@ -114,7 +141,8 @@ public class BookKeepingPerTreev2 {
 
     private void resetBookKeepingAtNode(
         TreeNode node,
-        TaxaPerLevelWithPartition taxas
+        TaxaPerLevelWithPartition taxas,
+        double[] coeffs
     ){
         int childCount = node.childs.size();
         var branches = node.info.branches;
@@ -137,7 +165,8 @@ public class BookKeepingPerTreev2 {
 
                 }
                 else if(taxas.isInDummyTaxa(taxonId)){
-                    double weight = taxas.getWeight(taxonId);
+                    // double weight = taxas.getWeight(taxonId);
+                    double weight = 1. / coeffs[taxonId];
                     int partition = taxas.inWhichPartition(taxonId);
                     branches[i].dummyTaxaWeightsIndividual[taxas.inWhichDummyTaxa(taxonId)] += weight;
                     branches[i].totalTaxaCounts[partition] += weight;

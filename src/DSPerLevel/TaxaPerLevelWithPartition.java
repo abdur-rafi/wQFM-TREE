@@ -31,7 +31,7 @@ public class TaxaPerLevelWithPartition {
 
     private boolean[] isInRealTaxa;
     private boolean[] isInDummyTaxa;
-    private double[] coeffs;
+    // private double[] coeffs;
     
     private int[] inWhichPartition;
     private int[] inWhichDummyTaxa;
@@ -60,7 +60,7 @@ public class TaxaPerLevelWithPartition {
         this.smallestUnit = false;
         
         this.isInRealTaxa = new boolean[this.allRealTaxaCount];
-        this.coeffs = new double[this.allRealTaxaCount];
+        // this.coeffs = new double[this.allRealTaxaCount];
         this.realTaxonIndex = new int[this.allRealTaxaCount];
         this.taxonCountsInPartitions = new int[2];
         this.inWhichDummyTaxa = new int[this.allRealTaxaCount];
@@ -74,7 +74,7 @@ public class TaxaPerLevelWithPartition {
 
         for(var x : realTaxa){
             isInRealTaxa[x.id] = true;
-            coeffs[x.id] = 1.0;
+            // coeffs[x.id] = 1.0;
             taxonCountsInPartitions[realTaxonPartition[i]]++;
             realTaxonIndex[x.id] = i++;
         }
@@ -88,7 +88,7 @@ public class TaxaPerLevelWithPartition {
                 isInDummyTaxa[y.id] = true;
                 inWhichDummyTaxa[y.id] = i;
             }
-            x.calcDivCoeffs(Config.SCORE_NORMALIZATION_TYPE, coeffs, 1.);
+            // x.calcDivCoeffs(Config.SCORE_NORMALIZATION_TYPE, coeffs, 1.);
             taxonCountsInPartitions[dummyTaxonPartition[i]]++;
             this.dummyTaxonCountsInPartitions[dummyTaxonPartition[i]]++;
             this.dummyTaxonCountsFlattenedInPartitions[dummyTaxonPartition[i]] += x.flattenedTaxonCount;
@@ -113,9 +113,9 @@ public class TaxaPerLevelWithPartition {
         return isInRealTaxa[realTaxonId];
     }
 
-    public double getWeight(int realTaxonId){
-        return 1. / this.coeffs[realTaxonId];
-    }
+    // public double getWeight(int realTaxonId){
+    //     return 1. / this.coeffs[realTaxonId];
+    // }
 
     public int inWhichPartition(int realTaxaId){
         return inWhichPartition[realTaxaId];
